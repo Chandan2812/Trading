@@ -1,0 +1,9 @@
+:root {
+  --primary-color: #71ced0;
+  --bg-primary-gradient: linear-gradient(to right, #ce9c81, #e3c5b5, #ce9c81);
+}
+
+.btn-gradient-hover:hover {
+  background: var(--bg-primary-gradient);
+  color: black; /* Or white if preferred */
+}
