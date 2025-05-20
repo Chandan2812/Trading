@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiMenu, FiSun, FiMoon } from "react-icons/fi";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import logo from "../assets/logo-01.svg";
+import TradingViewTicker from "./TradingViewTicker";
 
 declare global {
   interface Window {
@@ -66,7 +67,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white dark:bg-black text-black dark:text-white w-full fixed top-0 z-50 border-b border-gray-200 dark:border-gray-800 transition-colors">
+      <div className="w-full fixed top-0 z-[60]">
+        <TradingViewTicker />
+      </div>
+      <nav className="bg-white dark:bg-black text-black dark:text-white mt-16 md:mt-12 w-full fixed top-0 z-50 border-b border-gray-200 dark:border-gray-800 transition-colors">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             {/* Mobile View */}
@@ -155,9 +159,9 @@ const Navbar = () => {
 
         {/* Mobile Dropdown Menu */}
         {isOpen && (
-          <div className="md:hidden fixed inset-0 z-[9999] bg-white dark:bg-black flex flex-col pl-2 pr-5 pb-6 pt-3">
+          <div className="md:hidden fixed inset-0 z-[9999] bg-white dark:bg-black flex flex-col pl-2 pr-5 pb-6 pt-3 mt-20">
             <div className="flex justify-between items-center mb-6">
-              <img src={logo} alt="Mondus Logo" className="w-48" />
+              <img src={logo} alt="trading Logo" className="w-36" />
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-2xl text-inherit"
@@ -224,7 +228,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[999] right-[90px] top-6 translate-x-0 md:right-[230px] md:top-[22px] md:-translate-x-1/2"
+          className="fixed z-[999] right-[90px] top-[85px] translate-x-0 md:right-[230px] md:top-[70px] md:-translate-x-1/2"
         />
       )}
     </>
