@@ -147,7 +147,7 @@ const Navbar = () => {
                   </a>
                   <a
                     href="#"
-                    className="bg-[var(--primary-color)] text-white text-sm px-4 py-2 rounded-full border border-[var(--primary-color)] hover:bg-white hover:text-black transition dark:shadow-[0_0_15px_var(--primary-color)]"
+                    className="bg-[var(--primary-color)] text-black text-sm px-4 py-2 rounded-full border border-[var(--primary-color)] hover:bg-white transition dark:shadow-[0_0_15px_var(--primary-color)]"
                   >
                     Sign Up
                   </a>
