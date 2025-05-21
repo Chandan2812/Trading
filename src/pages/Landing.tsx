@@ -3,6 +3,7 @@ import DownloadSection from "../components/DownloadSection";
 import Footer from "../components/Footer";
 import HeroSection from "../components/Hero";
 import HowItWorks from "../components/HowITWork";
+import Carousel from "../components/ImageCarousel";
 import Navbar from "../components/Nav";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import Trusted from "../components/Trusted";
@@ -13,9 +14,11 @@ export const Landing = () => {
     <div>
       <Navbar />
       <HeroSection />
+      <Carousel />
+      <Trusted />
       <WhyTrade />
       <HowItWorks />
-      <Trusted />
+
       <DownloadSection />
       <DabbaMarkets />
       <TestimonialCarousel />

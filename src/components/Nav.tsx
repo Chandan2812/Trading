@@ -70,7 +70,7 @@ const Navbar = () => {
       <div className="w-full fixed top-0 z-[60]">
         <TradingViewTicker />
       </div>
-      <nav className="bg-white dark:bg-black text-black dark:text-white mt-16 md:mt-11 w-full fixed top-0 z-50 border-b border-gray-200 dark:border-gray-800 transition-colors">
+      <nav className=" bg-black text-white mt-16 md:mt-11 w-full fixed top-0 z-50 border-b border-gray-800 transition-colors">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             {/* Mobile View */}

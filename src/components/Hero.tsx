@@ -1,5 +1,6 @@
 import React from "react";
 import bg from "../assets/bg-earth-desktop.webp";
+import { Typewriter } from "react-simple-typewriter";
 
 const HeroSection: React.FC = () => {
   return (
@@ -12,9 +13,28 @@ const HeroSection: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 w-full px-5 mx-auto flex flex-col justify-center text-left text-white space-y-8 max-w-7xl py-12 md:py-0">
         {/* Heading */}
-        <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
-          <span className="block mb-2">Together</span>
-          <span className="text-[var(--primary-color)] block">We Grow!</span>
+
+        <h1 className="text-4xl font-semibold leading-tight text-start">
+          <span className="block mb-2 text-white">
+            Trade With 500X Margin, 0% Fess
+          </span>
+          <span className="block text-[var(--primary-color)]">
+            <Typewriter
+              words={[
+                "NSE (F&O)",
+                "MCX (F&O)",
+                "Comex Future",
+                "Forex",
+                "US Equity",
+                "Global Market",
+              ]}
+              loop={0} // infinite loop
+              cursor
+              typeSpeed={60}
+              deleteSpeed={40}
+              delaySpeed={1500}
+            />
+          </span>
         </h1>
 
         {/* CTA Button */}
