@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   FaGlobe,
   FaMoneyCheckAlt,
@@ -9,6 +9,8 @@ import {
   FaArrowLeft,
   FaArrowRight,
 } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const features = [
   {
@@ -44,6 +46,18 @@ const features = [
 ];
 
 const WhyTrade: React.FC = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+
+    // Force refresh in case of layout shift
+    setTimeout(() => {
+      AOS.refresh();
+    }, 100);
+  }, []);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
 
@@ -82,6 +96,7 @@ const WhyTrade: React.FC = () => {
               background:
                 "linear-gradient(to bottom, #111, var(--primary-color))",
             }}
+            data-aos="zoom-in"
           >
             <div className="bg-black rounded-lg p-6">
               <div className="mb-4">{feature.icon}</div>

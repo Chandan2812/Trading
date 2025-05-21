@@ -1,7 +1,17 @@
 import { FaWindows, FaApple, FaAndroid } from "react-icons/fa";
 import image from "../assets/meta-trade-devices.webp";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export default function DownloadSection() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // animation duration in ms
+      once: true, // animate only once
+    });
+  }, []);
+
   return (
     <div className="bg-black text-white ">
       <div className="max-w-7xl mx-auto px-5 py-12 flex flex-col-reverse md:flex-row items-center justify-between gap-10">
@@ -11,11 +21,12 @@ export default function DownloadSection() {
             src={image}
             alt="MetaTrader Devices"
             className="max-w-[90%] md:max-w-full"
+            data-aos="fade-right"
           />
         </div>
 
         {/* Right: Text & Buttons */}
-        <div className="md:w-1/2">
+        <div className="md:w-1/2" data-aos="fade-left">
           <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-4">
             Hey Traders! <br />
             Ready to Trade on{" "}

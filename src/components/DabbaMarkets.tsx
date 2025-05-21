@@ -1,5 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const markets = [
   {
@@ -54,6 +56,12 @@ const markets = [
 ];
 
 const DabbaMarkets: React.FC = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // animation duration in ms
+      once: true, // animate only once
+    });
+  }, []);
   const containerRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
 
@@ -96,6 +104,7 @@ const DabbaMarkets: React.FC = () => {
               background:
                 "linear-gradient(to bottom, #111, var(--primary-color))",
             }}
+            data-aos="fade-up"
           >
             <div className="bg-black rounded-lg h-full p-6 flex flex-col items-center justify-center text-center min-h-[260px]">
               <img

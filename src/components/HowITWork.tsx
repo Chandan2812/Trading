@@ -1,8 +1,17 @@
 import { FaRupeeSign, FaRegFileAlt } from "react-icons/fa";
 import { GiCutDiamond } from "react-icons/gi";
 import girlImage from "../assets/girl.png"; // Replace with your actual path
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function HowItWorks() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // animation duration in ms
+      once: true, // animate only once
+    });
+  }, []);
   return (
     <div className="bg-black text-white px-5 py-16 ">
       {/* Left: Image */}
@@ -31,7 +40,7 @@ export default function HowItWorks() {
           {/* Steps */}
           <div className="space-y-6">
             {/* Step 1 */}
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4" data-aos="fade-left">
               <div className="flex-shrink-0 w-14 h-14 rounded-full bg-white text-[var(--primary-color)] flex items-center justify-center text-xl">
                 <FaRegFileAlt />
               </div>
@@ -47,7 +56,7 @@ export default function HowItWorks() {
             </div>
 
             {/* Step 2 */}
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4" data-aos="fade-left">
               <div className="flex-shrink-0 w-14 h-14 rounded-full bg-white text-[var(--primary-color)] flex items-center justify-center text-xl">
                 <FaRupeeSign />
               </div>
@@ -63,7 +72,7 @@ export default function HowItWorks() {
             </div>
 
             {/* Step 3 */}
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4" data-aos="fade-left">
               <div className="flex-shrink-0 w-14 h-14 rounded-full bg-white text-[var(--primary-color)] flex items-center justify-center text-xl">
                 <GiCutDiamond />
               </div>

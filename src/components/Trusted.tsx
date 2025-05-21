@@ -1,7 +1,16 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function WhyChooseUs() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // animation duration in ms
+      once: true, // animate only once
+    });
+  }, []);
+
   const features = [
     {
       title: "Secure Transactions",
@@ -62,6 +71,7 @@ export default function WhyChooseUs() {
             <div
               key={index}
               className="relative rounded-xl p-[1.5px] hover:shadow-[0_0_10px_var(--primary-color)] transition"
+              data-aos="zoom-in"
               style={{
                 background:
                   "linear-gradient(to bottom, #111, var(--primary-color))",
