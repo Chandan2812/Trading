@@ -14,19 +14,21 @@ export default function DownloadSection() {
 
   return (
     <div className="bg-black text-white ">
-      <div className="max-w-7xl mx-auto px-5 py-12 flex flex-col-reverse md:flex-row items-center justify-between gap-10">
+      <div
+        className="max-w-7xl mx-auto px-5 py-12 flex flex-col-reverse md:flex-row items-center justify-between gap-10"
+        data-aos="fade-up"
+      >
         {/* Left: Image */}
         <div className="md:w-1/2 flex justify-center">
           <img
             src={image}
             alt="MetaTrader Devices"
             className="max-w-[90%] md:max-w-full"
-            data-aos="fade-right"
           />
         </div>
 
         {/* Right: Text & Buttons */}
-        <div className="md:w-1/2" data-aos="fade-left">
+        <div className="md:w-1/2">
           <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-4">
             Hey Traders! <br />
             Ready to Trade on{" "}

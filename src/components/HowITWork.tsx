@@ -40,7 +40,7 @@ export default function HowItWorks() {
           {/* Steps */}
           <div className="space-y-6">
             {/* Step 1 */}
-            <div className="flex items-start gap-4" data-aos="fade-left">
+            <div className="flex items-start gap-4" data-aos="fade-right">
               <div className="flex-shrink-0 w-14 h-14 rounded-full bg-white text-[var(--primary-color)] flex items-center justify-center text-xl">
                 <FaRegFileAlt />
               </div>
@@ -56,7 +56,7 @@ export default function HowItWorks() {
             </div>
 
             {/* Step 2 */}
-            <div className="flex items-start gap-4" data-aos="fade-left">
+            <div className="flex items-start gap-4" data-aos="fade-right">
               <div className="flex-shrink-0 w-14 h-14 rounded-full bg-white text-[var(--primary-color)] flex items-center justify-center text-xl">
                 <FaRupeeSign />
               </div>
@@ -72,7 +72,7 @@ export default function HowItWorks() {
             </div>
 
             {/* Step 3 */}
-            <div className="flex items-start gap-4" data-aos="fade-left">
+            <div className="flex items-start gap-4" data-aos="fade-right">
               <div className="flex-shrink-0 w-14 h-14 rounded-full bg-white text-[var(--primary-color)] flex items-center justify-center text-xl">
                 <GiCutDiamond />
               </div>
