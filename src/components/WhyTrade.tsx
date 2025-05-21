@@ -120,24 +120,32 @@ const WhyTrade: React.FC = () => {
           </div>
 
           {/* Left Arrow */}
-          {index > 0 && (
-            <button
-              onClick={() => handleScroll("left")}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/70 p-2 rounded-full z-10"
-            >
-              <FaArrowLeft size={20} className="text-white" />
-            </button>
-          )}
+          <button
+            onClick={() => handleScroll("left")}
+            disabled={index === 0}
+            className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10
+    ${
+      index === 0
+        ? "bg-gray-800 cursor-not-allowed opacity-40"
+        : "bg-black/70 hover:bg-black/90"
+    }`}
+          >
+            <FaArrowLeft size={20} className="text-white" />
+          </button>
 
           {/* Right Arrow */}
-          {index < features.length - 1 && (
-            <button
-              onClick={() => handleScroll("right")}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/70 p-2 rounded-full z-10"
-            >
-              <FaArrowRight size={20} className="text-white" />
-            </button>
-          )}
+          <button
+            onClick={() => handleScroll("right")}
+            disabled={index === features.length - 1}
+            className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10
+    ${
+      index === features.length - 1
+        ? "bg-gray-800 cursor-not-allowed opacity-40"
+        : "bg-black/70 hover:bg-black/90"
+    }`}
+          >
+            <FaArrowRight size={20} className="text-white" />
+          </button>
         </div>
       </div>
     </section>
