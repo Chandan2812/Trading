@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Nav";
 import Footer from "./Footer";
-import { blogs } from "../data/blogs"; // adjust path if needed
+import { blogs } from "../data/blogs";
 
 const Blog: React.FC = () => {
   return (

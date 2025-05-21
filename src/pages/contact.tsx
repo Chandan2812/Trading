@@ -31,7 +31,7 @@ function Contact() {
               conversation.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-6 hover:">
               <ContactItem
                 icon={<Phone />}
                 label="Call us"
@@ -90,7 +90,7 @@ const ContactItem = ({ icon, label, content, href }: ContactItemProps) => {
       target={href?.startsWith("http") ? "_blank" : undefined}
       rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
     >
-      <div className="p-4 bg-[var(--primary-color)] text-white rounded-full">
+      <div className="p-4 bg-[var(--primary-color)] text-white rounded-full hover:shadow-[0_0_10px_var(--primary-color)]">
         {icon}
       </div>
       <div>
