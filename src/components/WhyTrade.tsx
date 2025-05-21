@@ -67,7 +67,7 @@ const WhyTrade: React.FC = () => {
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold">
           Why <span className="text-[var(--primary-color)]">Trade</span> With
-          ArrowTrade?
+          Close Friends Traders?
         </h2>
       </div>
 
