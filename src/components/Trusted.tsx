@@ -46,9 +46,11 @@ export default function WhyChooseUs() {
   return (
     <div className="bg-black text-white py-16 px-4 relative">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+        <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
           India&apos;s Most Trusted{" "}
-          <span className="text-cyan-400">Meta Trading Platform</span>
+          <span className="text-[var(--primary-color)] font-bold">
+            Meta Trading Platform
+          </span>
         </h2>
         <p className="text-gray-400 mb-12">
           Always enhancing our platform to be the top choice.

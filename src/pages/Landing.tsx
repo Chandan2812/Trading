@@ -1,5 +1,6 @@
 import DabbaMarkets from "../components/DabbaMarkets";
 import DownloadSection from "../components/DownloadSection";
+import FAQ from "../components/Faq";
 import Footer from "../components/Footer";
 import HeroSection from "../components/Hero";
 import HowItWorks from "../components/HowITWork";
@@ -22,6 +23,7 @@ export const Landing = () => {
       <DownloadSection />
       <DabbaMarkets />
       <TestimonialCarousel />
+      <FAQ />
       <Footer />
     </div>
   );

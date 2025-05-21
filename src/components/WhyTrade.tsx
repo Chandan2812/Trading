@@ -65,9 +65,10 @@ const WhyTrade: React.FC = () => {
   return (
     <section className="bg-black text-white py-12 px-5">
       <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold">
-          Why <span className="text-[var(--primary-color)]">Trade</span> With
-          Close Friends Traders?
+        <h2 className="text-3xl sm:text-4xl font-semibold">
+          Why{" "}
+          <span className="text-[var(--primary-color)] font-bold">Trade</span>{" "}
+          With Close Friends Traders?
         </h2>
       </div>
 

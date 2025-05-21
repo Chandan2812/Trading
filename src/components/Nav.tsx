@@ -141,13 +141,13 @@ const Navbar = () => {
                 <div className="flex items-center space-x-4">
                   <a
                     href="#"
-                    className="text-sm hover:bg-white hover:text-black transition border border-[var(--primary-color)] py-2 px-4 rounded-full text-[var(--primary-color)] dark:shadow-[0_0_10px_var(--primary-color)]"
+                    className="text-sm hover:bg-white hover:text-black transition border border-[var(--primary-color)] py-2 px-4 rounded-full text-[var(--primary-color)] shadow-[0_0_10px_var(--primary-color)]"
                   >
                     Login
                   </a>
                   <a
                     href="#"
-                    className="bg-[var(--primary-color)] text-black text-sm px-4 py-2 rounded-full border border-[var(--primary-color)] hover:bg-white transition dark:shadow-[0_0_15px_var(--primary-color)]"
+                    className="bg-[var(--primary-color)] text-black text-sm px-4 py-2 rounded-full border border-[var(--primary-color)] hover:bg-white transition shadow-[0_0_15px_var(--primary-color)]"
                   >
                     Sign Up
                   </a>

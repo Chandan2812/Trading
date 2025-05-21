@@ -17,7 +17,7 @@ export default function HowItWorks() {
 
         {/* Right: Content */}
         <div className="md:w-1/2">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-3">
+          <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
             How It{" "}
             <span className="text-[var(--primary-color)] italic font-bold">
               Work?
