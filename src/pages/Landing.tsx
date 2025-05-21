@@ -1,3 +1,4 @@
+import DabbaMarkets from "../components/DabbaMarkets";
 import DownloadSection from "../components/DownloadSection";
 import Footer from "../components/Footer";
 import HeroSection from "../components/Hero";
@@ -13,6 +14,7 @@ export const Landing = () => {
       <WhyTrade />
       <HowItWorks />
       <DownloadSection />
+      <DabbaMarkets />
       <Footer />
     </div>
   );
