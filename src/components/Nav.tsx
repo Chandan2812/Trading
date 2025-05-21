@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FiMenu, FiSun, FiMoon } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import logo from "../assets/logo-01.svg";
 import TradingViewTicker from "./TradingViewTicker";
@@ -16,21 +16,21 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("theme")
-      ? localStorage.getItem("theme") === "dark"
-      : true;
-  });
+  // const [darkMode, setDarkMode] = useState(() => {
+  //   return localStorage.getItem("theme")
+  //     ? localStorage.getItem("theme") === "dark"
+  //     : true;
+  // });
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
+  // useEffect(() => {
+  //   if (darkMode) {
+  //     document.documentElement.classList.add("dark");
+  //     localStorage.setItem("theme", "dark");
+  //   } else {
+  //     document.documentElement.classList.remove("dark");
+  //     localStorage.setItem("theme", "light");
+  //   }
+  // }, [darkMode]);
 
   const navItems = [
     { label: "Learn To Trade", path: "/" },
@@ -85,13 +85,13 @@ const Navbar = () => {
               </a>
 
               <div className="flex gap-4">
-                <button
+                {/* <button
                   onClick={() => setDarkMode(!darkMode)}
                   className="text-xl text-inherit"
                   title="Toggle Theme"
                 >
                   {darkMode ? <FiSun /> : <FiMoon />}
-                </button>
+                </button> */}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
                   className="text-inherit text-2xl"
@@ -106,7 +106,7 @@ const Navbar = () => {
               <div className="flex items-center space-x-4">
                 <div className="h-20 pr-6 mr-6 border-r border-gray-600 dark:border-gray-400 flex items-center">
                   <a href="/">
-                    <img src={logo} alt="AX Logo" className="h-16" />
+                    <img src={logo} alt="CFT" className="h-16" />
                   </a>
                 </div>
                 <div className="flex items-center gap-8">
@@ -127,13 +127,13 @@ const Navbar = () => {
 
               <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-6">
-                  <button
+                  {/* <button
                     onClick={() => setDarkMode(!darkMode)}
                     className="text-xl text-inherit transition-colors"
                     title="Toggle Theme"
                   >
                     {darkMode ? <FiSun /> : <FiMoon />}
-                  </button>
+                  </button> */}
                   <div className="w-px h-6 bg-gray-400 dark:bg-gray-600"></div>
                 </div>
 
@@ -228,7 +228,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[999] right-[90px] top-[85px] translate-x-0 md:right-[230px] md:top-[70px] md:-translate-x-1/2"
+          className="fixed z-[999] right-[70px] top-[85px] translate-x-0 md:right-[180px] md:top-[67px] md:-translate-x-1/2"
         />
       )}
     </>
