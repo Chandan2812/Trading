@@ -22,7 +22,7 @@ const Carousel = () => {
     pauseOnHover: false,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 1000,
         settings: {
           slidesToShow: 1, // On mobile
           slidesToScroll: 1,
@@ -40,7 +40,7 @@ const Carousel = () => {
               <img
                 src={src}
                 alt={`Slide ${index + 1}`}
-                className="w-full h-64 object-cover rounded-lg"
+                className="w-full object-cover rounded-lg"
               />
             </div>
           ))}

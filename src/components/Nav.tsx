@@ -74,7 +74,7 @@ const Navbar = () => {
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             {/* Mobile View */}
-            <div className="flex items-center w-full justify-between md:hidden">
+            <div className="flex items-center w-full justify-between lg:hidden">
               <a href="/">
                 <img
                   src={logo}
@@ -102,7 +102,7 @@ const Navbar = () => {
             </div>
 
             {/* Desktop View */}
-            <div className="hidden md:flex w-full justify-between items-center">
+            <div className="hidden lg:flex w-full justify-between items-center">
               <div className="flex items-center space-x-4">
                 <div className="h-20 pr-6 mr-6 border-r border-gray-600 dark:border-gray-400 flex items-center">
                   <a href="/">
@@ -228,7 +228,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[999] right-[70px] top-[85px] translate-x-0 md:right-[180px] md:top-[67px] md:-translate-x-1/2"
+          className="fixed z-[999] right-[70px] top-[85px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[180px] lg:top-[67px] lg:-translate-x-1/2"
         />
       )}
     </>
