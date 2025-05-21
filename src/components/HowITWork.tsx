@@ -7,7 +7,7 @@ export default function HowItWorks() {
     <div className="bg-black text-white px-5 py-16 ">
       {/* Left: Image */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
-        <div className="md:w-1/2 flex justify-center">
+        <div className="md:w-1/2  justify-center hidden md:flex">
           <img
             src={girlImage}
             alt="Girl with phone"

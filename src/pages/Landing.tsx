@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import HeroSection from "../components/Hero";
 import HowItWorks from "../components/HowITWork";
 import Navbar from "../components/Nav";
+import TestimonialCarousel from "../components/TestimonialCarousel";
+import Trusted from "../components/Trusted";
 import WhyTrade from "../components/WhyTrade";
 
 export const Landing = () => {
@@ -13,8 +15,10 @@ export const Landing = () => {
       <HeroSection />
       <WhyTrade />
       <HowItWorks />
+      <Trusted />
       <DownloadSection />
       <DabbaMarkets />
+      <TestimonialCarousel />
       <Footer />
     </div>
   );

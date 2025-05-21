@@ -54,7 +54,7 @@ const markets = [
 
 const DabbaMarkets: React.FC = () => {
   return (
-    <div className="bg-gradient-to-br bg-black  text-white py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-gradient-to-br bg-black  text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
           Available Dabba Trading :{" "}
