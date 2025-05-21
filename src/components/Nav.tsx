@@ -37,7 +37,7 @@ const Navbar = () => {
 
     { label: "Insights", path: "/Blog" },
     { label: "About Us", path: "/" },
-    { label: "Contact Us", path: "/" },
+    { label: "Contact Us", path: "/Contact" },
   ];
 
   useEffect(() => {
