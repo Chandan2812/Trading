@@ -5,7 +5,7 @@ import { Typewriter } from "react-simple-typewriter";
 const HeroSection: React.FC = () => {
   return (
     <section
-      className="relative min-h-[80vh] md:h-screen bg-cover bg-center flex items-center"
+      className="relative min-h-[80vh] md:h-screen bg-cover bg-center flex items-center mt-24"
       style={{
         backgroundImage: `url(${bg})`,
       }}

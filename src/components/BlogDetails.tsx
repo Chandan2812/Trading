@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { blogs } from "../data/blogs"; // adjust path
 import Navbar from "./Nav";
 import Footer from "./Footer";
+import { ArrowLeft } from "lucide-react"; // At the top with other imports
 
 const BlogDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,11 +18,8 @@ const BlogDetails: React.FC = () => {
       <Navbar />
       <div className="bg-black min-h-screen text-white py-20 px-4 sm:px-6 lg:px-8 mt-20">
         <div className="max-w-4xl mx-auto">
-          <Link
-            to="/blog"
-            className="text-[#71ced0] underline mb-6 inline-block"
-          >
-            ← Back to Blogs
+          <Link to="/blog" className="text-[#71ced0]  mb-6 inline-block">
+            <ArrowLeft className="w-5 h-5 mr-2" />
           </Link>
 
           <h1 className="text-4xl font-bold mb-2">{blog.title}</h1>
