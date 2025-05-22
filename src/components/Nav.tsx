@@ -36,7 +36,7 @@ const Navbar = () => {
     { label: "Learn To Trade", path: "/" },
 
     { label: "Insights", path: "/Blog" },
-    { label: "About Us", path: "/" },
+    { label: "About Us", path: "/about" },
     { label: "Contact Us", path: "/Contact" },
   ];
 

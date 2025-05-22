@@ -1,4 +1,5 @@
 import worldGraph from "../assets/newabout.webp"; // background image
+import CustomerSupport from "../components/CustomerSupport";
 import Footer from "../components/Footer";
 import Navbar from "../components/Nav";
 
@@ -54,6 +55,8 @@ const AboutUsSection = () => {
             className="rounded-lg w-full h-64 object-cover"
           />
         </div>
+
+        <CustomerSupport />
 
         {/* Section 3: Call-to-Action Box */}
         <div className="max-w-4xl mx-auto py-20 px-6">
