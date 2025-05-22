@@ -33,7 +33,7 @@ const Navbar = () => {
   // }, [darkMode]);
 
   const navItems = [
-    { label: "Learn To Trade", path: "/" },
+    { label: "Home", path: "/" },
 
     { label: "Insights", path: "/Blog" },
     { label: "About Us", path: "/about" },

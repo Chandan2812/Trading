@@ -2,13 +2,14 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
 import bull from "../assets/Bitcoin Growth Chart Background Design - Edited.png";
+import CustomerSupport from "../components/CustomerSupport";
 
 function Contact() {
   return (
     <div>
       <Navbar />
       <section
-        className="relative bg-black text-white py-24 px-6 mt-16"
+        className="relative bg-black text-white py-12 px-6 mt-28"
         style={{
           backgroundImage:
             "url('https://www.arrowtradefx.com/assets/images/png/regulationss.jpeg')",
@@ -69,6 +70,7 @@ function Contact() {
           </div>
         </div>
       </section>
+      <CustomerSupport />
       <Footer />
     </div>
   );
