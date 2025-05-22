@@ -64,6 +64,7 @@ function Contact() {
               src={bull}
               alt="Contact Us"
               className="w-full max-w-sm h-auto rounded-xl shadow-lg"
+              draggable="false"
             />
           </div>
         </div>

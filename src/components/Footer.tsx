@@ -15,7 +15,7 @@ const Footer = () => {
         {/* Logo & Description */}
         <div>
           <div className="flex items-center space-x-2 mb-4">
-            <img src={logo} alt="Logo" className="w-40" />
+            <img src={logo} alt="Logo" className="w-40" draggable="false" />
           </div>
           <p className="text-sm leading-relaxed">
             Behind the word mountains, far from the countries Vokalia and

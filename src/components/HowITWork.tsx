@@ -21,6 +21,7 @@ export default function HowItWorks() {
             src={girlImage}
             alt="Girl with phone"
             className="max-w-xs md:max-w-sm"
+            draggable="false"
           />
         </div>
 

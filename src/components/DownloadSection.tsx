@@ -24,6 +24,7 @@ export default function DownloadSection() {
             src={image}
             alt="MetaTrader Devices"
             className="max-w-[90%] md:max-w-full"
+            draggable="false"
           />
         </div>
 

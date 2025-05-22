@@ -35,6 +35,7 @@ const Blog: React.FC = () => {
                     src={blog.image}
                     alt={blog.title}
                     className="w-full h-48 object-cover rounded-t-lg flex-shrink-0"
+                    draggable="false"
                   />
                   <div className="p-6 flex flex-col flex-grow justify-between">
                     <div>

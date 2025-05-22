@@ -111,6 +111,7 @@ const DabbaMarkets: React.FC = () => {
                 src={market.image}
                 alt={market.title}
                 className="w-14 h-14 mb-4 p-1 object-contain bg-[var(--primary-color)] rounded-full"
+                draggable="false"
               />
               <h3 className="text-lg font-bold mb-2">{market.title}</h3>
               <p className="text-sm text-gray-400">{market.description}</p>
@@ -141,6 +142,7 @@ const DabbaMarkets: React.FC = () => {
                     src={market.image}
                     alt={market.title}
                     className="w-12 h-12 mb-4 p-1 object-contain bg-[var(--primary-color)] rounded-full mx-auto"
+                    draggable="false"
                   />
                   <h3 className="text-lg font-bold mb-2">{market.title}</h3>
                   <p className="text-sm text-gray-400">{market.description}</p>

@@ -31,6 +31,7 @@ const BlogDetails: React.FC = () => {
             src={blog.image}
             alt={blog.title}
             className="w-full rounded-lg mb-8"
+            draggable="false"
           />
 
           <p className="text-lg text-gray-300 mb-8">{blog.shortDescription}</p>

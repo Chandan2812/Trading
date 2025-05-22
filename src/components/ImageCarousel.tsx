@@ -41,6 +41,7 @@ const Carousel = () => {
                 src={src}
                 alt={`Slide ${index + 1}`}
                 className="w-full object-cover rounded-lg"
+                draggable="false"
               />
             </div>
           ))}

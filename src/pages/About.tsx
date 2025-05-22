@@ -15,6 +15,7 @@ const AboutUsSection = () => {
               src={worldGraph}
               alt="Trading Graph"
               className="w-full h-full object-cover"
+              draggable="false"
             />
           </div>
           <div className="w-full lg:w-1/2 mt-36 px-5">
@@ -43,16 +44,19 @@ const AboutUsSection = () => {
             src="https://media.istockphoto.com/id/1827291486/photo/a-dedicated-mentor-is-explaining-mentees-importance-of-project-while-sitting-at-the-boardroom.jpg?s=612x612&w=0&k=20&c=whMTmOCyOUfNqoNBe8GPlmcNUM-aCfqD-0whdFPQpO4="
             alt="Office 1"
             className="rounded-lg w-full h-64 object-cover"
+            draggable="false"
           />
           <img
             src="https://img.freepik.com/photos-premium/interieur-bureau-moderne_52137-8465.jpg?semt=ais_hybrid&w=740"
             alt="Office 2"
             className="rounded-lg w-full h-64 object-cover"
+            draggable="false"
           />
           <img
             src="https://media.istockphoto.com/id/1372834292/photo/empty-workdesk-in-modern-office.jpg?s=170667a&w=0&k=20&c=db0VaxqtBqBwI_IyAPpCoZN_AOkGIRUBtkiSXuYGO08="
             alt="Office 3"
             className="rounded-lg w-full h-64 object-cover"
+            draggable="false"
           />
         </div>
 

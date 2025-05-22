@@ -59,6 +59,7 @@ const ToggleFAQ = () => {
               src={faq_img}
               alt="FAQ Illustration"
               className="w-64 max-w-sm"
+              draggable="false"
             />
           </div>
           <div className="space-y-5 pt-10  ">
