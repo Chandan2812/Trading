@@ -6,6 +6,7 @@ import HeroSection from "../components/Hero";
 import HowItWorks from "../components/HowITWork";
 import Carousel from "../components/ImageCarousel";
 import Navbar from "../components/Nav";
+import RegulatoryDisclaimer from "../components/RegulatoryDisclaimer";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import Trusted from "../components/Trusted";
 import WhyTrade from "../components/WhyTrade";
@@ -25,6 +26,7 @@ export const Landing = () => {
       <TestimonialCarousel />
       <FAQ />
       <Footer />
+      <RegulatoryDisclaimer />
     </div>
   );
 };
