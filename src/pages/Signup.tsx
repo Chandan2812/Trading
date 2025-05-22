@@ -1,24 +1,34 @@
 import logo from "../assets/logo-01.svg";
+import sideImage from "../assets/newabout.webp"; // same as login
+
 const Signup = () => {
   return (
-    <div className="w-full min-h-screen bg-black">
-      <div className="max-w-7xl mx-auto py-5">
+    <div className="min-h-screen w-full bg-black px-4 py-8">
+      {/* Logo at Top */}
+      <div className="mb-8 max-w-7xl mx-auto">
         <a href="/">
-          <img src={logo} alt="" className="w-48" />
+          <img src={logo} alt="Close Friends Traders" className="w-44" />
         </a>
       </div>
 
-      <div className=" flex items-center justify-center px-4">
-        <div className="w-full max-w-md bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/10">
-          {/* Logo */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-white">
-              Close Friends Traders
-            </h1>
-            <p className="text-gray-400 mt-2 text-sm">Create your account</p>
-          </div>
+      {/* Centered Box */}
+      <div className="flex w-full mx-auto max-w-4xl h-[500px] rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl">
+        {/* Left Image Side */}
+        <div className="w-1/2 hidden md:block">
+          <img
+            src={sideImage}
+            alt="Signup Visual"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-          {/* Form */}
+        {/* Right Form Side */}
+        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
+          <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
+          <p className="text-sm text-gray-400 mb-6">
+            Join Close Friends Traders
+          </p>
+
           <form className="space-y-5">
             <div>
               <label className="block text-sm text-gray-300 mb-1">
@@ -59,8 +69,7 @@ const Signup = () => {
             </button>
           </form>
 
-          {/* Bottom text */}
-          <p className="text-gray-500 text-xs text-center mt-6">
+          <p className="text-xs text-gray-500 text-center mt-6">
             Already have an account?{" "}
             <a href="/login" className="text-teal-400 hover:underline">
               Log in

@@ -1,22 +1,31 @@
 import logo from "../assets/logo-01.svg";
+import sideImage from "../assets/newabout.webp"; // your left side image
 
 const Login = () => {
   return (
-    <div className="w-full min-h-screen bg-black">
-      {/* Logo */}
-      <div className="max-w-7xl mx-auto py-5">
+    <div className="min-h-screen w-full bg-black  px-4 py-8">
+      {/* Logo at Top */}
+      <div className=" mb-8 max-w-7xl mx-auto">
         <a href="/">
-          <img src={logo} alt="Close Friends Traders" className="w-48" />
+          <img src={logo} alt="Close Friends Traders" className="w-44" />
         </a>
       </div>
 
-      {/* Centered Login Form */}
-      <div className="flex items-center justify-center px-4">
-        <div className="w-full max-w-md bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/10">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
-            <p className="text-gray-400 mt-2 text-sm">Log in to your account</p>
-          </div>
+      {/* Centered Box */}
+      <div className="flex w-full mx-auto max-w-4xl h-[500px] rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl">
+        {/* Left Image Side */}
+        <div className="w-1/2 hidden md:block">
+          <img
+            src={sideImage}
+            alt="Login Visual"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Right Form Side */}
+        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
+          <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
+          <p className="text-sm text-gray-400 mb-6">Log in to your account</p>
 
           <form className="space-y-5">
             <div>
@@ -56,8 +65,7 @@ const Login = () => {
             </button>
           </form>
 
-          {/* Bottom link */}
-          <p className="text-gray-500 text-xs text-center mt-6">
+          <p className="text-xs text-gray-500 text-center mt-6">
             Don’t have an account?{" "}
             <a href="/signup" className="text-teal-400 hover:underline">
               Sign up
