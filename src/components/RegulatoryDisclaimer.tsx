@@ -14,7 +14,7 @@ function RegulatoryDisclaimer() {
             Please ensure that you fully understand the risks involved, taking
             into account your financial objectives and risk appetite. Seek
             independent financial advice if necessary before starting trading.
-            ArrowTrade does not offer financial advice.
+            Close Friends Traders does not offer financial advice.
           </p>
         </div>
 
@@ -22,10 +22,11 @@ function RegulatoryDisclaimer() {
         <div>
           <h3 className="text-white font-semibold text-lg mb-2">Disclaimer</h3>
           <p>
-            Information on this site is not directed at residents of any country
-            or jurisdiction where distribution or use would be contrary to local
-            law or regulation. Please check with your local regulations before
-            proceeding.
+            Information on this site is not intended for distribution to, or use
+            by, any person in any country or jurisdiction where such
+            distribution or use would be contrary to local law or regulation.
+            Please ensure compliance with your local laws and regulations before
+            engaging with any of our services.
           </p>
         </div>
 
@@ -43,15 +44,14 @@ function RegulatoryDisclaimer() {
             >
               closefriendstraders.com
             </a>{" "}
-            is a website operated by closefriendstraders, which is registered
-            in: 3 Emerald Park, Trianon, Quatre Bornes 72257, Republic of
-            Mauritius - company number 214424 GBC. (closefriendstraders offices:
-            Ebene Junction, Rue de la Democratie, Ebene, MU 72201, Mauritius).
+            is the official platform operated by Close Friends Traders. We are
+            committed to transparency, client safety, and strict adherence to
+            all applicable financial and data protection regulations.
           </p>
           <p className="mt-4">
-            closefriendstraders is the sole entity authorized to operate the
-            MetaTrader platform under our license. No other companies are
-            involved in the operation or management of our MetaTrader license.
+            Close Friends Traders is the only authorized entity permitted to
+            operate under our MetaTrader platform license. We do not partner
+            with or delegate this responsibility to any third parties.
           </p>
         </div>
       </div>
