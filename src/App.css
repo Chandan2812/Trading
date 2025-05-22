@@ -7,3 +7,26 @@
   background: var(--bg-primary-gradient);
   color: black; /* Or white if preferred */
 }
+
+/* For modern browsers */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4fc3f7; /* Light blue thumb color like your screenshot */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #29b6f6; /* Darker blue on hover */
+}
+
+/* Optional: for horizontal scrollbars */
+::-webkit-scrollbar-horizontal {
+  height: 4px;
+}
