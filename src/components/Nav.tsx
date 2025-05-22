@@ -145,13 +145,13 @@ const Navbar = () => {
                 {/* Login and Sign Up */}
                 <div className="flex items-center space-x-4">
                   <a
-                    href="#"
+                    href="/login"
                     className="text-sm hover:bg-white hover:text-black transition border border-[var(--primary-color)] py-2 px-4 rounded-full text-[var(--primary-color)] shadow-[0_0_10px_var(--primary-color)]"
                   >
                     Login
                   </a>
                   <a
-                    href="#"
+                    href="/signup"
                     className="bg-[var(--primary-color)] text-black text-sm px-4 py-2 rounded-full border border-[var(--primary-color)] hover:bg-white transition shadow-[0_0_15px_var(--primary-color)]"
                   >
                     Sign Up
@@ -193,13 +193,13 @@ const Navbar = () => {
               {/* Login and Sign Up buttons */}
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="/login"
                   className="w-1/2 text-base text-inherit text-center border border-[var(--primary-color)] py-2 rounded-md hover:text-[var(--primary-color)] transition"
                 >
                   Login
                 </a>
                 <a
-                  href="#"
+                  href="signup"
                   className="w-1/2 text-base bg-[var(--primary-color)] text-white text-center py-2 rounded-md hover:opacity-90 transition"
                 >
                   Sign Up
