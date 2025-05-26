@@ -47,7 +47,7 @@ const slideVariants = {
   exit: { y: -30, opacity: 0, transition: { duration: 0.6 } },
 };
 
-const VerticalTicker: React.FC = () => {
+const WhyChoose: React.FC = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -97,4 +97,4 @@ const VerticalTicker: React.FC = () => {
   );
 };
 
-export default VerticalTicker;
+export default WhyChoose;
