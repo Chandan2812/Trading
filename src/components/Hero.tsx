@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
 
         <h1 className="text-4xl font-semibold leading-tight text-start">
           <span className="block mb-2 text-white">
-            Trade With 500X Margin, 0% Fess
+            Trade With 500X Margin, 0% Fees
           </span>
           <span className="block text-[var(--primary-color)]">
             <Typewriter
