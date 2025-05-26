@@ -9,6 +9,7 @@ import Navbar from "../components/Nav";
 import RegulatoryDisclaimer from "../components/RegulatoryDisclaimer";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import Trusted from "../components/Trusted";
+import VerticalTicker from "../components/WhyChooseUs";
 import WhyTrade from "../components/WhyTrade";
 
 export const Landing = () => {
@@ -16,6 +17,7 @@ export const Landing = () => {
     <div>
       <Navbar />
       <HeroSection />
+      <VerticalTicker />
       <Carousel />
       <Trusted />
       <WhyTrade />

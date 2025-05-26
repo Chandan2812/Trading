@@ -13,6 +13,7 @@
     "@types/html-pdf": "^3.0.3",
     "aos": "^2.3.4",
     "axios": "^1.9.0",
+    "framer-motion": "^12.12.2",
     "html2pdf.js": "^0.10.3",
     "jspdf": "^3.0.1",
     "keen-slider": "^6.8.6",
