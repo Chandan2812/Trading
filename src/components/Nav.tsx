@@ -46,6 +46,7 @@ const Navbar = () => {
         {
           pageLanguage: "en",
           autoDisplay: false,
+          includedLanguages: "en,hi,gu,mr,ta,te,bn,ml,pa,kn,as,or", // English + Indian languages
         },
         "google_translate_element"
       );
