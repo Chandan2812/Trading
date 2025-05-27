@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../index.css";
 
 const Popup = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -88,9 +89,6 @@ const Popup = () => {
           </div>
         ) : (
           <>
-            <h2 className="text-2xl font-bold mb-2 text-center text-[#71ced0] sm:text-2xl">
-              Get 10% Bonus
-            </h2>
             <p className="text-center mb-4 text-sm text-white">
               100K Customers Worldwide <br />0 Brokerage & Upto 500X Margin
             </p>
@@ -104,7 +102,7 @@ const Popup = () => {
                 className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
               />
               <input
-                type="text"
+                type="number"
                 placeholder="Phone*"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
