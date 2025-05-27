@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../index.css";
 import logo from "../assets/logo-01.svg";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewsletterForm = () => {
+  const [loading, setLoading] = useState(false);
+
   const [form, setForm] = useState({
     subject: "",
     title: "",
@@ -33,6 +37,8 @@ const NewsletterForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+
     const payload = {
       subject: form.subject,
       title: form.title,
@@ -50,14 +56,37 @@ const NewsletterForm = () => {
     };
 
     try {
-      const res = await axios.post(
+      await axios.post(
         `https://cft-b87k.onrender.com/send-newsletter`,
         payload
       );
-      alert(res.data.message);
+
+      const scheduledTime = form.scheduleAt
+        ? new Date(form.scheduleAt).toLocaleString()
+        : null;
+
+      toast.success(
+        scheduledTime
+          ? `✅ Newsletter scheduled for ${scheduledTime}`
+          : `✅ Newsletter sent successfully!`
+      );
+
+      setForm({
+        subject: "",
+        title: "",
+        content: "",
+        ctaText: "",
+        ctaUrl: "",
+        imageUrl: "",
+        scheduleAt: "",
+        emails: "",
+        sendToAll: true,
+      });
     } catch (err) {
       console.error(err);
-      alert("Failed to send/schedule newsletter.");
+      toast.error("❌ Failed to send/schedule newsletter.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -151,9 +180,37 @@ const NewsletterForm = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="bg-gradient-to-r from-[#ac7072] via-[#e6d2d1] to-[#ad7173] text-black font-medium py-2 px-6 hover:opacity-80"
+              disabled={loading}
+              className={`w-full flex justify-center items-center bg-gradient-to-r from-[#ac7072] via-[#e6d2d1] to-[#ad7173] text-black font-medium py-2 px-6 hover:opacity-80 ${
+                loading ? "opacity-70 cursor-not-allowed" : ""
+              }`}
             >
-              {form.scheduleAt ? "Schedule Newsletter" : "Send Newsletter"}
+              {loading ? (
+                <svg
+                  className="animate-spin h-5 w-5 text-black"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
+                </svg>
+              ) : form.scheduleAt ? (
+                "Schedule Newsletter"
+              ) : (
+                "Send Newsletter"
+              )}
             </button>
           </div>
         </form>
@@ -190,6 +247,7 @@ const NewsletterForm = () => {
           )}
         </div>
       </div>
+      <ToastContainer position="top-center" autoClose={5000} />
     </div>
   );
 };

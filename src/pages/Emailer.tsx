@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import logo from "../assets/logo-01.svg";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Emailer = () => {
+  const [loading, setLoading] = useState(false);
+  const [successPopup, setSuccessPopup] = useState(false);
+
   const [form, setForm] = useState({
     subject: "",
     title: "",
@@ -31,6 +36,7 @@ const Emailer = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("subject", form.subject);
@@ -55,24 +61,38 @@ const Emailer = () => {
     }
 
     try {
-      const res = await axios.post(
-        "https://cft-b87k.onrender.com/send-emailer",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      alert(res.data.message);
+      await axios.post("https://cft-b87k.onrender.com/send-emailer", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      toast.success("Email sent successfully!");
+
+      setSuccessPopup(true);
+      setTimeout(() => setSuccessPopup(false), 3000);
+
+      setForm({
+        subject: "",
+        title: "",
+        content: "",
+        ctaText: "",
+        ctaUrl: "",
+        imageUrl: "",
+        emails: "",
+        sendToAll: true,
+      });
+      setAttachments(null);
     } catch (err) {
       console.error(err);
       alert("Failed to send email.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative">
+      {/* Navbar */}
       <nav className="bg-gray-900 shadow px-6">
         <a href="/">
           <img
@@ -83,9 +103,12 @@ const Emailer = () => {
           />
         </a>
       </nav>
-      <div className="p-6 max-w-7xl mx-auto text-white ">
+
+      {/* Main Content */}
+      <div className="p-6 max-w-7xl mx-auto text-white">
         <h1 className="text-3xl font-bold mb-4 text-center">📧 Send Emailer</h1>
-        <div className="flex flex-col lg:flex-row gap-8 ">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Form */}
           <form
             onSubmit={handleSubmit}
             className="space-y-4 w-full lg:w-1/2 bg-neutral-900 p-6"
@@ -131,7 +154,6 @@ const Emailer = () => {
                 required
               />
             </div>
-
             <div>
               <label className="block mb-1">Attachments</label>
               <input
@@ -141,7 +163,6 @@ const Emailer = () => {
                 className="block w-full text-white"
               />
             </div>
-
             <div>
               <label className="flex items-center space-x-2">
                 <input
@@ -153,7 +174,6 @@ const Emailer = () => {
                 <span>Send to All Subscribers</span>
               </label>
             </div>
-
             {!form.sendToAll && (
               <div>
                 <label className="block mb-1">Emails (comma-separated)</label>
@@ -170,14 +190,37 @@ const Emailer = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-gradient-to-r from-[#ac7072] via-[#e6d2d1] to-[#ad7173] text-black font-medium py-2 px-6 hover:opacity-80"
+                disabled={loading}
+                className="bg-gradient-to-r from-[#ac7072] via-[#e6d2d1] to-[#ad7173] text-black font-medium py-2 px-6 hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                Send Email
+                {loading && (
+                  <svg
+                    className="animate-spin h-5 w-5 text-black"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                    />
+                  </svg>
+                )}
+                {loading ? "Sending..." : "Send Email"}
               </button>
             </div>
           </form>
 
-          {/* Preview Section */}
+          {/* Preview */}
           <div className="w-full lg:w-1/2 border border-gray-600 p-4 rounded bg-neutral-800">
             <h2 className="text-xl font-semibold mb-4">📄 Preview</h2>
             <h3 className="text-2xl font-bold mb-2">{form.title}</h3>
@@ -202,6 +245,19 @@ const Emailer = () => {
           </div>
         </div>
       </div>
+
+      {/* Success Popup */}
+      {successPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white text-black px-8 py-6 rounded shadow-lg text-center">
+            <h2 className="text-xl font-bold">✅ Email Sent Successfully!</h2>
+            <p className="mt-2">
+              Your email has been sent to the selected recipients.
+            </p>
+          </div>
+        </div>
+      )}
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 };
