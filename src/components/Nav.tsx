@@ -112,7 +112,9 @@ const Navbar = () => {
                   title="Toggle Theme"
                 >
                   {darkMode ? <FiSun /> : <FiMoon />}
+                  
                 </button> */}
+
                 <button
                   onClick={() => setIsOpen(!isOpen)}
                   className="text-inherit text-2xl"
@@ -166,8 +168,8 @@ const Navbar = () => {
                 {/* Login and Sign Up */}
                 {user ? (
                   <div className="flex items-center space-x-4">
-                    <span className="text-sm text-white">
-                      Hi, {user.fullName}
+                    <span className="text-md text-[var(--primary-color)]">
+                      Hi,&nbsp;{user.fullName.split(" ")[0]}
                     </span>
                     <button
                       onClick={handleLogout}
@@ -209,6 +211,13 @@ const Navbar = () => {
                 ✕
               </button>
             </div>
+            {user ? (
+              <span className="text-lg text-[var(--primary-color)] p-5 ">
+                Hi, {user?.fullName}
+              </span>
+            ) : (
+              ""
+            )}
 
             <div className="flex flex-col space-y-4 px-5">
               {navItems.map((item, index) => (
@@ -228,12 +237,9 @@ const Navbar = () => {
               {/* Login and Sign Up buttons */}
               {user ? (
                 <div className="flex flex-col items-start gap-2 mt-4">
-                  <span className="text-base text-white">
-                    Hi, {user?.fullName}
-                  </span>
                   <button
                     onClick={handleLogout}
-                    className="w-full text-base bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition"
+                    className="w-fit px-5 text-base bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition"
                   >
                     Logout
                   </button>

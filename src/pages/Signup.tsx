@@ -1,13 +1,17 @@
 import { useState } from "react";
 import logo from "../assets/logo-01.svg";
 import sideImage from "../assets/newabout.webp";
+import { useNavigate } from "react-router-dom";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,10 +35,10 @@ const Signup = () => {
         setMessage(data.error || "Signup failed.");
       } else {
         setMessage(data.message || "Signup successful!");
-        // Optionally reset fields
         setFullName("");
         setEmail("");
         setPassword("");
+        navigate("/login");
       }
     } catch (err) {
       setMessage("Something went wrong. Please try again.");
@@ -97,13 +101,23 @@ const Signup = () => {
               <label className="block text-sm text-gray-300 mb-1">
                 Password
               </label>
-              <input
-                type="password"
-                className="w-full px-4 py-3 bg-white/10 text-white placeholder-gray-500 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="w-full px-4 py-3 pr-12 bg-white/10 text-white placeholder-gray-500 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white/70 hover:text-white"
+                  title={showPassword ? "Hide Password" : "Show Password"}
+                >
+                  {showPassword ? <FiEyeOff /> : <FiEye />}
+                </button>
+              </div>
             </div>
 
             <button
