@@ -54,31 +54,36 @@ const Footer = () => {
           </p>
           <div className="flex space-x-4 mt-4">
             <a
-              href="#"
+              href="https://www.facebook.com/closefriendstraders"
+              target="blank"
               className="bg-[var(--primary-color)] text-black p-2 rounded-full hover:opacity-80 dark:shadow-[0_0_10px_var(--primary-color)]"
             >
               <FaFacebookF size={24} />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/closefriendstraders"
+              target="blank"
               className="bg-[var(--primary-color)] text-black p-2 rounded-full hover:opacity-80 dark:shadow-[0_0_10px_var(--primary-color)]"
             >
               <FaInstagram size={24} />
             </a>
             <a
-              href="#"
+              href="https://x.com/cft_traders"
+              target="blank"
               className="bg-[var(--primary-color)] text-black p-2 rounded-full hover:opacity-80 dark:shadow-[0_0_10px_var(--primary-color)]"
             >
               <FaTwitter size={24} />
             </a>
             <a
-              href="#"
+              href="https://www.youtube.com/@closefriendstraders/shorts"
+              target="blank"
               className="bg-[var(--primary-color)] text-black p-2 rounded-full hover:opacity-80 dark:shadow-[0_0_10px_var(--primary-color)]"
             >
               <FaYoutube size={24} />
             </a>
             <a
-              href="#"
+              href="https://t.me/closefriendstraderscft"
+              target="blank"
               className="bg-[var(--primary-color)] text-black p-2 rounded-full hover:opacity-80 dark:shadow-[0_0_10px_var(--primary-color)]"
             >
               <FaTelegram size={24} />
