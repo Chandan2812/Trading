@@ -8,6 +8,8 @@ const Popup = () => {
   const [phone, setPhone] = useState("");
   const [marketSegment, setMarketSegment] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false); // <-- Add this
 
   useEffect(() => {
     const hasShownPopup = sessionStorage.getItem("bonusPopupShown");
@@ -16,7 +18,7 @@ const Popup = () => {
       const timer = setTimeout(() => {
         setShowPopup(true);
         sessionStorage.setItem("bonusPopupShown", "true");
-      }, 7000); // Show after 7 seconds
+      }, 7000);
 
       return () => clearTimeout(timer);
     }
@@ -24,31 +26,43 @@ const Popup = () => {
 
   const handleClose = () => {
     setShowPopup(false);
+    setSubmitted(false);
+    setFullName("");
+    setPhone("");
+    setMarketSegment("");
+    setError("");
   };
 
-  // Form submit handler
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Simple validation: check all fields filled
     if (!fullName.trim() || !phone.trim() || !marketSegment.trim()) {
       setError("Please fill all fields.");
       return;
     }
 
     setError("");
+    setLoading(true);
 
-    // For now, just log the data
-    console.log({
-      fullName,
-      phone,
-      marketSegment,
-    });
+    try {
+      const res = await fetch("https://cft-b87k.onrender.com/api/popup-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, phone, marketSegment }),
+      });
 
-    // You can add backend API call here later
+      const data = await res.json();
 
-    // Optionally, close popup after submission
-    setShowPopup(false);
+      if (res.ok) {
+        setSubmitted(true); // <-- Mark as submitted
+      } else {
+        setError(data.error || "Something went wrong.");
+      }
+    } catch (err) {
+      setError("Failed to submit. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!showPopup) return null;
@@ -62,43 +76,60 @@ const Popup = () => {
         >
           &times;
         </button>
-        <h2 className="text-2xl font-bold mb-2 text-center text-[#71ced0] sm:text-2xl">
-          Get 10% Bonus
-        </h2>
-        <p className="text-center mb-4 text-sm text-white">
-          100K Customers Worldwide <br />0 Brokerage & Upto 500X Margin
-        </p>
 
-        <form className="space-y-3" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Full Name*"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
-          />
-          <input
-            type="text"
-            placeholder="Phone*"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
-          />
-          <input
-            type="text"
-            placeholder="Market Segment?"
-            value={marketSegment}
-            onChange={(e) => setMarketSegment(e.target.value)}
-            className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
-          />
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-          <button
-            type="submit"
-            className="w-full bg-[#71ced0] hover:bg-[#5bb7b8] text-black font-semibold py-2 text-sm sm:text-base"
-          >
-            REQUEST A CALL BACK
-          </button>
-        </form>
+        {submitted ? (
+          <div className="text-center">
+            <h2 className="text-2xl font-bold mb-3 text-[#71ced0]">
+              Thank you!
+            </h2>
+            <p className="text-sm text-white">
+              Your request has been received. We’ll contact you shortly.
+            </p>
+          </div>
+        ) : (
+          <>
+            <h2 className="text-2xl font-bold mb-2 text-center text-[#71ced0] sm:text-2xl">
+              Get 10% Bonus
+            </h2>
+            <p className="text-center mb-4 text-sm text-white">
+              100K Customers Worldwide <br />0 Brokerage & Upto 500X Margin
+            </p>
+
+            <form className="space-y-3" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Full Name*"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
+              />
+              <input
+                type="text"
+                placeholder="Phone*"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
+              />
+              <input
+                type="text"
+                placeholder="Market Segment?"
+                value={marketSegment}
+                onChange={(e) => setMarketSegment(e.target.value)}
+                className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
+              />
+              {error && (
+                <p className="text-red-500 text-sm text-center">{error}</p>
+              )}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-[#71ced0] hover:bg-[#5bb7b8] text-black font-semibold py-2 text-sm sm:text-base"
+              >
+                {loading ? "Submitting..." : "REQUEST A CALL BACK"}
+              </button>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );
