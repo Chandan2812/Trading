@@ -62,9 +62,7 @@ const Popup = () => {
         >
           &times;
         </button>
-        <h2 className="text-2xl font-bold mb-2 text-center text-[#71ced0] sm:text-2xl">
-          Get 10% Bonus
-        </h2>
+
         <p className="text-center mb-4 text-sm text-white">
           100K Customers Worldwide <br />0 Brokerage & Upto 500X Margin
         </p>
@@ -92,12 +90,14 @@ const Popup = () => {
             className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
           />
           {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-          <button
-            type="submit"
-            className="w-full bg-[#71ced0] hover:bg-[#5bb7b8] text-black font-semibold py-2 text-sm sm:text-base"
-          >
-            REQUEST A CALL BACK
-          </button>
+          <div className="flex items-center justify-center">
+            <button
+              type="submit"
+              className="w-1/2 bg-[#71ced0] hover:bg-[#5bb7b8] text-black font-semibold py-2 text-sm sm:text-base"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </div>
