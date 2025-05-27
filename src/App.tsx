@@ -8,6 +8,8 @@ import Chatbot from "./components/Chatbot";
 import AboutUsSection from "./pages/About";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Emailer from "./pages/Emailer";
+import NewsletterForm from "./pages/Newsletter";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/about" element={<AboutUsSection />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/emailer" element={<Emailer />} />
+          <Route path="/newsletter" element={<NewsletterForm />} />
         </Routes>
         <Chatbot />
       </>
