@@ -1,19 +1,61 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // for redirect
 import logo from "../assets/logo-01.svg";
-import sideImage from "../assets/newabout.webp"; // your left side image
+import sideImage from "../assets/newabout.webp";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // ⬅️ useNavigate for redirect
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      setMessage("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const res = await fetch("https://cft-b87k.onrender.com/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setMessage(data.error || "Login failed.");
+      } else {
+        // Store user info in localStorage
+        localStorage.setItem("user", JSON.stringify(data.user)); // assuming your API returns { user: { name, email, ... } }
+
+        // Redirect to home
+        navigate("/");
+      }
+    } catch (err) {
+      setMessage("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen w-full bg-black  px-4 py-8">
-      {/* Logo at Top */}
-      <div className=" mb-8 max-w-7xl mx-auto">
+    <div className="min-h-screen w-full bg-black px-4 py-8">
+      {/* Logo */}
+      <div className="mb-8 max-w-7xl mx-auto">
         <a href="/">
           <img src={logo} alt="Close Friends Traders" className="w-44" />
         </a>
       </div>
 
-      {/* Centered Box */}
+      {/* Login Box */}
       <div className="flex w-full mx-auto max-w-4xl h-[500px] rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl">
-        {/* Left Image Side */}
+        {/* Image */}
         <div className="w-1/2 hidden md:block">
           <img
             src={sideImage}
@@ -22,18 +64,20 @@ const Login = () => {
           />
         </div>
 
-        {/* Right Form Side */}
+        {/* Form */}
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
           <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
           <p className="text-sm text-gray-400 mb-6">Log in to your account</p>
 
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleLogin}>
             <div>
               <label className="block text-sm text-gray-300 mb-1">Email</label>
               <input
                 type="email"
                 className="w-full px-4 py-3 bg-white/10 text-white placeholder-gray-500 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="john@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -45,6 +89,8 @@ const Login = () => {
                 type="password"
                 className="w-full px-4 py-3 bg-white/10 text-white placeholder-gray-500 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -59,10 +105,15 @@ const Login = () => {
 
             <button
               type="submit"
+              disabled={loading}
               className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-medium transition duration-300"
             >
-              Log In
+              {loading ? "Logging in..." : "Log In"}
             </button>
+
+            {message && (
+              <p className="text-sm text-center text-green-400">{message}</p>
+            )}
           </form>
 
           <p className="text-xs text-gray-500 text-center mt-6">

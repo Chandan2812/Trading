@@ -15,6 +15,7 @@ declare global {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const [user, setUser] = useState<any>(null);
 
   // const [darkMode, setDarkMode] = useState(() => {
   //   return localStorage.getItem("theme")
@@ -39,6 +40,25 @@ const Navbar = () => {
     { label: "About Us", path: "/about" },
     { label: "Contact Us", path: "/Contact" },
   ];
+
+  useEffect(() => {
+    try {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch (error) {
+      console.error("Failed to parse user from localStorage:", error);
+      setUser(null);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setUser(null);
+    window.location.href = "/";
+  };
 
   useEffect(() => {
     const googleTranslateElementInit = () => {
@@ -144,20 +164,34 @@ const Navbar = () => {
                 </div>
 
                 {/* Login and Sign Up */}
-                <div className="flex items-center space-x-4">
-                  <a
-                    href="/login"
-                    className="text-sm hover:bg-white hover:text-black transition border border-[var(--primary-color)] py-2 px-4 rounded-full text-[var(--primary-color)] shadow-[0_0_10px_var(--primary-color)]"
-                  >
-                    Login
-                  </a>
-                  <a
-                    href="/signup"
-                    className="bg-[var(--primary-color)] text-black text-sm px-4 py-2 rounded-full border border-[var(--primary-color)] hover:bg-white transition shadow-[0_0_15px_var(--primary-color)]"
-                  >
-                    Sign Up
-                  </a>
-                </div>
+                {user ? (
+                  <div className="flex items-center space-x-4">
+                    <span className="text-sm text-white">
+                      Hi, {user.fullName}
+                    </span>
+                    <button
+                      onClick={handleLogout}
+                      className="text-sm bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex items-center space-x-4">
+                    <a
+                      href="/login"
+                      className="text-sm hover:bg-white hover:text-black transition border border-[var(--primary-color)] py-2 px-4 rounded-full text-[var(--primary-color)] shadow-[0_0_10px_var(--primary-color)]"
+                    >
+                      Login
+                    </a>
+                    <a
+                      href="/signup"
+                      className="bg-[var(--primary-color)] text-black text-sm px-4 py-2 rounded-full border border-[var(--primary-color)] hover:bg-white transition shadow-[0_0_15px_var(--primary-color)]"
+                    >
+                      Sign Up
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -192,20 +226,34 @@ const Navbar = () => {
               ))}
 
               {/* Login and Sign Up buttons */}
-              <div className="flex space-x-4">
-                <a
-                  href="/login"
-                  className="w-1/2 text-base text-inherit text-center border border-[var(--primary-color)] py-2 rounded-md hover:text-[var(--primary-color)] transition"
-                >
-                  Login
-                </a>
-                <a
-                  href="signup"
-                  className="w-1/2 text-base bg-[var(--primary-color)] text-white text-center py-2 rounded-md hover:opacity-90 transition"
-                >
-                  Sign Up
-                </a>
-              </div>
+              {user ? (
+                <div className="flex flex-col items-start gap-2 mt-4">
+                  <span className="text-base text-white">
+                    Hi, {user?.fullName}
+                  </span>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-base bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <div className="flex space-x-4">
+                  <a
+                    href="/login"
+                    className="w-1/2 text-base text-inherit text-center border border-[var(--primary-color)] py-2 rounded-md hover:text-[var(--primary-color)] transition"
+                  >
+                    Login
+                  </a>
+                  <a
+                    href="/signup"
+                    className="w-1/2 text-base bg-[var(--primary-color)] text-white text-center py-2 rounded-md hover:opacity-90 transition"
+                  >
+                    Sign Up
+                  </a>
+                </div>
+              )}
             </div>
 
             {/* Bottom Buttons */}
@@ -234,7 +282,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[999] right-[70px] top-[85px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[180px] lg:top-[67px] lg:-translate-x-1/2"
+          className="fixed z-[999] right-[70px] top-[85px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[220px] lg:top-[67px] lg:-translate-x-1/2"
         />
       )}
     </>
