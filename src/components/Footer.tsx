@@ -14,32 +14,39 @@ const Footer = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: any) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!email) {
+      setMessage("Please enter your email address.");
+      return;
+    }
+
     setLoading(true);
     setMessage("");
 
     try {
-      const response = await fetch("https://cft-b87k.onrender.com/subscribe", {
+      const res = await fetch("https://cft-b87k.onrender.com/subscribe", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
 
-      if (response.ok) {
-        setMessage("Subscribed successfully!");
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage(data.message);
         setEmail("");
       } else {
-        setMessage("Subscription failed. Try again.");
+        setMessage(data.error || "Subscription failed.");
       }
-    } catch (error) {
-      setMessage("Something went wrong.");
+    } catch (err) {
+      setMessage("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <footer className="bg-gradient-to-b from-[#1a1a1a] to-black text-white px-6 py-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -161,23 +168,32 @@ const Footer = () => {
           <p className="text-sm mb-4">
             Don’t miss our future updates! Get Subscribed Today!
           </p>
-          <form className="flex" onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubscribe}
+            className="flex items-center max-w-[300px] w-full"
+          >
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your mail here"
-              className="rounded-l-full px-4 py-2 text-sm text-black outline-none w-full"
+              className="flex-grow rounded-l-full px-4 py-[7px] text-sm text-black outline-none"
+              disabled={loading}
             />
             <button
               type="submit"
               disabled={loading}
-              className="bg-[var(--primary-color,#e5c97e)] px-4 py-2 rounded-r-full"
+              className="bg-[var(--primary-color,#e5c97e)] px-4 py-2   rounded-r-full flex items-center justify-center"
             >
-              <IoMdSend className="text-black text-lg" />
+              {loading ? (
+                <div className="w-4 h-4 border-2 border-t-transparent border-black rounded-full animate-spin" />
+              ) : (
+                <IoMdSend className="text-black text-lg" />
+              )}
             </button>
           </form>
+
           {message && (
             <p className="text-sm mt-2 text-[var(--primary-color)]">
               {message}
