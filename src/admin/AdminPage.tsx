@@ -108,22 +108,30 @@ export default function AdminPage() {
             )}
 
             {activePanel === "Newsletter Data" && (
-              <section className="bg-white p-4 rounded shadow mb-6">
+              <section className="bg-white p-10 rounded shadow mb-6">
                 <h2 className="text-xl font-semibold mb-2">Newsletter Data</h2>
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr>
+                      <th className="border-b pb-1">title</th>
                       <th className="border-b pb-1">Subject</th>
-                      <th className="border-b pb-1">Date</th>
+                      <th className="border-b pb-1">Send Date</th>
+                      <th className="border-b pb-1">Button Url</th>
+                      <th className="border-b pb-1">Status</th>
+                      <th className="border-b pb-1">Emails</th>
                     </tr>
                   </thead>
                   <tbody>
                     {newsletterData.map((item: any) => (
                       <tr key={item._id}>
+                        <td className="py-1">{item.title}</td>
                         <td className="py-1">{item.content}</td>
                         <td className="py-1">
                           {new Date(item.sentAt).toLocaleDateString()}
                         </td>
+                        <td className="py-1">{item.ctaUrl}</td>
+                        <td className="py-1">{item.sent}</td>
+                        <td className="py-1">{item.emails}</td>
                       </tr>
                     ))}
                   </tbody>
