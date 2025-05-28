@@ -29,18 +29,16 @@ const Login = () => {
       });
 
       const data = await res.json();
-      console.log(data);
-
       if (!res.ok) {
         setMessage(data.error || "Login failed.");
       } else {
         localStorage.setItem("user", JSON.stringify(data.user));
 
-        // ✅ Check if this user is the admin
-        const isAdmin = data.user.email === "admin@gmail.com"; // replace with real admin email
+        // Check if this user is the admin
+        const isAdmin = data.user.email === "admin@gmail.com";
 
         if (isAdmin) {
-          navigate("/AdminPage"); // change this to your admin route
+          navigate("/AdminPage"); // admin route
         } else {
           navigate("/"); // normal user
         }
