@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Emailer from "./pages/Emailer";
 import NewsletterForm from "./pages/Newsletter";
+import AdminPage from "./admin/AdminPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/emailer" element={<Emailer />} />
           <Route path="/newsletter" element={<NewsletterForm />} />
+          <Route path="/AdminPage" element={<AdminPage />} />
         </Routes>
         <Chatbot />
       </>
