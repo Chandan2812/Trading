@@ -8,6 +8,7 @@ const Popup = () => {
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [marketSegment, setMarketSegment] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false); // <-- Add this
@@ -49,7 +50,7 @@ const Popup = () => {
       const res = await fetch("https://cft-b87k.onrender.com/api/popup-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fullName, phone, marketSegment }),
+        body: JSON.stringify({ fullName, phone, marketSegment, email }),
       });
 
       const data = await res.json();
@@ -106,6 +107,13 @@ const Popup = () => {
                 placeholder="Phone*"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
+              />
+              <input
+                type="email"
+                placeholder="Email*"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full border border-white bg-transparent text-white p-2 placeholder-gray-400 outline-none text-sm sm:text-base"
               />
               <input

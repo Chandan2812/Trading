@@ -31,6 +31,7 @@ const Navbar = () => {
   //     localStorage.setItem("theme", "light");
   //   }
   // }, [darkMode]);
+  const userdata = JSON.parse(localStorage.getItem("user") || "null");
 
   const navItems = [
     { label: "Home", path: "/" },
@@ -39,6 +40,10 @@ const Navbar = () => {
     { label: "About Us", path: "/about" },
     { label: "Contact Us", path: "/Contact" },
   ];
+
+  if (userdata && userdata.email.toLowerCase() === "admin@gmail.com") {
+    navItems.push({ label: "Admin", path: "/AdminPage" });
+  }
 
   useEffect(() => {
     try {
