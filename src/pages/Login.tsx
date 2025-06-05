@@ -38,9 +38,11 @@ const Login = () => {
         const isAdmin = data.user.email === "admin@gmail.com";
 
         if (isAdmin) {
-          navigate("/AdminPage"); // admin route
+          navigate("/AdminPage");
+          window.location.reload();
         } else {
-          navigate("/"); // normal user
+          navigate("/");
+          window.location.reload();
         }
       }
     } catch (err) {
