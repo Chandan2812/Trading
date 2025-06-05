@@ -1,6 +1,6 @@
 function RegulatoryDisclaimer() {
   return (
-    <section className="bg-black text-white py-16 px-6 md:px-16 font-light">
+    <section className="bg-black text-white py-5 px-6 md:px-16 font-light">
       <div className="max-w-5xl mx-auto space-y-10 text-sm leading-relaxed">
         {/* Trade Responsibility Disclaimer */}
         <div>

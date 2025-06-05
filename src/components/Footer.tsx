@@ -48,7 +48,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-[#1a1a1a] to-black text-white px-6 py-12">
+    <footer className="bg-gradient-to-b from-[#1a1a1a] to-black text-white px-6 py-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo & Description */}
         <div>
@@ -200,6 +200,16 @@ const Footer = () => {
             </p>
           )}
         </div>
+      </div>
+      <div className="w-full flex justify-center mt-10">
+        <a
+          href="https://www.bigwigdigital.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-3 uppercase text-xs tracking-widest  text-center"
+        >
+          Made & Marketed with ❤️ by Bigwig Digital
+        </a>
       </div>
     </footer>
   );

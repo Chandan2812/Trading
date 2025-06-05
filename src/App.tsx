@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Emailer from "./pages/Emailer";
 import NewsletterForm from "./pages/Newsletter";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 function App() {
   return (
@@ -26,6 +27,25 @@ function App() {
           <Route path="/emailer" element={<Emailer />} />
           <Route path="/newsletter" element={<NewsletterForm />} />
         </Routes>
+        {/* Bottom Buttons */}
+        <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
+          <div className="flex w-full">
+            <a
+              href="https://wa.me/1234567890"
+              className="w-1/2 bg-[var(--primary-color)] text-white flex justify-center items-center py-4 text-xl"
+              title="WhatsApp"
+            >
+              <FaWhatsapp />
+            </a>
+            <a
+              href="tel:+1234567890"
+              className="w-1/2 bg-black dark:bg-white text-white dark:text-black flex justify-center items-center py-4 text-xl border-l border-[var(--primary-color)]"
+              title="Phone"
+            >
+              <FaPhoneAlt />
+            </a>
+          </div>
+        </div>
         <Chatbot />
       </>
     </Router>

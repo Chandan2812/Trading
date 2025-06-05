@@ -63,7 +63,7 @@ const WhyChoose: React.FC = () => {
     <section className="py-16 bg-black text-white">
       <div className="max-w-7xl px-5 mx-auto flex flex-col md:flex-row items-start gap-12">
         {/* Left Side Title */}
-        <div className="md:w-1/2">
+        <div className="w-full md:w-1/2">
           <h2 className="text-4xl font-bold text-[var(--primary-color)] mb-4">
             Why Choose Us
           </h2>
@@ -74,7 +74,7 @@ const WhyChoose: React.FC = () => {
         </div>
 
         {/* Right Side Ticker Animation */}
-        <div className="md:w-1/2 h-20 overflow-hidden relative">
+        <div className="w-full md:w-1/2 h-20 overflow-hidden relative mb-4 md:mb-0">
           <AnimatePresence mode="wait">
             <motion.div
               key={index}

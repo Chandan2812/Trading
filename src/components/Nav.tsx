@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
-import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import logo from "../assets/logo-01.svg";
 import TradingViewTicker from "./TradingViewTicker";
 
@@ -260,26 +259,6 @@ const Navbar = () => {
                   </a>
                 </div>
               )}
-            </div>
-
-            {/* Bottom Buttons */}
-            <div className="absolute bottom-0 left-0 w-full flex">
-              <div className="flex w-full">
-                <a
-                  href="https://wa.me/1234567890"
-                  className="w-1/2 bg-[var(--primary-color)] text-white flex justify-center items-center py-4 text-xl"
-                  title="WhatsApp"
-                >
-                  <FaWhatsapp />
-                </a>
-                <a
-                  href="tel:+1234567890"
-                  className="w-1/2 bg-black dark:bg-white text-white dark:text-black flex justify-center items-center py-4 text-xl border-l border-[var(--primary-color)]"
-                  title="Phone"
-                >
-                  <FaPhoneAlt />
-                </a>
-              </div>
             </div>
           </div>
         )}

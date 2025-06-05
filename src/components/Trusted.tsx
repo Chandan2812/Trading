@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "../index.css";
 
 export default function WhyChooseUs() {
   useEffect(() => {
@@ -91,10 +92,9 @@ export default function WhyChooseUs() {
           <div className="relative overflow-hidden">
             <div
               ref={containerRef}
-              className="flex transition-transform duration-500 ease-in-out no-scrollbar"
+              className="flex overflow-x-scroll overflow-y-hidden scroll-smooth no-scrollbar transition-transform duration-500 ease-in-out"
               style={{
                 scrollSnapType: "x mandatory",
-                overflowX: "scroll",
               }}
             >
               {features.map((feature, i) => (
