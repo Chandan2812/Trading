@@ -2,51 +2,200 @@ import { useState, useEffect, useRef } from "react";
 import { FaComments, FaTimes } from "react-icons/fa";
 
 const Chatbot: React.FC = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [messages, setMessages] = useState<
     { sender: "user" | "bot"; text: string }[]
   >([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [userInfo, setUserInfo] = useState<{ name: string; email: string }>({
+    name: "",
+    email: "",
+  });
+  const [userDetailsCaptured, setUserDetailsCaptured] = useState(false);
+  const [selectedPurpose, setSelectedPurpose] = useState<
+    null | "Buy" | "Sell" | "Invest"
+  >(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-  const toggleChat = () => setOpen(!open);
+  const storedUser = localStorage.getItem("user");
+  let userObj: { fullName?: string } | null = null;
 
+  if (storedUser) {
+    try {
+      userObj = JSON.parse(storedUser);
+    } catch (e) {
+      userObj = null;
+    }
+  }
+  const toggleChat = () => {
+    setOpen((prev) => !prev);
+  };
+
+  // Scroll to bottom when messages update
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  useEffect(() => {
+    try {
+      const savedMessages = sessionStorage.getItem("granth-chat-messages");
+      const savedUserInfo = sessionStorage.getItem("granth-chat-userInfo");
+      const savedUserDetailsCaptured = sessionStorage.getItem(
+        "granth-chat-userDetailsCaptured"
+      );
+      const savedSelectedPurpose = sessionStorage.getItem(
+        "granth-chat-purpose"
+      );
+
+      if (savedMessages) {
+        const parsedMessages = JSON.parse(savedMessages);
+        if (Array.isArray(parsedMessages)) {
+          setMessages(parsedMessages);
+        }
+      } else {
+        const welcome = {
+          sender: "bot" as const,
+          text: `hii ${
+            userObj?.fullName || "Guest"
+          } 👋 Welcome to Close Friends Traders! May I know your name and email to assist you better?`,
+        };
+        setMessages([welcome]);
+        sessionStorage.setItem(
+          "granth-chat-messages",
+          JSON.stringify([welcome])
+        );
+      }
+
+      if (savedUserInfo) setUserInfo(JSON.parse(savedUserInfo));
+      if (savedUserDetailsCaptured !== null)
+        setUserDetailsCaptured(savedUserDetailsCaptured === "true");
+      if (savedSelectedPurpose)
+        setSelectedPurpose(savedSelectedPurpose as "Buy" | "Sell" | "Invest");
+    } catch (err) {
+      console.error("Error parsing chatbot session data. Resetting chat.", err);
+      sessionStorage.clear();
+      const welcome = {
+        sender: "bot" as const,
+        text: `hii ${
+          userObj?.fullName || "Guest"
+        } 👋 Welcome to Close Friends Traders! May I know your name and email to assist you better?`,
+      };
+      setMessages([welcome]);
+      sessionStorage.setItem("granth-chat-messages", JSON.stringify([welcome]));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (messages.length === 0) {
+      const welcome = {
+        sender: "bot" as const,
+        text: `hii ${
+          userObj?.fullName || "Guest"
+        } 👋 Welcome to Close Friends Traders! May I know your name and email to assist you better?`,
+      };
+      setMessages([welcome]);
+      sessionStorage.setItem("granth-chat-messages", JSON.stringify([welcome]));
+    }
+  }, []);
+
+  // Keep sessionStorage in sync
+  useEffect(() => {
+    sessionStorage.setItem("granth-chat-messages", JSON.stringify(messages));
+  }, [messages]);
+
+  useEffect(() => {
+    sessionStorage.setItem("granth-chat-userInfo", JSON.stringify(userInfo));
+  }, [userInfo]);
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      "granth-chat-userDetailsCaptured",
+      String(userDetailsCaptured)
+    );
+  }, [userDetailsCaptured]);
+
+  useEffect(() => {
+    if (selectedPurpose) {
+      sessionStorage.setItem("granth-chat-purpose", selectedPurpose);
+    }
+  }, [selectedPurpose]);
+
   const sendMessage = async () => {
     if (!input.trim() || loading) return;
 
-    const userMsg = { sender: "user" as const, text: input };
-    setMessages((prev) => [...prev, userMsg]);
+    const trimmedInput = input.trim();
+    const newUserMsg = { sender: "user" as const, text: trimmedInput };
+    setMessages((prev) => [...prev, newUserMsg]);
     setInput("");
     setLoading(true);
 
     try {
-      const res = await fetch("https://cft-b87k.onrender.com/api/chatbot", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
-      });
+      let botReply = "";
+
+      if (!userDetailsCaptured) {
+        const emailMatch = trimmedInput.match(
+          /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/
+        );
+        const namePart = trimmedInput.replace(emailMatch?.[0] || "", "").trim();
+
+        if (!emailMatch || !namePart) {
+          botReply =
+            "❗ Please provide both your name and a valid email in one message.";
+          setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
+          return;
+        }
+
+        const name = namePart;
+        const email = emailMatch[0];
+        setUserInfo({ name, email });
+        setUserDetailsCaptured(true);
+
+        botReply = `Thanks ${name}! What are you looking to do today?`;
+        setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
+
+        await fetch("https://cft-b87k.onrender.com/api/enquiry/chatbot", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user: { name, email },
+            message: trimmedInput,
+            isLead: true,
+            chatHistory: [...messages, newUserMsg],
+          }),
+        });
+
+        return;
+      }
+
+      if (!selectedPurpose) return;
+
+      const res = await fetch(
+        "https://cft-b87k.onrender.com/api/enquiry/chatbot",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user: userInfo,
+            purpose: selectedPurpose,
+            message: trimmedInput,
+            chatHistory: [...messages, newUserMsg],
+          }),
+        }
+      );
 
       const data = await res.json();
+      botReply =
+        res.ok && data.reply
+          ? data.reply
+          : "Sorry, something went wrong. Please try again.";
 
-      if (res.ok) {
-        const botReply = data.reply || "Sorry, I couldn't understand that.";
-        setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
-      } else {
-        setMessages((prev) => [
-          ...prev,
-          { sender: "bot", text: "Error: " + data.error },
-        ]);
-      }
+      setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
     } catch (error) {
       console.error(error);
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "Server error. Please try again later." },
+        { sender: "bot", text: "⚠️ Server error. Please try again later." },
       ]);
     } finally {
       setLoading(false);
@@ -68,8 +217,9 @@ const Chatbot: React.FC = () => {
       {open && (
         <div className="fixed bottom-36 right-6 w-80 max-h-[500px] bg-white rounded-lg shadow-lg flex flex-col z-50">
           <div className="bg-[var(--primary-color)] text-white px-4 py-2 font-bold rounded-t-lg">
-            Chat with Mondus Properties
+            Chat with Close Friends Traders
           </div>
+
           <div className="flex-1 p-4 overflow-y-auto space-y-2 text-sm bg-gray-100">
             {messages.map((msg, i) => (
               <div
@@ -85,6 +235,49 @@ const Chatbot: React.FC = () => {
             ))}
             <div ref={messagesEndRef} />
           </div>
+
+          {/* Purpose Selection */}
+          {userDetailsCaptured && !selectedPurpose && (
+            <div className="flex justify-around p-2 gap-2 flex-wrap border-t">
+              {["Buy", "Sell", "Rent"].map((purpose) => (
+                <button
+                  key={purpose}
+                  className="bg-[var(--primary-color)] text-white px-4 py-1 rounded-full text-sm"
+                  onClick={async () => {
+                    setSelectedPurpose(purpose as "Buy" | "Sell" | "Invest");
+
+                    setMessages((prev) => [
+                      ...prev,
+                      { sender: "user", text: purpose },
+                      {
+                        sender: "bot",
+                        text: `Got it! You're interested in ${purpose.toLowerCase()}ing property. How can I help you today?`,
+                      },
+                    ]);
+
+                    await fetch(
+                      "https://cft-b87k.onrender.com/api/enquiry/chatbot",
+                      {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          user: userInfo,
+                          purpose,
+                          message: purpose,
+                          isLead: true,
+                          chatHistory: messages,
+                        }),
+                      }
+                    );
+                  }}
+                >
+                  {purpose}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Input Area */}
           <div className="p-2 flex border-t">
             <input
               type="text"
@@ -92,13 +285,17 @@ const Chatbot: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-              placeholder="Type your message..."
-              disabled={loading}
+              placeholder={
+                !userDetailsCaptured
+                  ? "e.g. John Doe john@example.com"
+                  : "Type your message..."
+              }
+              disabled={loading || (userDetailsCaptured && !selectedPurpose)}
             />
             <button
               className="bg-[var(--primary-color)] text-white px-4 rounded-r"
               onClick={sendMessage}
-              disabled={loading}
+              disabled={loading || (userDetailsCaptured && !selectedPurpose)}
             >
               {loading ? "..." : "Send"}
             </button>
