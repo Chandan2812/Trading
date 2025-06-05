@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { FaComments, FaTimes } from "react-icons/fa";
 
 const Chatbot: React.FC = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<
     { sender: "user" | "bot"; text: string }[]
   >([]);
@@ -87,16 +87,42 @@ const Chatbot: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (messages.length === 0) {
-      const welcome = {
-        sender: "bot" as const,
-        text: `hii ${
-          userObj?.fullName || "Guest"
-        } 👋 Welcome to Close Friends Traders! May I know your name and email to assist you better?`,
-      };
-      setMessages([welcome]);
-      sessionStorage.setItem("granth-chat-messages", JSON.stringify([welcome]));
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        if (parsedUser?.fullName && parsedUser?.email) {
+          setUserInfo({
+            name: parsedUser.fullName,
+            email: parsedUser.email,
+          });
+          setUserDetailsCaptured(true); // so bot doesn't ask for name/email
+          const welcome = {
+            sender: "bot" as const,
+            text: `Hi ${parsedUser.fullName} 👋 Welcome back to Close Friends Traders!`,
+          };
+          setMessages([welcome]);
+          sessionStorage.setItem(
+            "granth-chat-messages",
+            JSON.stringify([welcome])
+          );
+          return;
+        }
+      } catch (e) {
+        console.error("Failed to parse user:", e);
+      }
     }
+
+    // Fallback if no user data
+    const fallbackWelcome = {
+      sender: "bot" as const,
+      text: `Hi Guest 👋 Welcome to Close Friends Traders! May I know your name and email to assist you better?`,
+    };
+    setMessages([fallbackWelcome]);
+    sessionStorage.setItem(
+      "granth-chat-messages",
+      JSON.stringify([fallbackWelcome])
+    );
   }, []);
 
   // Keep sessionStorage in sync
