@@ -265,7 +265,7 @@ const Chatbot: React.FC = () => {
           {/* Purpose Selection */}
           {userDetailsCaptured && !selectedPurpose && (
             <div className="flex justify-around p-2 gap-2 flex-wrap border-t">
-              {["Buy", "Sell", "Rent"].map((purpose) => (
+              {["Buy", "Sell", "Invest"].map((purpose) => (
                 <button
                   key={purpose}
                   className="bg-[var(--primary-color)] text-white px-4 py-1 rounded-full text-sm"
@@ -277,7 +277,7 @@ const Chatbot: React.FC = () => {
                       { sender: "user", text: purpose },
                       {
                         sender: "bot",
-                        text: `Got it! You're interested in ${purpose.toLowerCase()}ing property. How can I help you today?`,
+                        text: `Got it! You're interested in ${purpose.toLowerCase()} trading. How can I assist you today?`,
                       },
                     ]);
 
