@@ -14,17 +14,17 @@ const Carousel = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2, // Show 2 at a time
-    slidesToScroll: 1, // Scroll 1 at a time
+    slidesToShow: 2,
+    slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    arrows: false, // set to true if you want arrows
+    arrows: false,
     pauseOnHover: false,
     responsive: [
       {
         breakpoint: 1000,
         settings: {
-          slidesToShow: 1, // On mobile
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -32,7 +32,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="bg-black">
+    <div className="bg-white dark:bg-black text-black dark:text-white transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-5 py-12">
         <Slider {...settings}>
           {images.map((src, index) => (
@@ -40,7 +40,7 @@ const Carousel = () => {
               <img
                 src={src}
                 alt={`Slide ${index + 1}`}
-                className="w-full object-cover rounded-lg"
+                className="w-full object-cover rounded-lg border border-gray-300 dark:border-gray-700"
                 draggable="false"
               />
             </div>

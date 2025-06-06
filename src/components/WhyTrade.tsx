@@ -47,15 +47,8 @@ const features = [
 
 const WhyTrade: React.FC = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-    });
-
-    // Force refresh in case of layout shift
-    setTimeout(() => {
-      AOS.refresh();
-    }, 100);
+    AOS.init({ duration: 800, once: true });
+    setTimeout(() => AOS.refresh(), 100);
   }, []);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -63,21 +56,15 @@ const WhyTrade: React.FC = () => {
 
   const handleScroll = (direction: "left" | "right") => {
     if (!containerRef.current) return;
-
     const container = containerRef.current;
     const cardWidth = container.offsetWidth;
-
     const newIndex = direction === "left" ? index - 1 : index + 1;
     setIndex(newIndex);
-
-    container.scrollTo({
-      left: newIndex * cardWidth,
-      behavior: "smooth",
-    });
+    container.scrollTo({ left: newIndex * cardWidth, behavior: "smooth" });
   };
 
   return (
-    <section className="bg-black text-white py-12 px-5">
+    <section className="bg-white dark:bg-black text-black dark:text-white py-12 px-5 transition-colors duration-300">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-semibold">
           Why{" "}
@@ -91,24 +78,20 @@ const WhyTrade: React.FC = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="relative rounded-lg p-[1.5px] hover:shadow-[0_0_10px_var(--primary-color)] transition"
-            style={{
-              background:
-                "linear-gradient(to bottom, #111, var(--primary-color))",
-            }}
+            className="relative rounded-lg p-[1.5px] bg-gradient-to-b from-gray-200 to-[var(--primary-color)] dark:from-[#111] dark:to-[var(--primary-color)] hover:shadow-[0_0_10px_var(--primary-color)] transition"
             data-aos="zoom-in"
           >
-            <div className="bg-black rounded-lg p-6">
+            <div className="bg-white dark:bg-black rounded-lg p-6 transition-colors duration-300">
               <div className="mb-4">{feature.icon}</div>
               <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-400">{feature.desc}</p>
+              <p className="text-gray-600 dark:text-gray-400">{feature.desc}</p>
             </div>
           </div>
         ))}
       </div>
 
       {/* Mobile Slider */}
-      <div className="sm:hidden relative w-full px-0">
+      <div className="sm:hidden relative w-full px-0 mt-10">
         <div className="relative overflow-hidden">
           <div
             ref={containerRef}
@@ -124,43 +107,42 @@ const WhyTrade: React.FC = () => {
                 className="w-full flex-shrink-0 scroll-snap-align-start px-4"
                 style={{ scrollSnapAlign: "start" }}
               >
-                <div className="bg-gradient-to-br from-[#111] to-[#1a1a1a] border border-[var(--primary-color)] rounded-lg p-6 h-full">
+                <div className="bg-white dark:bg-gradient-to-br dark:from-[#111] dark:to-[#1a1a1a] border border-[var(--primary-color)] rounded-lg p-6 h-full transition-colors duration-300">
                   <div className="mb-4">{feature.icon}</div>
                   <h3 className="text-lg font-semibold mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-400">{feature.desc}</p>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {feature.desc}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Left Arrow */}
+          {/* Arrows */}
           <button
             onClick={() => handleScroll("left")}
             disabled={index === 0}
-            className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10
-    ${
-      index === 0
-        ? "bg-gray-800 cursor-not-allowed opacity-40"
-        : "bg-black/70 hover:bg-black/90"
-    }`}
+            className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 ${
+              index === 0
+                ? "bg-gray-300 dark:bg-gray-800 cursor-not-allowed opacity-40"
+                : "bg-black/10 dark:bg-black/70 hover:dark:bg-black/90"
+            }`}
           >
-            <FaArrowLeft size={20} className="text-white" />
+            <FaArrowLeft size={20} className="text-black dark:text-white" />
           </button>
 
-          {/* Right Arrow */}
           <button
             onClick={() => handleScroll("right")}
             disabled={index === features.length - 1}
-            className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10
-    ${
-      index === features.length - 1
-        ? "bg-gray-800 cursor-not-allowed opacity-40"
-        : "bg-black/70 hover:bg-black/90"
-    }`}
+            className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 ${
+              index === features.length - 1
+                ? "bg-gray-300 dark:bg-gray-800 cursor-not-allowed opacity-40"
+                : "bg-black/10 dark:bg-black/70 hover:dark:bg-black/90"
+            }`}
           >
-            <FaArrowRight size={20} className="text-white" />
+            <FaArrowRight size={20} className="text-black dark:text-white" />
           </button>
         </div>
       </div>

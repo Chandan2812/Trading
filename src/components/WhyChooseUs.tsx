@@ -11,34 +11,13 @@ import {
 } from "lucide-react";
 
 const features = [
-  {
-    text: "No KYC Required",
-    icon: ShieldCheck,
-  },
-  {
-    text: "Sign Up In 05 Sec",
-    icon: Timer,
-  },
-  {
-    text: "100% Trusted & Verified",
-    icon: BadgeCheck,
-  },
-  {
-    text: "Support Available 24/7",
-    icon: Headset,
-  },
-  {
-    text: "Data Privacy",
-    icon: Lock,
-  },
-  {
-    text: "Easy Payment Methods",
-    icon: CreditCard,
-  },
-  {
-    text: "Instant Deposit & Withdrawal",
-    icon: Banknote,
-  },
+  { text: "No KYC Required", icon: ShieldCheck },
+  { text: "Sign Up In 05 Sec", icon: Timer },
+  { text: "100% Trusted & Verified", icon: BadgeCheck },
+  { text: "Support Available 24/7", icon: Headset },
+  { text: "Data Privacy", icon: Lock },
+  { text: "Easy Payment Methods", icon: CreditCard },
+  { text: "Instant Deposit & Withdrawal", icon: Banknote },
 ];
 
 const slideVariants = {
@@ -60,14 +39,14 @@ const WhyChoose: React.FC = () => {
   const CurrentIcon = features[index].icon;
 
   return (
-    <section className="py-16 bg-black text-white">
+    <section className="py-16 bg-white text-black dark:bg-black dark:text-white transition-colors duration-500">
       <div className="max-w-7xl px-5 mx-auto flex flex-col md:flex-row items-start gap-12">
         {/* Left Side Title */}
         <div className="w-full md:w-1/2">
           <h2 className="text-4xl font-bold text-[var(--primary-color)] mb-4">
             Why Choose Us
           </h2>
-          <p className="text-lg text-gray-300">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Simple and Fast Trading with Real-Time Market Insights for a Smooth
             Experience
           </p>
@@ -78,7 +57,7 @@ const WhyChoose: React.FC = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              className="absolute inset-0 flex items-center gap-4 text-2xl font-semibold text-white bg-[#1f1f1f] border border-[var(--primary-color)] px-6 py-4 rounded-lg shadow-lg"
+              className="absolute inset-0 flex items-center gap-4 text-2xl font-semibold bg-[#f3f3f3] text-black dark:bg-[#1f1f1f] dark:text-white border border-[var(--primary-color)] px-6 py-4 rounded-lg shadow-lg transition-colors duration-500"
               variants={slideVariants}
               initial="initial"
               animate="animate"

@@ -34,14 +34,16 @@ export default function TestimonialCarousel() {
     setIndex((index - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <div className="bg-black text-white">
+    <div className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-500">
       <div className="max-w-5xl mx-auto py-12 px-4 text-center relative overflow-hidden">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-8">
           What Our Traders Are{" "}
-          <span className="text-[var(--primary-color)]">Saying</span>
+          <span className="text-primary-light dark:text-primary-dark italic">
+            Saying
+          </span>
         </h2>
 
-        <div className="text-[var(--primary-color)] text-3xl flex justify-center mb-4 mx-auto">
+        <div className="text-primary-light dark:text-primary-dark text-3xl flex justify-center mb-4 mx-auto">
           <FaQuoteLeft />
         </div>
 
@@ -54,11 +56,13 @@ export default function TestimonialCarousel() {
         </div>
 
         <h3 className="text-xl font-bold mb-2">{testimonial.title}</h3>
-        <p className="max-w-2xl mx-auto text-gray-300 mb-4">
+        <p className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-4">
           {testimonial.content}
         </p>
-        <p className="text-sm text-gray-400 mb-1">{testimonial.date}</p>
-        <p className="text-[var(--primary-color)] font-semibold">
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+          {testimonial.date}
+        </p>
+        <p className="font-semibold text-primary-light dark:text-primary-dark">
           {testimonial.name}
         </p>
 
@@ -66,13 +70,15 @@ export default function TestimonialCarousel() {
         <div className="hidden md:flex">
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[var(--primary-color)] text-black w-12 h-12 rounded-full flex items-center justify-center"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
+            aria-label="Previous testimonial"
           >
             <FaArrowLeft />
           </button>
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[var(--primary-color)] text-black w-12 h-12 rounded-full flex items-center justify-center"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
+            aria-label="Next testimonial"
           >
             <FaArrowRight />
           </button>
@@ -82,13 +88,15 @@ export default function TestimonialCarousel() {
         <div className="flex md:hidden justify-center gap-4 mt-8">
           <button
             onClick={prev}
-            className="bg-[var(--primary-color)] text-black w-12 h-12 rounded-full flex items-center justify-center"
+            className="bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
+            aria-label="Previous testimonial"
           >
             <FaArrowLeft />
           </button>
           <button
             onClick={next}
-            className="bg-[var(--primary-color)] text-black w-12 h-12 rounded-full flex items-center justify-center"
+            className="bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
+            aria-label="Next testimonial"
           >
             <FaArrowRight />
           </button>

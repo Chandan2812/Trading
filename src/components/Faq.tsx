@@ -48,13 +48,13 @@ const ToggleFAQ = () => {
   };
 
   return (
-    <section className="bg-black text-white py-12 px-5">
+    <section className="bg-white text-black dark:bg-black dark:text-white py-12 px-5 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-5">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-center">
           Frequently Asked Questions
         </h2>
-        <div className="flex flex-col md:flex-row justify-evenly  py-3 items-start ">
-          <div className="md:flex items-start hidden  ">
+        <div className="flex flex-col md:flex-row justify-evenly py-3 items-start">
+          <div className="md:flex items-start hidden">
             <img
               src={faq_img}
               alt="FAQ Illustration"
@@ -62,19 +62,21 @@ const ToggleFAQ = () => {
               draggable="false"
             />
           </div>
-          <div className="space-y-5 pt-10  ">
+          <div className="space-y-5 pt-10 max-w-xl w-full">
             {faqs.map((faq, index) => (
               <div key={index} className="relative">
                 {/* FAQ Box */}
-                <div className="bg-black border text-gray-200 border-gray-700 rounded-lg pl-12 pr-6 py-3 relative max-w-xl w-full">
-                  {/* Number Badge (half-overlapping from left) */}
-                  <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white text-[var(--primary-color)] rounded-full flex items-center justify-center text-xl font-bold border-2 border-[var(--primary-color)]">
+                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg pl-12 pr-6 py-3 relative w-full transition-colors duration-300">
+                  {/* Number Badge */}
+                  <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-black text-primary-light dark:text-primary-dark rounded-full flex items-center justify-center text-xl font-bold border-2 border-primary-light dark:border-primary-dark">
                     {index + 1}
                   </div>
 
                   <button
-                    className="w-full text-left flex items-center justify-between"
+                    className="w-full text-left flex items-center justify-between focus:outline-none"
                     onClick={() => toggleFaq(index)}
+                    aria-expanded={openIndex === index}
+                    aria-controls={`faq-answer-${index}`}
                   >
                     <span className="text-lg font-medium">{faq.question}</span>
                     <ChevronDown
@@ -84,7 +86,10 @@ const ToggleFAQ = () => {
                     />
                   </button>
                   {openIndex === index && (
-                    <div className="pt-2 text-gray-300 transition-all duration-300 ease-in-out">
+                    <div
+                      id={`faq-answer-${index}`}
+                      className="pt-2 text-gray-700 dark:text-gray-300 transition-all duration-300 ease-in-out"
+                    >
                       {faq.answer}
                     </div>
                   )}

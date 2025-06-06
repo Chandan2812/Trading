@@ -58,10 +58,11 @@ const markets = [
 const DabbaMarkets: React.FC = () => {
   useEffect(() => {
     AOS.init({
-      duration: 800, // animation duration in ms
-      once: true, // animate only once
+      duration: 800,
+      once: true,
     });
   }, []);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
 
@@ -82,13 +83,13 @@ const DabbaMarkets: React.FC = () => {
   };
 
   return (
-    <div className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-white dark:bg-black text-black dark:text-white py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-white">
+        <h2 className="text-3xl sm:text-4xl font-semibold">
           Available Dabba Trading:{" "}
           <span className="text-[#71ced0] italic">Markets</span>
         </h2>
-        <p className="mt-2 text-gray-300 max-w-2xl mx-auto">
+        <p className="mt-2 max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
           A small river named Duden flows by their place and supplies it with
           the necessary regelialia. It is a paradise
         </p>
@@ -99,22 +100,22 @@ const DabbaMarkets: React.FC = () => {
         {markets.map((market, index) => (
           <div
             key={index}
-            className="relative rounded-lg p-[1.5px] hover:shadow-[0_0_10px_var(--primary-color)] transition"
-            style={{
-              background:
-                "linear-gradient(to bottom, #111, var(--primary-color))",
-            }}
+            className="relative rounded-lg p-[1.5px] hover:shadow-[0_0_10px_var(--primary-color)] transition bg-gradient-to-b from-gray-200 to-[var(--primary-color)] dark:from-[#111] dark:to-[var(--primary-color)]"
             data-aos="fade-up"
           >
-            <div className="bg-black rounded-lg h-full p-6 flex flex-col items-center justify-center text-center min-h-[260px]">
+            <div className="rounded-lg h-full p-6 flex flex-col items-center justify-center text-center min-h-[260px] bg-white dark:bg-neutral-900">
               <img
                 src={market.image}
                 alt={market.title}
                 className="w-14 h-14 mb-4 p-1 object-contain bg-[var(--primary-color)] rounded-full"
                 draggable="false"
               />
-              <h3 className="text-lg font-bold mb-2">{market.title}</h3>
-              <p className="text-sm text-gray-400">{market.description}</p>
+              <h3 className="text-lg font-bold mb-2 text-black dark:text-white">
+                {market.title}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {market.description}
+              </p>
             </div>
           </div>
         ))}
@@ -137,15 +138,19 @@ const DabbaMarkets: React.FC = () => {
                 className="w-full flex-shrink-0 scroll-snap-align-start px-4"
                 style={{ scrollSnapAlign: "start" }}
               >
-                <div className="bg-gradient-to-br from-[#111] to-[#1a1a1a] border border-[var(--primary-color)] rounded-lg p-6 h-full text-center">
+                <div className=" border border-[var(--primary-color)] rounded-lg p-6 h-full text-center transition-colors duration-300">
                   <img
                     src={market.image}
                     alt={market.title}
                     className="w-12 h-12 mb-4 p-1 object-contain bg-[var(--primary-color)] rounded-full mx-auto"
                     draggable="false"
                   />
-                  <h3 className="text-lg font-bold mb-2">{market.title}</h3>
-                  <p className="text-sm text-gray-400">{market.description}</p>
+                  <h3 className="text-lg font-bold mb-2 text-black dark:text-white">
+                    {market.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {market.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -155,26 +160,26 @@ const DabbaMarkets: React.FC = () => {
           <button
             onClick={() => handleScroll("left")}
             disabled={index === 0}
-            className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 ${
+            className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 transition-colors duration-300 ${
               index === 0
-                ? "bg-gray-800 cursor-not-allowed opacity-40"
-                : "bg-black/70 hover:bg-black/90"
+                ? "bg-gray-300 dark:bg-gray-700 cursor-not-allowed opacity-40"
+                : "bg-gray-800 dark:bg-black/70 hover:bg-gray-900 dark:hover:bg-black/90"
             }`}
           >
-            <FaArrowLeft size={20} className="text-white" />
+            <FaArrowLeft size={20} className="text-black dark:text-white" />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={() => handleScroll("right")}
             disabled={index === markets.length - 1}
-            className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 ${
+            className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 transition-colors duration-300 ${
               index === markets.length - 1
-                ? "bg-gray-800 cursor-not-allowed opacity-40"
-                : "bg-black/70 hover:bg-black/90"
+                ? "bg-gray-300 dark:bg-gray-700 cursor-not-allowed opacity-40"
+                : "bg-gray-800 dark:bg-black/70 hover:bg-gray-900 dark:hover:bg-black/90"
             }`}
           >
-            <FaArrowRight size={20} className="text-white" />
+            <FaArrowRight size={20} className="text-black dark:text-white" />
           </button>
         </div>
       </div>

@@ -1,10 +1,10 @@
 function RegulatoryDisclaimer() {
   return (
-    <section className="bg-black text-white py-5 px-6 md:px-16 font-light">
+    <section className="bg-white text-black dark:bg-black dark:text-white py-5 px-6 md:px-16 font-light transition-colors duration-500">
       <div className="max-w-5xl mx-auto space-y-10 text-sm leading-relaxed">
         {/* Trade Responsibility Disclaimer */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-2">
+          <h3 className="font-semibold text-lg mb-2">
             Trade Responsibility Disclaimer
           </h3>
           <p>
@@ -20,7 +20,7 @@ function RegulatoryDisclaimer() {
 
         {/* General Disclaimer */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-2">Disclaimer</h3>
+          <h3 className="font-semibold text-lg mb-2">Disclaimer</h3>
           <p>
             Information on this site is not intended for distribution to, or use
             by, any person in any country or jurisdiction where such
@@ -32,13 +32,11 @@ function RegulatoryDisclaimer() {
 
         {/* Regulatory Information */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-2">
-            Regulatory Information
-          </h3>
+          <h3 className="font-semibold text-lg mb-2">Regulatory Information</h3>
           <p>
             <a
               href="https://closefriendstraders.com/"
-              className="text-teal-400 hover:underline"
+              className="text-teal-600 dark:text-teal-400 hover:underline transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
