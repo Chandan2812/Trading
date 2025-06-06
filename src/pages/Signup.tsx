@@ -12,11 +12,12 @@ const Signup = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [Phone, setPhone] = useState<number | "">("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!fullName || !email || !password) {
+    if (!fullName || !email || !Phone || !password) {
       setMessage("Please fill all fields.");
       return;
     }
@@ -26,7 +27,7 @@ const Signup = () => {
       const res = await fetch("https://cft-b87k.onrender.com/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fullName, email, password }),
+        body: JSON.stringify({ fullName, email, password, Phone }),
       });
 
       const data = await res.json();
@@ -37,6 +38,7 @@ const Signup = () => {
         setMessage(data.message || "Signup successful!");
         setFullName("");
         setEmail("");
+        setPhone(""); // clear phone
         setPassword("");
         navigate("/login");
       }
@@ -100,6 +102,19 @@ const Signup = () => {
                 placeholder="john@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
+                Phone
+              </label>
+              <input
+                type="number"
+                className="w-full px-4 py-3 bg-white dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-xl border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                placeholder="1234567890"
+                value={Phone}
+                onChange={(e) => setPhone(Number(e.target.value))}
               />
             </div>
 

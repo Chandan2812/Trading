@@ -1,7 +1,7 @@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
-import bull from "../assets/Bitcoin Growth Chart Background Design - Edited.png";
+import bull from "../assets/2.png";
 import CustomerSupport from "../components/CustomerSupport";
 
 function Contact() {

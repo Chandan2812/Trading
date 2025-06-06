@@ -1,6 +1,6 @@
 import { FaRupeeSign, FaRegFileAlt } from "react-icons/fa";
 import { GiCutDiamond } from "react-icons/gi";
-import girlImage from "../assets/girl.png"; // Update path if needed
+import girlImage from "../assets/1.png"; // Update path if needed
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";

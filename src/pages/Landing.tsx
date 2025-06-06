@@ -8,6 +8,7 @@ import Carousel from "../components/ImageCarousel";
 import Navbar from "../components/Nav";
 import Popup from "../components/PopUp";
 import RegulatoryDisclaimer from "../components/RegulatoryDisclaimer";
+import ScrollingIcons from "../components/ScrollingIcons";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import Trusted from "../components/Trusted";
 import WhyChoose from "../components/WhyChooseUs";
@@ -27,6 +28,7 @@ export const Landing = () => {
       <DownloadSection />
       <DabbaMarkets />
       <TestimonialCarousel />
+      <ScrollingIcons />
       <FAQ />
       <Footer />
       <RegulatoryDisclaimer />
