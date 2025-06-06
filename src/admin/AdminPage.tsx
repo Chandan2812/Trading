@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Nav";
+import { exportToDocx } from "../utils/exportDoc";
+import { exportToExcel } from "../utils/exportToExcel";
 
 export default function AdminPage() {
   const [users, setUsers] = useState([]);
@@ -9,6 +11,8 @@ export default function AdminPage() {
   const [emailSubscribers, setEmailSubscribers] = useState([]);
   const [popupLeads, setPopupLeads] = useState([]);
   const [activePanel, setActivePanel] = useState("Users");
+  const [emailerData, setEmailerData] = useState([]);
+  const [chatbotData, setChatbotData] = useState([]);
 
   const navigate = useNavigate();
 
@@ -51,6 +55,24 @@ export default function AdminPage() {
         setPopupLeads(res.data);
       })
       .catch((err) => console.error("Leads error:", err));
+
+    // Fetch Emailer Data
+    axios
+      .get("http://localhost:8000/emailer")
+      .then((res) => {
+        console.log("Emailer:", res.data);
+        setEmailerData(res.data);
+      })
+      .catch((err) => console.error("Emailer error:", err));
+
+    // Fetch Chatbot Data
+    axios
+      .get("http://localhost:8000/api/enquiry/chatbot")
+      .then((res) => {
+        console.log("Chatbot:", res.data);
+        setChatbotData(res.data);
+      })
+      .catch((err) => console.error("Chatbot error:", err));
   }, []);
 
   return (
@@ -66,6 +88,8 @@ export default function AdminPage() {
                 "Newsletter Data",
                 "Email Subscribers",
                 "Popup Leads",
+                "Emailer Data",
+                "Chatbot Data",
               ].map((item) => (
                 <li key={item}>
                   <button
@@ -85,7 +109,22 @@ export default function AdminPage() {
           <main className="flex-1">
             {activePanel === "Users" && (
               <section className="bg-white p-4 rounded shadow mb-6">
-                <h2 className="text-xl font-semibold mb-2">User Logins</h2>
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-xl font-semibold">User Logins</h2>
+                  <button
+                    onClick={() =>
+                      exportToExcel(
+                        "User Logins",
+                        users,
+                        ["Name", "Email", "Logins"],
+                        ["fullName", "email", "logins"]
+                      )
+                    }
+                    className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                  >
+                    Export to Excel
+                  </button>
+                </div>
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr>
@@ -109,7 +148,38 @@ export default function AdminPage() {
 
             {activePanel === "Newsletter Data" && (
               <section className="bg-white p-10 rounded shadow mb-6">
-                <h2 className="text-xl font-semibold mb-2">Newsletter Data</h2>
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-xl font-semibold mb-2">
+                    Newsletter Data
+                  </h2>
+                  <button
+                    onClick={() =>
+                      exportToExcel(
+                        "Email Subscribers",
+                        newsletterData,
+                        [
+                          "title",
+                          "Subject",
+                          "Send Date",
+                          "Button Url",
+                          "Status",
+                          "Emails",
+                        ],
+                        [
+                          "title",
+                          "content",
+                          "sentAt",
+                          "ctaUrl",
+                          "sent",
+                          "emails",
+                        ]
+                      )
+                    }
+                    className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                  >
+                    Export to Excel
+                  </button>
+                </div>
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr>
@@ -141,9 +211,24 @@ export default function AdminPage() {
 
             {activePanel === "Email Subscribers" && (
               <section className="bg-white p-4 rounded shadow mb-6">
-                <h2 className="text-xl font-semibold mb-2">
-                  Email Subscribers
-                </h2>
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-xl font-semibold mb-2">
+                    Email Subscribers
+                  </h2>
+                  <button
+                    onClick={() =>
+                      exportToExcel(
+                        "Email Subscribers",
+                        popupLeads,
+                        ["Email", "Subscribed"],
+                        ["email", "createdAt"]
+                      )
+                    }
+                    className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                  >
+                    Export to Excel
+                  </button>
+                </div>
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr>
@@ -167,7 +252,22 @@ export default function AdminPage() {
 
             {activePanel === "Popup Leads" && (
               <section className="bg-white p-4 rounded shadow mb-6">
-                <h2 className="text-xl font-semibold mb-2">Popup Leads</h2>
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-xl font-semibold mb-2">Popup Leads</h2>
+                  <button
+                    onClick={() =>
+                      exportToExcel(
+                        "Popup Leads",
+                        popupLeads,
+                        ["Name", "Email", "Phone", "Date"],
+                        ["fullName", "email", "phone", "createdAt"]
+                      )
+                    }
+                    className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                  >
+                    Export to Excel
+                  </button>
+                </div>
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr>
@@ -185,6 +285,121 @@ export default function AdminPage() {
                         <td className="py-1">{lead.phone}</td>
                         <td className="py-1">
                           {new Date(lead.createdAt).toLocaleDateString()}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </section>
+            )}
+
+            {activePanel === "Emailer Data" && (
+              <section className="bg-white p-4 rounded shadow mb-6">
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-xl font-semibold mb-2">Emailer Data</h2>
+                  <button
+                    onClick={() =>
+                      exportToExcel(
+                        "Emailer Data",
+                        emailerData,
+                        [
+                          "Title",
+                          "Subject",
+                          "CTA Text",
+                          "CTA URL",
+                          "Recipients",
+                          "Created At",
+                        ],
+                        [
+                          "title",
+                          "subject",
+                          "ctaText",
+                          "ctaUrl",
+                          "recipients",
+                          "createdAt",
+                        ]
+                      )
+                    }
+                    className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                  >
+                    Export to Excel
+                  </button>
+                </div>
+                <table className="w-full text-left text-sm">
+                  <thead>
+                    <tr>
+                      <th className="border-b pb-1">Title</th>
+                      <th className="border-b pb-1">Subject</th>
+                      <th className="border-b pb-1">CTA</th>
+                      <th className="border-b pb-1">Recipients</th>
+                      <th className="border-b pb-1">Created At</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {emailerData.map((item: any) => (
+                      <tr key={item._id}>
+                        <td className="py-1">{item.title}</td>
+                        <td className="py-1">{item.subject}</td>
+                        <td className="py-1">
+                          <a
+                            href={item.ctaUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-blue-500 underline"
+                          >
+                            {item.ctaText}
+                          </a>
+                        </td>
+                        <td className="py-1">{item.recipients.join(", ")}</td>
+                        <td className="py-1">
+                          {new Date(item.createdAt).toLocaleDateString()}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </section>
+            )}
+
+            {activePanel === "Chatbot Data" && (
+              <section className="bg-white p-4 rounded shadow mb-6">
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-xl font-semibold mb-2">
+                    Chatbot Conversations
+                  </h2>
+                  <button
+                    onClick={() =>
+                      exportToDocx(
+                        "Chatbot Data",
+                        chatbotData,
+                        ["User Message", "Bot Reply", "Timestamp"],
+                        ["userMessage", "botReply", "timestamp"]
+                      )
+                    }
+                    className="px-4 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+                  >
+                    Export to DOCX
+                  </button>
+                </div>
+                <table className="w-full text-left text-sm">
+                  <thead>
+                    <tr>
+                      <th className="border-b pb-1">User Message</th>
+                      <th className="border-b pb-1">Bot Reply</th>
+                      <th className="border-b pb-1">Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {chatbotData.map((chat: any) => (
+                      <tr key={chat._id}>
+                        <td className="py-1 max-w-xs break-words">
+                          {chat.userMessage}
+                        </td>
+                        <td className="py-1 max-w-md break-words">
+                          {chat.botReply}
+                        </td>
+                        <td className="py-1">
+                          {new Date(chat.timestamp).toLocaleString()}
                         </td>
                       </tr>
                     ))}
