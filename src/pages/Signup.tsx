@@ -48,7 +48,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-black px-4 py-8">
+    <div className="min-h-screen w-full bg-white dark:bg-black px-4 py-8 transition-colors duration-300">
       {/* Logo */}
       <div className="mb-8 max-w-7xl mx-auto">
         <a href="/">
@@ -57,7 +57,7 @@ const Signup = () => {
       </div>
 
       {/* Main Container */}
-      <div className="flex w-full mx-auto max-w-4xl h-[550px] rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl">
+      <div className="flex w-full mx-auto max-w-4xl h-[550px] rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 backdrop-blur-sm shadow-2xl">
         {/* Left Image */}
         <div className="w-1/2 hidden md:block">
           <img
@@ -69,17 +69,21 @@ const Signup = () => {
 
         {/* Right Form */}
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-          <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
-          <p className="text-sm text-gray-400 mb-6">Sign up to get started</p>
+          <h1 className="text-3xl font-bold text-black dark:text-white mb-2">
+            Create Account
+          </h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+            Sign up to get started
+          </p>
 
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-sm text-gray-300 mb-1">
+              <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
                 Full Name
               </label>
               <input
                 type="text"
-                className="w-full px-4 py-3 bg-white/10 text-white placeholder-gray-500 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full px-4 py-3 bg-white dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-xl border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="John Doe"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
@@ -87,10 +91,12 @@ const Signup = () => {
             </div>
 
             <div>
-              <label className="block text-sm text-gray-300 mb-1">Email</label>
+              <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
+                Email
+              </label>
               <input
                 type="email"
-                className="w-full px-4 py-3 bg-white/10 text-white placeholder-gray-500 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full px-4 py-3 bg-white dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-xl border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="john@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -98,13 +104,13 @@ const Signup = () => {
             </div>
 
             <div>
-              <label className="block text-sm text-gray-300 mb-1">
+              <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
                 Password
               </label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full px-4 py-3 pr-12 bg-white/10 text-white placeholder-gray-500 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  className="w-full px-4 py-3 pr-12 bg-white dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-xl border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -112,7 +118,7 @@ const Signup = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white/70 hover:text-white"
+                  className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500 dark:text-white/70 hover:text-teal-500"
                   title={showPassword ? "Hide Password" : "Show Password"}
                 >
                   {showPassword ? <FiEyeOff /> : <FiEye />}
@@ -129,13 +135,15 @@ const Signup = () => {
             </button>
 
             {message && (
-              <p className="text-sm text-center text-green-400">{message}</p>
+              <p className="text-sm text-center text-red-500 dark:text-green-400">
+                {message}
+              </p>
             )}
           </form>
 
-          <p className="text-xs text-gray-500 text-center mt-6">
+          <p className="text-xs text-gray-600 dark:text-gray-400 text-center mt-6">
             Already have an account?{" "}
-            <a href="/login" className="text-teal-400 hover:underline">
+            <a href="/login" className="text-teal-500 hover:underline">
               Log in
             </a>
           </p>

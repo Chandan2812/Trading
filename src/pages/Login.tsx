@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeOff } from "lucide-react"; // Make sure you have lucide-react installed
+import { Eye, EyeOff } from "lucide-react";
 import logo from "../assets/logo-01.svg";
 import sideImage from "../assets/newabout.webp";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // visibility toggle
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -34,16 +34,13 @@ const Login = () => {
       } else {
         localStorage.setItem("user", JSON.stringify(data.user));
 
-        // Check if this user is the admin
         const isAdmin = data.user.email === "admin@gmail.com";
-
         if (isAdmin) {
           navigate("/AdminPage");
-          window.location.reload();
         } else {
           navigate("/");
-          window.location.reload();
         }
+        window.location.reload();
       }
     } catch (err) {
       setMessage("Something went wrong. Please try again.");
@@ -53,14 +50,15 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-black px-4 py-8">
+    <div className="min-h-screen w-full bg-white dark:bg-black px-4 py-8 transition-colors duration-300">
       <div className="mb-8 max-w-7xl mx-auto">
         <a href="/">
           <img src={logo} alt="Close Friends Traders" className="w-44" />
         </a>
       </div>
 
-      <div className="flex w-full mx-auto max-w-4xl h-[500px] rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl">
+      <div className="flex w-full mx-auto max-w-4xl h-[500px] rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 backdrop-blur-sm shadow-2xl">
+        {/* Side image (hidden on mobile) */}
         <div className="w-1/2 hidden md:block">
           <img
             src={sideImage}
@@ -69,16 +67,23 @@ const Login = () => {
           />
         </div>
 
+        {/* Form side */}
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-          <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
-          <p className="text-sm text-gray-400 mb-6">Log in to your account</p>
+          <h1 className="text-3xl font-bold text-black dark:text-white mb-2">
+            Welcome Back
+          </h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+            Log in to your account
+          </p>
 
           <form className="space-y-5" onSubmit={handleLogin}>
             <div>
-              <label className="block text-sm text-gray-300 mb-1">Email</label>
+              <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
+                Email
+              </label>
               <input
                 type="email"
-                className="w-full px-4 py-3 bg-white/10 text-white placeholder-gray-500 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                className="w-full px-4 py-3 bg-white dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-xl border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 placeholder="john@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -86,13 +91,13 @@ const Login = () => {
             </div>
 
             <div>
-              <label className="block text-sm text-gray-300 mb-1">
+              <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
                 Password
               </label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full px-4 py-3 bg-white/10 text-white placeholder-gray-500 rounded-xl border border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500 pr-12"
+                  className="w-full px-4 py-3 bg-white dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-xl border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500 pr-12"
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -100,21 +105,21 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
-                  className="absolute top-3 right-3 text-gray-400 hover:text-white"
+                  className="absolute top-3 right-3 text-gray-500 dark:text-gray-400 hover:text-teal-500"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
             </div>
 
-            <div className="text-right text-sm">
+            {/* <div className="text-right text-sm">
               <a
                 href="/forgot-password"
-                className="text-teal-400 hover:underline"
+                className="text-teal-500 dark:text-teal-400 hover:underline"
               >
                 Forgot password?
               </a>
-            </div>
+            </div> */}
 
             <button
               type="submit"
@@ -125,13 +130,15 @@ const Login = () => {
             </button>
 
             {message && (
-              <p className="text-sm text-center text-green-400">{message}</p>
+              <p className="text-sm text-center text-red-500 dark:text-red-400">
+                {message}
+              </p>
             )}
           </form>
 
-          <p className="text-xs text-gray-500 text-center mt-6">
+          <p className="text-xs text-gray-600 dark:text-gray-400 text-center mt-6">
             Don’t have an account?{" "}
-            <a href="/signup" className="text-teal-400 hover:underline">
+            <a href="/signup" className="text-teal-500 hover:underline">
               Sign up
             </a>
           </p>
