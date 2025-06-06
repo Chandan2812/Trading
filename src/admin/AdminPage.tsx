@@ -58,7 +58,7 @@ export default function AdminPage() {
 
     // Fetch Emailer Data
     axios
-      .get("http://localhost:8000/emailer")
+      .get("https://cft-b87k.onrender.com/emailer")
       .then((res) => {
         console.log("Emailer:", res.data);
         setEmailerData(res.data);
@@ -67,7 +67,7 @@ export default function AdminPage() {
 
     // Fetch Chatbot Data
     axios
-      .get("http://localhost:8000/api/enquiry/chatbot")
+      .get("https://cft-b87k.onrender.com/api/enquiry/chatbot")
       .then((res) => {
         console.log("Chatbot:", res.data);
         setChatbotData(res.data);
@@ -106,6 +106,7 @@ export default function AdminPage() {
               ))}
             </ul>
           </aside>
+
           <main className="flex-1">
             {activePanel === "Users" && (
               <section className="bg-white p-4 rounded shadow mb-6">
