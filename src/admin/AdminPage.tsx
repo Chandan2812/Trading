@@ -5,6 +5,8 @@ import Navbar from "../components/Nav";
 import { exportToDocx } from "../utils/exportDoc";
 import { exportToExcel } from "../utils/exportToExcel";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { Edit, Trash } from "lucide-react";
+import AddBlog from "../components/AddBlogs"; // adjust path if needed
 
 export default function AdminPage() {
   const [users, setUsers] = useState([]);
@@ -15,8 +17,21 @@ export default function AdminPage() {
   const [emailerData, setEmailerData] = useState([]);
   const [chatbotData, setChatbotData] = useState([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [editingBlog, setEditingBlog] = useState<BlogPost | null>(null);
 
   const navigate = useNavigate();
+
+  interface BlogPost {
+    _id: string;
+    title: string;
+    excerpt: string;
+    author: string;
+    datePublished: string;
+    slug: string;
+    content: string; // ✅ Add this line
+  }
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
@@ -75,6 +90,14 @@ export default function AdminPage() {
         setChatbotData(res.data);
       })
       .catch((err) => console.error("Chatbot error:", err));
+
+    axios
+      .get("https://cft-b87k.onrender.com/api/blogs/viewblog")
+      .then((res) => {
+        console.log("Blogs:", res.data);
+        setBlogs(res.data);
+      })
+      .catch((err) => console.error("Blogs error:", err));
   }, []);
 
   const menuItems = [
@@ -85,7 +108,41 @@ export default function AdminPage() {
     "Chatbot Data",
     "Emailer Data",
     "Newsletter Data",
+    "Blog Data",
   ];
+
+  const fetchBlogs = () => {
+    axios
+      .get("https://cft-b87k.onrender.com/api/blogs/viewblog")
+      .then((res) => setBlogs(res.data))
+      .catch((err) => console.error("Blogs error:", err));
+  };
+
+  const handleEdit = (slug: string) => {
+    const blogToEdit = blogs.find((b: any) => b.slug === slug);
+    if (blogToEdit) {
+      setEditingBlog(blogToEdit);
+      setShowAddModal(true);
+    }
+  };
+
+  const handleDelete = async (slug: string) => {
+    if (!window.confirm("Are you sure you want to delete this blog?")) return;
+    try {
+      const res = await axios.delete(
+        `https://cft-b87k.onrender.com/api/blogs/${slug}`
+      );
+      alert(res.data.msg || "Deleted");
+      fetchBlogs();
+    } catch (error) {
+      alert("Delete failed");
+    }
+  };
+
+  const handleModalClose = () => {
+    setShowAddModal(false);
+    setEditingBlog(null);
+  };
 
   return (
     <div>
@@ -629,6 +686,117 @@ export default function AdminPage() {
                       </div>
                     ))}
                   </div>
+                </section>
+              )}
+
+              {activePanel === "Blog Data" && (
+                <section className="bg-white p-4 md:p-6 rounded shadow mb-6">
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-xl font-semibold text-black">Blogs</h2>
+                    <button
+                      className="text-white bg-blue-600 px-4 py-2 rounded"
+                      onClick={() => {
+                        setEditingBlog(null);
+                        setShowAddModal(true);
+                      }}
+                    >
+                      Add Blog
+                    </button>
+                  </div>
+
+                  {/* Desktop Table */}
+                  <div className="hidden md:block overflow-auto">
+                    <table className="w-full text-left text-sm table-fixed">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="pb-2 px-2 w-1/5">Title</th>
+                          <th className="pb-2 px-2 w-1/5">Excerpt</th>
+                          <th className="pb-2 px-2 w-1/5">Author</th>
+                          <th className="pb-2 px-2 w-1/5">Published On</th>
+                          <th className="pb-2 px-2 w-1/5">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {blogs.map((blog: any) => (
+                          <tr key={blog._id} className="border-b align-top">
+                            <td className="py-2 px-2 break-words">
+                              {blog.title}
+                            </td>
+                            <td className="py-2 px-2 break-words">
+                              {blog.excerpt}
+                            </td>
+                            <td className="py-2 px-2 break-words">
+                              {blog.author}
+                            </td>
+                            <td className="py-2 px-2 break-words">
+                              {new Date(blog.datePublished).toLocaleString()}
+                            </td>
+                            <td className="py-2 px-2 space-x-2">
+                              <button
+                                onClick={() => handleEdit(blog.slug)}
+                                className="text-blue-600 hover:text-blue-800"
+                              >
+                                <Edit size={16} />
+                              </button>
+                              <button
+                                onClick={() => handleDelete(blog.slug)}
+                                className="text-red-600 hover:text-red-800"
+                              >
+                                <Trash size={16} />
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* Mobile View */}
+                  <div className="md:hidden space-y-4">
+                    {blogs.map((blog: any) => (
+                      <div
+                        key={blog._id}
+                        className="border rounded p-4 shadow-sm"
+                      >
+                        <p className="mb-1">
+                          <strong>Title:</strong> {blog.title}
+                        </p>
+                        <p className="mb-1">
+                          <strong>Excerpt:</strong> {blog.excerpt}
+                        </p>
+                        <p className="mb-1">
+                          <strong>Author:</strong> {blog.author}
+                        </p>
+                        <p className="mb-1">
+                          <strong>Published:</strong>{" "}
+                          {new Date(blog.datePublished).toLocaleString()}
+                        </p>
+                        <div className="flex gap-4 mt-2">
+                          <button
+                            onClick={() => handleEdit(blog.slug)}
+                            className="text-blue-600"
+                          >
+                            <Edit size={16} />
+                          </button>
+                          <button
+                            onClick={() => handleDelete(blog.slug)}
+                            className="text-red-600"
+                          >
+                            <Trash size={16} />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Modal */}
+                  {showAddModal && (
+                    <AddBlog
+                      onClose={handleModalClose}
+                      onSuccess={fetchBlogs}
+                      existingBlog={editingBlog}
+                    />
+                  )}
                 </section>
               )}
             </main>

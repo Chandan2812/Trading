@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Landing } from "./pages/Landing";
-import Blog from "./components/Blog";
-import BlogDetails from "./components/BlogDetails";
+// import Blog from "./components/Blog";
+// import BlogDetails from "./components/BlogDetails";
 import Contact from "./pages/contact";
 import Chatbot from "./components/Chatbot";
 import AboutUsSection from "./pages/About";
@@ -12,6 +12,8 @@ import Emailer from "./pages/Emailer";
 import NewsletterForm from "./pages/Newsletter";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import AdminPage from "./admin/AdminPage";
+import Blog2 from "./pages/Blog2";
+import Blog2Details from "./pages/Blog2Details";
 
 function App() {
   return (
@@ -19,10 +21,13 @@ function App() {
       <>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/Blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogDetails />} />
+          {/* <Route path="/Blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetails />} /> */}
           <Route path="/Contact" element={<Contact />} />
           <Route path="/about" element={<AboutUsSection />} />
+          <Route path="/Blog2" element={<Blog2 />} />
+          <Route path="/blogs/:slug" element={<Blog2Details />} />
+
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/emailer" element={<Emailer />} />
