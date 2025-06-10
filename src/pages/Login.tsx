@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import logo from "../assets/logo-01.svg";
 import sideImage from "../assets/newabout.webp";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,22 @@ const Login = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme")
+      ? localStorage.getItem("theme") === "dark"
+      : true;
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,11 +67,26 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-black px-4 py-8 transition-colors duration-300">
-      <div className="mb-8 max-w-7xl mx-auto">
+    <div className="min-h-screen w-full bg-white dark:bg-black  transition-colors duration-300">
+      <div className="w-full py-5 px-8 shadow-md dark:shadow-gray-200 flex justify-between items-center mb-12">
         <a href="/">
-          <img src={logo} alt="Close Friends Traders" className="w-44" />
+          <img
+            src={logo}
+            alt="Close Friends Traders"
+            className="w-40 transition-all duration-300 hover:scale-105"
+          />
         </a>
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="p-2 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 transition-colors duration-300"
+          title="Toggle Theme"
+        >
+          {darkMode ? (
+            <FiSun size={24} className="text-white" />
+          ) : (
+            <FiMoon size={24} className="text-gray-700" />
+          )}
+        </button>
       </div>
 
       <div className="flex w-full mx-auto max-w-4xl h-[500px] rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 backdrop-blur-sm shadow-2xl">

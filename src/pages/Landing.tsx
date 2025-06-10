@@ -9,6 +9,7 @@ import Navbar from "../components/Nav";
 import Popup from "../components/PopUp";
 import RegulatoryDisclaimer from "../components/RegulatoryDisclaimer";
 import ScrollingIcons from "../components/ScrollingIcons";
+import StatsSection from "../components/Stats";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import Trusted from "../components/Trusted";
 import WhyChoose from "../components/WhyChooseUs";
@@ -21,6 +22,7 @@ export const Landing = () => {
       <HeroSection />
       <WhyChoose />
       <Carousel />
+      <StatsSection />
       <Trusted />
       <WhyTrade />
       <HowItWorks />
