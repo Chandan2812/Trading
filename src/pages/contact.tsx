@@ -36,14 +36,14 @@ function Contact() {
               <ContactItem
                 icon={<Phone />}
                 label="Call us"
-                content="+919584068783"
-                href="tel:+919584068783"
+                content="+918368284948"
+                href="tel:+918368284948"
               />
               <ContactItem
                 icon={<Mail />}
                 label="Email us"
-                content="Closefriendstraders@gmail.com"
-                href="mailto:Closefriendstraders"
+                content="info@closefriendtrader.in"
+                href="mailto:info@closefriendtrader.in"
               />
               <ContactItem
                 icon={<MapPin />}
