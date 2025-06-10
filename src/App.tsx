@@ -14,6 +14,7 @@ import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import AdminPage from "./admin/AdminPage";
 import Blog2 from "./pages/Blog2";
 import Blog2Details from "./pages/Blog2Details";
+import WhatsAppButton from "./components/floatingBtn";
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
           <Route path="/newsletter" element={<NewsletterForm />} />
           <Route path="/AdminPage" element={<AdminPage />} />
         </Routes>
+        <div className="hidden md:block">
+          <WhatsAppButton />
+        </div>
         {/* Bottom Buttons */}
         <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
           <div className="flex w-full">

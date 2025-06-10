@@ -232,7 +232,7 @@ const Chatbot: React.FC = () => {
     <div>
       {/* Floating Button */}
       <button
-        className="fixed bottom-20 right-6 z-50 p-4 rounded-full bg-[var(--primary-color)] text-white shadow-lg hover:scale-105 transition"
+        className="fixed bottom-24 right-6 z-50 p-4 rounded-full bg-[var(--primary-color)] text-white shadow-lg hover:scale-105 transition"
         onClick={toggleChat}
         aria-label="Toggle Chatbot"
       >

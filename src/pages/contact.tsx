@@ -36,8 +36,8 @@ function Contact() {
               <ContactItem
                 icon={<Phone />}
                 label="Call us"
-                content="123456789"
-                href="tel:02071250421"
+                content="+919584068783"
+                href="tel:+919584068783"
               />
               <ContactItem
                 icon={<Mail />}
@@ -54,7 +54,7 @@ function Contact() {
               <ContactItem
                 icon={<Clock />}
                 label="Working Hours"
-                content="Mon - Fri: 9:00 AM - 6:00 PM"
+                content="24x7"
               />
             </div>
           </div>
