@@ -1,5 +1,6 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import { FaQuoteLeft, FaArrowLeft, FaArrowRight, FaStar } from "react-icons/fa";
+import { FaQuoteLeft, FaStar } from "react-icons/fa";
 
 const testimonials = [
   {
@@ -70,35 +71,41 @@ export default function TestimonialCarousel() {
         <div className="hidden md:flex">
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-primary-light dark:bg-primary-dark text-[var(--primary-color)] flex items-center justify-center  hover:brightness-90 transition"
             aria-label="Previous testimonial"
           >
-            <FaArrowLeft />
+            <ChevronLeft size={60} />
           </button>
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-primary-light dark:bg-primary-dark text-[var(--primary-color)] flex items-center justify-center hover:brightness-90 transition"
             aria-label="Next testimonial"
           >
-            <FaArrowRight />
+            <ChevronRight size={60} />
           </button>
         </div>
 
         {/* Mobile arrows (inline) */}
-        <div className="flex md:hidden justify-center gap-4 mt-8">
+        <div className="flex md:hidden justify-between px-5 gap-4 mt-8">
           <button
             onClick={prev}
             className="bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
             aria-label="Previous testimonial"
           >
-            <FaArrowLeft />
+            <span>
+              <ChevronLeft />
+            </span>
+            Previous
           </button>
           <button
             onClick={next}
             className="bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
             aria-label="Next testimonial"
           >
-            <FaArrowRight />
+            Next
+            <span>
+              <ChevronRight />
+            </span>
           </button>
         </div>
       </div>

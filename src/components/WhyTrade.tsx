@@ -1,47 +1,115 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  FaGlobe,
-  FaMoneyCheckAlt,
-  FaShieldAlt,
-  FaBolt,
-  FaChartLine,
-  FaExchangeAlt,
-  FaArrowLeft,
-  FaArrowRight,
-} from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import zero from "../assets/whyTrade/zero.png";
+import fivex from "../assets/whyTrade/500x.png";
+import zeroTax from "../assets/whyTrade/Tax.png"; // Add this image
+import register from "../assets/whyTrade/register.png"; // Add this image
+import withdrawal from "../assets/whyTrade/withdrawl.png"; // Add this image
+import support from "../assets/whyTrade/support.png"; // Add this image
+import security from "../assets/whyTrade/security.png"; // Add this image
+import payments from "../assets/whyTrade/payment.png"; // Add this image
+import traders from "../assets/whyTrade/HappyTraders.png"; // Add this image
 
 const features = [
   {
-    icon: <FaBolt size={30} className="text-[var(--primary-color)]" />,
-    title: "Instant Trade Execution",
-    desc: "Experience lightning-fast trade execution with minimal slippage.",
+    icon: (
+      <img
+        src={zero}
+        alt="Zero Brokerage"
+        className="h-[70px] w-[70px] object-contain"
+      />
+    ),
+    title: "0 Brokerage",
+    desc: "Trade with zero brokerage and maximize every rupee of your investment without any hidden fees or commissions.",
   },
   {
-    icon: <FaExchangeAlt size={30} className="text-[var(--primary-color)]" />,
-    title: "Low Spreads & Commissions",
-    desc: "Trade with the most competitive spreads in the market.",
+    icon: (
+      <img
+        src={fivex}
+        alt="500X Margin"
+        className="h-[70px] w-[70px] object-contain"
+      />
+    ),
+    title: "500X Margin",
+    desc: "Boost your trading potential with 500x leverage and unlock larger opportunities using minimal capital.",
   },
   {
-    icon: <FaShieldAlt size={30} className="text-[var(--primary-color)]" />,
-    title: "Regulated and Secure",
-    desc: "Trade with confidence on a platform that prioritizes security and compliance.",
+    icon: (
+      <img
+        src={zeroTax}
+        alt="0 Tax"
+        className="h-[70px] w-[70px] object-contain"
+      />
+    ),
+    title: "0 Tax",
+    desc: "Enjoy tax-free trading with no additional charges on your profits or withdrawals—full earnings in your pocket.",
   },
   {
-    icon: <FaGlobe size={30} className="text-[var(--primary-color)]" />,
-    title: "Access to Global Markets",
-    desc: "Trade forex, indices, commodities, and more from one account.",
+    icon: (
+      <img
+        src={register}
+        alt="Register in 10 Sec"
+        className="h-[70px] w-[70px] object-contain"
+      />
+    ),
+    title: "Register in 10 Sec",
+    desc: "Sign up instantly using just your name and phone number—quick, secure, and ready to trade in seconds.",
   },
   {
-    icon: <FaMoneyCheckAlt size={30} className="text-[var(--primary-color)]" />,
-    title: "Fast Withdrawal Processing",
-    desc: "Enjoy quick and hassle-free withdrawals to get your funds when you need them.",
+    icon: (
+      <img
+        src={withdrawal}
+        alt="Instant Withdrawals"
+        className="h-[70px] w-[70px] object-contain"
+      />
+    ),
+    title: "Instant Withdrawals",
+    desc: "Deposit and withdraw your funds instantly without delays, ensuring a smooth and uninterrupted trading journey.",
   },
   {
-    icon: <FaChartLine size={30} className="text-[var(--primary-color)]" />,
-    title: "MT5 Trading Platform",
-    desc: "Trade on the world's leading trading platform with advanced tools.",
+    icon: (
+      <img
+        src={support}
+        alt="24×7 Support"
+        className="h-[70px] w-[70px] object-contain"
+      />
+    ),
+    title: "24×7 Support",
+    desc: "Reach out to our dedicated support team any time, day or night, for real-time help with your trades.",
+  },
+  {
+    icon: (
+      <img
+        src={security}
+        alt="Data Security"
+        className="h-[70px] w-[70px] object-contain"
+      />
+    ),
+    title: "Data Security",
+    desc: "Your information is protected with cutting-edge encryption to keep your data safe, private, and fully secure.",
+  },
+  {
+    icon: (
+      <img
+        src={payments}
+        alt="Multiple Payments"
+        className="h-[70px] w-[70px] object-contain"
+      />
+    ),
+    title: "Multiple Payments",
+    desc: "Choose from a variety of trusted payment methods to fund your trades quickly and with complete flexibility.",
+  },
+  {
+    icon: (
+      <img
+        src={traders}
+        alt="Happy Traders"
+        className="h-[70px] w-[70px] object-contain"
+      />
+    ),
+    title: "Happy Traders",
+    desc: "Join thousands of satisfied traders enjoying seamless experiences, quick payouts, and profitable trading every day.",
   },
 ];
 
@@ -82,9 +150,13 @@ const WhyTrade: React.FC = () => {
             data-aos="zoom-in"
           >
             <div className="bg-white dark:bg-black rounded-lg p-6 transition-colors duration-300">
-              <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{feature.desc}</p>
+              <div className="mb-4 flex justify-center">{feature.icon}</div>
+              <h3 className="text-lg font-semibold mb-2 text-center">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-center">
+                {feature.desc}
+              </p>
             </div>
           </div>
         ))}
@@ -108,11 +180,11 @@ const WhyTrade: React.FC = () => {
                 style={{ scrollSnapAlign: "start" }}
               >
                 <div className="bg-white dark:bg-gradient-to-br dark:from-[#111] dark:to-[#1a1a1a] border border-[var(--primary-color)] rounded-lg p-6 h-full transition-colors duration-300">
-                  <div className="mb-4">{feature.icon}</div>
-                  <h3 className="text-lg font-semibold mb-2">
+                  <div className="mb-4 flex justify-center">{feature.icon}</div>
+                  <h3 className="text-lg font-semibold mb-2 text-center">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-gray-600 dark:text-gray-400 text-center">
                     {feature.desc}
                   </p>
                 </div>
@@ -120,30 +192,46 @@ const WhyTrade: React.FC = () => {
             ))}
           </div>
 
-          {/* Arrows */}
-          <button
-            onClick={() => handleScroll("left")}
-            disabled={index === 0}
-            className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 ${
-              index === 0
-                ? "bg-gray-300 dark:bg-gray-800 cursor-not-allowed opacity-40"
-                : "bg-black/10 dark:bg-black/70 hover:dark:bg-black/90"
-            }`}
-          >
-            <FaArrowLeft size={20} className="text-black dark:text-white" />
-          </button>
+          {/* Navigation Arrows */}
+          {index > 0 && (
+            <button
+              onClick={() => handleScroll("left")}
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 bg-black/10 dark:bg-black/70 hover:dark:bg-black/90"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-black dark:text-white"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          )}
 
-          <button
-            onClick={() => handleScroll("right")}
-            disabled={index === features.length - 1}
-            className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 ${
-              index === features.length - 1
-                ? "bg-gray-300 dark:bg-gray-800 cursor-not-allowed opacity-40"
-                : "bg-black/10 dark:bg-black/70 hover:dark:bg-black/90"
-            }`}
-          >
-            <FaArrowRight size={20} className="text-black dark:text-white" />
-          </button>
+          {index < features.length - 1 && (
+            <button
+              onClick={() => handleScroll("right")}
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full z-10 bg-black/10 dark:bg-black/70 hover:dark:bg-black/90"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-black dark:text-white"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          )}
         </div>
       </div>
     </section>

@@ -5,23 +5,7 @@ import "aos/dist/aos.css";
 
 const markets = [
   {
-    title: "Forex",
-    description:
-      "Trade metals, energy, and agriculture & Maximize returns with enhanced exposure.",
-    button: "Read More",
-    icon: "fa-solid fa-scale-balanced",
-    image: "https://www.arrowtradefx.com/assets/images/svg/forex.svg",
-  },
-  {
-    title: "FOREX Trading Partner",
-    description:
-      "Global Currencies: Trade international currency pairs & Save on hidden fees and charges.",
-    button: "Read More",
-    icon: "fa-solid fa-chart-line",
-    image: "https://www.arrowtradefx.com/assets/images/svg/indices.svg",
-  },
-  {
-    title: "Futures and Options",
+    title: "NSE(Futures and Options)",
     description:
       "Maximize exposure with minimal capital & Trade indices, stocks, and commodities.",
     button: "Learn more",
@@ -29,7 +13,7 @@ const markets = [
     image: "https://www.arrowtradefx.com/assets/images/svg/shares.svg",
   },
   {
-    title: "Margin Trading Market",
+    title: "MCX",
     description:
       "Trade bigger with minimal capital.Save time and costs & Enter and exit positions with ease.",
     button: "Learn more",
@@ -37,7 +21,7 @@ const markets = [
     image: "https://www.arrowtradefx.com/assets/images/svg/commodities.svg",
   },
   {
-    title: "CRYPTO Online Dabba Trading",
+    title: "Cryptos",
     description:
       "Popular Cryptos: Trade Bitcoin, Ethereum and more, Save on hidden fees and charges",
     button: "Learn more",
@@ -45,7 +29,7 @@ const markets = [
     image: "https://www.arrowtradefx.com/assets/images/svg/futures.svg",
   },
   {
-    title: "Intraday Trading Market",
+    title: "Comex",
     description:
       "Fast Execution: Trade instantly for quick profits Low Cost: Save with minimum transaction fees.",
     button: "Learn more",
@@ -96,7 +80,7 @@ const DabbaMarkets: React.FC = () => {
       </div>
 
       {/* Desktop Grid */}
-      <div className="mt-12 hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="mt-12 hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
         {markets.map((market, index) => (
           <div
             key={index}

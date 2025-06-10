@@ -20,14 +20,7 @@ const HeroSection: React.FC = () => {
           </span>
           <span className="block text-[var(--primary-color)]">
             <Typewriter
-              words={[
-                "NSE (F&O)",
-                "MCX (F&O)",
-                "Comex Future",
-                "Forex",
-                "US Equity",
-                "Global Market",
-              ]}
+              words={["NSE (F&O)", "MCX (F&O)", "Comex Future"]}
               loop={0} // infinite loop
               cursor
               typeSpeed={60}

@@ -23,11 +23,7 @@ export default function WhyChooseUs() {
       desc: "Trade assets with ease on our platform, suitable for all skill levels.",
       icon: "📈",
     },
-    {
-      title: "Upgraded Learning",
-      desc: "Enhance your trading skills with strategies, guiding you toward financial success.",
-      icon: "🧠",
-    },
+
     {
       title: "Immediate Support",
       desc: "Our dedicated trading team is on standby to guide you smoothly through your trades.",
@@ -66,7 +62,7 @@ export default function WhyChooseUs() {
         </p>
 
         {/* Desktop Grid */}
-        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {features.map((feature, index) => (
             <div
               key={index}
