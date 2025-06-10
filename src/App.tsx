@@ -42,14 +42,14 @@ function App() {
         <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
           <div className="flex w-full">
             <a
-              href="https://wa.me/1234567890"
+              href="https://wa.me/+919584068783"
               className="w-1/2 bg-[var(--primary-color)] text-white flex justify-center items-center py-4 text-xl"
               title="WhatsApp"
             >
               <FaWhatsapp />
             </a>
             <a
-              href="tel:+1234567890"
+              href="tel:+919584068783"
               className="w-1/2 bg-black dark:bg-white text-white dark:text-black flex justify-center items-center py-4 text-xl border-l border-[var(--primary-color)]"
               title="Phone"
             >

@@ -119,18 +119,23 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-bold mb-4">Market we Serve</h3>
           <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-            {["NSE(Futures and Options)", "MCX", "Cryptos", "Comex"].map(
-              (market, idx) => (
-                <li key={idx}>
-                  <a
-                    href="#"
-                    className="hover:text-[var(--primary-color)] transition-colors"
-                  >
-                    {market}
-                  </a>
-                </li>
-              )
-            )}
+            {[
+              "NSE(Futures and Options)",
+              "MCX",
+              "Cryptos",
+              "Forex",
+              "Us Stocks & Indices",
+              "Comex",
+            ].map((market, idx) => (
+              <li key={idx}>
+                <a
+                  href="#"
+                  className="hover:text-[var(--primary-color)] transition-colors"
+                >
+                  {market}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
