@@ -4,7 +4,7 @@ import axios from "axios";
 import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
 import { Share2 } from "lucide-react";
-// import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet";
 
 interface BlogType {
   title: string;
@@ -79,9 +79,9 @@ const Blog2Details = () => {
 
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white">
-      {/* <Helmet>
+      <Helmet>
         <title>{blog.title}</title>
-      </Helmet> */}
+      </Helmet>
       <Navbar />
       <div className="p-8 max-w-5xl mx-auto pt-40">
         <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
