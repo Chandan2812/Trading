@@ -3,19 +3,17 @@ import Slider from "react-slick";
 import nifty from "../assets/trading/1ST-ICON-1-80x80.webp";
 import gold from "../assets/trading/3RD-ICON-1-80x80.webp";
 import oil from "../assets/trading/4TH-ICON-1-80x80.webp";
-import copper from "../assets/trading/6TH-ICON-1-80x80 (1).webp";
-import amazon from "../assets/trading/6TH-ICON-1-80x80.webp";
+import amazon from "../assets/trading/6TH-ICON-1-80x80 (1).webp";
 import img from "../assets/trading/ALUMINIUIM-80x80.webp";
-import img2 from "../assets/trading/Amazon@2x@2x-80x80.webp";
-import img3 from "../assets/trading/CRUDE-OIL-80x80.webp";
+import img2 from "../assets/trading/Hero_MotoCorp-Logo.wine.png";
+import img3 from "../assets/trading/Adani_2012_logo.png";
 import img4 from "../assets/trading/META@2x@2x-80x80.webp";
-import img5 from "../assets/trading/META@2x@2x-80x80.webp";
-import img6 from "../assets/trading/NASDAQ@2x@2x-80x80.webp";
-import img7 from "../assets/trading/NATURAL-GAS-1-80x80.webp";
-import img8 from "../assets/trading/NATURAL-GAS-1-80x80.webp";
+import img5 from "../assets/trading/BSE_logo.svg.png";
+import img6 from "../assets/trading/Indian_Oil_Corporation-Logo.wine.png";
+import img7 from "../assets/trading/MRF.png";
 import img9 from "../assets/trading/NVIDIA@2x@2x-80x80.webp";
-import img10 from "../assets/trading/SP500@2x@2x-80x80.webp";
-import img11 from "../assets/trading/US500@2x@2x-80x80.webp";
+import img10 from "../assets/trading/tata-logo-png_seeklogo-135877.png";
+import img11 from "../assets/trading/GAIL.png";
 import img12 from "../assets/trading/ZINC-80x80.webp";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -24,7 +22,6 @@ const icons = [
   { src: nifty, alt: "Nifty", glow: "#007bff" },
   { src: gold, alt: "Gold", glow: "#ffc107" },
   { src: oil, alt: "Oil", glow: "#ff9800" },
-  { src: copper, alt: "Copper", glow: "#ff5722" },
   { src: amazon, alt: "Amazon", glow: "#007bff" },
   { src: img, alt: "Oil", glow: "#ff9800" },
   { src: img2, alt: "Copper", glow: "#ff5722" },
@@ -33,7 +30,6 @@ const icons = [
   { src: img5, alt: "Copper", glow: "#ff5722" },
   { src: img6, alt: "Amazon", glow: "#007bff" },
   { src: img7, alt: "Oil", glow: "#ff9800" },
-  { src: img8, alt: "Copper", glow: "#ff5722" },
   { src: img9, alt: "Amazon", glow: "#007bff" },
   { src: img10, alt: "Oil", glow: "#ff9800" },
   { src: img11, alt: "Copper", glow: "#ff5722" },
