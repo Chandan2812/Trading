@@ -7,6 +7,9 @@ import { exportToExcel } from "../utils/exportToExcel";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Edit, Trash } from "lucide-react";
 import AddBlog from "../components/AddBlogs"; // adjust path if needed
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import "../index.css";
 
 export default function AdminPage() {
   const [users, setUsers] = useState([]);
@@ -20,6 +23,9 @@ export default function AdminPage() {
   const [blogs, setBlogs] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingBlog, setEditingBlog] = useState<BlogPost | null>(null);
+  const [showContentEditor, setShowContentEditor] = useState(false);
+  const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
+  const [editorContent, setEditorContent] = useState("");
 
   const navigate = useNavigate();
 
@@ -33,6 +39,16 @@ export default function AdminPage() {
     content: string; // ✅ Add this line
   }
 
+  const toolbarOptions = [
+    ["bold", "italic", "underline", "strike"],
+    [{ color: [] }, { background: [] }],
+    ["blockquote"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    [{ align: [] }],
+    ["link"],
+  ];
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     if (user.email !== "admin@gmail.com") {
@@ -44,7 +60,7 @@ export default function AdminPage() {
     axios
       .get("https://cft-b87k.onrender.com/api/auth/allUser")
       .then((res) => {
-        console.log("Users:", res.data);
+        // console.log("Users:", res.data);
         setUsers(res.data);
       })
       .catch((err) => console.error("Users error:", err));
@@ -52,7 +68,7 @@ export default function AdminPage() {
     axios
       .get("https://cft-b87k.onrender.com/newsletter")
       .then((res) => {
-        console.log("Newsletter:", res.data);
+        // console.log("Newsletter:", res.data);
         setNewsletterData(res.data);
       })
       .catch((err) => console.error("Newsletter error:", err));
@@ -60,7 +76,7 @@ export default function AdminPage() {
     axios
       .get("https://cft-b87k.onrender.com/subscribers")
       .then((res) => {
-        console.log("Subscribers:", res.data);
+        // console.log("Subscribers:", res.data);
         setEmailSubscribers(res.data);
       })
       .catch((err) => console.error("Subscribers error:", err));
@@ -68,7 +84,7 @@ export default function AdminPage() {
     axios
       .get("https://cft-b87k.onrender.com/api/popup-lead")
       .then((res) => {
-        console.log("Leads:", res.data);
+        // console.log("Leads:", res.data);
         setPopupLeads(res.data);
       })
       .catch((err) => console.error("Leads error:", err));
@@ -77,7 +93,7 @@ export default function AdminPage() {
     axios
       .get("https://cft-b87k.onrender.com/emailer")
       .then((res) => {
-        console.log("Emailer:", res.data);
+        // console.log("Emailer:", res.data);
         setEmailerData(res.data);
       })
       .catch((err) => console.error("Emailer error:", err));
@@ -86,7 +102,7 @@ export default function AdminPage() {
     axios
       .get("https://cft-b87k.onrender.com/api/enquiry/chatbot")
       .then((res) => {
-        console.log("Chatbot:", res.data);
+        // console.log("Chatbot:", res.data);
         setChatbotData(res.data);
       })
       .catch((err) => console.error("Chatbot error:", err));
@@ -94,7 +110,7 @@ export default function AdminPage() {
     axios
       .get("https://cft-b87k.onrender.com/api/blogs/viewblog")
       .then((res) => {
-        console.log("Blogs:", res.data);
+        // console.log("Blogs:", res.data);
         setBlogs(res.data);
       })
       .catch((err) => console.error("Blogs error:", err));
@@ -706,32 +722,50 @@ export default function AdminPage() {
 
                   {/* Desktop Table */}
                   <div className="hidden md:block overflow-auto">
-                    <table className="w-full text-left text-sm table-fixed">
+                    <table className="w-full text-left text-sm table-auto">
                       <thead>
                         <tr className="border-b">
-                          <th className="pb-2 px-2 w-1/5">Title</th>
-                          <th className="pb-2 px-2 w-1/5">Excerpt</th>
-                          <th className="pb-2 px-2 w-1/5">Author</th>
-                          <th className="pb-2 px-2 w-1/5">Published On</th>
-                          <th className="pb-2 px-2 w-1/5">Actions</th>
+                          <th className="px-4 py-2 whitespace-nowrap">Title</th>
+                          <th className="px-4 py-2 whitespace-nowrap">
+                            Content
+                          </th>
+                          <th className="px-4 py-2 whitespace-nowrap">
+                            Author
+                          </th>
+                          <th className="px-4 py-2 whitespace-nowrap">
+                            Published On
+                          </th>
+                          <th className="px-4 py-2 whitespace-nowrap">
+                            Actions
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
                         {blogs.map((blog: any) => (
                           <tr key={blog._id} className="border-b align-top">
-                            <td className="py-2 px-2 break-words">
-                              {blog.title}
-                            </td>
-                            <td className="py-2 px-2 break-words">
-                              {blog.excerpt}
-                            </td>
-                            <td className="py-2 px-2 break-words">
+                            <td className="px-4 py-2 w-1/5">{blog.title}</td>
+                            <td
+                              className="px-4 py-2 break-words max-w-[250px] cursor-pointer"
+                              onClick={() => {
+                                setSelectedBlog(blog);
+                                setEditorContent(blog.content);
+                                setShowContentEditor(true);
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  blog.content.length > 150
+                                    ? blog.content.slice(0, 140) + "..."
+                                    : blog.content,
+                              }}
+                            />
+
+                            <td className="px-4 py-2 whitespace-nowrap">
                               {blog.author}
                             </td>
-                            <td className="py-2 px-2 break-words">
+                            <td className="px-4 py-2 whitespace-nowrap">
                               {new Date(blog.datePublished).toLocaleString()}
                             </td>
-                            <td className="py-2 px-2 space-x-2">
+                            <td className="px-4 py-2 whitespace-nowrap space-x-2">
                               <button
                                 onClick={() => handleEdit(blog.slug)}
                                 className="text-blue-600 hover:text-blue-800"
@@ -761,9 +795,21 @@ export default function AdminPage() {
                         <p className="mb-1">
                           <strong>Title:</strong> {blog.title}
                         </p>
-                        <p className="mb-1">
-                          <strong>Excerpt:</strong> {blog.excerpt}
-                        </p>
+                        <p
+                          className="mb-1 cursor-pointer"
+                          onClick={() => {
+                            setSelectedBlog(blog);
+                            setEditorContent(blog.content);
+                            setShowContentEditor(true);
+                          }}
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              blog.content.length > 150
+                                ? blog.content.slice(0, 140) + "..."
+                                : blog.content,
+                          }}
+                        />
+
                         <p className="mb-1">
                           <strong>Author:</strong> {blog.author}
                         </p>
@@ -796,6 +842,64 @@ export default function AdminPage() {
                       onSuccess={fetchBlogs}
                       existingBlog={editingBlog}
                     />
+                  )}
+
+                  {showContentEditor && (
+                    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center overflow-auto">
+                      <div className="relative bg-white w-full max-w-3xl mx-4 my-12 p-6 rounded shadow">
+                        <h3 className="text-lg font-semibold mb-4">
+                          Edit Blog Content
+                        </h3>
+
+                        <ReactQuill
+                          value={editorContent}
+                          onChange={setEditorContent}
+                          theme="snow"
+                          className="mb-4 h-64 overflow-y-auto"
+                          modules={{ toolbar: toolbarOptions }}
+                        />
+
+                        <div className="flex justify-end gap-3 mt-4">
+                          <button
+                            onClick={() => setShowContentEditor(false)}
+                            className="px-4 py-2 bg-gray-300 rounded"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            onClick={async () => {
+                              try {
+                                const res = await fetch(
+                                  `https://cft-b87k.onrender.com/api/blogs/${selectedBlog?.slug}`,
+                                  {
+                                    method: "PUT",
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                      content: editorContent,
+                                    }),
+                                  }
+                                );
+
+                                if (!res.ok)
+                                  throw new Error(
+                                    "Failed to update blog content"
+                                  );
+
+                                setShowContentEditor(false);
+                                fetchBlogs();
+                              } catch (error) {
+                                console.error(error);
+                              }
+                            }}
+                            className="px-4 py-2 bg-blue-600 text-white rounded"
+                          >
+                            Save Changes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   )}
                 </section>
               )}

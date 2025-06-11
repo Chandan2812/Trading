@@ -50,7 +50,23 @@ const AddBlog = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+
+    // Auto-generate slug if the title is changing and the slug hasn't been manually modified
+    if (name === "title") {
+      const autoSlug = value
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, "") // remove special chars
+        .trim()
+        .replace(/\s+/g, "-"); // replace spaces with -
+
+      setFormData((prev) => ({
+        ...prev,
+        title: value,
+        slug: existingBlog ? prev.slug : autoSlug, // don't overwrite if editing
+      }));
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,7 +115,7 @@ const AddBlog = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[9999]">
       <div className="bg-white text-black p-6 w-full max-w-2xl rounded-xl overflow-y-auto max-h-[90vh]">
         <h2 className="text-2xl font-bold mb-4">
           {existingBlog ? "Edit Blog" : "Add New Blog"}
@@ -157,9 +173,12 @@ const AddBlog = ({
             value={formData.tags}
             onChange={handleChange}
           />
+          <label className="block mb-2 font-medium">
+            Upload Image (JPG, JPEG, or PNG only)
+          </label>
           <input
             type="file"
-            accept="image/*"
+            accept="image/png, image/jpeg, image/jpg"
             className="w-full"
             onChange={handleImageChange}
             required={!existingBlog}

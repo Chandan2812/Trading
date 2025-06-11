@@ -303,7 +303,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[999] right-[100px] top-[85px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[270px] lg:top-[67px] lg:-translate-x-1/2"
+          className="fixed z-[99] right-[100px] top-[85px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[270px] lg:top-[67px] lg:-translate-x-1/2"
         />
       )}
     </>

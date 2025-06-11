@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
 import { Share2 } from "lucide-react";
+// import { Helmet } from "react-helmet";
 
 interface BlogType {
   title: string;
@@ -55,7 +56,7 @@ const Blog2Details = () => {
       try {
         await navigator.share({
           title: blog?.title,
-          text: "Check out this blog from Granth!",
+          text: "Check out this blog from Close Friends Traders!",
           url,
         });
       } catch (error) {
@@ -78,8 +79,11 @@ const Blog2Details = () => {
 
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white">
+      {/* <Helmet>
+        <title>{blog.title}</title>
+      </Helmet> */}
       <Navbar />
-      <div className="p-8 max-w-3xl mx-auto pt-40">
+      <div className="p-8 max-w-5xl mx-auto pt-40">
         <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
         <p className="text-gray-600 mb-2">
           By {blog.author}- {new Date(blog.datePublished).toLocaleDateString()}
@@ -92,7 +96,7 @@ const Blog2Details = () => {
         />
 
         <div
-          className="prose max-w-none mb-6"
+          className="prose prose-lg dark:prose-invert max-w-none mb-6"
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
         <button
