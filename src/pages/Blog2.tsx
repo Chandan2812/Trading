@@ -20,6 +20,8 @@ const Blog2 = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 9;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,6 +43,16 @@ const Blog2 = () => {
 
   const handlePostClick = (slug: string) => {
     navigate(`/blogs/${slug}`);
+  };
+
+  const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = blogPosts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" }); // optional: scroll to top
   };
 
   if (loading) {
@@ -75,7 +87,7 @@ const Blog2 = () => {
         </div>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {blogPosts.map((post) => (
+          {currentPosts.map((post) => (
             <div
               key={post._id}
               className="cursor-pointer relative rounded-lg p-[1.5px] hover:shadow-[0_0_10px_var(--primary-color)] transition"
@@ -109,6 +121,25 @@ const Blog2 = () => {
             </div>
           ))}
         </div>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-10 space-x-2">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => handlePageChange(page)}
+                className={`px-4 py-2 rounded ${
+                  currentPage === page
+                    ? "bg-[var(--primary-color)] text-white"
+                    : "bg-gray-200 dark:bg-gray-700"
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
       <Footer />
     </div>
