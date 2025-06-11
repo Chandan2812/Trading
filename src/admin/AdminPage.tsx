@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Nav";
 import { exportToDocx } from "../utils/exportDoc";
 import { exportToExcel } from "../utils/exportToExcel";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Trash2 } from "lucide-react";
 import { Edit, Trash } from "lucide-react";
 import AddBlog from "../components/AddBlogs"; // adjust path if needed
 import ReactQuill from "react-quill";
@@ -161,14 +161,16 @@ export default function AdminPage() {
   };
 
   return (
-    <div>
+    <div className="text-black dark:text-white">
       <Navbar />
-      <div className="min-h-screen bg-gray-100 p-6 mt-32">
+      <div className="min-h-screen bg-white dark:bg-black p-6 mt-32">
         <div className="flex flex-col md:flex-row gap-6">
           {/* SIDEBAR (Desktop Only) */}
 
-          <aside className="w-full md:w-1/4 bg-white p-4 rounded shadow hidden md:block">
-            <h2 className="text-xl font-semibold mb-4">Access Panel</h2>
+          <aside className="fixed top-32 left-10 h-fit mt-10 w-64 bg-gray-100 dark:bg-neutral-900 p-4 shadow z-40 hidden md:block overflow-y-auto">
+            <h2 className="text-xl font-semibold mb-4 text-[var(--primary-color)]">
+              Access Panel
+            </h2>
             <ul className="space-y-2">
               {menuItems.map((item) => (
                 <li key={item}>
@@ -176,8 +178,8 @@ export default function AdminPage() {
                     onClick={() => setActivePanel(item)}
                     className={`w-full text-left px-2 py-1 rounded ${
                       activePanel === item
-                        ? "bg-blue-200 font-semibold"
-                        : "hover:bg-gray-100"
+                        ? "bg-neutral-200 dark:bg-neutral-800 font-semibold"
+                        : "hover:bg-gray-100 dark:hover:bg-neutral-800"
                     }`}
                   >
                     {item}
@@ -188,9 +190,9 @@ export default function AdminPage() {
           </aside>
 
           {/* MAIN CONTENT */}
-          <div className="w-full md:w-3/4">
+          <div className="w-full mt-16 md:mt-0 md:ml-80 p-4 md:w-3/4">
             {/* MOBILE HEADER */}
-            <div className="flex items-center justify-between md:hidden bg-white p-4 rounded shadow mb-4">
+            <div className="flex fixed top-36 left-10 w-[80%]  items-center justify-between md:hidden bg-white dark:bg-black p-4 rounded shadow mb-4">
               <h2 className="text-xl font-semibold">Access Panel</h2>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -225,7 +227,7 @@ export default function AdminPage() {
 
             <main className="flex-1">
               {activePanel === "Users" && (
-                <section className="bg-white p-4 rounded shadow mb-6">
+                <section className="bg-gray-100 dark:bg-neutral-900  p-4 rounded shadow mb-6">
                   <div className="flex justify-between items-center mb-2">
                     <h2 className="text-xl font-semibold">User Logins</h2>
                     <button
@@ -262,7 +264,7 @@ export default function AdminPage() {
               )}
 
               {activePanel === "Newsletter Data" && (
-                <section className="bg-white p-4 md:p-6 rounded shadow mb-6">
+                <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold">Newsletter Data</h2>
                     <div className="flex gap-4">
@@ -324,7 +326,7 @@ export default function AdminPage() {
                       </thead>
                       <tbody>
                         {newsletterData.map((item: any) => (
-                          <tr key={item._id} className="border-b align-top">
+                          <tr key={item._id} className=" align-top">
                             <td className="py-2 px-2 break-words">
                               {item.title}
                             </td>
@@ -382,7 +384,7 @@ export default function AdminPage() {
               )}
 
               {activePanel === "Email Subscribers" && (
-                <section className="bg-white p-4 rounded shadow mb-6">
+                <section className="bg-gray-100 dark:bg-neutral-900 p-4 rounded shadow mb-6">
                   <div className="flex justify-between items-center mb-2">
                     <h2 className="text-xl font-semibold mb-2">
                       Email Subscribers
@@ -423,7 +425,7 @@ export default function AdminPage() {
               )}
 
               {activePanel === "Popup Leads" && (
-                <section className="bg-white p-4 md:p-6 rounded shadow mb-6">
+                <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold">Popup Leads</h2>
                     <button
@@ -454,7 +456,7 @@ export default function AdminPage() {
                       </thead>
                       <tbody>
                         {popupLeads.map((lead: any) => (
-                          <tr key={lead._id} className="border-b align-top">
+                          <tr key={lead._id} className=" align-top">
                             <td className="py-2 px-2 break-words">
                               {lead.fullName}
                             </td>
@@ -503,7 +505,7 @@ export default function AdminPage() {
               )}
 
               {activePanel === "Emailer Data" && (
-                <section className="bg-white p-4 md:p-6 rounded shadow mb-6">
+                <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold">Emailer Data</h2>
                     <div className="flex gap-4">
@@ -562,7 +564,7 @@ export default function AdminPage() {
                       </thead>
                       <tbody>
                         {emailerData.map((item: any) => (
-                          <tr key={item._id} className="border-b align-top">
+                          <tr key={item._id} className=" align-top">
                             <td className="py-2 px-2 break-words">
                               {item.title}
                             </td>
@@ -632,7 +634,7 @@ export default function AdminPage() {
               )}
 
               {activePanel === "Chatbot Data" && (
-                <section className="bg-white p-4 md:p-6 rounded shadow mb-6">
+                <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold">
                       Chatbot Conversations
@@ -664,7 +666,7 @@ export default function AdminPage() {
                       </thead>
                       <tbody>
                         {chatbotData.map((chat: any) => (
-                          <tr key={chat._id} className="border-b align-top">
+                          <tr key={chat._id} className=" align-top">
                             <td className="py-2 px-2 break-words">
                               {chat.userMessage}
                             </td>
@@ -706,11 +708,11 @@ export default function AdminPage() {
               )}
 
               {activePanel === "Blog Data" && (
-                <section className="bg-white p-4 md:p-6 rounded shadow mb-6">
+                <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
                   <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-xl font-semibold text-black">Blogs</h2>
+                    <h2 className="text-xl font-semibold ">Blogs</h2>
                     <button
-                      className="text-white bg-blue-600 px-4 py-2 rounded"
+                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
                       onClick={() => {
                         setEditingBlog(null);
                         setShowAddModal(true);
@@ -742,7 +744,7 @@ export default function AdminPage() {
                       </thead>
                       <tbody>
                         {blogs.map((blog: any) => (
-                          <tr key={blog._id} className="border-b align-top">
+                          <tr key={blog._id} className=" align-top">
                             <td className="px-4 py-2 w-1/5">{blog.title}</td>
                             <td
                               className="px-4 py-2 break-words max-w-[250px] cursor-pointer"
@@ -776,7 +778,7 @@ export default function AdminPage() {
                                 onClick={() => handleDelete(blog.slug)}
                                 className="text-red-600 hover:text-red-800"
                               >
-                                <Trash size={16} />
+                                <Trash2 size={16} />
                               </button>
                             </td>
                           </tr>
@@ -893,7 +895,7 @@ export default function AdminPage() {
                                 console.error(error);
                               }
                             }}
-                            className="px-4 py-2 bg-blue-600 text-white rounded"
+                            className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
                           >
                             Save Changes
                           </button>
