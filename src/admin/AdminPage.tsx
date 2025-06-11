@@ -163,7 +163,7 @@ export default function AdminPage() {
   return (
     <div className="text-black dark:text-white">
       <Navbar />
-      <div className="min-h-screen bg-white dark:bg-black p-6 mt-32">
+      <div className="min-h-screen bg-white dark:bg-black py-6 mt-28">
         <div className="flex flex-col md:flex-row gap-6">
           {/* SIDEBAR (Desktop Only) */}
 
@@ -190,9 +190,9 @@ export default function AdminPage() {
           </aside>
 
           {/* MAIN CONTENT */}
-          <div className="w-full mt-16 md:mt-0 md:ml-80 p-4 md:w-3/4">
+          <div className="w-full mt-16 md:mt-4 md:ml-80 p-4 md:w-3/4">
             {/* MOBILE HEADER */}
-            <div className="flex fixed top-36 left-10 w-[80%]  items-center justify-between md:hidden bg-white dark:bg-black p-4 rounded shadow mb-4">
+            <div className="flex fixed top-36 left-0 w-full px-5  items-center justify-between md:hidden bg-gray-100  dark:bg-neutral-900 py-4 rounded shadow mb-4">
               <h2 className="text-xl font-semibold">Access Panel</h2>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -204,7 +204,7 @@ export default function AdminPage() {
 
             {/* MOBILE MENU */}
             {mobileMenuOpen && (
-              <ul className="mb-4 bg-white rounded shadow divide-y md:hidden">
+              <ul className="mb-4 bg-white text-black rounded shadow divide-y md:hidden">
                 {menuItems.map((item) => (
                   <li key={item}>
                     <button
@@ -848,7 +848,7 @@ export default function AdminPage() {
 
                   {showContentEditor && (
                     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center overflow-auto">
-                      <div className="relative bg-white w-full max-w-3xl mx-4 my-12 p-6 rounded shadow">
+                      <div className="relative bg-white text-black w-full max-w-3xl mx-4 my-12 p-6 rounded shadow">
                         <h3 className="text-lg font-semibold mb-4">
                           Edit Blog Content
                         </h3>
