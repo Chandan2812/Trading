@@ -1,7 +1,7 @@
 import image1 from "../assets/S1.jpg";
-import image2 from "../assets/Banner-2-scaled.webp";
-import image3 from "../assets/Banner-3-scaled.webp";
-import image4 from "../assets/Banner-4-scaled.webp";
+import image2 from "../assets/S2.jpg";
+import image3 from "../assets/S3.jpg";
+import image4 from "../assets/S4.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
