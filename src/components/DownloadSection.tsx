@@ -1,5 +1,5 @@
 import { FaWindows, FaApple, FaAndroid } from "react-icons/fa";
-import image from "../assets/meta-trade-devices.webp";
+import gif from "../assets/trading-gif.gif"; // ✅ new gif
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -18,12 +18,12 @@ export default function DownloadSection() {
         className="max-w-7xl mx-auto px-5 py-12 flex flex-col-reverse md:flex-row items-center justify-between gap-10"
         data-aos="fade-up"
       >
-        {/* Left: Image */}
-        <div className="md:w-1/2 flex justify-center">
+        {/* Left: GIF */}
+        <div className="md:w-1/2 flex justify-center ">
           <img
-            src={image}
+            src={gif}
             alt="MetaTrader Devices"
-            className="max-w-[90%] md:max-w-full"
+            className="max-w-[90%] md:max-w-full "
             draggable="false"
           />
         </div>

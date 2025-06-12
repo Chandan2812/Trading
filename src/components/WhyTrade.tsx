@@ -42,7 +42,7 @@ const features = [
         className="h-[70px] w-[70px] object-contain"
       />
     ),
-    title: "0 Tax",
+    title: "0% Tax",
     desc: "Enjoy tax-free trading with no additional charges on your profits or withdrawals—full earnings in your pocket.",
   },
   {
