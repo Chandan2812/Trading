@@ -85,7 +85,7 @@ const DabbaMarkets: React.FC = () => {
     <div className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold text-white">
-          Available Dabba Trading:{" "}
+          Segment Available In Our Platform:{" "}
           <span className="text-[#71ced0] italic">Markets</span>
         </h2>
         <p className="mt-2 text-gray-300 max-w-2xl mx-auto">

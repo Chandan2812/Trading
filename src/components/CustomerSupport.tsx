@@ -4,9 +4,9 @@ import { Heart, Lightbulb, Headphones, Settings } from "lucide-react";
 const supportItems = [
   {
     icon: <Heart className="w-10 h-10 text-[var(--primary-color)]" />,
-    title: "24/7 Multilingual Support",
+    title: "24/7 Multilanguages Support",
     description:
-      "Our dedicated customer service team is ready to assist you 24/7 in English and Hindi.",
+      "Our dedicated customer service team is ready to assist you 24/7 in English,Hindi, Gujrati, Marathi,Telgue.",
   },
   {
     icon: <Lightbulb className="w-10 h-10 text-[var(--primary-color)]" />,

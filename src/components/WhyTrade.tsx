@@ -20,7 +20,7 @@ const features = [
         className="h-[70px] w-[70px] object-contain"
       />
     ),
-    title: "0 Brokerage",
+    title: "0% Brokerage",
     desc: "Trade with zero brokerage and maximize every rupee of your investment without any hidden fees or commissions.",
   },
   {
@@ -97,7 +97,7 @@ const features = [
         className="h-[70px] w-[70px] object-contain"
       />
     ),
-    title: "Multiple Payments",
+    title: "Multiple Payment Methods",
     desc: "Choose from a variety of trusted payment methods to fund your trades quickly and with complete flexibility.",
   },
   {
@@ -109,7 +109,7 @@ const features = [
       />
     ),
     title: "Happy Traders",
-    desc: "Join thousands of satisfied traders enjoying seamless experiences, quick payouts, and profitable trading every day.",
+    desc: "Join thousands of satisfied traders on a trusted platform with 15 years of seamless experiences, quick payouts, and profitable trading.",
   },
 ];
 

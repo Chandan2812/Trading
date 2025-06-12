@@ -23,11 +23,10 @@ export default function WhyChooseUs() {
       desc: "Trade assets with ease on our platform, suitable for all skill levels.",
       icon: "📈",
     },
-
     {
-      title: "Immediate Support",
-      desc: "Our dedicated trading team is on standby to guide you smoothly through your trades.",
-      icon: "🎧",
+      title: "Real-Time Market Data",
+      desc: "Make informed decisions with live market trends, analytics, and updates.",
+      icon: "⏱️",
     },
   ];
 
