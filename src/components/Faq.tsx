@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import faq_img from "../assets/faq-img.png";
+import faq_img from "../assets/FAQ with Text.png";
 
 type Faq = {
   question: string;
@@ -58,7 +58,7 @@ const ToggleFAQ = () => {
             <img
               src={faq_img}
               alt="FAQ Illustration"
-              className="w-64 max-w-sm"
+              className="w-72 max-w-sm"
               draggable="false"
             />
           </div>
