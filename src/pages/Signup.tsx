@@ -8,10 +8,12 @@ const Signup = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [Phone, setPhone] = useState<number | "">("");
+  const [countryCode, setCountryCode] = useState("+91");
+  const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error" | "">("");
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
@@ -32,10 +34,31 @@ const Signup = () => {
     }
   }, [darkMode]);
 
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validatePhone = (phone: string) => {
+    return /^[0-9]{10}$/.test(phone);
+  };
+
   const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fullName || !email || !Phone) {
+    if (!fullName || !email || !phone) {
       setMessage("Please fill in all fields.");
+      setMessageType("error");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setMessage("Invalid email format.");
+      setMessageType("error");
+      return;
+    }
+
+    if (!validatePhone(phone)) {
+      setMessage("Phone number must be 10 digits.");
+      setMessageType("error");
       return;
     }
 
@@ -46,19 +69,26 @@ const Signup = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ fullName, email, Phone }),
+          body: JSON.stringify({
+            fullName,
+            email,
+            Phone: countryCode + phone,
+          }),
         }
       );
 
       const data = await res.json();
       if (!res.ok) {
         setMessage(data.error || "Failed to send OTP.");
+        setMessageType("error");
       } else {
         setMessage("OTP sent to your email.");
+        setMessageType("success");
         setStep(2);
       }
     } catch (err) {
       setMessage("Something went wrong. Try again.");
+      setMessageType("error");
     } finally {
       setLoading(false);
     }
@@ -68,6 +98,7 @@ const Signup = () => {
     e.preventDefault();
     if (!otp || !password) {
       setMessage("Enter OTP and password.");
+      setMessageType("error");
       return;
     }
 
@@ -85,8 +116,10 @@ const Signup = () => {
       const data = await res.json();
       if (!res.ok) {
         setMessage(data.error || "Verification failed.");
+        setMessageType("error");
       } else {
         setMessage("Signup complete!");
+        setMessageType("success");
         setFullName("");
         setEmail("");
         setPhone("");
@@ -96,6 +129,7 @@ const Signup = () => {
       }
     } catch (err) {
       setMessage("Something went wrong during verification.");
+      setMessageType("error");
     } finally {
       setLoading(false);
     }
@@ -103,7 +137,6 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen w-full bg-white dark:bg-black transition-colors duration-300 flex flex-col items-center">
-      {/* Header */}
       <div className="w-full py-5 px-8 shadow-md dark:shadow-gray-200 flex justify-between items-center mb-12">
         <a href="/">
           <img
@@ -125,10 +158,8 @@ const Signup = () => {
         </button>
       </div>
 
-      {/* Main */}
       <div className="w-full max-w-5xl rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900/50 dark:to-black shadow-xl dark:shadow-gray-900/30">
         <div className="flex flex-col md:flex-row h-full">
-          {/* Left Image */}
           <div className="hidden md:block md:w-1/2 relative">
             <img
               src={sideImage}
@@ -137,7 +168,6 @@ const Signup = () => {
             />
           </div>
 
-          {/* Right Form */}
           <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
             <div className="mb-8">
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
@@ -189,13 +219,63 @@ const Signup = () => {
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Phone Number
                       </label>
-                      <input
-                        type="tel"
-                        value={Phone}
-                        onChange={(e) => setPhone(Number(e.target.value))}
-                        className="w-full px-4 py-3 bg-white dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-lg border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        placeholder="+91 9876543210"
-                      />
+                      <div className="flex gap-2">
+                        <select
+                          value={countryCode}
+                          onChange={(e) => setCountryCode(e.target.value)}
+                          className="px-4 py-3 bg-white dark:bg-black  text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        >
+                          <option value="+1">+1 (USA)</option>
+                          <option value="+44">+44 (UK)</option>
+                          <option value="+91" selected>
+                            +91 (India)
+                          </option>
+                          <option value="+61">+61 (Australia)</option>
+                          <option value="+81">+81 (Japan)</option>
+                          <option value="+49">+49 (Germany)</option>
+                          <option value="+33">+33 (France)</option>
+                          <option value="+39">+39 (Italy)</option>
+                          <option value="+86">+86 (China)</option>
+                          <option value="+7">+7 (Russia)</option>
+                          <option value="+971">+971 (UAE)</option>
+                          <option value="+966">+966 (Saudi Arabia)</option>
+                          <option value="+92">+92 (Pakistan)</option>
+                          <option value="+880">+880 (Bangladesh)</option>
+                          <option value="+34">+34 (Spain)</option>
+                          <option value="+82">+82 (South Korea)</option>
+                          <option value="+55">+55 (Brazil)</option>
+                          <option value="+27">+27 (South Africa)</option>
+                          <option value="+351">+351 (Portugal)</option>
+                          <option value="+62">+62 (Indonesia)</option>
+                          <option value="+90">+90 (Turkey)</option>
+                          <option value="+32">+32 (Belgium)</option>
+                          <option value="+31">+31 (Netherlands)</option>
+                          <option value="+1-876">+1-876 (Jamaica)</option>
+                          <option value="+20">+20 (Egypt)</option>
+                          <option value="+234">+234 (Nigeria)</option>
+                          <option value="+60">+60 (Malaysia)</option>
+                          <option value="+46">+46 (Sweden)</option>
+                          <option value="+41">+41 (Switzerland)</option>
+                          <option value="+48">+48 (Poland)</option>
+                          <option value="+1-876">+1-876 (Jamaica)</option>
+                          <option value="+358">+358 (Finland)</option>
+                          <option value="+36">+36 (Hungary)</option>
+                          <option value="+52">+52 (Mexico)</option>
+                          <option value="+1-809">
+                            +1-809 (Dominican Republic)
+                          </option>
+                          <option value="+351">+351 (Portugal)</option>
+
+                          {/* Add more country codes as needed */}
+                        </select>
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          className="flex-1 px-4 py-3 bg-white dark:bg-white/5 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-lg border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                          placeholder="9876543210"
+                        />
+                      </div>
                     </div>
                   </>
                 )}
@@ -231,9 +311,6 @@ const Signup = () => {
                           type="button"
                           onClick={() => setShowPassword(!showPassword)}
                           className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-teal-500 transition"
-                          title={
-                            showPassword ? "Hide Password" : "Show Password"
-                          }
                         >
                           {showPassword ? (
                             <FiEyeOff size={18} />
@@ -266,7 +343,7 @@ const Signup = () => {
               {message && (
                 <div
                   className={`p-3 rounded-lg text-center text-sm ${
-                    message.toLowerCase().includes("success")
+                    messageType === "success"
                       ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
                       : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
                   }`}
