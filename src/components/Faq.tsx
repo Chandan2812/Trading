@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import faq_img from "../assets/faq-img.png";
+import faq_img from "../assets/FAQ with Text.png";
 
 type Faq = {
   question: string;
@@ -54,11 +54,11 @@ const ToggleFAQ = () => {
           Frequently Asked Questions
         </h2>
         <div className="flex flex-col md:flex-row justify-evenly py-3 items-start">
-          <div className="md:flex items-start hidden">
+          <div className="md:flex items-start hidden mt-10">
             <img
               src={faq_img}
               alt="FAQ Illustration"
-              className="w-64 max-w-sm"
+              className="w-72 max-w-sm"
               draggable="false"
             />
           </div>
