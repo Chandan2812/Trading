@@ -54,7 +54,7 @@ const ToggleFAQ = () => {
           Frequently Asked Questions
         </h2>
         <div className="flex flex-col md:flex-row justify-evenly py-3 items-start">
-          <div className="md:flex items-start hidden">
+          <div className="md:flex items-start hidden mt-10">
             <img
               src={faq_img}
               alt="FAQ Illustration"
