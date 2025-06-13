@@ -26,6 +26,14 @@ export default function AdminPage() {
   const [showContentEditor, setShowContentEditor] = useState(false);
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
   const [editorContent, setEditorContent] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 20;
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstPost, indexOfLastPost);
+
+  const totalPages = Math.ceil(blogs.length / postsPerPage);
 
   const navigate = useNavigate();
 
@@ -743,7 +751,7 @@ export default function AdminPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {blogs.map((blog: any) => (
+                        {currentBlogs.map((blog: any) => (
                           <tr key={blog._id} className=" align-top">
                             <td className="px-4 py-2 w-1/5">{blog.title}</td>
                             <td
@@ -901,6 +909,48 @@ export default function AdminPage() {
                           </button>
                         </div>
                       </div>
+                    </div>
+                  )}
+
+                  {totalPages > 1 && (
+                    <div className="flex justify-center mt-6 space-x-2 flex-wrap">
+                      {[
+                        1,
+                        currentPage > 3 ? "..." : null,
+                        currentPage > 2 ? currentPage - 1 : null,
+                        currentPage !== 1 && currentPage !== totalPages
+                          ? currentPage
+                          : null,
+                        currentPage < totalPages - 1 ? currentPage + 1 : null,
+                        currentPage < totalPages - 2 ? "..." : null,
+                        totalPages,
+                      ]
+                        .filter(
+                          (item, i, self) =>
+                            item !== null && self.indexOf(item) === i
+                        )
+                        .map((item, idx) =>
+                          item === "..." ? (
+                            <span
+                              key={`ellipsis-${idx}`}
+                              className="px-2 py-1 text-gray-500 select-none"
+                            >
+                              ...
+                            </span>
+                          ) : (
+                            <button
+                              key={item}
+                              onClick={() => setCurrentPage(item as number)}
+                              className={`px-3 py-1 rounded border ${
+                                currentPage === item
+                                  ? "bg-[var(--primary-color)] text-white"
+                                  : "bg-gray-200 dark:bg-gray-700"
+                              }`}
+                            >
+                              {item}
+                            </button>
+                          )
+                        )}
                     </div>
                   )}
                 </section>

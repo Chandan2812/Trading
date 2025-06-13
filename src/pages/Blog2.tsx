@@ -125,19 +125,49 @@ const Blog2 = () => {
         {/* Pagination Controls */}
         {totalPages > 1 && (
           <div className="flex justify-center mt-10 space-x-2">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                className={`px-4 py-2 rounded ${
-                  currentPage === page
-                    ? "bg-[var(--primary-color)] text-white"
-                    : "bg-gray-200 dark:bg-gray-700"
-                }`}
-              >
-                {page}
-              </button>
-            ))}
+            {Array.from({ length: totalPages }, (_, i) => i + 1)
+              .filter((page) => {
+                return (
+                  page <= 3 ||
+                  page > totalPages - 2 ||
+                  page === currentPage ||
+                  page === currentPage - 1 ||
+                  page === currentPage + 1
+                );
+              })
+              .reduce((acc: (number | string)[], page, i, arr) => {
+                if (
+                  i > 0 &&
+                  typeof arr[i - 1] === "number" &&
+                  page - (arr[i - 1] as number) > 1
+                ) {
+                  acc.push("......");
+                }
+                acc.push(page);
+                return acc;
+              }, [])
+              .map((item, idx) =>
+                item === "..." ? (
+                  <span
+                    key={`ellipsis-${idx}`}
+                    className="px-2 py-2 text-gray-500"
+                  >
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={item}
+                    onClick={() => handlePageChange(item as number)}
+                    className={`px-4 py-2 rounded ${
+                      currentPage === item
+                        ? "bg-[var(--primary-color)] text-white"
+                        : "bg-gray-200 dark:bg-gray-700"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                )
+              )}
           </div>
         )}
       </div>
