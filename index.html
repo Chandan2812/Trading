@@ -31,6 +31,17 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- PushAlert Script (📢 Place it before main.tsx) -->
+    <script type="text/javascript">
+      (function (d, t) {
+        var g = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        g.src =
+          "https://cdn.pushalert.co/integrate_af24330d7596eead2b3c6cd12bafa814.js";
+        s.parentNode.insertBefore(g, s);
+      })(document, "script");
+    </script>
+    <!-- End PushAlert -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
