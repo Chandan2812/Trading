@@ -30,3 +30,8 @@
 ::-webkit-scrollbar-horizontal {
   height: 4px;
 }
+@media only screen and (max-width: 768px) {
+  #zsiq_float {
+    bottom: 80px !important; /* You can adjust this value */
+  }
+}

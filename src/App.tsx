@@ -4,7 +4,6 @@ import { Landing } from "./pages/Landing";
 // import Blog from "./components/Blog";
 // import BlogDetails from "./components/BlogDetails";
 import Contact from "./pages/contact";
-import Chatbot from "./components/Chatbot";
 import AboutUsSection from "./pages/About";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -15,6 +14,7 @@ import AdminPage from "./admin/AdminPage";
 import Blog2 from "./pages/Blog2";
 import Blog2Details from "./pages/Blog2Details";
 import WhatsAppButton from "./components/floatingBtn";
+import ZohoSalesIQ from "./components/ZohoSalesIQ";
 
 function App() {
   return (
@@ -56,7 +56,7 @@ function App() {
             </a>
           </div>
         </div>
-        <Chatbot />
+        <ZohoSalesIQ />
       </>
     </Router>
   );
