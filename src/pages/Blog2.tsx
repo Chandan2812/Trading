@@ -57,10 +57,9 @@ const Blog2 = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen">
-        <p className="text-[var(--dark-gray-color)] text-center mt-5">
-          Processing your data. Please Wait...
-        </p>
+      <div className="flex flex-col items-center justify-center h-screen bg-black">
+        <div className="w-12 h-12 border-4 border-white border-t-[var(--primary-color)] rounded-full animate-spin"></div>
+        <p className="text-white mt-4">Processing your data. Please wait...</p>
       </div>
     );
   }

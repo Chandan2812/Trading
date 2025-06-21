@@ -75,7 +75,13 @@ const Blog2Details = () => {
 
   if (error)
     return <div className="pt-40 text-center text-red-600">{error}</div>;
-  if (!blog) return <div className="pt-40 text-center">Loading...</div>;
+  if (!blog)
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-black">
+        <div className="w-12 h-12 border-4 border-white border-t-[var(--primary-color)] rounded-full animate-spin"></div>
+        <p className="text-white mt-4">Loading....</p>
+      </div>
+    );
 
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white">
