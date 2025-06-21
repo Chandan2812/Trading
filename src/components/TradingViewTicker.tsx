@@ -13,11 +13,11 @@ const TradingViewTicker = () => {
     script.async = true;
     script.innerHTML = JSON.stringify({
       symbols: [
-        { proName: "FOREXCOM:SPXUSD", title: "S&P 500 Index" },
-        { proName: "FOREXCOM:NSXUSD", title: "US 100 Cash CFD" },
-        { proName: "FX_IDC:EURUSD", title: "EUR to USD" },
-        { proName: "BITSTAMP:BTCUSD", title: "Bitcoin" },
-        { proName: "BITSTAMP:ETHUSD", title: "Ethereum" },
+        { proName: "FOREXCOM:SPXUSD" },
+        { proName: "FOREXCOM:NSXUSD" },
+        { proName: "FX_IDC:EURUSD" },
+        { proName: "BITSTAMP:BTCUSD" },
+        { proName: "BITSTAMP:ETHUSD" },
       ],
       showSymbolLogo: true,
       isTransparent: false,
