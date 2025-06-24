@@ -88,41 +88,50 @@ const WhyTrade: React.FC = () => {
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className="relative rounded-lg p-[1.5px] bg-gradient-to-b from-gray-200 to-[var(--primary-color)] dark:from-[#111] dark:to-[var(--primary-color)] hover:shadow-[0_0_10px_var(--primary-color)] transition"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: index * 0.2 }}
+            initial={{ opacity: 0, rotateX: 15, scale: 0.95 }}
+            whileInView={{ opacity: 1, rotateX: 0, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
+            className="relative group perspective-[1200px] transition-transform"
           >
-            <div className="bg-white dark:bg-black rounded-lg p-6 min-h-[270px] flex flex-col justify-start items-center text-center transition-colors duration-300">
+            <motion.div
+              className="relative bg-white dark:bg-[#0d0d0d] border border-[var(--primary-color)] rounded-2xl p-6 min-h-[270px] text-center flex flex-col items-center justify-start shadow-md hover:shadow-lg transition-transform duration-300"
+              whileHover={{ rotateX: 4, rotateY: -4, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 150, damping: 12 }}
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-[var(--primary-color)] rounded-2xl pointer-events-none transition-all duration-300"></div>
+
               <motion.img
                 src={feature.icon}
                 alt={feature.title}
-                className="h-[70px] w-[70px] object-contain mb-4"
-                initial={{ opacity: 0, y: 30 }}
+                className="h-[65px] w-[65px] object-contain mb-4"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: index * 0.2 + 0.7 }}
+                transition={{ delay: index * 0.1 + 0.3 }}
                 viewport={{ once: true }}
               />
               <motion.h3
                 className="text-lg font-semibold mb-2"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: index * 0.2 + 1.0 }}
+                transition={{ delay: index * 0.1 + 0.4 }}
                 viewport={{ once: true }}
               >
                 {feature.title}
               </motion.h3>
               <motion.p
                 className="text-gray-600 dark:text-gray-400"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: index * 0.2 + 1.3 }}
+                transition={{ delay: index * 0.1 + 0.5 }}
                 viewport={{ once: true }}
               >
                 {feature.desc}
               </motion.p>
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </div>

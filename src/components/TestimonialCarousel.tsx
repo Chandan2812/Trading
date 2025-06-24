@@ -1,24 +1,22 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
 
 const testimonials = [
   {
-    // title: "My Trading Journey With Close Friends Traders",
     content:
       "Close Friends Traders transformed my trading over the past year: consistent profits, always-on payouts, zero hiccups.” ",
     date: "April 14, 2024",
     name: "Rohan Mehta",
   },
   {
-    // title: "Feels Like Home",
     content:
       "I was new to trading, but the Close Friends Traders platform made it easy to learn and grow. The interface is smooth and support is always available.",
     date: "March 2, 2025",
     name: "Priya Sharma",
   },
   {
-    // title: "Private, Profitable, Perfect",
     content:
       "What I love most? The 500× leverage and fast withdrawals. Close Friends Traders keeps things professional and powerful.",
     date: "January 28, 2025",
@@ -28,11 +26,35 @@ const testimonials = [
 
 export default function TestimonialCarousel() {
   const [index, setIndex] = useState(0);
-  const testimonial = testimonials[index];
+  const [direction, setDirection] = useState<"left" | "right">("left");
 
-  const next = () => setIndex((index + 1) % testimonials.length);
-  const prev = () =>
-    setIndex((index - 1 + testimonials.length) % testimonials.length);
+  const paginate = (dir: "left" | "right") => {
+    setDirection(dir);
+    setIndex((prev) =>
+      dir === "left"
+        ? (prev - 1 + testimonials.length) % testimonials.length
+        : (prev + 1) % testimonials.length
+    );
+  };
+
+  const slideVariants = {
+    initial: (dir: "left" | "right") => ({
+      x: dir === "right" ? 300 : -300,
+      opacity: 0,
+    }),
+    animate: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.5 },
+    },
+    exit: (dir: "left" | "right") => ({
+      x: dir === "right" ? -300 : 300,
+      opacity: 0,
+      transition: { duration: 0.5 },
+    }),
+  };
+
+  const testimonial = testimonials[index];
 
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-500">
@@ -53,28 +75,42 @@ export default function TestimonialCarousel() {
             ))}
         </div>
 
-        {/* <h3 className="text-xl font-bold mb-2">{testimonial.title}</h3> */}
-        <p className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-4">
-          {testimonial.content}
-        </p>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
-          {testimonial.date}
-        </p>
-        <p className="font-semibold text-primary-light dark:text-primary-dark">
-          {testimonial.name}
-        </p>
+        {/* Animated Testimonial Block */}
+        <div className="relative min-h-[140px]">
+          <AnimatePresence custom={direction} mode="wait">
+            <motion.div
+              key={index}
+              className="absolute inset-0"
+              variants={slideVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              custom={direction}
+            >
+              <p className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-4">
+                {testimonial.content}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                {testimonial.date}
+              </p>
+              <p className="font-semibold text-primary-light dark:text-primary-dark">
+                {testimonial.name}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-        {/* Desktop arrows (absolute) */}
+        {/* Desktop Arrows */}
         <div className="hidden md:flex">
           <button
-            onClick={prev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-primary-light dark:bg-primary-dark text-[var(--primary-color)] flex items-center justify-center  hover:brightness-90 transition"
+            onClick={() => paginate("left")}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-primary-light dark:bg-primary-dark text-[var(--primary-color)] flex items-center justify-center hover:brightness-90 transition"
             aria-label="Previous testimonial"
           >
             <ChevronLeft size={60} />
           </button>
           <button
-            onClick={next}
+            onClick={() => paginate("right")}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-primary-light dark:bg-primary-dark text-[var(--primary-color)] flex items-center justify-center hover:brightness-90 transition"
             aria-label="Next testimonial"
           >
@@ -82,27 +118,21 @@ export default function TestimonialCarousel() {
           </button>
         </div>
 
-        {/* Mobile arrows (inline) */}
+        {/* Mobile Arrows */}
         <div className="flex md:hidden justify-between px-5 gap-4 mt-8">
           <button
-            onClick={prev}
+            onClick={() => paginate("left")}
             className="bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
             aria-label="Previous testimonial"
           >
-            <span>
-              <ChevronLeft />
-            </span>
-            Previous
+            <ChevronLeft />
           </button>
           <button
-            onClick={next}
+            onClick={() => paginate("right")}
             className="bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
             aria-label="Next testimonial"
           >
-            Next
-            <span>
-              <ChevronRight />
-            </span>
+            <ChevronRight />
           </button>
         </div>
       </div>
