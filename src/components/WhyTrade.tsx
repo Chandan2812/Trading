@@ -1,115 +1,56 @@
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import zero from "../assets/whyTrade/zero.png";
 import fivex from "../assets/whyTrade/500x.png";
-import zeroTax from "../assets/whyTrade/Tax.png"; // Add this image
-import register from "../assets/whyTrade/register.png"; // Add this image
-import withdrawal from "../assets/whyTrade/withdrawl.png"; // Add this image
-import support from "../assets/whyTrade/support.png"; // Add this image
-import security from "../assets/whyTrade/security.png"; // Add this image
-import payments from "../assets/whyTrade/payment.png"; // Add this image
-import traders from "../assets/whyTrade/HappyTraders.png"; // Add this image
+import zeroTax from "../assets/whyTrade/Tax.png";
+import register from "../assets/whyTrade/register.png";
+import withdrawal from "../assets/whyTrade/withdrawl.png";
+import support from "../assets/whyTrade/support.png";
+import security from "../assets/whyTrade/security.png";
+import traders from "../assets/whyTrade/HappyTraders.png";
 
 const features = [
   {
-    icon: (
-      <img
-        src={zero}
-        alt="Zero Brokerage"
-        className="h-[70px] w-[70px] object-contain"
-      />
-    ),
+    icon: register,
+    title: "Register in Under 5 Sec",
+    desc: "Sign up instantly and start trading without any waiting time.",
+  },
+  {
+    icon: support,
+    title: "24×7 Customer Support",
+    desc: "Get expert help any time of day, whenever the market moves, we're here.",
+  },
+  {
+    icon: fivex,
+    title: "500x Margin",
+    desc: "Unlock massive trading power with up to 500x intraday leverage.",
+  },
+  {
+    icon: zero,
     title: "0% Brokerage",
     desc: "Trade with zero brokerage and maximize every rupee of your investment without any hidden fees or commissions.",
   },
   {
-    icon: (
-      <img
-        src={fivex}
-        alt="500X Margin"
-        className="h-[70px] w-[70px] object-contain"
-      />
-    ),
-    title: "500X Margin",
-    desc: "Boost your trading potential with 500x leverage and unlock larger opportunities using minimal capital.",
+    icon: zeroTax,
+    title: "0% Brokerage",
+    desc: "Trade with zero brokerage and keep every rupee you earn which equals more profits!",
   },
   {
-    icon: (
-      <img
-        src={zeroTax}
-        alt="0 Tax"
-        className="h-[70px] w-[70px] object-contain"
-      />
-    ),
-    title: "0% Tax",
-    desc: "Enjoy tax-free trading with no additional charges on your profits or withdrawals—full earnings in your pocket.",
+    icon: withdrawal,
+    title: "Quick Withdrawals",
+    desc: "Withdraw your money instantly without delays or complicated steps.",
   },
   {
-    icon: (
-      <img
-        src={register}
-        alt="Register in 10 Sec"
-        className="h-[70px] w-[70px] object-contain"
-      />
-    ),
-    title: "Register in 10 Sec",
-    desc: "Sign up instantly using just your name and phone number—quick, secure, and ready to trade in seconds.",
+    icon: security,
+    title: "No Hidden Charges",
+    desc: "What you see is exactly what you pay. No surprise deductions.",
   },
   {
-    icon: (
-      <img
-        src={withdrawal}
-        alt="Instant Withdrawals"
-        className="h-[70px] w-[70px] object-contain"
-      />
-    ),
-    title: "Instant Withdrawals",
-    desc: "Deposit and withdraw your funds instantly without delays, ensuring a smooth and uninterrupted trading journey.",
-  },
-  {
-    icon: (
-      <img
-        src={support}
-        alt="24×7 Support"
-        className="h-[70px] w-[70px] object-contain"
-      />
-    ),
-    title: "24×7 Support",
-    desc: "Reach out to our dedicated support team any time, day or night, for real-time help with your trades.",
-  },
-  {
-    icon: (
-      <img
-        src={security}
-        alt="Data Security"
-        className="h-[70px] w-[70px] object-contain"
-      />
-    ),
-    title: "Data Security",
-    desc: "Your information is protected with cutting-edge encryption to keep your data safe, private, and fully secure.",
-  },
-  {
-    icon: (
-      <img
-        src={payments}
-        alt="Multiple Payments"
-        className="h-[70px] w-[70px] object-contain"
-      />
-    ),
-    title: "Multiple Payment Methods",
-    desc: "Choose from a variety of trusted payment methods to fund your trades quickly and with complete flexibility.",
-  },
-  {
-    icon: (
-      <img
-        src={traders}
-        alt="Happy Traders"
-        className="h-[70px] w-[70px] object-contain"
-      />
-    ),
-    title: "Happy Traders",
-    desc: "Join thousands of satisfied traders on a trusted platform with 15 years of seamless experiences, quick payouts, and profitable trading.",
+    icon: traders,
+    title: "5M+ Happy Traders",
+    desc: "Join a trusted community of over 5 million satisfied traders worldwide.",
   },
 ];
 
@@ -135,43 +76,64 @@ const WhyTrade: React.FC = () => {
     <section className="bg-white dark:bg-black text-black dark:text-white py-12 px-5 transition-colors duration-300">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-semibold">
-          Why{" "}
-          <span className="text-[var(--primary-color)] font-bold">Trade</span>{" "}
-          With Close Friends Traders?
+          Why Traders Choose{" "}
+          <span className="text-[var(--primary-color)] font-bold italic">
+            Close Friends Traders?
+          </span>
         </h2>
       </div>
 
       {/* Desktop Grid */}
-      <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {features.map((feature, index) => (
-          <div
+          <motion.div
             key={index}
             className="relative rounded-lg p-[1.5px] bg-gradient-to-b from-gray-200 to-[var(--primary-color)] dark:from-[#111] dark:to-[var(--primary-color)] hover:shadow-[0_0_10px_var(--primary-color)] transition"
-            data-aos="zoom-in"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: index * 0.2 }}
+            viewport={{ once: true }}
           >
-            <div className="bg-white dark:bg-black rounded-lg p-6 transition-colors duration-300">
-              <div className="mb-4 flex justify-center">{feature.icon}</div>
-              <h3 className="text-lg font-semibold mb-2 text-center">
+            <div className="bg-white dark:bg-black rounded-lg p-6 min-h-[270px] flex flex-col justify-start items-center text-center transition-colors duration-300">
+              <motion.img
+                src={feature.icon}
+                alt={feature.title}
+                className="h-[70px] w-[70px] object-contain mb-4"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, delay: index * 0.2 + 0.3 }}
+                viewport={{ once: true }}
+              />
+              <motion.h3
+                className="text-lg font-semibold mb-2"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, delay: index * 0.2 + 0.6 }}
+                viewport={{ once: true }}
+              >
                 {feature.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-center">
+              </motion.h3>
+              <motion.p
+                className="text-gray-600 dark:text-gray-400"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, delay: index * 0.2 + 0.9 }}
+                viewport={{ once: true }}
+              >
                 {feature.desc}
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      {/* Mobile Slider */}
+      {/* Mobile Slider (unchanged) */}
       <div className="sm:hidden relative w-full px-0 mt-10">
         <div className="relative overflow-hidden">
           <div
             ref={containerRef}
             className="flex transition-transform duration-500 ease-in-out no-scrollbar"
-            style={{
-              scrollSnapType: "x mandatory",
-              overflowX: "scroll",
-            }}
+            style={{ scrollSnapType: "x mandatory", overflowX: "scroll" }}
           >
             {features.map((feature, i) => (
               <div
@@ -180,7 +142,13 @@ const WhyTrade: React.FC = () => {
                 style={{ scrollSnapAlign: "start" }}
               >
                 <div className="bg-white dark:bg-gradient-to-br dark:from-[#111] dark:to-[#1a1a1a] border border-[var(--primary-color)] rounded-lg p-6 h-full transition-colors duration-300">
-                  <div className="mb-4 flex justify-center">{feature.icon}</div>
+                  <div className="mb-4 flex justify-center">
+                    <img
+                      src={feature.icon}
+                      alt={feature.title}
+                      className="h-[70px] w-[70px] object-contain"
+                    />
+                  </div>
                   <h3 className="text-lg font-semibold mb-2 text-center">
                     {feature.title}
                   </h3>
@@ -192,7 +160,6 @@ const WhyTrade: React.FC = () => {
             ))}
           </div>
 
-          {/* Navigation Arrows */}
           {index > 0 && (
             <button
               onClick={() => handleScroll("left")}

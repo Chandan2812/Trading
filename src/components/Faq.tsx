@@ -9,34 +9,29 @@ type Faq = {
 
 const faqs: Faq[] = [
   {
-    question: "How do I start using the Close Friends Traders app?",
+    question: "Is Close Friends Traders suitable for beginners?",
     answer:
-      "To start using the Close Friends Traders app, download it from our website, create an account, and deposit funds. Once your account is set up, you can begin Dabba Trading through our app.",
+      "Indeed, Close Friends Traders is made for both novice and seasoned traders. With round-the-clock assistance and a demo account for practice, the site is user-friendly.",
   },
   {
-    question: "What types of assets can I trade on the app?",
+    question: "What is the starting minimum deposit?",
     answer:
-      "The Close Friends Traders app allows you to trade a variety of assets, including stocks, commodities, and currencies, NSE, MCX, Forex, Comex, Global Trading, Live Trading, Online Dabba Trading. Check the app for a full list of available trading options.",
+      "All it takes to begin trading on Close Friends Traders is ₹100. It is quick, easy, and suitable for all price ranges.",
   },
   {
-    question: "How can I withdraw my earnings from the app?",
+    question: "Can I trade using a mobile device?",
     answer:
-      "To withdraw your earnings, go to the withdrawal section of the app, choose your preferred method, and follow the instructions. Withdrawals typically take a few minutes to process.",
+      "Indeed, Close Friends Traders is completely mobile-friendly. You can easily trade at any time and from any location.",
   },
   {
-    question: "Can I trade on the Close Friends Traders app from anywhere?",
+    question: "Does Close Friends Traders protect my money?",
     answer:
-      "Yes, you can trade on the Dabba Trading (Close Friends Traders) app from anywhere and anytime you want.",
+      "Secure payment methods and cutting-edge encryption safeguard your money. Your safety is always Close Friends Traders’ top priority.",
   },
   {
-    question: "What kind of customer support is available?",
+    question: "Do I need any paperwork to sign up?",
     answer:
-      "The Close Friends Traders app offers customer support through our customer support. Contact our support team for any issues or questions related to your account or trades.",
-  },
-  {
-    question: "What are the trading hours on the app?",
-    answer:
-      "Trading hours on the Close Friends Traders app typically align with market hours, but may vary depending on the asset and region. Check the app for specific trading times.",
+      "There is no need for extensive paperwork. Simply enter your mobile number to get started right away.",
   },
 ];
 

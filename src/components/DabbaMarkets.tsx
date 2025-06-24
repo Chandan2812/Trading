@@ -5,52 +5,34 @@ import "aos/dist/aos.css";
 
 const markets = [
   {
-    title: "NSE(Futures and Options)",
-    description:
-      "India's leading derivatives exchange offering futures & options (F&O) trading across equities, indices, currencies, and commodities.",
-    button: "Learn more",
-    icon: "fa-solid fa-bag-shopping",
+    title: "NSE(F&O)",
+    description: "Equities, indices, currencies",
     image: "https://www.arrowtradefx.com/assets/images/svg/shares.svg",
   },
   {
     title: "MCX",
-    description:
-      "India's premier commodity derivatives exchange facilitating futures trading in bullion, metals, energy, and agricultural commodities",
-    button: "Learn more",
-    icon: "fa-solid fa-clipboard-list",
+    description: "Commodities like gold, oil, agri products",
     image: "https://www.arrowtradefx.com/assets/images/svg/commodities.svg",
   },
   {
-    title: "Cryptos",
-    description:
-      "Decentralized digital currencies powered by blockchain technology, enabling secure, peer-to-peer transactions without intermediaries.",
-    button: "Learn more",
-    icon: "fa-brands fa-bitcoin",
+    title: "Crypto",
+    description: "Secure access to digital currencies",
     image: "https://www.arrowtradefx.com/assets/images/svg/futures.svg",
   },
   {
-    title: "Us Stocks & Indices",
-    description:
-      "Trade US stocks and major indices (like S&P 500, Nasdaq, and Dow Jones) for global exposure and diversified investment opportunities.",
-    button: "Learn more",
-    icon: "fa-solid fa-arrow-trend-up",
+    title: "US Stocks & Indices ",
+    description: "Nasdaq, S&P 500, Dow Jones",
     image:
       "https://www.arrowtradefx.com/assets/images/svg/cryptocurrencies.svg",
   },
   {
     title: "Forex",
-    description:
-      "Trade global currency pairs (Forex) to capitalize on exchange rate fluctuations in the world's largest financial market.",
-    button: "Read More",
-    icon: "fa-solid fa-scale-balanced",
+    description: "Major, minor, and exotic currency pairs",
     image: "https://www.arrowtradefx.com/assets/images/svg/forex.svg",
   },
   {
     title: "Comex",
-    description:
-      "The world's leading marketplace for metals futures & options trading, including gold, silver, copper, and aluminum.",
-    button: "Read More",
-    icon: "fa-solid fa-chart-line",
+    description: "Precious and industrial metal futures",
     image: "https://www.arrowtradefx.com/assets/images/svg/indices.svg",
   },
 ];
@@ -85,12 +67,10 @@ const DabbaMarkets: React.FC = () => {
     <div className="bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold text-white">
-          Segment Available In Our Platform:{" "}
-          <span className="text-[#71ced0] italic">Markets</span>
+          <span className="text-[#71ced0] italic">Markets </span>We Offer
         </h2>
         <p className="mt-2 text-gray-300 max-w-2xl mx-auto">
-          A small river named Duden flows by their place and supplies it with
-          the necessary regelialia. It is a paradise
+          Explore and trade across these markets confidently:
         </p>
       </div>
 

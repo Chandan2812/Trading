@@ -4,25 +4,25 @@ import { FaQuoteLeft, FaStar } from "react-icons/fa";
 
 const testimonials = [
   {
-    title: "My Trading Journey With Close Friends Traders",
+    // title: "My Trading Journey With Close Friends Traders",
     content:
-      "I’ve been using Close Friends Traders for almost a year, and it completely changed my trading game. The platform is super easy, and profits are consistent. Trust is key — and here, it’s everything.",
+      "Close Friends Traders transformed my trading over the past year: consistent profits, always-on payouts, zero hiccups.” ",
     date: "April 14, 2024",
     name: "Rohan Mehta",
   },
   {
-    title: "Feels Like Home",
+    // title: "Feels Like Home",
     content:
-      "Trading with Close Friends Traders feels personal. I get help when I need it, and the experience is smooth. Way better than public platforms. No noise, just profits.",
-    date: "February 27, 2024",
-    name: "Sana Shaikh",
+      "I was new to trading, but the Close Friends Traders platform made it easy to learn and grow. The interface is smooth and support is always available.",
+    date: "March 2, 2025",
+    name: "Priya Sharma",
   },
   {
-    title: "Private, Profitable, Perfect",
+    // title: "Private, Profitable, Perfect",
     content:
-      "Being part of this tight-knit group means fewer distractions and more returns. Withdrawals are quick and the support feels like family. Game changer!",
-    date: "January 10, 2024",
-    name: "Zaid Khan",
+      "What I love most? The 500× leverage and fast withdrawals. Close Friends Traders keeps things professional and powerful.",
+    date: "January 28, 2025",
+    name: "Aditya Verma",
   },
 ];
 
@@ -38,10 +38,7 @@ export default function TestimonialCarousel() {
     <div className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-500">
       <div className="max-w-5xl mx-auto py-12 px-4 text-center relative overflow-hidden">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-8">
-          What Our Traders Are{" "}
-          <span className="text-primary-light dark:text-primary-dark italic">
-            Saying
-          </span>
+          Hear from Our Traders
         </h2>
 
         <div className="text-primary-light dark:text-primary-dark text-3xl flex justify-center mb-4 mx-auto">
@@ -56,7 +53,7 @@ export default function TestimonialCarousel() {
             ))}
         </div>
 
-        <h3 className="text-xl font-bold mb-2">{testimonial.title}</h3>
+        {/* <h3 className="text-xl font-bold mb-2">{testimonial.title}</h3> */}
         <p className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-4">
           {testimonial.content}
         </p>

@@ -23,7 +23,8 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10 w-full px-5 mx-auto flex flex-col justify-center text-left text-white space-y-8 max-w-7xl py-12 md:py-0">
         <h1 className="text-4xl font-semibold leading-tight text-start">
           <span className="block mb-2 text-white">
-            Trade With 500x Margin, 0% Tax
+            500× Leverage. Zero Tax. No Brokerage.
+            <br /> Just Pure Trading.
           </span>
           <span className="block text-[var(--primary-color)]">
             <Typewriter
@@ -38,7 +39,7 @@ const HeroSection: React.FC = () => {
         </h1>
 
         <button className="bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:bg-white shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit">
-          Start Trading
+          Start Trading Now
         </button>
 
         {/* Features Row */}

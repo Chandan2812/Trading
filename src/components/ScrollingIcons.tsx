@@ -7,7 +7,7 @@ import amazon from "../assets/trading/6TH-ICON-1-80x80 (1).webp";
 import img from "../assets/trading/ALUMINIUIM-80x80.webp";
 import img2 from "../assets/trading/Hero_MotoCorp-Logo.wine.png";
 import img3 from "../assets/trading/Adani_2012_logo.png";
-import img4 from "../assets/trading/META@2x@2x-80x80.webp";
+// import img4 from "../assets/trading/META@2x@2x-80x80.webp";
 import img5 from "../assets/trading/BSE_logo.svg.png";
 import img6 from "../assets/trading/Indian_Oil_Corporation-Logo.wine.png";
 import img7 from "../assets/trading/MRF.png";
@@ -26,7 +26,7 @@ const icons = [
   { src: img, alt: "Oil", glow: "#ff9800" },
   { src: img2, alt: "Copper", glow: "#ff5722" },
   { src: img3, alt: "Amazon", glow: "#007bff" },
-  { src: img4, alt: "Oil", glow: "#ff9800" },
+  // { src: img4, alt: "Oil", glow: "#ff9800" },
   { src: img5, alt: "Copper", glow: "#ff5722" },
   { src: img6, alt: "Amazon", glow: "#007bff" },
   { src: img7, alt: "Oil", glow: "#ff9800" },

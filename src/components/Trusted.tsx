@@ -51,13 +51,13 @@ export default function WhyChooseUs() {
     <div className="bg-white text-black dark:bg-black dark:text-white py-16 px-4 relative transition-colors duration-500">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-          India&apos;s Most Trusted{" "}
+          India&apos;s No. 1{" "}
           <span className="text-[var(--primary-color)] font-bold">
-            Meta Trading Platform
+            Meta Trading Experience
           </span>
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-12">
-          Always enhancing our platform to be the top choice.
+          Built on trust. Powered by innovation. Chosen by serious traders.
         </p>
 
         {/* Desktop Grid */}

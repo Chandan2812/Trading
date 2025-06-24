@@ -48,11 +48,11 @@ export default function HowItWorks() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-[var(--primary-color)]">
-                  Quick Registration
+                  Step 1: Join in Seconds
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Sign up on the Close Friends Traders platform with minimal
-                  documents — fast and easy setup.
+                  Sign up with just the essentials, no paperwork hassle. Get
+                  started in less than a minute.
                 </p>
               </div>
             </div>
@@ -64,11 +64,11 @@ export default function HowItWorks() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-[var(--primary-color)]">
-                  Step 2: Fund Your Account
+                  Step 2: Fund Your Wallet
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Deposit money securely and get ready to start trading with
-                  your close circle.
+                  Add funds securely through trusted payment methods and fuel
+                  your trading journey.
                 </p>
               </div>
             </div>
@@ -80,11 +80,12 @@ export default function HowItWorks() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-[var(--primary-color)]">
-                  Step 3: Start Trading Instantly
+                  Step 3: Trade with Your Inner Circle
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Execute trades with confidence and enjoy seamless trading
-                  tailored for you and your trusted friends.
+                  Start trading instantly with real-time tools, smart analytics,
+                  and a platform designed for trusted circles. Because trading
+                  is better with close friends.
                 </p>
               </div>
             </div>
