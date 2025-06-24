@@ -101,14 +101,14 @@ const WhyTrade: React.FC = () => {
                 className="h-[70px] w-[70px] object-contain mb-4"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: index * 0.2 + 0.3 }}
+                transition={{ duration: 1.2, delay: index * 0.2 + 0.7 }}
                 viewport={{ once: true }}
               />
               <motion.h3
                 className="text-lg font-semibold mb-2"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: index * 0.2 + 0.6 }}
+                transition={{ duration: 1.2, delay: index * 0.2 + 1.0 }}
                 viewport={{ once: true }}
               >
                 {feature.title}
@@ -117,7 +117,7 @@ const WhyTrade: React.FC = () => {
                 className="text-gray-600 dark:text-gray-400"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: index * 0.2 + 0.9 }}
+                transition={{ duration: 1.2, delay: index * 0.2 + 1.3 }}
                 viewport={{ once: true }}
               >
                 {feature.desc}

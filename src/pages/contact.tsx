@@ -2,7 +2,6 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
 import bull from "../assets/2.png";
-import CustomerSupport from "../components/CustomerSupport";
 
 function Contact() {
   return (
@@ -70,7 +69,7 @@ function Contact() {
           </div>
         </div>
       </section>
-      <CustomerSupport />
+      {/* <CustomerSupport /> */}
       <Footer />
     </div>
   );

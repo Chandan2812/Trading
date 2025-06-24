@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
           India&apos;s No. 1{" "}
-          <span className="text-[var(--primary-color)] font-bold">
+          <span className="text-[var(--primary-color)] font-semibold italic">
             Meta Trading Experience
           </span>
         </h2>
@@ -62,21 +62,48 @@ export default function WhyChooseUs() {
 
         {/* Desktop Grid */}
         <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="relative rounded-xl p-[1.5px] hover:shadow-[0_0_10px_var(--primary-color)] transition bg-gradient-to-b from-gray-200 to-[var(--primary-color)] dark:from-[#111] dark:to-[var(--primary-color)]"
-              data-aos="zoom-in"
-            >
-              <div className="bg-white dark:bg-black rounded-[10px] p-6 h-full flex flex-col items-center text-center transition-colors duration-500">
-                <div className="text-5xl mb-4">{feature.icon}</div>
-                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">
-                  {feature.desc}
-                </p>
+          {features.map((feature, index) => {
+            const boxAnimations = ["fade-down", "zoom-in", "fade-up"];
+            const boxAnimation = boxAnimations[index % boxAnimations.length];
+            const delay = index * 300;
+
+            return (
+              <div
+                key={index}
+                data-aos={boxAnimation}
+                data-aos-delay={delay}
+                className="relative rounded-xl p-[1.5px] hover:shadow-[0_0_10px_var(--primary-color)] transition border border-[var(--primary-color)]"
+              >
+                <div
+                  className="bg-white dark:bg-black rounded-[10px] p-6 h-full flex flex-col items-center text-center transition-colors duration-500"
+                  data-aos="zoom-in"
+                  data-aos-delay={delay + 400} // Inner content delay
+                >
+                  <div
+                    className="text-5xl mb-4"
+                    data-aos="zoom-in"
+                    data-aos-delay={delay + 500}
+                  >
+                    {feature.icon}
+                  </div>
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    data-aos="zoom-in"
+                    data-aos-delay={delay + 600}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p
+                    className="text-gray-600 dark:text-gray-400 text-sm"
+                    data-aos="zoom-in"
+                    data-aos-delay={delay + 700}
+                  >
+                    {feature.desc}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Mobile Slider */}

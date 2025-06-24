@@ -41,7 +41,7 @@ const DabbaMarkets: React.FC = () => {
   useEffect(() => {
     AOS.init({
       duration: 800, // animation duration in ms
-      once: true, // animate only once
+      once: false, // animate only once
     });
   }, []);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -75,7 +75,7 @@ const DabbaMarkets: React.FC = () => {
       </div>
 
       {/* Desktop Grid */}
-      <div className="mt-12 hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="mt-12 hidden sm:grid grid-cols-2 lg:grid-cols-6 gap-8 max-w-7xl mx-auto">
         {markets.map((market, index) => (
           <div
             key={index}
@@ -84,9 +84,11 @@ const DabbaMarkets: React.FC = () => {
               background:
                 "linear-gradient(to bottom, #111, var(--primary-color))",
             }}
-            data-aos="fade-up"
+            data-aos="flip-left"
+            data-aos-delay={index * 250} // 👉 staggered delay (150ms apart)
+            data-aos-duration="1000"
           >
-            <div className="bg-black rounded-lg h-full p-6 flex flex-col items-center justify-center text-center min-h-[260px]">
+            <div className="bg-black rounded-lg h-full p-6 flex flex-col items-center justify-center text-center min-h-[240px]">
               <img
                 src={market.image}
                 alt={market.title}
