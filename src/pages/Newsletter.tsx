@@ -4,6 +4,7 @@ import "../index.css";
 import logo from "../assets/logo-01.svg";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const NewsletterForm = () => {
   const [loading, setLoading] = useState(false);
@@ -56,10 +57,7 @@ const NewsletterForm = () => {
     };
 
     try {
-      await axios.post(
-        `https://cft-b87k.onrender.com/send-newsletter`,
-        payload
-      );
+      await axios.post(`${baseURL}/send-newsletter`, payload);
 
       const scheduledTime = form.scheduleAt
         ? new Date(form.scheduleAt).toLocaleString()

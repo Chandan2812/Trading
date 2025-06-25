@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import videoBg from "../assets/WhatsApp Video 2025-06-11 at 20.07.38_9ca513e6.mp4";
 import { Typewriter } from "react-simple-typewriter";
 import axios from "axios";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 type Offer = {
   _id: string;
@@ -22,9 +23,7 @@ const HeroSection: React.FC = () => {
   useEffect(() => {
     const fetchOffer = async () => {
       try {
-        const res = await axios.get<Offer[]>(
-          "https://cft-b87k.onrender.com/api/offer/view"
-        );
+        const res = await axios.get<Offer[]>(`${baseURL}/api/offer/view`);
         if (res.data && res.data.length > 0) {
           setOffers(res.data);
         }

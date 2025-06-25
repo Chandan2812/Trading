@@ -8,6 +8,7 @@ import {
 import { IoMdSend } from "react-icons/io";
 import logo from "../assets/logo-01.svg";
 import { useState } from "react";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ const Footer = () => {
     setMessage("");
 
     try {
-      const res = await fetch("https://cft-b87k.onrender.com/subscribe", {
+      const res = await fetch(`${baseURL}/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

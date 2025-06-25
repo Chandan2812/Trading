@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 type Offer = {
   _id: string;
@@ -25,9 +26,7 @@ const OfferPopup: React.FC = () => {
     const timer = setTimeout(() => {
       const fetchOffers = async () => {
         try {
-          const res = await axios.get<Offer[]>(
-            "https://cft-b87k.onrender.com/api/offer/view"
-          );
+          const res = await axios.get<Offer[]>(`${baseURL}/api/offer/view`);
           if (res.data.length > 0) {
             setOffers(res.data);
             setShow(true);

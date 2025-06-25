@@ -5,6 +5,7 @@ import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
 import { Share2 } from "lucide-react";
 import { Helmet } from "react-helmet";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 interface BlogType {
   title: string;
@@ -23,9 +24,7 @@ const Blog2Details = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(
-          `https://cft-b87k.onrender.com/api/blogs/viewblog`
-        );
+        const res = await axios.get(`${baseURL}/api/blogs/viewblog`);
         const blogList: any[] = res.data;
 
         const found = blogList.find((b) => b.slug === slug);

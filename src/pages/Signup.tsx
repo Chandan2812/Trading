@@ -3,6 +3,7 @@ import logo from "../assets/logo-01.svg";
 import sideImage from "../assets/newabout.webp";
 import { useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff, FiMoon, FiSun } from "react-icons/fi";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");
@@ -64,18 +65,15 @@ const Signup = () => {
 
     try {
       setLoading(true);
-      const res = await fetch(
-        "https://cft-b87k.onrender.com/api/auth/send-otp",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fullName,
-            email,
-            Phone: countryCode + phone,
-          }),
-        }
-      );
+      const res = await fetch(`${baseURL}/api/auth/send-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName,
+          email,
+          Phone: countryCode + phone,
+        }),
+      });
 
       const data = await res.json();
       if (!res.ok) {
@@ -104,14 +102,11 @@ const Signup = () => {
 
     try {
       setLoading(true);
-      const res = await fetch(
-        "https://cft-b87k.onrender.com/api/auth/verify-otp",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, otp, password }),
-        }
-      );
+      const res = await fetch(`${baseURL}/api/auth/verify-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, otp, password }),
+      });
 
       const data = await res.json();
       if (!res.ok) {

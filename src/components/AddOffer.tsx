@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 type Offer = {
   _id?: string;
@@ -90,20 +91,17 @@ const AddOffer: React.FC<Props> = ({ existingOffer, onClose, onSuccess }) => {
         if (bannerFile) formData.append("bannerImage", bannerFile);
 
         await axios.put(
-          `https://cft-b87k.onrender.com/api/offer/${existingOffer!._id}`,
+          `${baseURL}/api/offer/${existingOffer!._id}`,
           formData,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
       } else if (isEditing) {
-        await axios.put(
-          `https://cft-b87k.onrender.com/api/offer/${existingOffer!._id}`,
-          {
-            ...form,
-            startDate: form.startDate || null,
-            endDate: form.endDate || null,
-            isActive: form.isActive,
-          }
-        );
+        await axios.put(`${baseURL}/api/offer/${existingOffer!._id}`, {
+          ...form,
+          isActive: form.isActive ?? true, // fallback to true if undefined
+          startDate: form.startDate || null,
+          endDate: form.endDate || null,
+        });
       } else {
         const formData = new FormData();
         formData.append("title", form.title);
@@ -116,13 +114,9 @@ const AddOffer: React.FC<Props> = ({ existingOffer, onClose, onSuccess }) => {
         if (bannerFile) formData.append("bannerImage", bannerFile);
         if (popupFile) formData.append("popupImage", popupFile);
 
-        await axios.post(
-          "https://cft-b87k.onrender.com/api/offer/add",
-          formData,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-          }
-        );
+        await axios.post(`${baseURL}/api/offer/add`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
       }
 
       onSuccess();
@@ -206,9 +200,11 @@ const AddOffer: React.FC<Props> = ({ existingOffer, onClose, onSuccess }) => {
               name="isActive"
               value={form.isActive ? "true" : "false"}
               onChange={(e) =>
-                setForm({ ...form, isActive: e.target.value === "true" })
+                setForm((prev) => ({
+                  ...prev,
+                  isActive: e.target.value === "true",
+                }))
               }
-              className="border px-3 py-2 rounded w-full text-black"
             >
               <option value="true">Yes</option>
               <option value="false">No</option>
