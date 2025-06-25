@@ -32,6 +32,7 @@ export default function AdminPage() {
   const [filterDate, setFilterDate] = useState("");
   const [filteredLeads, setFilteredLeads] = useState([]);
   const [subscriberFilterDate, setSubscriberFilterDate] = useState("");
+  const [emailerFilterDate, setEmailerFilterDate] = useState("");
 
   const postsPerPage = 20;
 
@@ -205,6 +206,14 @@ export default function AdminPage() {
         return subDate === subscriberFilterDate;
       })
     : emailSubscribers;
+
+  const filteredEmailerData = emailerFilterDate
+    ? emailerData.filter(
+        (item: any) =>
+          new Date(item.createdAt).toLocaleDateString() ===
+          new Date(emailerFilterDate).toLocaleDateString()
+      )
+    : emailerData;
 
   return (
     <div className="text-black dark:text-white">
@@ -612,7 +621,7 @@ export default function AdminPage() {
                         onClick={() =>
                           exportToExcel(
                             "Emailer Data",
-                            emailerData,
+                            filteredEmailerData,
                             [
                               "Title",
                               "Subject",
@@ -638,6 +647,29 @@ export default function AdminPage() {
                     </div>
                   </div>
 
+                  {/* Date Filter UI */}
+                  <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                    <div>
+                      <label className="block text-sm font-medium">
+                        Filter by Date
+                      </label>
+                      <input
+                        type="date"
+                        value={emailerFilterDate}
+                        onChange={(e) => setEmailerFilterDate(e.target.value)}
+                        className="border px-3 py-2 rounded w-full text-black"
+                      />
+                    </div>
+                    <div className="flex items-end">
+                      <button
+                        onClick={() => setEmailerFilterDate("")}
+                        className="px-3 py-2  bg-red-600 text-white rounded hover:bg-red-700"
+                      >
+                        Clear Filter
+                      </button>
+                    </div>
+                  </div>
+
                   {/* Desktop Table View */}
                   <div className="hidden md:block overflow-auto">
                     <table className="w-full text-left text-sm table-fixed">
@@ -657,8 +689,8 @@ export default function AdminPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {emailerData.map((item: any) => (
-                          <tr key={item._id} className=" align-top">
+                        {filteredEmailerData.map((item: any) => (
+                          <tr key={item._id} className="align-top">
                             <td className="py-2 px-2 break-words">
                               {item.title}
                             </td>
@@ -687,9 +719,9 @@ export default function AdminPage() {
                     </table>
                   </div>
 
-                  {/* Mobile Card Format */}
+                  {/* Mobile Card View */}
                   <div className="md:hidden space-y-4">
-                    {emailerData.map((item: any) => (
+                    {filteredEmailerData.map((item: any) => (
                       <div
                         key={item._id}
                         className="border rounded p-4 shadow-sm"
