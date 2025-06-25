@@ -63,15 +63,25 @@ const OfferPopup: React.FC = () => {
   const offer = offers[currentIndex];
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md relative">
+    /* 1️⃣  The overlay gets the close handler */
+    <div
+      className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center px-4"
+      onClick={handleClose}
+    >
+      {/* 2️⃣  Stop clicks that land on the card itself */}
+      <div
+        className="relative w-full max-w-md bg-black text-white rounded-2xl border border-[#71ced0] shadow-xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute top-3 right-3 text-gray-300 hover:text-black text-xl"
+          className="absolute top-2 right-2 text-black font-light hover:text-[#71ced0] text-3xl leading-none"
         >
           &times;
         </button>
 
+        {/* Optional hero image */}
         {offer.popupImage && (
           <img
             src={offer.popupImage}
@@ -81,26 +91,27 @@ const OfferPopup: React.FC = () => {
           />
         )}
 
+        {/* Body */}
         <div className="p-6 text-center">
-          <h2 className="text-xl font-bold text-black">{offer.title}</h2>
-          {offer.subtitle && (
-            <p className="mt-2 text-black text-sm">{offer.subtitle}</p>
-          )}
+          <h2 className="text-xl font-bold text-[#71ced0]">{offer.title}</h2>
+
+          {offer.subtitle && <p className="mt-2 text-sm">{offer.subtitle}</p>}
+
           {offer.ctaLink && offer.ctaLabel && (
             <a
               href={offer.ctaLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition"
+              className="inline-block mt-4 bg-[#71ced0] hover:bg-[#5bb7b8] text-black font-semibold px-4 py-2 rounded-lg transition-colors"
             >
               {offer.ctaLabel}
             </a>
           )}
         </div>
 
-        {/* Optional: offer counter */}
+        {/* Slide counter */}
         {offers.length > 1 && (
-          <div className="absolute bottom-3 right-4 text-xs text-gray-500">
+          <div className="absolute bottom-3 right-4 text-xs text-gray-400">
             {currentIndex + 1} / {offers.length}
           </div>
         )}

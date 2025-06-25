@@ -31,6 +31,7 @@ export default function AdminPage() {
   const [showOfferModal, setShowOfferModal] = useState(false);
   const [filterDate, setFilterDate] = useState("");
   const [filteredLeads, setFilteredLeads] = useState([]);
+  const [subscriberFilterDate, setSubscriberFilterDate] = useState("");
 
   const postsPerPage = 20;
 
@@ -82,9 +83,11 @@ export default function AdminPage() {
     }
   }, []);
 
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
   useEffect(() => {
     axios
-      .get("https://cft-b87k.onrender.com/api/auth/allUser")
+      .get(`${baseURL}/api/auth/allUser`)
       .then((res) => {
         // console.log("Users:", res.data);
         setUsers(res.data);
@@ -92,7 +95,7 @@ export default function AdminPage() {
       .catch((err) => console.error("Users error:", err));
 
     axios
-      .get("https://cft-b87k.onrender.com/newsletter")
+      .get(`${baseURL}/newsletter`)
       .then((res) => {
         // console.log("Newsletter:", res.data);
         setNewsletterData(res.data);
@@ -100,7 +103,7 @@ export default function AdminPage() {
       .catch((err) => console.error("Newsletter error:", err));
 
     axios
-      .get("https://cft-b87k.onrender.com/subscribers")
+      .get(`${baseURL}/subscribers`)
       .then((res) => {
         // console.log("Subscribers:", res.data);
         setEmailSubscribers(res.data);
@@ -108,7 +111,7 @@ export default function AdminPage() {
       .catch((err) => console.error("Subscribers error:", err));
 
     axios
-      .get("https://cft-b87k.onrender.com/api/popup-lead")
+      .get(`${baseURL}/api/popup-lead`)
       .then((res) => {
         // console.log("Leads:", res.data);
         setPopupLeads(res.data);
@@ -117,7 +120,7 @@ export default function AdminPage() {
 
     // Fetch Emailer Data
     axios
-      .get("https://cft-b87k.onrender.com/emailer")
+      .get(`${baseURL}/emailer`)
       .then((res) => {
         // console.log("Emailer:", res.data);
         setEmailerData(res.data);
@@ -125,7 +128,7 @@ export default function AdminPage() {
       .catch((err) => console.error("Emailer error:", err));
 
     axios
-      .get("https://cft-b87k.onrender.com/api/blogs/viewblog")
+      .get(`${baseURL}/api/blogs/viewblog`)
       .then((res) => {
         // console.log("Blogs:", res.data);
         setBlogs(res.data);
@@ -133,7 +136,7 @@ export default function AdminPage() {
       .catch((err) => console.error("Blogs error:", err));
 
     axios
-      .get("https://cft-b87k.onrender.com/api/offer/view")
+      .get(`${baseURL}/api/offer/view`)
       .then((res) => setOffers(res.data))
       .catch((err) => console.error("Offers error:", err));
   }, []);
@@ -151,7 +154,7 @@ export default function AdminPage() {
 
   const fetchBlogs = () => {
     axios
-      .get("https://cft-b87k.onrender.com/api/blogs/viewblog")
+      .get(`${baseURL}/api/blogs/viewblog`)
       .then((res) => setBlogs(res.data))
       .catch((err) => console.error("Blogs error:", err));
   };
@@ -167,9 +170,7 @@ export default function AdminPage() {
   const handleDelete = async (slug: string) => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;
     try {
-      const res = await axios.delete(
-        `https://cft-b87k.onrender.com/api/blogs/${slug}`
-      );
+      const res = await axios.delete(`${baseURL}/api/blogs/${slug}`);
       alert(res.data.msg || "Deleted");
       fetchBlogs();
     } catch (error) {
@@ -197,6 +198,13 @@ export default function AdminPage() {
 
     setFilteredLeads(filtered);
   }, [filterDate, popupLeads]);
+
+  const filteredSubscribers = subscriberFilterDate
+    ? emailSubscribers.filter((sub: any) => {
+        const subDate = new Date(sub.createdAt).toISOString().split("T")[0];
+        return subDate === subscriberFilterDate;
+      })
+    : emailSubscribers;
 
   return (
     <div className="text-black dark:text-white">
@@ -432,17 +440,48 @@ export default function AdminPage() {
                     <button
                       onClick={() =>
                         exportToExcel(
-                          "Email Subscribers",
-                          popupLeads,
+                          `Email Subscribers${
+                            subscriberFilterDate
+                              ? ` ${subscriberFilterDate}`
+                              : ""
+                          }`,
+                          filteredSubscribers,
                           ["Email", "Subscribed"],
                           ["email", "createdAt"]
                         )
                       }
-                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                      className="p-2 text-sm bg-green-600 text-white rounded hover:bg-green-700"
                     >
                       Export to Excel
                     </button>
                   </div>
+
+                  {/* Filter by Date Input */}
+                  <div className="flex gap-4 mb-4">
+                    <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                      <div className="flex-1">
+                        <label className="text-sm block">Filter by Date</label>
+                        <input
+                          type="date"
+                          value={subscriberFilterDate}
+                          onChange={(e) =>
+                            setSubscriberFilterDate(e.target.value)
+                          }
+                          className="border px-3 py-2 rounded w-full text-black"
+                        />
+                      </div>
+
+                      <div className="flex items-end">
+                        <button
+                          onClick={() => setSubscriberFilterDate("")}
+                          className="px-3 py-2  bg-red-600 text-white rounded hover:bg-red-700"
+                        >
+                          Clear Filter
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
                   <table className="w-full text-left text-sm">
                     <thead>
                       <tr>
@@ -451,7 +490,7 @@ export default function AdminPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {emailSubscribers.map((sub: any) => (
+                      {filteredSubscribers.map((sub: any) => (
                         <tr key={sub._id}>
                           <td className="py-1">{sub.email}</td>
                           <td className="py-1">
@@ -693,7 +732,7 @@ export default function AdminPage() {
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold ">Blogs</h2>
                     <button
-                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                      className="p-2 text-sm bg-green-600 text-white rounded hover:bg-green-700"
                       onClick={() => {
                         setEditingBlog(null);
                         setShowAddModal(true);
@@ -853,7 +892,7 @@ export default function AdminPage() {
                             onClick={async () => {
                               try {
                                 const res = await fetch(
-                                  `https://cft-b87k.onrender.com/api/blogs/${selectedBlog?.slug}`,
+                                  `${baseURL}/api/blogs/${selectedBlog?.slug}`,
                                   {
                                     method: "PUT",
                                     headers: {
@@ -933,7 +972,7 @@ export default function AdminPage() {
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold">Offers</h2>
                     <button
-                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                      className="px-4 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-700"
                       onClick={() => {
                         setEditingOffer(null);
                         setShowOfferModal(true);
@@ -984,7 +1023,7 @@ export default function AdminPage() {
                                   if (confirm("Delete this offer?")) {
                                     try {
                                       await axios.delete(
-                                        `https://cft-b87k.onrender.com/api/offer/${offer._id}`
+                                        `${baseURL}/api/offer/${offer._id}`
                                       );
                                       setOffers((prev) =>
                                         prev.filter((o) => o._id !== offer._id)
@@ -1014,7 +1053,7 @@ export default function AdminPage() {
                       }}
                       onSuccess={() => {
                         axios
-                          .get("https://cft-b87k.onrender.com/api/offer/view")
+                          .get(`${baseURL}/api/offer/view`)
                           .then((res) => setOffers(res.data));
                       }}
                     />
