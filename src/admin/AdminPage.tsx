@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Nav";
-import { exportToDocx } from "../utils/exportDoc";
 import { exportToExcel } from "../utils/exportToExcel";
 import { ChevronDown, ChevronUp, Trash2 } from "lucide-react";
 import { Edit, Trash } from "lucide-react";
@@ -19,7 +18,6 @@ export default function AdminPage() {
   const [popupLeads, setPopupLeads] = useState([]);
   const [activePanel, setActivePanel] = useState("Users");
   const [emailerData, setEmailerData] = useState([]);
-  const [chatbotData, setChatbotData] = useState([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -31,6 +29,8 @@ export default function AdminPage() {
   const [offers, setOffers] = useState<Offer[]>([]);
   const [editingOffer, setEditingOffer] = useState<Offer | null>(null);
   const [showOfferModal, setShowOfferModal] = useState(false);
+  const [filterDate, setFilterDate] = useState("");
+  const [filteredLeads, setFilteredLeads] = useState([]);
 
   const postsPerPage = 20;
 
@@ -124,15 +124,6 @@ export default function AdminPage() {
       })
       .catch((err) => console.error("Emailer error:", err));
 
-    // Fetch Chatbot Data
-    axios
-      .get("https://cft-b87k.onrender.com/api/enquiry/chatbot")
-      .then((res) => {
-        // console.log("Chatbot:", res.data);
-        setChatbotData(res.data);
-      })
-      .catch((err) => console.error("Chatbot error:", err));
-
     axios
       .get("https://cft-b87k.onrender.com/api/blogs/viewblog")
       .then((res) => {
@@ -152,7 +143,6 @@ export default function AdminPage() {
 
     "Email Subscribers",
     "Popup Leads",
-    "Chatbot Data",
     "Emailer Data",
     "Newsletter Data",
     "Blog Data",
@@ -191,6 +181,22 @@ export default function AdminPage() {
     setShowAddModal(false);
     setEditingBlog(null);
   };
+
+  useEffect(() => {
+    if (!filterDate) {
+      setFilteredLeads(popupLeads);
+      return;
+    }
+
+    const selectedDate = new Date(filterDate).toDateString();
+
+    const filtered = popupLeads.filter((lead: any) => {
+      const leadDate = new Date(lead.createdAt).toDateString();
+      return leadDate === selectedDate;
+    });
+
+    setFilteredLeads(filtered);
+  }, [filterDate, popupLeads]);
 
   return (
     <div className="text-black dark:text-white">
@@ -267,8 +273,8 @@ export default function AdminPage() {
                         exportToExcel(
                           "User Logins",
                           users,
-                          ["Name", "Email"],
-                          ["fullName", "email"]
+                          ["Name", "Email", "Phone"],
+                          ["fullName", "email", "Phone"]
                         )
                       }
                       className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
@@ -281,6 +287,7 @@ export default function AdminPage() {
                       <tr>
                         <th className="border-b pb-1">Name</th>
                         <th className="border-b pb-1">Email</th>
+                        <th className="border-b pb-1">Phone</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -288,6 +295,7 @@ export default function AdminPage() {
                         <tr key={user._id}>
                           <td className="py-1">{user.fullName}</td>
                           <td className="py-1">{user.email}</td>
+                          <td className="py-1">{user.Phone}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -458,21 +466,42 @@ export default function AdminPage() {
 
               {activePanel === "Popup Leads" && (
                 <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
-                  <div className="flex justify-between items-center mb-4">
+                  <div className="flex justify-between items-center ">
                     <h2 className="text-xl font-semibold">Popup Leads</h2>
                     <button
                       onClick={() =>
                         exportToExcel(
-                          "Popup Leads",
-                          popupLeads,
+                          `Popup Leads${filterDate ? ` ${filterDate}` : ""}`,
+                          filteredLeads,
                           ["Name", "Email", "Phone", "Date"],
                           ["fullName", "email", "phone", "createdAt"]
                         )
                       }
-                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                      className="px-4 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-700"
                     >
                       Export to Excel
                     </button>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                    <div>
+                      <label className="block text-sm font-medium py-2">
+                        Filter by Date
+                      </label>
+                      <input
+                        type="date"
+                        value={filterDate}
+                        onChange={(e) => setFilterDate(e.target.value)}
+                        className="border px-3 py-2 rounded w-full text-black cursor-pointer"
+                      />
+                    </div>
+                    <div className="flex items-end">
+                      <button
+                        onClick={() => setFilterDate("")}
+                        className=" px-3 py-2  bg-red-600 text-white rounded hover:bg-red-700"
+                      >
+                        Clear Filter
+                      </button>
+                    </div>
                   </div>
 
                   {/* Desktop Table */}
@@ -487,18 +516,12 @@ export default function AdminPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {popupLeads.map((lead: any) => (
-                          <tr key={lead._id} className=" align-top">
-                            <td className="py-2 px-2 break-words">
-                              {lead.fullName}
-                            </td>
-                            <td className="py-2 px-2 break-words">
-                              {lead.email}
-                            </td>
-                            <td className="py-2 px-2 break-words">
-                              {lead.phone}
-                            </td>
-                            <td className="py-2 px-2 break-words">
+                        {filteredLeads.map((lead: any) => (
+                          <tr key={lead._id}>
+                            <td className="py-2 px-2">{lead.fullName}</td>
+                            <td className="py-2 px-2">{lead.email}</td>
+                            <td className="py-2 px-2">{lead.phone}</td>
+                            <td className="py-2 px-2">
                               {new Date(lead.createdAt).toLocaleDateString()}
                             </td>
                           </tr>
@@ -509,7 +532,7 @@ export default function AdminPage() {
 
                   {/* Mobile Card View */}
                   <div className="md:hidden space-y-4">
-                    {popupLeads.map((lead: any) => (
+                    {filteredLeads.map((lead: any) => (
                       <div
                         key={lead._id}
                         className="border rounded p-4 shadow-sm"
@@ -658,80 +681,6 @@ export default function AdminPage() {
                         <p>
                           <span className="font-semibold">Created At:</span>{" "}
                           {new Date(item.createdAt).toLocaleDateString()}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              )}
-
-              {activePanel === "Chatbot Data" && (
-                <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
-                  <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-xl font-semibold">
-                      Chatbot Conversations
-                    </h2>
-                    <button
-                      onClick={() =>
-                        exportToDocx(
-                          "Chatbot Data",
-                          chatbotData,
-                          ["User Message", "Bot Reply", "Timestamp"],
-                          ["userMessage", "botReply", "timestamp"]
-                        )
-                      }
-                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
-                    >
-                      Export to DOCX
-                    </button>
-                  </div>
-
-                  {/* Desktop Table */}
-                  <div className="hidden md:block overflow-auto">
-                    <table className="w-full text-left text-sm table-fixed">
-                      <thead>
-                        <tr className="border-b">
-                          <th className="pb-2 px-2 w-1/3">User Message</th>
-                          <th className="pb-2 px-2 w-1/3">Bot Reply</th>
-                          <th className="pb-2 px-2 w-1/3">Timestamp</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {chatbotData.map((chat: any) => (
-                          <tr key={chat._id} className=" align-top">
-                            <td className="py-2 px-2 break-words">
-                              {chat.userMessage}
-                            </td>
-                            <td className="py-2 px-2 break-words">
-                              {chat.botReply}
-                            </td>
-                            <td className="py-2 px-2 break-words">
-                              {new Date(chat.timestamp).toLocaleString()}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  {/* Mobile Card Format */}
-                  <div className="md:hidden space-y-4">
-                    {chatbotData.map((chat: any) => (
-                      <div
-                        key={chat._id}
-                        className="border rounded p-4 shadow-sm"
-                      >
-                        <p className="mb-1">
-                          <span className="font-semibold">User:</span>{" "}
-                          {chat.userMessage}
-                        </p>
-                        <p className="mb-1">
-                          <span className="font-semibold">Bot:</span>{" "}
-                          {chat.botReply}
-                        </p>
-                        <p>
-                          <span className="font-semibold">Time:</span>{" "}
-                          {new Date(chat.timestamp).toLocaleString()}
                         </p>
                       </div>
                     ))}

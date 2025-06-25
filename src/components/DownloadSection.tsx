@@ -1,4 +1,3 @@
-import { FaWindows, FaApple, FaAndroid } from "react-icons/fa";
 import gif from "../assets/trading-gif.gif"; // ✅ new gif
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -29,49 +28,34 @@ export default function DownloadSection() {
         </div>
 
         {/* Right: Text & Buttons */}
-        <div className="md:w-1/2">
+        <div className="md:w-1/2 text-left">
           <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-4">
-            Hey Traders! <br />
-            Ready to Trade on{" "}
-            <span className="text-[var(--primary-color)]">MetaTrader 5</span>?
-          </h2>
-          <p className="text-gray-700 dark:text-gray-300 mb-6">
-            Whether you're into Forex, Indices, Shares, or Commodities —
-            MetaTrader 5 has got you covered. You’ll get access to over{" "}
-            <span className="font-semibold">1,500+ instruments</span>, and you
-            can trade smoothly on any device you like.
+            <span className="text-[var(--primary-color)] italic font-bold">
+              Trade Big. Trade Smart.
+            </span>
             <br />
+            Trade Close Friends Traders
+          </h2>
+
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+            Take control of your trades with{" "}
+            <strong>1,500+ global instruments</strong> including Forex, Indices,
+            Commodities and Shares — all on one seamless platform.
+            <br className="my-2" />
+            With <span className="font-semibold">₹0 brokerage</span> and
+            reliable <span className="font-semibold">payouts</span>, Close
+            Friends Traders gives you the edge to trade smart and stay ahead.
+            <br className="my-2" />
+            Made for Indian traders who think sharp and trade sharper.
+            <br className="my-2" />
             Start with as little as <span className="font-semibold">$100</span>,
             or just test the waters with a{" "}
             <span className="font-semibold">risk-free Demo Account</span>. No
             pressure, just pure trading freedom.
           </p>
-
-          <div className="flex flex-wrap gap-4">
-            {/* Windows */}
-            <a
-              href="#"
-              className="flex items-center gap-2 border border-[var(--primary-color)] text-[var(--primary-color)] rounded-full px-5 py-2 hover:bg-[var(--primary-color)] hover:text-white dark:hover:text-black transition shadow-[0_0_10px_var(--primary-color)]"
-            >
-              <FaWindows /> Download for Windows
-            </a>
-
-            {/* iOS */}
-            <a
-              href="#"
-              className="flex items-center gap-2 border border-[var(--primary-color)] text-[var(--primary-color)] rounded-full px-5 py-2 hover:bg-[var(--primary-color)] hover:text-white dark:hover:text-black transition shadow-[0_0_10px_var(--primary-color)]"
-            >
-              <FaApple /> Download for iOS
-            </a>
-
-            {/* Android */}
-            <a
-              href="#"
-              className="flex items-center gap-2 border border-[var(--primary-color)] text-[var(--primary-color)] rounded-full px-5 py-2 hover:bg-[var(--primary-color)] hover:text-white dark:hover:text-black transition shadow-[0_0_10px_var(--primary-color)]"
-            >
-              <FaAndroid /> Download for Android
-            </a>
-          </div>
+          <i className="font-semibold block text-gray-800 dark:text-gray-200">
+            Close Friends Traders — Where serious trading begins.
+          </i>
         </div>
       </div>
     </div>
