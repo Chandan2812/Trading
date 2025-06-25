@@ -39,6 +39,7 @@
     "react-quill": "^2.0.0",
     "react-range": "^1.10.0",
     "react-router-dom": "^7.4.1",
+    "react-scroll-motion": "^0.3.5",
     "react-simple-typewriter": "^5.0.1",
     "react-slick": "^0.30.3",
     "react-slider": "^2.0.6",

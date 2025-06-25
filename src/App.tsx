@@ -16,6 +16,7 @@ import Blog2Details from "./pages/Blog2Details";
 import WhatsAppButton from "./components/floatingBtn";
 import ZohoSalesIQ from "./components/ZohoSalesIQ";
 import OurProcess from "./components/OurProcess";
+import OfferPopup from "./components/OfferPopup";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           </div>
         </div>
         <ZohoSalesIQ />
+        <OfferPopup />
       </>
     </Router>
   );

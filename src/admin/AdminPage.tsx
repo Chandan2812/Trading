@@ -10,6 +10,7 @@ import AddBlog from "../components/AddBlogs"; // adjust path if needed
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../index.css";
+import YourOfferModalComponent from "../components/AddOffer"; // adjust path if needed
 
 export default function AdminPage() {
   const [users, setUsers] = useState([]);
@@ -27,6 +28,10 @@ export default function AdminPage() {
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
   const [editorContent, setEditorContent] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [offers, setOffers] = useState<Offer[]>([]);
+  const [editingOffer, setEditingOffer] = useState<Offer | null>(null);
+  const [showOfferModal, setShowOfferModal] = useState(false);
+
   const postsPerPage = 20;
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -45,6 +50,19 @@ export default function AdminPage() {
     datePublished: string;
     slug: string;
     content: string; // ✅ Add this line
+  }
+
+  interface Offer {
+    _id: string;
+    title: string;
+    subtitle?: string;
+    popupImage?: string;
+    bannerImage?: string;
+    ctaLabel?: string;
+    ctaLink?: string;
+    startDate?: string;
+    endDate?: string;
+    isActive: boolean;
   }
 
   const toolbarOptions = [
@@ -122,6 +140,11 @@ export default function AdminPage() {
         setBlogs(res.data);
       })
       .catch((err) => console.error("Blogs error:", err));
+
+    axios
+      .get("https://cft-b87k.onrender.com/api/offer/view")
+      .then((res) => setOffers(res.data))
+      .catch((err) => console.error("Offers error:", err));
   }, []);
 
   const menuItems = [
@@ -133,6 +156,7 @@ export default function AdminPage() {
     "Emailer Data",
     "Newsletter Data",
     "Blog Data",
+    "Offer Data",
   ];
 
   const fetchBlogs = () => {
@@ -952,6 +976,99 @@ export default function AdminPage() {
                           )
                         )}
                     </div>
+                  )}
+                </section>
+              )}
+              {activePanel === "Offer Data" && (
+                <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-xl font-semibold">Offers</h2>
+                    <button
+                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                      onClick={() => {
+                        setEditingOffer(null);
+                        setShowOfferModal(true);
+                      }}
+                    >
+                      Add Offer
+                    </button>
+                  </div>
+
+                  <div className="overflow-auto">
+                    <table className="w-full text-left text-sm table-auto">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="px-4 py-2">Title</th>
+                          <th className="px-4 py-2">Subtitle</th>
+                          <th className="px-4 py-2">Active</th>
+                          <th className="px-4 py-2">Start</th>
+                          <th className="px-4 py-2">End</th>
+                          <th className="px-4 py-2">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {offers.map((offer) => (
+                          <tr key={offer._id} className="border-t align-top">
+                            <td className="px-4 py-2">{offer.title}</td>
+                            <td className="px-4 py-2">{offer.subtitle}</td>
+                            <td className="px-4 py-2">
+                              {offer.isActive ? "Yes" : "No"}
+                            </td>
+                            <td className="px-4 py-2">
+                              {offer.startDate?.slice(0, 10)}
+                            </td>
+                            <td className="px-4 py-2">
+                              {offer.endDate?.slice(0, 10)}
+                            </td>
+                            <td className="px-4 py-2 space-x-2">
+                              <button
+                                onClick={() => {
+                                  setEditingOffer(offer);
+                                  setShowOfferModal(true);
+                                }}
+                                className="text-blue-600 hover:text-blue-800"
+                              >
+                                <Edit size={16} />
+                              </button>
+                              <button
+                                onClick={async () => {
+                                  if (confirm("Delete this offer?")) {
+                                    try {
+                                      await axios.delete(
+                                        `https://cft-b87k.onrender.com/api/offer/${offer._id}`
+                                      );
+                                      setOffers((prev) =>
+                                        prev.filter((o) => o._id !== offer._id)
+                                      );
+                                    } catch (err) {
+                                      alert("Delete failed");
+                                    }
+                                  }
+                                }}
+                                className="text-red-600 hover:text-red-800"
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {showOfferModal && (
+                    <YourOfferModalComponent
+                      existingOffer={editingOffer}
+                      onClose={() => {
+                        setShowOfferModal(false);
+                        setEditingOffer(null);
+                      }}
+                      onSuccess={() => {
+                        axios
+                          .get("https://cft-b87k.onrender.com/api/offer/view")
+                          .then((res) => setOffers(res.data));
+                      }}
+                    />
                   )}
                 </section>
               )}
