@@ -14,10 +14,12 @@ const StatsSection = () => {
   }, [inView, hasAnimated]);
 
   const stats = [
-    { title: "Evolving", subtitle: "In The Market", value: null },
+    { title: "Establishment", subtitle: "2010", value: null },
     { title: "Awards", value: 4, suffix: "+" },
     { title: "Countries Covered", value: 105, suffix: "+" },
     { title: "Trading Instruments", value: 300, suffix: "+" },
+
+    { title: "Loyal Traders", value: 10000, suffix: "+" },
   ];
 
   return (
@@ -33,11 +35,11 @@ const StatsSection = () => {
           </span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="relative bg-gray-100 dark:bg-neutral-900  text-center p-8 rounded-3xl shadow-lg"
+              className="relative   text-center p-8 rounded-3xl shadow-lg"
               animate={{
                 y: [0, index % 2 === 0 ? -20 : 20, 0],
               }}
@@ -69,12 +71,13 @@ const StatsSection = () => {
                   </>
                 ) : (
                   <>
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
+                    <p className="text-5xl font-extrabold mb-2 text-[var(--primary-color)]">
+                      {stat.subtitle}
+                      {stat.suffix}
+                    </p>
+                    <h3 className="text-lg font-medium text-gray-800 dark:text-white mb-2">
                       {stat.title}
                     </h3>
-                    <p className="text-lg text-gray-600 dark:text-gray-200">
-                      {stat.subtitle}
-                    </p>
                   </>
                 )}
               </div>

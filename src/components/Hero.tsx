@@ -64,10 +64,16 @@ const HeroSection: React.FC = () => {
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-10 py-12 md:py-0">
         {/* Left Content */}
-        <div className="text-white space-y-8 max-w-xl">
-          <h1 className="text-4xl font-semibold leading-tight text-start">
+        <div className="max-w-xl text-white space-y-8">
+          <h1 className="text-4xl font-bold leading-tight text-start ">
+            Most Trusted Trading Platform
+          </h1>
+          <h1 className="text-3xl font-semibold leading-tight text-start">
             <span className="block mb-2">
-              500× Leverage. Zero Tax. No Brokerage. Just Pure Trading.
+              500× Leverage{" "}
+              <span className="text-[var(--primary-color)]">|</span> Zero Tax{" "}
+              <span className="text-[var(--primary-color)]">| </span>
+              No Brokerage Just Pure Trading
             </span>
             <span className="block text-[var(--primary-color)]">
               <Typewriter
@@ -111,7 +117,7 @@ const HeroSection: React.FC = () => {
         </div>
 
         {offers.length > 0 && (
-          <div className="backdrop-blur-md bg-transparent border border-white/30 rounded-2xl shadow-2xl overflow-hidden w-full max-w-sm animate-fade-in transition-all duration-500">
+          <div className=" backdrop-blur-md bg-transparent border border-white/30 rounded-2xl shadow-2xl overflow-hidden w-full max-w-sm animate-fade-in transition-all duration-500">
             <img
               src={offers[currentIndex].bannerImage}
               alt={offers[currentIndex].title}

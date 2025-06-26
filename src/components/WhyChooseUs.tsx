@@ -9,6 +9,8 @@ import {
   CreditCard,
   Banknote,
 } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const features = [
   { text: "No KYC Required", icon: ShieldCheck },
@@ -30,6 +32,10 @@ const WhyChoose: React.FC = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    AOS.init({ duration: 1200, once: true });
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % features.length);
     }, 2500);
@@ -43,10 +49,20 @@ const WhyChoose: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-12">
         {/* Left Side Title */}
         <div className="w-full md:w-1/2">
-          <h2 className="text-4xl font-bold text-[var(--primary-color)] mb-4">
-            Why Choose Us
+          <h2
+            className="text-4xl font-bold text-[var(--primary-color)] mb-4"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            Why Trade With CFT
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p
+            className="text-lg text-gray-600 dark:text-gray-300"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-delay="300"
+          >
             Simple and Fast Trading with Real-Time Market Insights for a Smooth
             Experience
           </p>
@@ -57,7 +73,7 @@ const WhyChoose: React.FC = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              className="absolute inset-0 flex items-center gap-4 text-2xl font-semibold bg-[#f3f3f3] text-black dark:bg-[#1f1f1f] dark:text-white border border-[var(--primary-color)] px-6 py-4 rounded-lg shadow-lg transition-colors duration-500"
+              className="absolute inset-0 flex items-center gap-4 text-2xl font-semibold bg-[#f3f3f3] text-black dark:bg-black dark:text-white border border-[var(--primary-color)] px-6 py-4 rounded-lg shadow-lg transition-colors duration-500"
               variants={slideVariants}
               initial="initial"
               animate="animate"

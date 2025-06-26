@@ -23,9 +23,10 @@ export const Landing = () => {
       <HeroSection />
       <WhyChoose />
       <Carousel />
-      <StatsSection />
-      <Trusted />
       <WhyTrade />
+
+      <Trusted />
+      <StatsSection />
       <HowItWorks />
       <ComparisonSection />
 

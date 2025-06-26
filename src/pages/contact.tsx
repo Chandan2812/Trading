@@ -99,7 +99,7 @@ function Contact() {
                 key={i}
                 data-aos="flip-left"
                 data-aos-delay={i * 200}
-                className="bg-white dark:bg-neutral-900 p-6 rounded-xl border border-[var(--primary-color)] shadow-md"
+                className="p-6 rounded-xl border border-[var(--primary-color)] shadow-md"
               >
                 <div className="text-[var(--primary-color)] mb-4">
                   {feature.icon}
