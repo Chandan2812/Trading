@@ -10,9 +10,15 @@ import {
 } from "lucide-react";
 import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Contact() {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
       <div className="mb-16">
@@ -23,15 +29,12 @@ function Contact() {
       <section className="relative py-20">
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
           {/* Left Content */}
-          <div className="flex-1">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl font-bold mb-6"
-            >
-              Reach Out to Us
-            </motion.h2>
+          <div
+            className="flex-1"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <h2 className="text-4xl font-bold mb-6">Reach Out to Us</h2>
             <p className="italic mb-5 text-gray-700 dark:text-gray-400">
               No matter what, we're always here.
             </p>
@@ -49,51 +52,53 @@ function Contact() {
           </div>
 
           {/* Right Side: Contact Info */}
-          <motion.div
-            className="flex-1 space-y-6"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <ContactItem
-              icon={<Phone />}
-              label="Call Us"
-              content="+91 83682 84948"
-              href="tel:+918368284948"
-            />
-            <ContactItem
-              icon={<Mail />}
-              label="Email Us"
-              content="info@closefriendtrader.in"
-              href="mailto:info@closefriendtrader.in"
-            />
-            <ContactItem
-              icon={<MapPin />}
-              label="Head Office"
-              content="India"
-            />
-            <ContactItem
-              icon={<Clock />}
-              label="Working Hours"
-              content="Our operations run 24×7, so no matter when you trade, we’re right here with you."
-            />
-          </motion.div>
+          <div className="flex-1 space-y-6">
+            <div data-aos="zoom-in" data-aos-delay="100">
+              <ContactItem
+                icon={<Phone />}
+                label="Call Us"
+                content="+91 83682 84948"
+                href="tel:+918368284948"
+              />
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="300">
+              <ContactItem
+                icon={<Mail />}
+                label="Email Us"
+                content="info@closefriendtrader.in"
+                href="mailto:info@closefriendtrader.in"
+              />
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="500">
+              <ContactItem
+                icon={<MapPin />}
+                label="Head Office"
+                content="India"
+              />
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="700">
+              <ContactItem
+                icon={<Clock />}
+                label="Working Hours"
+                content="Our operations run 24×7, so no matter when you trade, we’re right here with you."
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Support Features */}
       <section className="bg-gray-100 dark:bg-[#0a0a0d] py-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto text-center px-6">
-          <h3 className="text-3xl font-bold mb-14">
+          <h3 className="text-3xl font-bold mb-14" data-aos="zoom-in">
             Always-On Support You Can Trust
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
             {supportFeatures.map((feature, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
+                data-aos="flip-left"
+                data-aos-delay={i * 200}
                 className="bg-white dark:bg-neutral-900 p-6 rounded-xl border border-[var(--primary-color)] shadow-md"
               >
                 <div className="text-[var(--primary-color)] mb-4">
@@ -103,22 +108,18 @@ function Contact() {
                 <p className="text-sm text-gray-700 dark:text-gray-400">
                   {feature.desc}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 text-center bg-white dark:bg-black border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
-        <motion.h3
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl font-bold mb-6"
-        >
-          Let’s Connect Today
-        </motion.h3>
+      <section
+        className="py-20 px-6 text-center bg-white dark:bg-black border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300"
+        data-aos="fade-up"
+      >
+        <h3 className="text-3xl font-bold mb-6">Let’s Connect Today</h3>
         <p className="text-gray-700 dark:text-gray-400 max-w-2xl mx-auto mb-6">
           Want a walkthrough? Need help? Or just curious? We’re just a click or
           call away—reach out now and experience the difference of Close Friends
