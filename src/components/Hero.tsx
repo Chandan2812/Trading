@@ -45,7 +45,7 @@ const HeroSection: React.FC = () => {
   }, [offers]);
 
   return (
-    <section className="relative min-h-[80vh] md:h-screen flex items-center mt-24 overflow-hidden">
+    <section className="relative min-h-[80vh] md:h-screen flex items-center overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"

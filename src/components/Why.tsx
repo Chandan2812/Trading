@@ -1,82 +1,93 @@
+import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
-const features = [
+const stats = [
   {
     title: "Unified Interface",
-    desc: "Everything from signals to insights in one clean dashboard",
+    subtitle: "Everything from signals to insights in one clean dashboard",
   },
   {
-    title: "Automation First",
-    desc: "Auto-analyze trades, auto-flag risks, auto-improve strategies",
+    title: "Automation First", // ← This one will float up/down
+    subtitle: "Auto-analyze trades, auto-flag risks, auto-improve strategies",
   },
   {
     title: "Visual Reporting",
-    desc: "Easy charts, intuitive stats, no spreadsheets needed",
+    subtitle: "Easy charts, intuitive stats, no spreadsheets needed",
   },
   {
     title: "Security & Transparency",
-    desc: "All data encrypted and strictly protected. Full control. Always.",
+    subtitle:
+      "All data encrypted and strictly protected. Full control. Always.",
   },
 ];
 
-const floatVariants = {
-  animate: {
-    y: [0, -20, 0],
+const fadeInVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
     transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut",
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: "easeOut",
     },
+  }),
+};
+
+const floatAnimation = {
+  y: [0, -12, 0],
+  transition: {
+    duration: 3,
+    repeat: Infinity,
+    ease: "easeInOut",
   },
 };
 
-export default function WhyChooseCFT() {
+const Whychoose = () => {
+  const [ref, inView] = useInView({ threshold: 0.4, triggerOnce: true });
+
   return (
-    <section className="relative min-h-screen bg-[#0b0b0e] text-white flex items-center justify-center overflow-hidden">
-      {/* Center Text */}
-      <div className="absolute z-20 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
-          Why Choose CFT?
+    <section
+      ref={ref}
+      className="relative py-24 bg-[#0a0a0d] text-white overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-20">
+          Why Choose{" "}
+          <span className="text-[var(--primary-color)] italic">
+            Close Friends Traders
+          </span>
         </h2>
-      </div>
 
-      {/* Feature Cards */}
-      <div className="relative w-full max-w-6xl h-[600px] perspective-3d">
-        {features.map((feature, i) => {
-          const positionClasses = [
-            "top-0 left-1/2 -translate-x-1/2",
-            "top-1/2 left-0 -translate-y-1/2",
-            "bottom-0 left-1/2 -translate-x-1/2",
-            "top-1/2 right-0 -translate-y-1/2",
-          ];
-
-          return (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
+          {stats.map((stat, index) => (
             <motion.div
-              key={i}
-              variants={floatVariants}
-              animate="animate"
-              className={`absolute ${positionClasses[i]} w-48 h-64 group`}
+              key={index}
+              className="bg-gradient-to-b from-[#1f1f27] to-[#0e0e12] border border-gray-700 shadow-xl rounded-2xl p-6 text-center w-[260px] sm:w-[280px]"
+              style={{
+                transformStyle: "preserve-3d",
+                rotateX: "15deg",
+                rotateY: "-10deg",
+              }}
+              custom={index}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              variants={fadeInVariants}
+              whileInView={
+                index === 1 || index === 3 ? floatAnimation : undefined
+              } // Only 2nd box floats
             >
-              {/* 3D Block */}
-              <div className="relative w-full h-full transform-gpu transition-transform duration-300 group-hover:scale-105">
-                {/* Top Face */}
-                <div className="absolute top-0 w-full h-12 bg-gray-100 rounded-t-xl shadow-md z-10" />
-
-                {/* Body */}
-                <div className="absolute top-12 w-full h-[200px] bg-[#1a1a1e] text-white p-4 rounded-b-xl border-t border-gray-700 z-0">
-                  <h3 className="text-lg font-semibold mb-1">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-gray-300">{feature.desc}</p>
-                </div>
-
-                {/* Shadow */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-2 bg-black/30 blur-md rounded-full" />
-              </div>
+              <h3 className="text-xl font-bold mb-3 text-white">
+                {stat.title}
+              </h3>
+              <p className="text-sm text-gray-300">{stat.subtitle}</p>
             </motion.div>
-          );
-        })}
+          ))}
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default Whychoose;

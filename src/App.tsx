@@ -13,8 +13,8 @@ import Blog2 from "./pages/Blog2";
 import Blog2Details from "./pages/Blog2Details";
 import WhatsAppButton from "./components/floatingBtn";
 import ZohoSalesIQ from "./components/ZohoSalesIQ";
-import OurProcess from "./components/OurProcess";
 import OfferPopup from "./components/OfferPopup";
+import Feature from "./components/Features";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/emailer" element={<Emailer />} />
-          <Route path="/learning" element={<OurProcess />} />
+          <Route path="/features" element={<Feature />} />
           <Route path="/newsletter" element={<NewsletterForm />} />
           <Route path="/AdminPage" element={<AdminPage />} />
         </Routes>

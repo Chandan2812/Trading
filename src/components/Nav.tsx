@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
 import logo from "../assets/logo-01.svg";
-import TradingViewTicker from "./TradingViewTicker";
+// import TradingViewTicker from "./TradingViewTicker";
 
 declare global {
   interface Window {
@@ -39,6 +39,7 @@ const Navbar = () => {
     { label: "Insights", path: "/blogs" },
     { label: "About Us", path: "/about" },
     { label: "Contact Us", path: "/Contact" },
+    { label: "Features", path: "/features" },
   ];
 
   if (userdata && userdata.email.toLowerCase() === "admin@gmail.com") {
@@ -92,12 +93,12 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full fixed top-0 z-[60]">
+      {/* <div className="w-full fixed top-0 z-[60]">
         <TradingViewTicker />
-      </div>
+      </div> */}
 
       <nav
-        className={`w-full fixed top-0 z-50 mt-16 md:mt-11 border-b transition-colors 
+        className={`w-full fixed top-0 z-50 border-b transition-colors 
     ${
       darkMode
         ? "bg-black text-white border-gray-800"
@@ -303,7 +304,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[99] right-[100px] top-[85px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[270px] lg:top-[67px] lg:-translate-x-1/2"
+          className="fixed z-[99] right-[100px] top-[85px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[270px] lg:top-[24px] lg:-translate-x-1/2"
         />
       )}
     </>

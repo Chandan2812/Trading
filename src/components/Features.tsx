@@ -8,6 +8,7 @@ import Navbar from "./Nav";
 
 import { motion } from "framer-motion";
 import bgImage from "../assets/bg-earth-desktop.webp";
+import WhyChooseCFT from "./Why";
 
 const charVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -24,7 +25,7 @@ const charVariants = {
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ScrollTransformCards() {
+export default function Feature() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -79,7 +80,7 @@ export default function ScrollTransformCards() {
 
   return (
     <div className="bg-white dark:bg-black text-black dark:text-white">
-      <div className="mb-28">
+      <div>
         <Navbar />
       </div>
       <div className="w-full">
@@ -174,7 +175,7 @@ export default function ScrollTransformCards() {
         </section>
 
         <SwipeGallery />
-
+        <WhyChooseCFT />
         <Footer />
       </div>
     </div>

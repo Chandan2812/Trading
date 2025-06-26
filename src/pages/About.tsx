@@ -78,7 +78,7 @@ const AboutUsSection = () => {
 
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white">
-      <div className="mb-28">
+      <div className="mb-12">
         <Navbar />
       </div>
 

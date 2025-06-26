@@ -8,7 +8,7 @@ function Contact() {
     <div>
       <Navbar />
       <section
-        className="relative bg-black text-white py-12 px-6 mt-28"
+        className="relative bg-black text-white py-12 px-6 mt-12"
         style={{
           backgroundImage:
             "url('https://www.arrowtradefx.com/assets/images/png/regulationss.jpeg')",
