@@ -9,6 +9,7 @@ import Navbar from "./Nav";
 import { motion } from "framer-motion";
 import bgImage from "../assets/bg-earth-desktop.webp";
 import WhyChooseCFT from "./Why";
+import FeaturesSplit from "./CFTFeature";
 
 const charVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -78,6 +79,15 @@ export default function Feature() {
     { text: "Start smart. Scale faster.", style: "text-xl" },
   ];
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
   return (
     <div className="bg-white dark:bg-black text-black dark:text-white">
       <div>
@@ -125,57 +135,161 @@ export default function Feature() {
           </motion.button>
         </section>
 
-        {/* Section 2: Animated Cards */}
-        {/* Section 2: Scroll Animated Cards */}
-        <section className="h-screen flex items-center justify-center">
-          <div className="flex gap-8 flex-wrap justify-center">
-            {[
-              {
-                color: "#ef4444",
-                icon: "📊",
-                label: "Crisp & Professional",
-                desc: "Get a 360° view of your trading business: revenue, lead quality, top talent, and campaign performance in real time.",
-              },
-              {
-                color: "#facc15",
-                icon: "⚡",
-                label: "Bold & Catchy",
-                desc: "Your money, your market, your movers: see who’s winning and what’s working, all from your CFT control panel.",
-              },
-              {
-                color: "#22c55e",
-                icon: "📈",
-                label: "Insight-Driven",
-                desc: "From L0 leads to L2 loyalists, track growth, efficiency, and impact like never before.",
-              },
-              {
-                color: "#3b82f6",
-                icon: "🎯",
-                label: "Action-Focused",
-                desc: "Turn insights into impact. Spot trends, fix gaps, and scale what works with real-time data at your fingertips.",
-              },
-            ].map((card, i) => (
-              <div
-                key={i}
-                ref={(el) => (cardRefs.current[i] = el)}
-                className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 text-white overflow-hidden"
-                style={{ backgroundColor: card.color }}
-              >
+        {/* Section 2: Scroll Animated Cards (Desktop) & Static Cards (Mobile) */}
+        <section className="py-20 px-4">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+              <span className="text-[var(--primary-color)]">CFT</span>{" "}
+              Intelligence Cards
+            </h2>
+
+            {/* Desktop (with animation) */}
+            <div className="hidden md:flex gap-8 flex-wrap justify-center">
+              {[
+                {
+                  color: "#ef4444",
+                  icon: "📊",
+                  label: "Crisp & Professional",
+                  desc: "Get a 360° view of your trading business: revenue, lead quality, top talent, and campaign performance in real time.",
+                },
+                {
+                  color: "#facc15",
+                  icon: "⚡",
+                  label: "Bold & Catchy",
+                  desc: "Your money, your market, your movers: see who’s winning and what’s working, all from your CFT control panel.",
+                },
+                {
+                  color: "#22c55e",
+                  icon: "📈",
+                  label: "Insight-Driven",
+                  desc: "From L0 leads to L2 loyalists, track growth, efficiency, and impact like never before.",
+                },
+                {
+                  color: "#3b82f6",
+                  icon: "🎯",
+                  label: "Action-Focused",
+                  desc: "Turn insights into impact. Spot trends, fix gaps, and scale what works with real-time data at your fingertips.",
+                },
+              ].map((card, i) => (
                 <div
-                  ref={(el) => (iconRefs.current[i] = el)}
-                  className="opacity-0 scale-50 text-white text-center px-3"
+                  key={i}
+                  ref={(el) => (cardRefs.current[i] = el)}
+                  className="w-8 h-8 bg-gray-100 dark:bg-neutral-900 border border-[var(--primary-color)] rounded-full flex items-center justify-center transition-all duration-300 text-white overflow-hidden"
                 >
-                  <div className="text-5xl">{card.icon}</div>
-                  <div className="text-lg font-semibold mt-2">{card.label}</div>
-                  <p className="text-sm mt-1 leading-snug">{card.desc}</p>
+                  <div
+                    ref={(el) => (iconRefs.current[i] = el)}
+                    className="opacity-0 scale-50 text-white text-center px-3"
+                  >
+                    <div className="text-4xl">{card.icon}</div>
+                    <div className="text-lg font-semibold mt-2">
+                      {card.label}
+                    </div>
+                    <p className="text-sm mt-1 leading-snug text-gray-300">
+                      {card.desc}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Mobile (simple stacked layout) */}
+            <div className="md:hidden space-y-6">
+              {[
+                {
+                  color: "#ef4444",
+                  icon: "📊",
+                  label: "Crisp & Professional",
+                  desc: "Get a 360° view of your trading business: revenue, lead quality, top talent, and campaign performance in real time.",
+                },
+                {
+                  color: "#facc15",
+                  icon: "⚡",
+                  label: "Bold & Catchy",
+                  desc: "Your money, your market, your movers: see who’s winning and what’s working, all from your CFT control panel.",
+                },
+                {
+                  color: "#22c55e",
+                  icon: "📈",
+                  label: "Insight-Driven",
+                  desc: "From L0 leads to L2 loyalists, track growth, efficiency, and impact like never before.",
+                },
+                {
+                  color: "#3b82f6",
+                  icon: "🎯",
+                  label: "Action-Focused",
+                  desc: "Turn insights into impact. Spot trends, fix gaps, and scale what works with real-time data at your fingertips.",
+                },
+              ].map((card, i) => (
+                <div
+                  key={i}
+                  className="bg-neutral-900 rounded-xl p-6 border border-[var(--primary-color)]"
+                >
+                  <div className="text-4xl mb-3">{card.icon}</div>
+                  <div className="text-lg font-semibold mb-2 text-[var(--primary-color)]">
+                    {card.label}
+                  </div>
+                  <p className="text-sm text-gray-300">{card.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         <SwipeGallery />
         <WhyChooseCFT />
+        <FeaturesSplit />
+
+        <section className="bg-[#0a0a0d] text-white py-24 px-6 relative overflow-hidden">
+          <div className="max-w-5xl mx-auto text-center space-y-20 relative z-10">
+            {/* Upgrade Ready */}
+            <motion.div
+              className="space-y-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              variants={fadeInUp}
+            >
+              <div className="inline-block px-6 py-2 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] text-sm uppercase tracking-widest">
+                Upgrade Ready
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold">
+                CFT evolves with you.
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Regular updates based on trader feedback, market shifts, and
+                real-world trading behavior.
+              </p>
+            </motion.div>
+
+            {/* Divider Glow Line */}
+            <div className="h-1 w-full bg-gradient-to-r from-transparent via-[var(--primary-color)] to-transparent blur-sm opacity-40" />
+
+            {/* Experience CFT Today */}
+            <motion.div
+              className="space-y-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.4 }}
+              variants={fadeInUp}
+            >
+              <h2 className="text-3xl sm:text-4xl font-bold">
+                Experience CFT Today
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Zero clutter. No confusion. Just clean, powerful trading
+                intelligence.
+                <br />
+                <span className="text-white font-semibold mt-2 block">
+                  India's #1 Trading Companion.
+                </span>
+                Built for performance. Backed by data. Trusted by traders.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Glow behind */}
+          <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-[var(--primary-color)] opacity-10 blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" />
+        </section>
         <Footer />
       </div>
     </div>

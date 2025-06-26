@@ -123,7 +123,7 @@ export default function SwipeGallery() {
           >
             <div className="max-w-6xl px-6 w-full flex flex-col items-center text-white text-center space-y-10">
               {/* Slide Heading */}
-              <h2 className="text-3xl font-semibold tracking-widest uppercase text-white/90 drop-shadow-md">
+              <h2 className="hidden md:block text-3xl font-semibold tracking-widest uppercase text-white/90 drop-shadow-md">
                 Faster trades. Smarter insights. Laser-sharp accuracy. Welcome
                 to Close Friends Trading.
               </h2>
