@@ -218,11 +218,11 @@ export default function AdminPage() {
   return (
     <div className="text-black dark:text-white">
       <Navbar />
-      <div className="min-h-screen bg-white dark:bg-black py-6 mt-28">
+      <div className="min-h-screen bg-white dark:bg-black py-6 mt-20">
         <div className="flex flex-col md:flex-row gap-6">
           {/* SIDEBAR (Desktop Only) */}
 
-          <aside className="fixed top-32 left-10 h-fit mt-10 w-64 bg-gray-100 dark:bg-neutral-900 p-4 shadow z-40 hidden md:block overflow-y-auto">
+          <aside className="fixed top-32 left-10 h-fit mt-2 w-64 bg-gray-100 dark:bg-neutral-900 p-4 shadow z-40 hidden md:block overflow-y-auto">
             <h2 className="text-xl font-semibold mb-4 text-[var(--primary-color)]">
               Access Panel
             </h2>

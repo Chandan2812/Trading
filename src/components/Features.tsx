@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import bgImage from "../assets/bg-earth-desktop.webp";
 import WhyChooseCFT from "./Why";
 import FeaturesSplit from "./CFTFeature";
+import { MergedDashboardTable } from "../pages/DashboardTables";
 
 const charVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -236,6 +237,7 @@ export default function Feature() {
         </section>
 
         <SwipeGallery />
+        <MergedDashboardTable />
         <WhyChooseCFT />
         <FeaturesSplit />
 
