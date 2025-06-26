@@ -219,6 +219,10 @@ const AddOffer: React.FC<Props> = ({ existingOffer, onClose, onSuccess }) => {
               onChange={(e) => handleFileChange(e, "popupImage")}
               className="block w-full"
             />
+            <p className="text-xs text-gray-500 mt-1">
+              Image should be less than <strong>1MB</strong> and size{" "}
+              <strong>297×170 px</strong>
+            </p>
             {form.popupImage && (
               <img
                 src={form.popupImage}
@@ -236,6 +240,10 @@ const AddOffer: React.FC<Props> = ({ existingOffer, onClose, onSuccess }) => {
               onChange={(e) => handleFileChange(e, "bannerImage")}
               className="block w-full"
             />
+            <p className="text-xs text-gray-500 mt-1">
+              Image should be less than <strong>1MB</strong> and size{" "}
+              <strong>297×170 px</strong>
+            </p>
             {form.bannerImage && (
               <img
                 src={form.bannerImage}
