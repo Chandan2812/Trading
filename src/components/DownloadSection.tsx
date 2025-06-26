@@ -14,7 +14,7 @@ export default function DownloadSection() {
   return (
     <div className="bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
       <div
-        className="max-w-7xl mx-auto px-5 py-12 flex flex-col-reverse md:flex-row items-center justify-between gap-10"
+        className="max-w-7xl mx-auto py-12 flex flex-col-reverse md:flex-row items-center justify-between gap-10"
         data-aos="fade-up"
       >
         {/* Left: GIF */}

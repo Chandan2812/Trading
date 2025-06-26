@@ -99,7 +99,7 @@ export default function SwipeGallery() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full min-h-screen overflow-hidden py-16"
+      className="relative w-full min-h-screen overflow-hidden"
     >
       {/* Slide Counter */}
       <div className="absolute top-32 right-12 z-50 text-white text-5xl font-bold border-b-4 border-white">

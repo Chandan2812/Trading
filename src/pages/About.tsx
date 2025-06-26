@@ -82,7 +82,7 @@ const AboutUsSection = () => {
         <Navbar />
       </div>
 
-      <section className="flex flex-col lg:flex-row items-center justify-between mx-auto gap-8 py-16 px-6 max-w-7xl">
+      <section className="flex flex-col lg:flex-row items-center justify-between mx-auto gap-8 py-16 max-w-7xl">
         {/* Left: Text Content with AOS animations */}
         <div className="w-full lg:w-1/2">
           <h2
@@ -143,7 +143,7 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="bg-gray-50 dark:bg-[#0e0e0e] py-20 px-6 text-black dark:text-white transition-colors duration-300">
+      <section className="bg-gray-50 dark:bg-[#0e0e0e] py-20 text-black dark:text-white transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <h2
             className="text-3xl sm:text-4xl font-bold text-center mb-12"
@@ -182,8 +182,8 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 dark:bg-[#0e0e0e] py-12 px-5 text-black dark:text-white transition-colors duration-300">
-        <div className="max-w-6xl mx-auto relative">
+      <section className="bg-gray-100 dark:bg-[#0e0e0e] py-12 text-black dark:text-white transition-colors duration-300">
+        <div className="max-w-7xl mx-auto relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[var(--primary-color)] z-0 hidden sm:block"></div>
 
           <div className="space-y-20 relative z-10">
@@ -215,7 +215,7 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-[#f4f4f4] to-[#ffffff] dark:from-black dark:to-[#0e0e0e] py-12 px-6 transition-colors duration-300">
+      <section className="bg-gradient-to-br from-[#f4f4f4] to-[#ffffff] dark:from-black dark:to-[#0e0e0e] py-12  transition-colors duration-300">
         <div className="max-w-7xl mx-auto text-center mb-14">
           <h2 className="text-4xl font-bold mb-4" data-aos="fade-up">
             What We <span className="text-[var(--primary-color)]">Offer?</span>
@@ -270,7 +270,7 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-[#f7f7f7] to-white dark:from-[#0c0c0c] dark:to-[#111] py-20 px-6">
+      <section className="bg-gradient-to-br from-[#f7f7f7] to-white dark:from-[#0c0c0c] dark:to-[#111] py-12">
         <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10">
           {/* Left Content */}
           <div className="w-full lg:w-2/3" data-aos="fade-right">

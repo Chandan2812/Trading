@@ -73,7 +73,7 @@ const WhyTrade: React.FC = () => {
   };
 
   return (
-    <section className="bg-white dark:bg-black text-black dark:text-white py-12 px-5 transition-colors duration-300">
+    <section className="bg-white dark:bg-black text-black dark:text-white py-12 transition-colors duration-300">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-semibold">
           Why Traders Choose{" "}

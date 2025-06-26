@@ -1,119 +1,95 @@
-/* MergedDashboardTable.tsx */
 export const MergedDashboardTable = () => (
-  <section className="bg-black text-white py-10 px-4">
-    {/* <h2 className="text-xl sm:text-2xl font-bold text-[#71ced0] mb-6">
-      DASHBOARD
-    </h2> */}
+  <section className="bg-white dark:bg-black text-black dark:text-white py-16 px-4 transition-colors duration-500">
+    <div className="max-w-7xl mx-auto">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
+        <span className="text-[var(--primary-color)]">CFT</span> Dashboard
+        Summary
+      </h2>
 
-    <div className="overflow-x-auto">
-      {/* min-w-[640px] keeps columns readable; adjust if needed */}
-      <table className="min-w-[640px] w-full text-sm border border-[#71ced0]">
-        <thead className="bg-[#0e2021]/60">
-          <tr>
-            {["Category", "Metric", "Value"].map((h) => (
-              <th
-                key={h}
-                className="border border-[#71ced0] font-semibold p-3 text-left"
-              >
-                {h}
-              </th>
-            ))}
-          </tr>
-        </thead>
+      <div className="overflow-x-auto border border-[var(--primary-color)] rounded-xl">
+        <table className="min-w-[640px] w-full text-sm">
+          <thead className="bg-[var(--primary-color)] text-black dark:text-white">
+            <tr>
+              {["Category", "Metric", "Value"].map((h) => (
+                <th key={h} className="p-4 font-semibold text-left">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
 
-        <tbody>
-          {/* ───────────── 1. CFT Dashboard ───────────── */}
-          <tr>
-            <td className="border border-[#71ced0] p-3">CFT Dashboard</td>
-            <td className="border border-[#71ced0] p-3">Accounts Linked</td>
-            <td className="border border-[#71ced0] p-3">32 Ad Accounts</td>
-          </tr>
+          <tbody className="divide-y divide-[var(--primary-color)]">
+            {/* Group 1: CFT Dashboard */}
+            <tr className="bg-gray-50 dark:bg-neutral-900">
+              <td className="p-4 font-medium">CFT Dashboard</td>
+              <td className="p-4">Accounts Linked</td>
+              <td className="p-4">32 Ad Accounts</td>
+            </tr>
 
-          {/* ───────────── 2. Trading & Revenue Overview ───────────── */}
-          <tr>
-            <td
-              className="border border-[#71ced0] p-3"
-              rowSpan={4}
-              style={{ verticalAlign: "top" }}
-            >
-              Trading &<br />
-              Revenue Overview
-            </td>
-            <td className="border border-[#71ced0] p-3">Total Revenue</td>
-            <td className="border border-[#71ced0] p-3">₹ 5,13,50,56,231</td>
-          </tr>
-          <tr>
-            <td className="border border-[#71ced0] p-3">Total Trade Volume</td>
-            <td className="border border-[#71ced0] p-3">₹ 19,13,50,56,231</td>
-          </tr>
-          <tr>
-            <td className="border border-[#71ced0] p-3">Ad Spend</td>
-            <td className="border border-[#71ced0] p-3">₹ 10,51,26,231</td>
-          </tr>
-          <tr>
-            <td className="border border-[#71ced0] p-3">New Customers</td>
-            <td className="border border-[#71ced0] p-3">12</td>
-          </tr>
+            {/* Group 2: Trading & Revenue */}
+            <tr className="bg-gray-100 dark:bg-neutral-800">
+              <td className="p-4 font-medium" rowSpan={4}>
+                Trading & Revenue Overview
+              </td>
+              <td className="p-4">Total Revenue</td>
+              <td className="p-4">₹ 5,13,50,56,231</td>
+            </tr>
+            <tr className="bg-gray-100 dark:bg-neutral-800">
+              <td className="p-4">Total Trade Volume</td>
+              <td className="p-4">₹ 19,13,50,56,231</td>
+            </tr>
+            <tr className="bg-gray-100 dark:bg-neutral-800">
+              <td className="p-4">Ad Spend</td>
+              <td className="p-4">₹ 10,51,26,231</td>
+            </tr>
+            <tr className="bg-gray-100 dark:bg-neutral-800">
+              <td className="p-4">New Customers</td>
+              <td className="p-4">12</td>
+            </tr>
 
-          {/* ───────────── 3. Advertising & Conversion Metrics ───────────── */}
-          <tr>
-            <td
-              className="border border-[#71ced0] p-3"
-              rowSpan={5}
-              style={{ verticalAlign: "top" }}
-            >
-              Advertising &<br />
-              Conversion Metrics
-            </td>
-            <td className="border border-[#71ced0] p-3">
-              Average Cost per Conversion
-            </td>
-            <td className="border border-[#71ced0] p-3">₹ 15,056</td>
-          </tr>
-          <tr>
-            <td className="border border-[#71ced0] p-3">
-              Average Cost per Message
-            </td>
-            <td className="border border-[#71ced0] p-3">₹ 20,124</td>
-          </tr>
-          <tr>
-            <td className="border border-[#71ced0] p-3">
-              Cost per Order (CPO)
-            </td>
-            <td className="border border-[#71ced0] p-3">₹ 25,018</td>
-          </tr>
-          <tr>
-            <td className="border border-[#71ced0] p-3">
-              Message-to-Response Ratio (Me/Re)
-            </td>
-            <td className="border border-[#71ced0] p-3">15%</td>
-          </tr>
-          <tr>
-            <td className="border border-[#71ced0] p-3">
-              Return on Ad Spend (ROAS)
-            </td>
-            <td className="border border-[#71ced0] p-3">25%</td>
-          </tr>
+            {/* Group 3: Advertising Metrics */}
+            <tr className="bg-gray-50 dark:bg-neutral-900">
+              <td className="p-4 font-medium" rowSpan={5}>
+                Advertising & Conversion Metrics
+              </td>
+              <td className="p-4">Average Cost per Conversion</td>
+              <td className="p-4">₹ 15,056</td>
+            </tr>
+            <tr className="bg-gray-50 dark:bg-neutral-900">
+              <td className="p-4">Average Cost per Message</td>
+              <td className="p-4">₹ 20,124</td>
+            </tr>
+            <tr className="bg-gray-50 dark:bg-neutral-900">
+              <td className="p-4">Cost per Order (CPO)</td>
+              <td className="p-4">₹ 25,018</td>
+            </tr>
+            <tr className="bg-gray-50 dark:bg-neutral-900">
+              <td className="p-4">Message-to-Response Ratio (Me/Re)</td>
+              <td className="p-4">15%</td>
+            </tr>
+            <tr className="bg-gray-50 dark:bg-neutral-900">
+              <td className="p-4">Return on Ad Spend (ROAS)</td>
+              <td className="p-4">25%</td>
+            </tr>
 
-          {/* ───────────── 4. Current Focus ───────────── */}
-          <tr>
-            <td className="border border-[#71ced0] p-3">Current Focus</td>
-            <td className="border border-[#71ced0] p-3">Objective</td>
-            <td className="border border-[#71ced0] p-3">
-              Messaging Efficiency
-            </td>
-          </tr>
+            {/* Group 4: Current Focus */}
+            <tr className="bg-gray-100 dark:bg-neutral-800">
+              <td className="p-4 font-medium">Current Focus</td>
+              <td className="p-4">Objective</td>
+              <td className="p-4">Messaging Efficiency</td>
+            </tr>
 
-          {/* ───────────── 5. Goal ───────────── */}
-          <tr>
-            <td className="border border-[#71ced0] p-3">Goal</td>
-            <td colSpan={2} className="border border-[#71ced0] p-3 text-left">
-              Better lead quality and lower message costs for improved trading
-              conversions
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            {/* Group 5: Goal */}
+            <tr className="bg-gray-100 dark:bg-neutral-800">
+              <td className="p-4 font-medium">Goal</td>
+              <td colSpan={2} className="p-4 text-left">
+                Better lead quality and lower message costs for improved trading
+                conversions
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 );

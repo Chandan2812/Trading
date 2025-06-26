@@ -137,14 +137,9 @@ export default function Feature() {
         </section>
 
         {/* Section 2: Scroll Animated Cards (Desktop) & Static Cards (Mobile) */}
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-              <span className="text-[var(--primary-color)]">CFT</span>{" "}
-              Intelligence Cards
-            </h2>
-
-            {/* Desktop (with animation) */}
+            {/* Desktop (animated cards) */}
             <div className="hidden md:flex gap-8 flex-wrap justify-center">
               {[
                 {
@@ -175,17 +170,17 @@ export default function Feature() {
                 <div
                   key={i}
                   ref={(el) => (cardRefs.current[i] = el)}
-                  className="w-8 h-8 bg-gray-100 dark:bg-neutral-900 border border-[var(--primary-color)] rounded-full flex items-center justify-center transition-all duration-300 text-white overflow-hidden"
+                  className="w-8 h-8 bg-gray-100 dark:bg-neutral-900 border border-[var(--primary-color)] rounded-full flex items-center justify-center transition-all duration-300 text-black dark:text-white overflow-hidden"
                 >
                   <div
                     ref={(el) => (iconRefs.current[i] = el)}
-                    className="opacity-0 scale-50 text-white text-center px-3"
+                    className="opacity-0 scale-50 text-center px-3"
                   >
                     <div className="text-4xl">{card.icon}</div>
-                    <div className="text-lg font-semibold mt-2">
+                    <div className="text-lg font-semibold mt-2 text-[var(--primary-color)]">
                       {card.label}
                     </div>
-                    <p className="text-sm mt-1 leading-snug text-gray-300">
+                    <p className="text-sm mt-1 leading-snug text-gray-700 dark:text-gray-300">
                       {card.desc}
                     </p>
                   </div>
@@ -193,8 +188,8 @@ export default function Feature() {
               ))}
             </div>
 
-            {/* Mobile (simple stacked layout) */}
-            <div className="md:hidden space-y-6">
+            {/* Mobile (static cards) */}
+            <div className="md:hidden space-y-6 mt-6">
               {[
                 {
                   color: "#ef4444",
@@ -223,13 +218,15 @@ export default function Feature() {
               ].map((card, i) => (
                 <div
                   key={i}
-                  className="bg-neutral-900 rounded-xl p-6 border border-[var(--primary-color)]"
+                  className="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 border border-[var(--primary-color)] transition-all"
                 >
                   <div className="text-4xl mb-3">{card.icon}</div>
                   <div className="text-lg font-semibold mb-2 text-[var(--primary-color)]">
                     {card.label}
                   </div>
-                  <p className="text-sm text-gray-300">{card.desc}</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    {card.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -240,8 +237,7 @@ export default function Feature() {
         <MergedDashboardTable />
         <WhyChooseCFT />
         <FeaturesSplit />
-
-        <section className="bg-[#0a0a0d] text-white py-24 px-6 relative overflow-hidden">
+        <section className="bg-white dark:bg-[#0a0a0d] text-black dark:text-white py-12 px-6 relative overflow-hidden transition-colors duration-500">
           <div className="max-w-5xl mx-auto text-center space-y-20 relative z-10">
             {/* Upgrade Ready */}
             <motion.div
@@ -257,7 +253,7 @@ export default function Feature() {
               <h2 className="text-3xl sm:text-4xl font-bold">
                 CFT evolves with you.
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
                 Regular updates based on trader feedback, market shifts, and
                 real-world trading behavior.
               </p>
@@ -277,11 +273,11 @@ export default function Feature() {
               <h2 className="text-3xl sm:text-4xl font-bold">
                 Experience CFT Today
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
                 Zero clutter. No confusion. Just clean, powerful trading
                 intelligence.
                 <br />
-                <span className="text-white font-semibold mt-2 block">
+                <span className="text-black dark:text-white font-semibold mt-2 block">
                   India's #1 Trading Companion.
                 </span>
                 Built for performance. Backed by data. Trusted by traders.
@@ -289,9 +285,10 @@ export default function Feature() {
             </motion.div>
           </div>
 
-          {/* Glow behind */}
+          {/* Glow Behind */}
           <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-[var(--primary-color)] opacity-10 blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0" />
         </section>
+
         <Footer />
       </div>
     </div>

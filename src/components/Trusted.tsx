@@ -48,7 +48,7 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white py-16 px-4 relative transition-colors duration-500">
+    <div className="bg-white text-black dark:bg-black dark:text-white py-16 relative transition-colors duration-500">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
           India&apos;s No. 1{" "}

@@ -15,7 +15,7 @@ const flipCard = {
 
 export default function FeaturesSplit() {
   return (
-    <section className="relative bg-[#0a0a0d] text-white py-12 px-6 overflow-hidden">
+    <section className="relative bg-white dark:bg-[#0a0a0d] text-black dark:text-white py-12 px-6 overflow-hidden transition-colors duration-500">
       {/* Section Heading */}
       <motion.div
         className="max-w-7xl mx-auto text-center mb-20 relative z-10"
@@ -24,7 +24,7 @@ export default function FeaturesSplit() {
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
+        <h2 className="text-4xl  font-bold leading-tight">
           <span className="text-[var(--primary-color)]">CFT</span> System
           Features
         </h2>
@@ -37,7 +37,7 @@ export default function FeaturesSplit() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto relative z-10 perspective-[1000px]">
         {/* Card 1 */}
         <motion.div
-          className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8 shadow-[0_1px_3px_var(--primary-color)] hover:shadow-[0_6px_16px_var(--primary-color)] transition-shadow duration-500"
+          className="backdrop-blur-md bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-8 shadow-md dark:shadow-[0_1px_3px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[0_6px_16px_var(--primary-color)] transition-shadow duration-500"
           custom={0}
           initial="hidden"
           whileInView="visible"
@@ -54,7 +54,10 @@ export default function FeaturesSplit() {
               "Actionable insights when trading drops",
               "Smart triggers for stop-loss, exit, and rebalance",
             ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-gray-300">
+              <li
+                key={i}
+                className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
+              >
                 <span className="text-[var(--primary-color)] text-lg mt-1">
                   ✔
                 </span>
@@ -66,7 +69,7 @@ export default function FeaturesSplit() {
 
         {/* Card 2 */}
         <motion.div
-          className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-8 shadow-[0_1px_3px_var(--primary-color)] hover:shadow-[0_6px_16px_var(--primary-color)] transition-shadow duration-500"
+          className="backdrop-blur-md bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-8 shadow-md dark:shadow-[0_1px_3px_var(--primary-color)] hover:shadow-lg dark:hover:shadow-[0_6px_16px_var(--primary-color)] transition-shadow duration-500"
           custom={1}
           initial="hidden"
           whileInView="visible"
@@ -83,7 +86,10 @@ export default function FeaturesSplit() {
               "Abnormal activity alerts",
               "Portfolio performance diagnostics",
             ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-gray-300">
+              <li
+                key={i}
+                className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
+              >
                 <span className="text-[var(--primary-color)] text-lg mt-1">
                   ✔
                 </span>

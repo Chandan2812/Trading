@@ -7,7 +7,7 @@ const stats = [
     subtitle: "Everything from signals to insights in one clean dashboard",
   },
   {
-    title: "Automation First", // ← This one will float up/down
+    title: "Automation First",
     subtitle: "Auto-analyze trades, auto-flag risks, auto-improve strategies",
   },
   {
@@ -50,10 +50,10 @@ const Whychoose = () => {
   return (
     <section
       ref={ref}
-      className="relative py-24 bg-[#0a0a0d] text-white overflow-hidden"
+      className="relative py-12 bg-white dark:bg-[#0a0a0d] text-black dark:text-white transition-colors duration-500"
     >
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-20">
+        <h2 className="text-4xl font-bold mb-20">
           Why Choose{" "}
           <span className="text-[var(--primary-color)] italic">
             Close Friends Traders
@@ -64,7 +64,7 @@ const Whychoose = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="bg-gradient-to-b from-[#1f1f27] to-[#0e0e12] border border-gray-700 shadow-xl rounded-2xl p-6 text-center w-[260px] sm:w-[280px]"
+              className="bg-gradient-to-b from-gray-100 to-white dark:from-[#1f1f27] dark:to-[#0e0e12] border border-gray-300 dark:border-gray-700 shadow-xl rounded-2xl p-6 text-center w-[260px] sm:w-[280px] transition-all"
               style={{
                 transformStyle: "preserve-3d",
                 rotateX: "15deg",
@@ -76,12 +76,14 @@ const Whychoose = () => {
               variants={fadeInVariants}
               whileInView={
                 index === 1 || index === 3 ? floatAnimation : undefined
-              } // Only 2nd box floats
+              }
             >
-              <h3 className="text-xl font-bold mb-3 text-white">
+              <h3 className="text-xl font-bold mb-3 text-black dark:text-white">
                 {stat.title}
               </h3>
-              <p className="text-sm text-gray-300">{stat.subtitle}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                {stat.subtitle}
+              </p>
             </motion.div>
           ))}
         </div>

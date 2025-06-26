@@ -1,7 +1,7 @@
 function RegulatoryDisclaimer() {
   return (
-    <section className="bg-white text-black dark:bg-black dark:text-white py-5 px-6 md:px-16 font-light transition-colors duration-500">
-      <div className="max-w-5xl mx-auto space-y-10 text-sm leading-relaxed">
+    <section className="bg-white text-black dark:bg-black dark:text-white py-5 font-light transition-colors duration-500">
+      <div className="max-w-7xl mx-auto space-y-10 text-sm leading-relaxed">
         {/* Trade Responsibility Disclaimer */}
         <div>
           <h3 className="font-semibold text-lg mb-2">

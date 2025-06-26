@@ -40,7 +40,7 @@ const WhyChoose: React.FC = () => {
 
   return (
     <section className="py-16 bg-white text-black dark:bg-black dark:text-white transition-colors duration-500">
-      <div className="max-w-7xl px-5 mx-auto flex flex-col md:flex-row items-start gap-12">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-12">
         {/* Left Side Title */}
         <div className="w-full md:w-1/2">
           <h2 className="text-4xl font-bold text-[var(--primary-color)] mb-4">
