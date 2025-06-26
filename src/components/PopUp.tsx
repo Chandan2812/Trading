@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../index.css";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Popup = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -47,7 +48,7 @@ const Popup = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("https://cft-b87k.onrender.com/api/popup-lead", {
+      const res = await fetch(`${baseURL}/api/popup-lead`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fullName, phone, marketSegment, email }),

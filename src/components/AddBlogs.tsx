@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-const API_BASE = "https://cft-b87k.onrender.com/api/blogs";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 interface BlogPost {
   _id?: string;
@@ -89,8 +88,8 @@ const AddBlog = ({
     try {
       const method = existingBlog ? "PUT" : "POST";
       const endpoint = existingBlog
-        ? `${API_BASE}/${existingBlog.slug}`
-        : `${API_BASE}/add`;
+        ? `${baseURL}/api/blogs/${existingBlog.slug}`
+        : `${baseURL}/api/blogs/add`;
 
       const res = await fetch(endpoint, {
         method,

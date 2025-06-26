@@ -35,8 +35,8 @@ function Contact() {
               <ContactItem
                 icon={<Phone />}
                 label="Call us"
-                content="+918368284948"
-                href="tel:+918368284948"
+                content="+917045263033"
+                href="tel:+917045263033"
               />
               <ContactItem
                 icon={<Mail />}

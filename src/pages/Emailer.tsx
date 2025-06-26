@@ -3,6 +3,7 @@ import axios from "axios";
 import logo from "../assets/logo-01.svg";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Emailer = () => {
   const [loading, setLoading] = useState(false);
@@ -61,7 +62,7 @@ const Emailer = () => {
     }
 
     try {
-      await axios.post("https://cft-b87k.onrender.com/send-emailer", formData, {
+      await axios.post(`${baseURL}/send-emailer`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

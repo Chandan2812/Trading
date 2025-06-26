@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Nav";
 import Footer from "../components/Footer";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 type BlogPost = {
   _id: string;
@@ -30,9 +31,7 @@ const Blog2 = () => {
 
   const fetchBlogPosts = async () => {
     try {
-      const response = await axios.get(
-        `https://cft-b87k.onrender.com/api/blogs/viewblog`
-      );
+      const response = await axios.get(`${baseURL}/api/blogs/viewblog`);
       setBlogPosts(response.data);
       setLoading(false);
     } catch (err) {

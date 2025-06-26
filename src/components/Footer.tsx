@@ -8,6 +8,7 @@ import {
 import { IoMdSend } from "react-icons/io";
 import logo from "../assets/logo-01.svg";
 import { useState } from "react";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ const Footer = () => {
     setMessage("");
 
     try {
-      const res = await fetch("https://cft-b87k.onrender.com/subscribe", {
+      const res = await fetch(`${baseURL}/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -62,7 +63,7 @@ const Footer = () => {
           <div className="flex space-x-4 mt-4">
             {[
               {
-                href: "https://www.facebook.com/closefriendstraders",
+                href: "https://www.facebook.com/closefriendstraders/",
                 icon: <FaFacebookF size={24} />,
               },
               {
@@ -74,11 +75,11 @@ const Footer = () => {
                 icon: <FaTwitter size={24} />,
               },
               {
-                href: "https://www.youtube.com/@closefriendstraders/shorts",
+                href: "https://www.youtube.com/@closefriendstraders",
                 icon: <FaYoutube size={24} />,
               },
               {
-                href: "https://t.me/closefriendstraderscft",
+                href: "https://t.me/DabbatradingClosefriendstraders",
                 icon: <FaTelegram size={24} />,
               },
             ].map(({ href, icon }, idx) => (

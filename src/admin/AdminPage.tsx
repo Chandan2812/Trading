@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Nav";
-import { exportToDocx } from "../utils/exportDoc";
 import { exportToExcel } from "../utils/exportToExcel";
 import { ChevronDown, ChevronUp, Trash2 } from "lucide-react";
 import { Edit, Trash } from "lucide-react";
@@ -10,6 +9,7 @@ import AddBlog from "../components/AddBlogs"; // adjust path if needed
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../index.css";
+import YourOfferModalComponent from "../components/AddOffer"; // adjust path if needed
 
 export default function AdminPage() {
   const [users, setUsers] = useState([]);
@@ -18,7 +18,6 @@ export default function AdminPage() {
   const [popupLeads, setPopupLeads] = useState([]);
   const [activePanel, setActivePanel] = useState("Users");
   const [emailerData, setEmailerData] = useState([]);
-  const [chatbotData, setChatbotData] = useState([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -27,6 +26,14 @@ export default function AdminPage() {
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
   const [editorContent, setEditorContent] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [offers, setOffers] = useState<Offer[]>([]);
+  const [editingOffer, setEditingOffer] = useState<Offer | null>(null);
+  const [showOfferModal, setShowOfferModal] = useState(false);
+  const [filterDate, setFilterDate] = useState("");
+  const [filteredLeads, setFilteredLeads] = useState([]);
+  const [subscriberFilterDate, setSubscriberFilterDate] = useState("");
+  const [emailerFilterDate, setEmailerFilterDate] = useState("");
+
   const postsPerPage = 20;
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -47,6 +54,19 @@ export default function AdminPage() {
     content: string; // ✅ Add this line
   }
 
+  interface Offer {
+    _id: string;
+    title: string;
+    subtitle?: string;
+    popupImage?: string;
+    bannerImage?: string;
+    ctaLabel?: string;
+    ctaLink?: string;
+    startDate?: string;
+    endDate?: string;
+    isActive: boolean;
+  }
+
   const toolbarOptions = [
     ["bold", "italic", "underline", "strike"],
     [{ color: [] }, { background: [] }],
@@ -64,9 +84,11 @@ export default function AdminPage() {
     }
   }, []);
 
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
   useEffect(() => {
     axios
-      .get("https://cft-b87k.onrender.com/api/auth/allUser")
+      .get(`${baseURL}/api/auth/allUser`)
       .then((res) => {
         // console.log("Users:", res.data);
         setUsers(res.data);
@@ -74,7 +96,7 @@ export default function AdminPage() {
       .catch((err) => console.error("Users error:", err));
 
     axios
-      .get("https://cft-b87k.onrender.com/newsletter")
+      .get(`${baseURL}/newsletter`)
       .then((res) => {
         // console.log("Newsletter:", res.data);
         setNewsletterData(res.data);
@@ -82,7 +104,7 @@ export default function AdminPage() {
       .catch((err) => console.error("Newsletter error:", err));
 
     axios
-      .get("https://cft-b87k.onrender.com/subscribers")
+      .get(`${baseURL}/subscribers`)
       .then((res) => {
         // console.log("Subscribers:", res.data);
         setEmailSubscribers(res.data);
@@ -90,7 +112,7 @@ export default function AdminPage() {
       .catch((err) => console.error("Subscribers error:", err));
 
     axios
-      .get("https://cft-b87k.onrender.com/api/popup-lead")
+      .get(`${baseURL}/api/popup-lead`)
       .then((res) => {
         // console.log("Leads:", res.data);
         setPopupLeads(res.data);
@@ -99,29 +121,25 @@ export default function AdminPage() {
 
     // Fetch Emailer Data
     axios
-      .get("https://cft-b87k.onrender.com/emailer")
+      .get(`${baseURL}/emailer`)
       .then((res) => {
         // console.log("Emailer:", res.data);
         setEmailerData(res.data);
       })
       .catch((err) => console.error("Emailer error:", err));
 
-    // Fetch Chatbot Data
     axios
-      .get("https://cft-b87k.onrender.com/api/enquiry/chatbot")
-      .then((res) => {
-        // console.log("Chatbot:", res.data);
-        setChatbotData(res.data);
-      })
-      .catch((err) => console.error("Chatbot error:", err));
-
-    axios
-      .get("https://cft-b87k.onrender.com/api/blogs/viewblog")
+      .get(`${baseURL}/api/blogs/viewblog`)
       .then((res) => {
         // console.log("Blogs:", res.data);
         setBlogs(res.data);
       })
       .catch((err) => console.error("Blogs error:", err));
+
+    axios
+      .get(`${baseURL}/api/offer/view`)
+      .then((res) => setOffers(res.data))
+      .catch((err) => console.error("Offers error:", err));
   }, []);
 
   const menuItems = [
@@ -129,15 +147,15 @@ export default function AdminPage() {
 
     "Email Subscribers",
     "Popup Leads",
-    "Chatbot Data",
     "Emailer Data",
     "Newsletter Data",
     "Blog Data",
+    "Offer Data",
   ];
 
   const fetchBlogs = () => {
     axios
-      .get("https://cft-b87k.onrender.com/api/blogs/viewblog")
+      .get(`${baseURL}/api/blogs/viewblog`)
       .then((res) => setBlogs(res.data))
       .catch((err) => console.error("Blogs error:", err));
   };
@@ -153,9 +171,7 @@ export default function AdminPage() {
   const handleDelete = async (slug: string) => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;
     try {
-      const res = await axios.delete(
-        `https://cft-b87k.onrender.com/api/blogs/${slug}`
-      );
+      const res = await axios.delete(`${baseURL}/api/blogs/${slug}`);
       alert(res.data.msg || "Deleted");
       fetchBlogs();
     } catch (error) {
@@ -167,6 +183,37 @@ export default function AdminPage() {
     setShowAddModal(false);
     setEditingBlog(null);
   };
+
+  useEffect(() => {
+    if (!filterDate) {
+      setFilteredLeads(popupLeads);
+      return;
+    }
+
+    const selectedDate = new Date(filterDate).toDateString();
+
+    const filtered = popupLeads.filter((lead: any) => {
+      const leadDate = new Date(lead.createdAt).toDateString();
+      return leadDate === selectedDate;
+    });
+
+    setFilteredLeads(filtered);
+  }, [filterDate, popupLeads]);
+
+  const filteredSubscribers = subscriberFilterDate
+    ? emailSubscribers.filter((sub: any) => {
+        const subDate = new Date(sub.createdAt).toISOString().split("T")[0];
+        return subDate === subscriberFilterDate;
+      })
+    : emailSubscribers;
+
+  const filteredEmailerData = emailerFilterDate
+    ? emailerData.filter(
+        (item: any) =>
+          new Date(item.createdAt).toLocaleDateString() ===
+          new Date(emailerFilterDate).toLocaleDateString()
+      )
+    : emailerData;
 
   return (
     <div className="text-black dark:text-white">
@@ -243,8 +290,8 @@ export default function AdminPage() {
                         exportToExcel(
                           "User Logins",
                           users,
-                          ["Name", "Email"],
-                          ["fullName", "email"]
+                          ["Name", "Email", "Phone"],
+                          ["fullName", "email", "Phone"]
                         )
                       }
                       className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
@@ -257,6 +304,7 @@ export default function AdminPage() {
                       <tr>
                         <th className="border-b pb-1">Name</th>
                         <th className="border-b pb-1">Email</th>
+                        <th className="border-b pb-1">Phone</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -264,6 +312,7 @@ export default function AdminPage() {
                         <tr key={user._id}>
                           <td className="py-1">{user.fullName}</td>
                           <td className="py-1">{user.email}</td>
+                          <td className="py-1">{user.Phone}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -400,17 +449,48 @@ export default function AdminPage() {
                     <button
                       onClick={() =>
                         exportToExcel(
-                          "Email Subscribers",
-                          popupLeads,
+                          `Email Subscribers${
+                            subscriberFilterDate
+                              ? ` ${subscriberFilterDate}`
+                              : ""
+                          }`,
+                          filteredSubscribers,
                           ["Email", "Subscribed"],
                           ["email", "createdAt"]
                         )
                       }
-                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                      className="p-2 text-sm bg-green-600 text-white rounded hover:bg-green-700"
                     >
                       Export to Excel
                     </button>
                   </div>
+
+                  {/* Filter by Date Input */}
+                  <div className="flex gap-4 mb-4">
+                    <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                      <div className="flex-1">
+                        <label className="text-sm block">Filter by Date</label>
+                        <input
+                          type="date"
+                          value={subscriberFilterDate}
+                          onChange={(e) =>
+                            setSubscriberFilterDate(e.target.value)
+                          }
+                          className="border px-3 py-2 rounded w-full text-black"
+                        />
+                      </div>
+
+                      <div className="flex items-end">
+                        <button
+                          onClick={() => setSubscriberFilterDate("")}
+                          className="px-3 py-2  bg-red-600 text-white rounded hover:bg-red-700"
+                        >
+                          Clear Filter
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
                   <table className="w-full text-left text-sm">
                     <thead>
                       <tr>
@@ -419,7 +499,7 @@ export default function AdminPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {emailSubscribers.map((sub: any) => (
+                      {filteredSubscribers.map((sub: any) => (
                         <tr key={sub._id}>
                           <td className="py-1">{sub.email}</td>
                           <td className="py-1">
@@ -434,21 +514,42 @@ export default function AdminPage() {
 
               {activePanel === "Popup Leads" && (
                 <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
-                  <div className="flex justify-between items-center mb-4">
+                  <div className="flex justify-between items-center ">
                     <h2 className="text-xl font-semibold">Popup Leads</h2>
                     <button
                       onClick={() =>
                         exportToExcel(
-                          "Popup Leads",
-                          popupLeads,
+                          `Popup Leads${filterDate ? ` ${filterDate}` : ""}`,
+                          filteredLeads,
                           ["Name", "Email", "Phone", "Date"],
                           ["fullName", "email", "phone", "createdAt"]
                         )
                       }
-                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                      className="px-4 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-700"
                     >
                       Export to Excel
                     </button>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                    <div>
+                      <label className="block text-sm font-medium py-2">
+                        Filter by Date
+                      </label>
+                      <input
+                        type="date"
+                        value={filterDate}
+                        onChange={(e) => setFilterDate(e.target.value)}
+                        className="border px-3 py-2 rounded w-full text-black cursor-pointer"
+                      />
+                    </div>
+                    <div className="flex items-end">
+                      <button
+                        onClick={() => setFilterDate("")}
+                        className=" px-3 py-2  bg-red-600 text-white rounded hover:bg-red-700"
+                      >
+                        Clear Filter
+                      </button>
+                    </div>
                   </div>
 
                   {/* Desktop Table */}
@@ -463,18 +564,12 @@ export default function AdminPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {popupLeads.map((lead: any) => (
-                          <tr key={lead._id} className=" align-top">
-                            <td className="py-2 px-2 break-words">
-                              {lead.fullName}
-                            </td>
-                            <td className="py-2 px-2 break-words">
-                              {lead.email}
-                            </td>
-                            <td className="py-2 px-2 break-words">
-                              {lead.phone}
-                            </td>
-                            <td className="py-2 px-2 break-words">
+                        {filteredLeads.map((lead: any) => (
+                          <tr key={lead._id}>
+                            <td className="py-2 px-2">{lead.fullName}</td>
+                            <td className="py-2 px-2">{lead.email}</td>
+                            <td className="py-2 px-2">{lead.phone}</td>
+                            <td className="py-2 px-2">
                               {new Date(lead.createdAt).toLocaleDateString()}
                             </td>
                           </tr>
@@ -485,7 +580,7 @@ export default function AdminPage() {
 
                   {/* Mobile Card View */}
                   <div className="md:hidden space-y-4">
-                    {popupLeads.map((lead: any) => (
+                    {filteredLeads.map((lead: any) => (
                       <div
                         key={lead._id}
                         className="border rounded p-4 shadow-sm"
@@ -526,7 +621,7 @@ export default function AdminPage() {
                         onClick={() =>
                           exportToExcel(
                             "Emailer Data",
-                            emailerData,
+                            filteredEmailerData,
                             [
                               "Title",
                               "Subject",
@@ -552,6 +647,29 @@ export default function AdminPage() {
                     </div>
                   </div>
 
+                  {/* Date Filter UI */}
+                  <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                    <div>
+                      <label className="block text-sm font-medium">
+                        Filter by Date
+                      </label>
+                      <input
+                        type="date"
+                        value={emailerFilterDate}
+                        onChange={(e) => setEmailerFilterDate(e.target.value)}
+                        className="border px-3 py-2 rounded w-full text-black"
+                      />
+                    </div>
+                    <div className="flex items-end">
+                      <button
+                        onClick={() => setEmailerFilterDate("")}
+                        className="px-3 py-2  bg-red-600 text-white rounded hover:bg-red-700"
+                      >
+                        Clear Filter
+                      </button>
+                    </div>
+                  </div>
+
                   {/* Desktop Table View */}
                   <div className="hidden md:block overflow-auto">
                     <table className="w-full text-left text-sm table-fixed">
@@ -571,8 +689,8 @@ export default function AdminPage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {emailerData.map((item: any) => (
-                          <tr key={item._id} className=" align-top">
+                        {filteredEmailerData.map((item: any) => (
+                          <tr key={item._id} className="align-top">
                             <td className="py-2 px-2 break-words">
                               {item.title}
                             </td>
@@ -601,9 +719,9 @@ export default function AdminPage() {
                     </table>
                   </div>
 
-                  {/* Mobile Card Format */}
+                  {/* Mobile Card View */}
                   <div className="md:hidden space-y-4">
-                    {emailerData.map((item: any) => (
+                    {filteredEmailerData.map((item: any) => (
                       <div
                         key={item._id}
                         className="border rounded p-4 shadow-sm"
@@ -641,86 +759,12 @@ export default function AdminPage() {
                 </section>
               )}
 
-              {activePanel === "Chatbot Data" && (
-                <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
-                  <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-xl font-semibold">
-                      Chatbot Conversations
-                    </h2>
-                    <button
-                      onClick={() =>
-                        exportToDocx(
-                          "Chatbot Data",
-                          chatbotData,
-                          ["User Message", "Bot Reply", "Timestamp"],
-                          ["userMessage", "botReply", "timestamp"]
-                        )
-                      }
-                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
-                    >
-                      Export to DOCX
-                    </button>
-                  </div>
-
-                  {/* Desktop Table */}
-                  <div className="hidden md:block overflow-auto">
-                    <table className="w-full text-left text-sm table-fixed">
-                      <thead>
-                        <tr className="border-b">
-                          <th className="pb-2 px-2 w-1/3">User Message</th>
-                          <th className="pb-2 px-2 w-1/3">Bot Reply</th>
-                          <th className="pb-2 px-2 w-1/3">Timestamp</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {chatbotData.map((chat: any) => (
-                          <tr key={chat._id} className=" align-top">
-                            <td className="py-2 px-2 break-words">
-                              {chat.userMessage}
-                            </td>
-                            <td className="py-2 px-2 break-words">
-                              {chat.botReply}
-                            </td>
-                            <td className="py-2 px-2 break-words">
-                              {new Date(chat.timestamp).toLocaleString()}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  {/* Mobile Card Format */}
-                  <div className="md:hidden space-y-4">
-                    {chatbotData.map((chat: any) => (
-                      <div
-                        key={chat._id}
-                        className="border rounded p-4 shadow-sm"
-                      >
-                        <p className="mb-1">
-                          <span className="font-semibold">User:</span>{" "}
-                          {chat.userMessage}
-                        </p>
-                        <p className="mb-1">
-                          <span className="font-semibold">Bot:</span>{" "}
-                          {chat.botReply}
-                        </p>
-                        <p>
-                          <span className="font-semibold">Time:</span>{" "}
-                          {new Date(chat.timestamp).toLocaleString()}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              )}
-
               {activePanel === "Blog Data" && (
                 <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
                   <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-semibold ">Blogs</h2>
                     <button
-                      className="px-4 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                      className="p-2 text-sm bg-green-600 text-white rounded hover:bg-green-700"
                       onClick={() => {
                         setEditingBlog(null);
                         setShowAddModal(true);
@@ -880,7 +924,7 @@ export default function AdminPage() {
                             onClick={async () => {
                               try {
                                 const res = await fetch(
-                                  `https://cft-b87k.onrender.com/api/blogs/${selectedBlog?.slug}`,
+                                  `${baseURL}/api/blogs/${selectedBlog?.slug}`,
                                   {
                                     method: "PUT",
                                     headers: {
@@ -952,6 +996,99 @@ export default function AdminPage() {
                           )
                         )}
                     </div>
+                  )}
+                </section>
+              )}
+              {activePanel === "Offer Data" && (
+                <section className="bg-gray-100 dark:bg-neutral-900 p-4 md:p-6 rounded shadow mb-6">
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-xl font-semibold">Offers</h2>
+                    <button
+                      className="px-4 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-700"
+                      onClick={() => {
+                        setEditingOffer(null);
+                        setShowOfferModal(true);
+                      }}
+                    >
+                      Add Offer
+                    </button>
+                  </div>
+
+                  <div className="overflow-auto">
+                    <table className="w-full text-left text-sm table-auto">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="px-4 py-2">Title</th>
+                          <th className="px-4 py-2">Subtitle</th>
+                          <th className="px-4 py-2">Active</th>
+                          <th className="px-4 py-2">Start</th>
+                          <th className="px-4 py-2">End</th>
+                          <th className="px-4 py-2">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {offers.map((offer) => (
+                          <tr key={offer._id} className="border-t align-top">
+                            <td className="px-4 py-2">{offer.title}</td>
+                            <td className="px-4 py-2">{offer.subtitle}</td>
+                            <td className="px-4 py-2">
+                              {offer.isActive ? "Yes" : "No"}
+                            </td>
+                            <td className="px-4 py-2">
+                              {offer.startDate?.slice(0, 10)}
+                            </td>
+                            <td className="px-4 py-2">
+                              {offer.endDate?.slice(0, 10)}
+                            </td>
+                            <td className="px-4 py-2 space-x-2">
+                              <button
+                                onClick={() => {
+                                  setEditingOffer(offer);
+                                  setShowOfferModal(true);
+                                }}
+                                className="text-blue-600 hover:text-blue-800"
+                              >
+                                <Edit size={16} />
+                              </button>
+                              <button
+                                onClick={async () => {
+                                  if (confirm("Delete this offer?")) {
+                                    try {
+                                      await axios.delete(
+                                        `${baseURL}/api/offer/${offer._id}`
+                                      );
+                                      setOffers((prev) =>
+                                        prev.filter((o) => o._id !== offer._id)
+                                      );
+                                    } catch (err) {
+                                      alert("Delete failed");
+                                    }
+                                  }
+                                }}
+                                className="text-red-600 hover:text-red-800"
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {showOfferModal && (
+                    <YourOfferModalComponent
+                      existingOffer={editingOffer}
+                      onClose={() => {
+                        setShowOfferModal(false);
+                        setEditingOffer(null);
+                      }}
+                      onSuccess={() => {
+                        axios
+                          .get(`${baseURL}/api/offer/view`)
+                          .then((res) => setOffers(res.data));
+                      }}
+                    />
                   )}
                 </section>
               )}

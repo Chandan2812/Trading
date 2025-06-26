@@ -4,6 +4,7 @@ import { Eye, EyeOff } from "lucide-react";
 import logo from "../assets/logo-01.svg";
 import sideImage from "../assets/newabout.webp";
 import { FiMoon, FiSun } from "react-icons/fi";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const res = await fetch("https://cft-b87k.onrender.com/api/auth/login", {
+      const res = await fetch(`${baseURL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

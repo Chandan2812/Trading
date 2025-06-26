@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { FaComments, FaTimes } from "react-icons/fa";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Chatbot: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -180,7 +181,7 @@ const Chatbot: React.FC = () => {
         botReply = `Thanks ${name}! What are you looking to do today?`;
         setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
 
-        await fetch("https://cft-b87k.onrender.com/api/enquiry/chatbot", {
+        await fetch(`${baseURL}/api/enquiry/chatbot`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -196,19 +197,16 @@ const Chatbot: React.FC = () => {
 
       if (!selectedPurpose) return;
 
-      const res = await fetch(
-        "https://cft-b87k.onrender.com/api/enquiry/chatbot",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            user: userInfo,
-            purpose: selectedPurpose,
-            message: trimmedInput,
-            chatHistory: [...messages, newUserMsg],
-          }),
-        }
-      );
+      const res = await fetch(`${baseURL}/api/enquiry/chatbot`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: userInfo,
+          purpose: selectedPurpose,
+          message: trimmedInput,
+          chatHistory: [...messages, newUserMsg],
+        }),
+      });
 
       const data = await res.json();
       botReply =
@@ -281,20 +279,17 @@ const Chatbot: React.FC = () => {
                       },
                     ]);
 
-                    await fetch(
-                      "https://cft-b87k.onrender.com/api/enquiry/chatbot",
-                      {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                          user: userInfo,
-                          purpose,
-                          message: purpose,
-                          isLead: true,
-                          chatHistory: messages,
-                        }),
-                      }
-                    );
+                    await fetch(`${baseURL}/api/enquiry/chatbot`, {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        user: userInfo,
+                        purpose,
+                        message: purpose,
+                        isLead: true,
+                        chatHistory: messages,
+                      }),
+                    });
                   }}
                 >
                   {purpose}
