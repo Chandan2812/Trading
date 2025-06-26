@@ -39,8 +39,8 @@ export default function DownloadSection() {
 
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
             Take control of your trades with{" "}
-            <strong>1,500+ global instruments</strong> including Forex, Indices,
-            Commodities and Shares — all on one seamless platform.
+            <strong>numerous global instruments</strong> including Forex,
+            Indices, Commodities and Shares: all on one seamless platform.
             <br className="my-2" />
             With <span className="font-semibold">₹0 brokerage</span> and
             reliable <span className="font-semibold">payouts</span>, Close
@@ -48,10 +48,6 @@ export default function DownloadSection() {
             <br className="my-2" />
             Made for Indian traders who think sharp and trade sharper.
             <br className="my-2" />
-            Start with as little as <span className="font-semibold">$100</span>,
-            or just test the waters with a{" "}
-            <span className="font-semibold">risk-free Demo Account</span>. No
-            pressure, just pure trading freedom.
           </p>
           <i className="font-semibold block text-gray-800 dark:text-gray-200">
             Close Friends Traders — Where serious trading begins.
