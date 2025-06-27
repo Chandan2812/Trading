@@ -68,7 +68,7 @@ const Blog2 = () => {
   }
 
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white">
+    <div className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white">
       <Navbar />
       <div className="py-16 px-4 sm:px-6 lg:px-8 mt-20">
         <div className="max-w-7xl mx-auto text-center">

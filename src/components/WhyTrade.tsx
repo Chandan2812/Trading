@@ -14,7 +14,7 @@ import traders from "../assets/whyTrade/HappyTraders.png";
 const features = [
   {
     icon: register,
-    title: "Register in Under 5 Sec",
+    title: "Registration Under 5 Sec",
     desc: "Sign up instantly and start trading without any waiting time.",
   },
   {
@@ -30,13 +30,9 @@ const features = [
   {
     icon: zero,
     title: "0% Brokerage",
-    desc: "Trade with zero brokerage and maximize every rupee of your investment without any hidden fees or commissions.",
-  },
-  {
-    icon: zeroTax,
-    title: "0% Brokerage",
     desc: "Trade with zero brokerage and keep every rupee you earn which equals more profits!",
   },
+
   {
     icon: withdrawal,
     title: "Quick Withdrawals",
@@ -46,6 +42,11 @@ const features = [
     icon: security,
     title: "No Hidden Charges",
     desc: "What you see is exactly what you pay. No surprise deductions.",
+  },
+  {
+    icon: zeroTax,
+    title: "	0% Tax on Profits",
+    desc: "Pay no tax on your trading profits. What you earn is what you keep.",
   },
   {
     icon: traders,
@@ -95,7 +96,7 @@ const WhyTrade: React.FC = () => {
             className="relative group perspective-[1200px] transition-transform "
           >
             <motion.div
-              className="relative bg-white dark:bg-gray-900 border border-[var(--primary-color)] rounded-2xl p-6 min-h-[270px] text-center flex flex-col items-center justify-start shadow-md  transition-transform duration-300 hover:shadow-[0_0_10px_var(--primary-color)]"
+              className="relative bg-white dark:bg-[var(--bg-color1)] border border-[var(--primary-color)] rounded-2xl p-6 min-h-[270px] text-center flex flex-col items-center justify-start shadow-md  transition-transform duration-300 hover:shadow-[0_0_10px_var(--primary-color)]"
               whileHover={{ rotateX: 4, rotateY: -4, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 150, damping: 12 }}
               style={{

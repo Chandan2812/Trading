@@ -102,7 +102,7 @@ const ToggleFAQ = () => {
   };
 
   return (
-    <section className="bg-white text-black dark:bg-gray-900 dark:text-white py-12 px-5 transition-colors duration-500">
+    <section className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white py-12 px-5 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-5">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-center">
           Frequently Asked Questions

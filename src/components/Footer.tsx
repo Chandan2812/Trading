@@ -110,29 +110,25 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-bold mb-4">Useful Links</h3>
           <ul className="space-y-3 text-sm text-white">
-            {[
-              "Contact",
-              "About",
-              "Terms & Conditions",
-              "Privacy Policy",
-              "Disclaimer",
-            ].map((link, idx) => {
-              const formatted = link
-                .toLowerCase()
-                .replace(/[^a-z0-9\s]/gi, "") // remove special characters
-                .replace(/\s+/g, "-"); // replace spaces with hyphens
+            {["Contact", "About", "Terms & Conditions", "Privacy Policy"].map(
+              (link, idx) => {
+                const formatted = link
+                  .toLowerCase()
+                  .replace(/[^a-z0-9\s]/gi, "") // remove special characters
+                  .replace(/\s+/g, "-"); // replace spaces with hyphens
 
-              return (
-                <li key={idx}>
-                  <a
-                    href={`/${formatted}`}
-                    className="hover:text-[var(--primary-color)] transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
-              );
-            })}
+                return (
+                  <li key={idx}>
+                    <a
+                      href={`/${formatted}`}
+                      className="hover:text-[var(--primary-color)] transition-colors"
+                    >
+                      {link}
+                    </a>
+                  </li>
+                );
+              }
+            )}
           </ul>
         </div>
 

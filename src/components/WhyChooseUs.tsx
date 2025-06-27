@@ -88,6 +88,26 @@ const WhyChoose: React.FC = () => {
           </AnimatePresence>
         </div>
       </div>
+
+      <section className="max-w-5xl rounded-xl mx-auto bg-white dark:bg-[#13183a]  text-black dark:text-white mt-10  py-5 px-6 text-center">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl font-bold leading-tight mb-4">
+            Enjoy Maximum Profits with{" "}
+            <span className="text-[var(--primary-color)]">ZERO BROKERAGE</span>
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-800 dark:text-gray-200 mt-5">
+            Trade anytime, anywhere on any device with absolute ZERO BROKERAGE
+            costs.
+          </p>
+
+          <a
+            href="tel:+919876543210"
+            className="mt-6 inline-block bg-[var(--primary-color)] text-white font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            📞 Call Now: +91 83682 84948
+          </a>
+        </div>
+      </section>
     </section>
   );
 };

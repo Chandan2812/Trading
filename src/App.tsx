@@ -15,6 +15,11 @@ import WhatsAppButton from "./components/floatingBtn";
 import ZohoSalesIQ from "./components/ZohoSalesIQ";
 import OfferPopup from "./components/OfferPopup";
 import Feature from "./components/Features";
+import TermsConditions from "./pages/TermsConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CFDInstrument from "./pages/CFDInstrument";
+import Stocks from "./pages/Stocks";
+import Commodity from "./pages/Commodity";
 
 function App() {
   return (
@@ -32,6 +37,12 @@ function App() {
           <Route path="/features" element={<Feature />} />
           <Route path="/newsletter" element={<NewsletterForm />} />
           <Route path="/AdminPage" element={<AdminPage />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/products/cfd-instrument" element={<CFDInstrument />} />
+          <Route path="/products/stocks" element={<Stocks />} />
+          <Route path="/products/commodity" element={<Commodity />} />
+          <Route path="/products/indexes" element={<Stocks />} />
         </Routes>
         <div className="hidden md:block">
           <WhatsAppButton />

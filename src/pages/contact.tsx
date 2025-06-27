@@ -20,7 +20,7 @@ function Contact() {
   }, []);
 
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
+    <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white transition-colors duration-300">
       <div className="mb-16">
         <Navbar />
       </div>
@@ -88,7 +88,7 @@ function Contact() {
       </section>
 
       {/* Support Features */}
-      <section className="bg-gray-100 dark:bg-[#0a0a0d] py-20 transition-colors duration-300">
+      <section className="bg-gray-100 dark:bg-[--bg-color1] py-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto text-center px-6">
           <h3 className="text-3xl font-bold mb-14" data-aos="zoom-in">
             Always-On Support You Can Trust
@@ -99,7 +99,7 @@ function Contact() {
                 key={i}
                 data-aos="flip-left"
                 data-aos-delay={i * 200}
-                className="p-6 rounded-xl border border-[var(--primary-color)] shadow-md"
+                className="p-6 rounded-xl  bg-white dark:bg-[var(--bg-color1)] shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(255,255,255,0.05)] transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_25px_70px_rgba(255,255,255,0.1)]"
               >
                 <div className="text-[var(--primary-color)] mb-4">
                   {feature.icon}
@@ -116,7 +116,7 @@ function Contact() {
 
       {/* CTA */}
       <section
-        className="py-20 px-6 text-center bg-white dark:bg-black border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300"
+        className="py-20 px-6 text-center bg-white dark:bg-[var(--bg-color1)] transition-colors duration-300"
         data-aos="fade-up"
       >
         <h3 className="text-3xl font-bold mb-6">Let’s Connect Today</h3>

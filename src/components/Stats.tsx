@@ -14,18 +14,18 @@ const StatsSection = () => {
   }, [inView, hasAnimated]);
 
   const stats = [
-    { title: "Establishment", subtitle: "2010", value: null },
-    { title: "Awards", value: 4, suffix: "+" },
-    { title: "Countries Covered", value: 105, suffix: "+" },
-    { title: "Trading Instruments", value: 300, suffix: "+" },
+    { title: "Established In", subtitle: "2010", value: null },
+    { title: "Prestigious Awards", value: 14, suffix: "+" },
+    { title: "Countries Covered", value: 79, suffix: "+" },
+    { title: "Trading Instruments", value: 259, suffix: "+" },
 
-    { title: "Loyal Traders", value: 10000, suffix: "+" },
+    { title: "Global Loyal Traders", value: 5, suffix: "M+" },
   ];
 
   return (
     <section
       ref={ref}
-      className="py-16 bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white overflow-hidden"
+      className="py-10 bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
@@ -85,19 +85,6 @@ const StatsSection = () => {
           ))}
         </div>
       </div>
-
-      <section className="max-w-7xl mx-auto bg-white dark:bg-[#023968]  text-black dark:text-white py-12 px-6 text-center">
-        <div className="max-w-4xl mx-auto py-10">
-          <h1 className="text-4xl font-bold leading-tight mb-4">
-            Enjoy Maximum Profits with{" "}
-            <span className="text-[var(--primary-color)]">ZERO BROKERAGE</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-800 dark:text-gray-200 mt-5">
-            Trade anytime, anywhere, on any device with absolute ZERO BROKERAGE
-            costs.
-          </p>
-        </div>
-      </section>
     </section>
   );
 };

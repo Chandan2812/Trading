@@ -77,7 +77,7 @@ const AboutUsSection = () => {
   }, []);
 
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white">
+    <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white">
       <div className="mb-12">
         <Navbar />
       </div>
@@ -143,7 +143,7 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="bg-gray-50 dark:bg-[#0e0e0e] py-20 text-black dark:text-white transition-colors duration-300">
+      <section className="bg-gray-50 dark:bg-[var(--bg-color1)] py-20 text-black dark:text-white transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <h2
             className="text-3xl sm:text-4xl font-bold text-center mb-12"
@@ -168,7 +168,7 @@ const AboutUsSection = () => {
             {points.map((point, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-md hover:shadow-[0_0_20px_var(--primary-color)] transition-all"
+                className="bg-white dark:bg-[var(--bg-color1)] border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-md hover:shadow-[0_0_20px_var(--primary-color)] transition-all"
                 data-aos="zoom-in"
                 data-aos-delay={150 + index * 100}
               >
@@ -182,7 +182,7 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 dark:bg-[#0e0e0e] py-12 text-black dark:text-white transition-colors duration-300">
+      <section className="bg-gray-100 dark:bg-[var(--bg-color1)] py-12 text-black dark:text-white transition-colors duration-300">
         <div className="max-w-7xl mx-auto relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[var(--primary-color)] z-0 hidden sm:block"></div>
 
@@ -201,7 +201,7 @@ const AboutUsSection = () => {
                 </div>
 
                 {/* Card content */}
-                <div className="bg-white dark:bg-black p-6 rounded-xl shadow-lg sm:w-11/12">
+                <div className="bg-white dark:bg-[var(--bg-color1)]  p-6 rounded-xl shadow-2xl sm:w-11/12 backdrop-blur-2xl">
                   <h3 className="text-2xl font-bold mb-3 text-[var(--primary-color)]">
                     {sec.title}
                   </h3>
@@ -215,7 +215,7 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-[#f4f4f4] to-[#ffffff] dark:from-black dark:to-[#0e0e0e] py-12  transition-colors duration-300">
+      <section className="bg-white dark:bg-[var(--bg-color1)] py-12  transition-colors duration-300">
         <div className="max-w-7xl mx-auto text-center mb-14">
           <h2 className="text-4xl font-bold mb-4" data-aos="fade-up">
             What We <span className="text-[var(--primary-color)]">Offer?</span>
@@ -236,7 +236,7 @@ const AboutUsSection = () => {
               key={idx}
               data-aos="zoom-in"
               data-aos-delay={idx * 200}
-              className="relative bg-white dark:bg-[#111] bg-opacity-90 dark:bg-opacity-90 backdrop-blur-lg border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-xl hover:-translate-y-2 transition-transform duration-300"
+              className="relative bg-white dark:bg-[var(--bg-color1)] bg-opacity-90 dark:bg-opacity-90 backdrop-blur-lg border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-xl hover:-translate-y-2 transition-transform duration-300"
             >
               {/* Number Badge */}
               <div className="absolute -top-4 left-4 w-10 h-10 bg-[var(--primary-color)] text-white font-bold rounded-full flex items-center justify-center shadow-md">
@@ -270,7 +270,7 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-[#f7f7f7] to-white dark:from-[#0c0c0c] dark:to-[#111] py-12">
+      <section className="bg-white dark:bg-[var(--bg-color1)] py-12">
         <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10">
           {/* Left Content */}
           <div className="w-full lg:w-2/3" data-aos="fade-right">
@@ -294,7 +294,7 @@ const AboutUsSection = () => {
             </p>
 
             <div className=" gap-6 mt-6">
-              <div className="bg-white dark:bg-[#1a1a1a] border border-[var(--primary-color)] rounded-xl shadow p-5">
+              <div className="bg-white dark:bg-[var(--bg-color1)] border border-[var(--primary-color)] rounded-xl shadow p-5">
                 <h4 className="text-xl font-semibold text-[var(--primary-color)] mb-2">
                   Real Trading Starts with Close Friends Traders
                 </h4>
