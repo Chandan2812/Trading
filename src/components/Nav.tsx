@@ -50,12 +50,21 @@ const Navbar = () => {
     {
       label: "Knowledge Center",
       subItems: [
-        { label: "Basics of Trading", path: "/knowledge/basics" },
-        { label: "Advanced Strategies", path: "/knowledge/advanced" },
-        { label: "Risk Management", path: "/knowledge/risk" },
-        { label: "Technical Analysis", path: "/knowledge/technical" },
-        { label: "Fundamental Analysis", path: "/knowledge/fundamental" },
-        { label: "Psychology of Trading", path: "/knowledge/psychology" },
+        { label: "Trading", path: "/knowledge/trading" },
+        {
+          label: "Equity Trading",
+          path: "/knowledge/equity-trading",
+        },
+        { label: "Future & Options", path: "/knowledge/future-options" },
+        { label: "Commodity Trading", path: "/knowledge/commodity-trading" },
+        {
+          label: "Margin Trading",
+          path: "/knowledge/margin-trading",
+        },
+        {
+          label: "Intraday-trading",
+          path: "/knowledge/intraday-trading",
+        },
       ],
     },
   ];

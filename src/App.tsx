@@ -20,6 +20,14 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CFDInstrument from "./pages/CFDInstrument";
 import Stocks from "./pages/Stocks";
 import Commodity from "./pages/Commodity";
+import Indexes from "./pages/Indexes";
+import Disclaimer from "./pages/Disclaimer";
+import Trading from "./pages/Trading";
+import EquityTrading from "./pages/equityTrading";
+import FutureOptions from "./pages/FutureOptions";
+import CommodityTrading from "./pages/CommodityTrading";
+import MarginTrading from "./pages/MarginTrading";
+import IntradayTrading from "./pages/IntradayTrading";
 
 function App() {
   return (
@@ -42,7 +50,20 @@ function App() {
           <Route path="/products/cfd-instrument" element={<CFDInstrument />} />
           <Route path="/products/stocks" element={<Stocks />} />
           <Route path="/products/commodity" element={<Commodity />} />
-          <Route path="/products/indexes" element={<Stocks />} />
+          <Route path="/products/indexes" element={<Indexes />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/knowledge/trading" element={<Trading />} />
+          <Route path="/knowledge/equity-trading" element={<EquityTrading />} />
+          <Route path="/knowledge/future-options" element={<FutureOptions />} />
+          <Route
+            path="/knowledge/commodity-trading"
+            element={<CommodityTrading />}
+          />
+          <Route path="/knowledge/margin-trading" element={<MarginTrading />} />
+          <Route
+            path="/knowledge/intraday-trading"
+            element={<IntradayTrading />}
+          />
         </Routes>
         <div className="hidden md:block">
           <WhatsAppButton />
