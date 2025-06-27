@@ -12,21 +12,9 @@ const comparisonData = [
     cft: "0% brokerage",
     others: "High fees + hidden costs",
   },
-  {
-    feature: "Leverage",
-    cft: "500x margin",
-    others: "5x–10x max",
-  },
-  {
-    feature: "Withdrawals",
-    cft: "Instant",
-    others: "1–3 business days",
-  },
-  {
-    feature: "Support",
-    cft: "24×7 real human help",
-    others: "Limited hours",
-  },
+  { feature: "Leverage", cft: "500x margin", others: "5x–10x max" },
+  { feature: "Withdrawals", cft: "Instant", others: "1–3 business days" },
+  { feature: "Support", cft: "24×7 real human help", others: "Limited hours" },
 ];
 
 const ComparisonSection = () => {
@@ -43,7 +31,7 @@ const ComparisonSection = () => {
   };
 
   return (
-    <section className="py-12 px-4 bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
+    <section className="py-16 px-4 bg-white dark:bg-[#01001f] text-black dark:text-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto text-center mb-10">
         <h2 className="text-3xl sm:text-4xl font-semibold leading-snug">
           Your Money Deserves Better{" "}
@@ -55,36 +43,36 @@ const ComparisonSection = () => {
       </div>
 
       {/* Desktop Table */}
-      <div className="hidden md:grid grid-cols-3 max-w-5xl mx-auto text-sm rounded-xl overflow-hidden shadow-xl border border-gray-800">
-        {/* Table Header */}
-        <div className="bg-gray-800 dark:bg-[var(--bg-color1)] text-white font-semibold text-center py-4 border-r border-gray-700">
+      <div className="hidden md:grid grid-cols-3 max-w-5xl mx-auto text-sm rounded-xl overflow-hidden shadow-xl border border-[var(--primary-color)]">
+        {/* Header */}
+        <div className="bg-[#01001f] text-white font-semibold text-center py-4 border-r border-[var(--primary-color)]">
           Features
         </div>
-        <div className="bg-[var(--primary-color)] text-white font-semibold text-center py-4 border-r border-gray-700">
+        <div className="bg-[var(--primary-color)] text-white font-semibold text-center py-4 border-r border-[var(--primary-color)]">
           Close Friends Traders
         </div>
-        <div className="bg-gray-700 dark:bg-[var(--bg-color1)] text-white font-semibold text-center py-4">
+        <div className="bg-[#020426] text-white font-semibold text-center py-4">
           Others
         </div>
 
-        {/* Table Rows */}
+        {/* Rows */}
         {comparisonData.map((row, index) => {
           const isEven = index % 2 === 0;
-          const baseBg = isEven ? "bg-gray-800" : "bg-gray-700";
+          const baseBg = isEven ? "bg-[#0c0c2f]" : "bg-[#12123b]";
           return (
             <React.Fragment key={index}>
               <div
-                className={`text-center py-4 px-2 border-t border-gray-800 ${baseBg} hover:bg-gray-800 transition`}
+                className={`text-center py-4 px-2 border-t border-[var(--primary-color)] ${baseBg} hover:bg-[#01001f] transition`}
               >
                 {row.feature}
               </div>
               <div
-                className={`text-center py-4 px-2 border-t border-gray-800 ${baseBg} text-[var(--primary-color)] font-medium hover:bg-gray-800 transition`}
+                className={`text-center py-4 px-2 border-t border-[var(--primary-color)] ${baseBg} text-[var(--primary-color)] font-medium hover:bg-[#01001f] transition`}
               >
                 {row.cft}
               </div>
               <div
-                className={`text-center py-4 px-2 border-t border-gray-800 ${baseBg} text-gray-300 hover:bg-gray-800 transition`}
+                className={`text-center py-4 px-2 border-t border-[var(--primary-color)] ${baseBg} text-gray-300 hover:bg-[#01001f] transition`}
               >
                 {row.others}
               </div>
@@ -98,19 +86,19 @@ const ComparisonSection = () => {
         <Slider {...sliderSettings}>
           {comparisonData.map((row, index) => (
             <div key={index} className="px-2">
-              <div className="rounded-xl border border-gray-300 dark:border-gray-700 shadow-lg bg-white dark:bg-[var(--bg-color1)] p-5 space-y-4">
+              <div className="rounded-xl border border-[var(--primary-color)] shadow-lg bg-white dark:bg-[#0f0f2d] p-5 space-y-4">
                 <div className="text-center">
                   <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                     {row.feature}
                   </h3>
                 </div>
 
-                <div className="rounded-lg overflow-hidden border border-gray-300 dark:border-gray-700">
+                <div className="rounded-lg overflow-hidden border border-[var(--primary-color)]">
                   <div className="flex items-center justify-between bg-[var(--primary-color)] text-white px-4 py-3">
                     <span className="font-medium">Close Friends Traders</span>
                     <span className="text-sm font-semibold">{row.cft}</span>
                   </div>
-                  <div className="flex items-center justify-between bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-3">
+                  <div className="flex items-center justify-between bg-gray-100 dark:bg-[#01001f] text-gray-800 dark:text-gray-200 px-4 py-3">
                     <span className="font-medium">Others</span>
                     <span className="text-sm font-semibold">{row.others}</span>
                   </div>
