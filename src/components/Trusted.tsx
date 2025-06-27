@@ -51,7 +51,7 @@ export default function WhyChooseUs() {
     <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white py-16 relative transition-colors duration-500">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-          World&apos;s No. 1{" "}
+          World&apos;s Most Preferred{" "}
           <span className="text-[var(--primary-color)] font-semibold italic">
             Meta Trading Experience
           </span>

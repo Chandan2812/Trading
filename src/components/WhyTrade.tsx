@@ -35,7 +35,7 @@ const features = [
 
   {
     icon: withdrawal,
-    title: "Quick Withdrawals",
+    title: "Instant Withdrawals",
     desc: "Withdraw your money instantly without delays or complicated steps.",
   },
   {
