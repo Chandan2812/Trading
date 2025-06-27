@@ -25,7 +25,7 @@ const StatsSection = () => {
   return (
     <section
       ref={ref}
-      className="py-16 bg-white dark:bg-black text-black dark:text-white overflow-hidden"
+      className="py-16 bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
@@ -35,11 +35,11 @@ const StatsSection = () => {
           </span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="relative   text-center p-8 rounded-3xl shadow-lg"
+              className="relative   text-center p-8 rounded-3xl"
               animate={{
                 y: [0, index % 2 === 0 ? -20 : 20, 0],
               }}
@@ -85,6 +85,19 @@ const StatsSection = () => {
           ))}
         </div>
       </div>
+
+      <section className="max-w-7xl mx-auto bg-white dark:bg-[#023968]  text-black dark:text-white py-12 px-6 text-center">
+        <div className="max-w-4xl mx-auto py-10">
+          <h1 className="text-4xl font-bold leading-tight mb-4">
+            Enjoy Maximum Profits with{" "}
+            <span className="text-[var(--primary-color)]">ZERO BROKERAGE</span>
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-800 dark:text-gray-200 mt-5">
+            Trade anytime, anywhere, on any device with absolute ZERO BROKERAGE
+            costs.
+          </p>
+        </div>
+      </section>
     </section>
   );
 };

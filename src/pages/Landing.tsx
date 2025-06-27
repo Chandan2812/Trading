@@ -8,7 +8,7 @@ import HowItWorks from "../components/HowITWork";
 import Carousel from "../components/ImageCarousel";
 import Navbar from "../components/Nav";
 import Popup from "../components/PopUp";
-import RegulatoryDisclaimer from "../components/RegulatoryDisclaimer";
+// import RegulatoryDisclaimer from "../components/RegulatoryDisclaimer";
 import ScrollingIcons from "../components/ScrollingIcons";
 import StatsSection from "../components/Stats";
 import TestimonialCarousel from "../components/TestimonialCarousel";
@@ -36,7 +36,7 @@ export const Landing = () => {
       <ScrollingIcons />
       <FAQ />
       <Footer />
-      <RegulatoryDisclaimer />
+      {/* <RegulatoryDisclaimer /> */}
       <Popup />
     </div>
   );

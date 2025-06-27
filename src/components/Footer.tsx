@@ -8,6 +8,7 @@ import {
 import { IoMdSend } from "react-icons/io";
 import logo from "../assets/logo-01.svg";
 import { useState } from "react";
+import footerbg from "../assets/earth.jpg";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Footer = () => {
@@ -49,14 +50,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-gray-100 to-white dark:from-[#1a1a1a] dark:to-black text-black dark:text-white px-6 py-16 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer
+      className="relative text-white px-6 py-16 transition-colors duration-500"
+      style={{
+        backgroundImage: `url(${footerbg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-5 gap-10">
         {/* Logo & Description */}
         <div>
           <div className="flex items-center space-x-2 mb-4">
             <img src={logo} alt="Logo" className="w-40" draggable="false" />
           </div>
-          <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+          <p className="text-md leading-relaxed text-white">
             Behind the word mountains, far from the countries Vokalia and
             Consonantia, there live the blind texts they live
           </p>
@@ -64,23 +73,23 @@ const Footer = () => {
             {[
               {
                 href: "https://www.facebook.com/closefriendstraders/",
-                icon: <FaFacebookF size={24} />,
+                icon: <FaFacebookF size={20} />,
               },
               {
                 href: "https://www.instagram.com/closefriendstraders",
-                icon: <FaInstagram size={24} />,
+                icon: <FaInstagram size={20} />,
               },
               {
                 href: "https://x.com/cft_traders",
-                icon: <FaTwitter size={24} />,
+                icon: <FaTwitter size={20} />,
               },
               {
                 href: "https://www.youtube.com/@closefriendstraders",
-                icon: <FaYoutube size={24} />,
+                icon: <FaYoutube size={20} />,
               },
               {
                 href: "https://t.me/DabbatradingClosefriendstraders",
-                icon: <FaTelegram size={24} />,
+                icon: <FaTelegram size={20} />,
               },
             ].map(({ href, icon }, idx) => (
               <a
@@ -100,50 +109,93 @@ const Footer = () => {
         {/* Useful Links */}
         <div>
           <h3 className="text-lg font-bold mb-4">Useful Links</h3>
-          <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-            {["Home", "Contact", "About", "Terms", "Condition"].map(
-              (link, idx) => (
+          <ul className="space-y-3 text-sm text-white">
+            {[
+              "Contact",
+              "About",
+              "Terms & Conditions",
+              "Privacy Policy",
+              "Disclaimer",
+            ].map((link, idx) => {
+              const formatted = link
+                .toLowerCase()
+                .replace(/[^a-z0-9\s]/gi, "") // remove special characters
+                .replace(/\s+/g, "-"); // replace spaces with hyphens
+
+              return (
                 <li key={idx}>
                   <a
-                    href="#"
+                    href={`/${formatted}`}
                     className="hover:text-[var(--primary-color)] transition-colors"
                   >
                     {link}
                   </a>
                 </li>
-              )
-            )}
+              );
+            })}
           </ul>
         </div>
 
         {/* Market we Serve */}
         <div>
-          <h3 className="text-lg font-bold mb-4">Market we Serve</h3>
-          <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+          <h3 className="text-lg font-bold mb-4">Products</h3>
+          <ul className="space-y-3 text-sm text-white">
+            {["CFD Instrument", "Stocks", "Commodity", "Indexes"].map(
+              (market, idx) => {
+                const formatted = market
+                  .toLowerCase()
+                  .replace(/[^a-z0-9\s]/gi, "") // remove special characters
+                  .replace(/\s+/g, "-"); // replace spaces with hyphens
+
+                return (
+                  <li key={idx}>
+                    <a
+                      href={`/products/${formatted}`}
+                      className="hover:text-[var(--primary-color)] transition-colors"
+                    >
+                      {market}
+                    </a>
+                  </li>
+                );
+              }
+            )}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-bold mb-4">Knowledge Center</h3>
+          <ul className="space-y-3 text-sm text-white">
             {[
-              "NSE(Futures and Options)",
-              "MCX",
-              "Cryptos",
-              "Forex",
-              "Us Stocks & Indices",
-              "Comex",
-            ].map((market, idx) => (
-              <li key={idx}>
-                <a
-                  href="#"
-                  className="hover:text-[var(--primary-color)] transition-colors"
-                >
-                  {market}
-                </a>
-              </li>
-            ))}
+              "Trading",
+              "Equity Trading",
+              "Future & Options",
+              "Commodity Trading",
+              "Margin Trading",
+              "Intraday Trading",
+            ].map((market, idx) => {
+              const formatted = market
+                .toLowerCase()
+                .replace(/[^a-z0-9\s]/gi, "") // remove special characters
+                .replace(/\s+/g, "-"); // replace spaces with hyphens
+
+              return (
+                <li key={idx}>
+                  <a
+                    href={`/knowledge/${formatted}`}
+                    className="hover:text-[var(--primary-color)] transition-colors"
+                  >
+                    {market}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
         {/* Newsletter */}
         <div>
           <h3 className="text-lg font-bold mb-4">Talk to Expert 24/7</h3>
-          <p className="text-sm mb-4 text-gray-700 dark:text-gray-300">
+          <p className="text-sm mb-4 text-white">
             Don’t miss our future updates! Get Subscribed Today!
           </p>
           <form

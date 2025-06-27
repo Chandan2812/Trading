@@ -57,7 +57,7 @@ export default function TestimonialCarousel() {
   const testimonial = testimonials[index];
 
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-500">
+    <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white transition-colors duration-500">
       <div className="max-w-5xl mx-auto py-12 px-4 text-center relative overflow-hidden">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-8">
           Hear from Our Traders
@@ -119,20 +119,19 @@ export default function TestimonialCarousel() {
         </div>
 
         {/* Mobile Arrows */}
-        <div className="flex md:hidden justify-between px-5 gap-4 mt-8">
+        {/* Mobile Navigation Buttons */}
+        <div className="flex md:hidden justify-center gap-4 mt-8">
           <button
             onClick={() => paginate("left")}
-            className="bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
-            aria-label="Previous testimonial"
+            className="px-5 py-2 bg-[var(--primary-color)] text-white rounded-full text-sm font-medium shadow hover:brightness-110 transition"
           >
-            <ChevronLeft />
+            ← Previous
           </button>
           <button
             onClick={() => paginate("right")}
-            className="bg-primary-light dark:bg-primary-dark text-black dark:text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:brightness-90 transition"
-            aria-label="Next testimonial"
+            className="px-5 py-2 bg-[var(--primary-color)] text-white rounded-full text-sm font-medium shadow hover:brightness-110 transition"
           >
-            <ChevronRight />
+            Next →
           </button>
         </div>
       </div>

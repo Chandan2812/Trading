@@ -45,7 +45,7 @@ const WhyChoose: React.FC = () => {
   const CurrentIcon = features[index].icon;
 
   return (
-    <section className="py-16 bg-white text-black dark:bg-black dark:text-white transition-colors duration-500">
+    <section className="py-16 px-5 bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white transition-colors duration-500">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-12">
         {/* Left Side Title */}
         <div className="w-full md:w-1/2">
@@ -73,7 +73,7 @@ const WhyChoose: React.FC = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              className="absolute inset-0 flex items-center gap-4 text-2xl font-semibold bg-[#f3f3f3] text-black dark:bg-black dark:text-white border border-[var(--primary-color)] px-6 py-4 rounded-lg shadow-lg transition-colors duration-500"
+              className="absolute inset-0 flex items-center gap-4 text-2xl font-semibold border border-white/20  text-black dark:bg-[var(--bg-color1)] backdrop-blur-xl dark:text-white px-6 py-4 rounded-lg shadow-2xl bg-white/10 transition-colors duration-500"
               variants={slideVariants}
               initial="initial"
               animate="animate"

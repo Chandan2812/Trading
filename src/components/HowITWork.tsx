@@ -14,7 +14,7 @@ export default function HowItWorks() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white px-5 py-16 transition-colors duration-300">
+    <div className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white px-5 py-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left: Image */}
         <div className="md:w-1/2 justify-center hidden md:flex">

@@ -43,11 +43,11 @@ const ComparisonSection = () => {
   };
 
   return (
-    <section className="py-10 px-5 bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+    <section className="py-12 px-4 bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto text-center mb-10">
-        <h2 className="text-3xl sm:text-4xl font-semibold">
+        <h2 className="text-3xl sm:text-4xl font-semibold leading-snug">
           Your Money Deserves Better{" "}
-          <span className="text-[var(--primary-color)]">|</span> See the{" "}
+          <span className="text-[var(--primary-color)]">|</span> Discover the{" "}
           <span className="text-[var(--primary-color)] italic font-bold">
             CFT Advantage
           </span>
@@ -55,52 +55,62 @@ const ComparisonSection = () => {
       </div>
 
       {/* Desktop Table */}
-      <div className="hidden md:grid grid-cols-3 max-w-5xl mx-auto border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm text-sm">
-        <div className="bg-gray-100 dark:bg-[#111] font-bold text-center py-4 border-r border-gray-300 dark:border-gray-800">
+      <div className="hidden md:grid grid-cols-3 max-w-5xl mx-auto text-sm rounded-xl overflow-hidden shadow-xl border border-gray-800">
+        {/* Table Header */}
+        <div className="bg-gray-800 dark:bg-[var(--bg-color1)] text-white font-semibold text-center py-4 border-r border-gray-700">
           Features
         </div>
-        <div className="bg-gray-100 dark:bg-[#111] text-white font-bold text-center py-4 border-r border-gray-300 dark:border-gray-800">
+        <div className="bg-[var(--primary-color)] text-white font-semibold text-center py-4 border-r border-gray-700">
           Close Friends Traders
         </div>
-        <div className="bg-gray-100 dark:bg-[#111] font-bold text-center py-4">
+        <div className="bg-gray-700 dark:bg-[var(--bg-color1)] text-white font-semibold text-center py-4">
           Others
         </div>
 
-        {comparisonData.map((row, index) => (
-          <React.Fragment key={index}>
-            <div className="text-center py-4 px-2 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-black">
-              {row.feature}
-            </div>
-            <div className="text-center py-4 px-2 border-t border-gray-200 dark:border-gray-700 bg-[var(--primary-color)/10] dark:bg-[var(--primary-color)/20] font-medium">
-              {row.cft}
-            </div>
-            <div className="text-center py-4 px-2 border-t border-gray-200 dark:border-gray-700">
-              {row.others}
-            </div>
-          </React.Fragment>
-        ))}
+        {/* Table Rows */}
+        {comparisonData.map((row, index) => {
+          const isEven = index % 2 === 0;
+          const baseBg = isEven ? "bg-gray-800" : "bg-gray-700";
+          return (
+            <React.Fragment key={index}>
+              <div
+                className={`text-center py-4 px-2 border-t border-gray-800 ${baseBg} hover:bg-gray-800 transition`}
+              >
+                {row.feature}
+              </div>
+              <div
+                className={`text-center py-4 px-2 border-t border-gray-800 ${baseBg} text-[var(--primary-color)] font-medium hover:bg-gray-800 transition`}
+              >
+                {row.cft}
+              </div>
+              <div
+                className={`text-center py-4 px-2 border-t border-gray-800 ${baseBg} text-gray-300 hover:bg-gray-800 transition`}
+              >
+                {row.others}
+              </div>
+            </React.Fragment>
+          );
+        })}
       </div>
 
+      {/* Mobile Slider */}
       <div className="md:hidden mt-10">
         <Slider {...sliderSettings}>
           {comparisonData.map((row, index) => (
-            <div key={index} className="px-3">
-              <div className="rounded-xl border border-gray-200 dark:border-gray-700 shadow-md bg-white dark:bg-[#111] p-5">
-                <div className="text-center mb-4">
-                  <h3 className="text-base font-semibold text-gray-700 dark:text-gray-300">
+            <div key={index} className="px-2">
+              <div className="rounded-xl border border-gray-300 dark:border-gray-700 shadow-lg bg-white dark:bg-[var(--bg-color1)] p-5 space-y-4">
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
                     {row.feature}
                   </h3>
                 </div>
 
-                <div className="space-y-3">
-                  {/* CFT */}
-                  <div className="flex items-center justify-between bg-[var(--primary-color)] text-white rounded-lg px-4 py-3">
+                <div className="rounded-lg overflow-hidden border border-gray-300 dark:border-gray-700">
+                  <div className="flex items-center justify-between bg-[var(--primary-color)] text-white px-4 py-3">
                     <span className="font-medium">Close Friends Traders</span>
                     <span className="text-sm font-semibold">{row.cft}</span>
                   </div>
-
-                  {/* Others */}
-                  <div className="flex items-center justify-between bg-gray-100 dark:bg-[#1a1a1a] text-gray-800 dark:text-gray-200 rounded-lg px-4 py-3">
+                  <div className="flex items-center justify-between bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-3">
                     <span className="font-medium">Others</span>
                     <span className="text-sm font-semibold">{row.others}</span>
                   </div>

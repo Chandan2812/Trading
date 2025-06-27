@@ -102,7 +102,7 @@ const ToggleFAQ = () => {
   };
 
   return (
-    <section className="bg-white text-black dark:bg-black dark:text-white py-12 px-5 transition-colors duration-500">
+    <section className="bg-white text-black dark:bg-gray-900 dark:text-white py-12 px-5 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-5">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-center">
           Frequently Asked Questions
@@ -120,7 +120,7 @@ const ToggleFAQ = () => {
             {faqs.map((faq, index) => (
               <div key={index} className="relative">
                 {/* FAQ Box */}
-                <div className="bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg pl-12 pr-6 py-3 relative w-full transition-colors duration-300">
+                <div className="bg-gray-50 dark:bg-[var(--bg-color1)] border border-gray-300 dark:border-gray-700 rounded-lg pl-12 pr-6 py-3 relative w-full transition-colors duration-300">
                   {/* Number Badge */}
                   <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-black text-primary-light dark:text-primary-dark rounded-full flex items-center justify-center text-xl font-bold border-2 border-primary-light dark:border-primary-dark">
                     {index + 1}

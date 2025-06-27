@@ -32,7 +32,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white transition-colors duration-500">
+    <div className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white transition-colors duration-500">
       <div className="max-w-7xl mx-auto py-12">
         <Slider {...settings}>
           {images.map((src, index) => (

@@ -1,6 +1,7 @@
 :root {
   --primary-color: #71ced0;
   --bg-primary-gradient: linear-gradient(to right, #ce9c81, #e3c5b5, #ce9c81);
+  --bg-color1: #111827;
 }
 
 .btn-gradient-hover:hover {

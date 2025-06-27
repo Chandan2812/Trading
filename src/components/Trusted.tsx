@@ -48,10 +48,10 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <div className="bg-white text-black dark:bg-black dark:text-white py-16 relative transition-colors duration-500">
+    <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white py-16 relative transition-colors duration-500">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-          India&apos;s No. 1{" "}
+          World&apos;s No. 1{" "}
           <span className="text-[var(--primary-color)] font-semibold italic">
             Meta Trading Experience
           </span>
@@ -75,7 +75,7 @@ export default function WhyChooseUs() {
                 className="relative rounded-xl p-[1.5px] hover:shadow-[0_0_10px_var(--primary-color)] transition border border-[var(--primary-color)]"
               >
                 <div
-                  className="bg-white dark:bg-black rounded-[10px] p-6 h-full flex flex-col items-center text-center transition-colors duration-500"
+                  className="bg-white dark:bg-[var(--bg-color1)] rounded-[10px] p-6 h-full flex flex-col items-center text-center transition-colors duration-500"
                   data-aos="zoom-in"
                   data-aos-delay={delay + 400} // Inner content delay
                 >
@@ -120,7 +120,7 @@ export default function WhyChooseUs() {
                   className="w-full flex-shrink-0 scroll-snap-align-start px-4"
                   style={{ scrollSnapAlign: "start" }}
                 >
-                  <div className="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#111] dark:to-[#1a1a1a] border border-[var(--primary-color)] rounded-lg p-6 h-full transition-colors duration-500">
+                  <div className="bg-gray-100 dark:bg-[var(--bg-color1)] border border-[var(--primary-color)] rounded-lg p-6 h-full transition-colors duration-500">
                     <div className="mb-4 text-4xl">{feature.icon}</div>
                     <h3 className="text-lg font-semibold mb-2">
                       {feature.title}

@@ -73,7 +73,7 @@ const WhyTrade: React.FC = () => {
   };
 
   return (
-    <section className="bg-white dark:bg-black text-black dark:text-white py-12 transition-colors duration-300">
+    <section className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-12 transition-colors duration-300">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-semibold">
           Why Traders Choose{" "}
@@ -92,10 +92,10 @@ const WhyTrade: React.FC = () => {
             whileInView={{ opacity: 1, rotateX: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
-            className="relative group perspective-[1200px] transition-transform"
+            className="relative group perspective-[1200px] transition-transform "
           >
             <motion.div
-              className="relative bg-white dark:bg-[#0d0d0d] border border-[var(--primary-color)] rounded-2xl p-6 min-h-[270px] text-center flex flex-col items-center justify-start shadow-md hover:shadow-lg transition-transform duration-300"
+              className="relative bg-white dark:bg-gray-900 border border-[var(--primary-color)] rounded-2xl p-6 min-h-[270px] text-center flex flex-col items-center justify-start shadow-md  transition-transform duration-300 hover:shadow-[0_0_10px_var(--primary-color)]"
               whileHover={{ rotateX: 4, rotateY: -4, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 150, damping: 12 }}
               style={{
@@ -150,7 +150,7 @@ const WhyTrade: React.FC = () => {
                 className="w-full flex-shrink-0 scroll-snap-align-start px-4"
                 style={{ scrollSnapAlign: "start" }}
               >
-                <div className="bg-white dark:bg-gradient-to-br dark:from-[#111] dark:to-[#1a1a1a] border border-[var(--primary-color)] rounded-lg p-6 h-full transition-colors duration-300">
+                <div className="bg-white dark:bg-[var(--bg-color1)] border border-[var(--primary-color)] rounded-lg p-6 h-full transition-colors duration-300">
                   <div className="mb-4 flex justify-center">
                     <img
                       src={feature.icon}

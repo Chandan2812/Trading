@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
+import {
+  FiChevronDown,
+  FiChevronUp,
+  FiMenu,
+  FiMoon,
+  FiSun,
+} from "react-icons/fi";
 import logo from "../assets/logo-01.svg";
 // import TradingViewTicker from "./TradingViewTicker";
 
@@ -15,6 +21,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [user, setUser] = useState<any>(null);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme")
@@ -40,6 +47,17 @@ const Navbar = () => {
     { label: "About Us", path: "/about" },
     { label: "Contact Us", path: "/Contact" },
     { label: "Features", path: "/features" },
+    {
+      label: "Knowledge Center",
+      subItems: [
+        { label: "Basics of Trading", path: "/knowledge/basics" },
+        { label: "Advanced Strategies", path: "/knowledge/advanced" },
+        { label: "Risk Management", path: "/knowledge/risk" },
+        { label: "Technical Analysis", path: "/knowledge/technical" },
+        { label: "Fundamental Analysis", path: "/knowledge/fundamental" },
+        { label: "Psychology of Trading", path: "/knowledge/psychology" },
+      ],
+    },
   ];
 
   if (userdata && userdata.email.toLowerCase() === "admin@gmail.com") {
@@ -152,17 +170,37 @@ const Navbar = () => {
                   </a>
                 </div>
                 <div className="flex items-center gap-8">
-                  {navItems.map((item, index) => (
-                    <a
-                      key={index}
-                      href={item.path}
-                      onClick={() => setActiveItem(item.label)}
-                      className={`relative pb-2 text-sm transition-colors hover:text-[var(--primary-color)] 
-                  ${activeItem === item.label ? "font-light text-md" : ""}`}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
+                  {navItems.map((item, index) =>
+                    item.subItems ? (
+                      <div
+                        key={index}
+                        className="relative group flex items-center pb-2 text-sm transition-colors hover:text-[var(--primary-color)] cursor-pointer"
+                      >
+                        <span>{item.label}</span>
+                        <div className="absolute top-full left-0 hidden group-hover:block bg-white dark:bg-black border dark:border-gray-800  rounded shadow-lg z-50 min-w-[200px]">
+                          {item.subItems.map((subItem, subIndex) => (
+                            <a
+                              key={subIndex}
+                              href={subItem.path}
+                              className="block px-4 py-2 text-sm hover:bg-[var(--primary-color)] hover:text-black dark:hover:text-white transition"
+                            >
+                              {subItem.label}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <a
+                        key={index}
+                        href={item.path}
+                        onClick={() => setActiveItem(item.label)}
+                        className={`relative pb-2 text-sm transition-colors hover:text-[var(--primary-color)] 
+        ${activeItem === item.label ? "font-light text-md" : ""}`}
+                      >
+                        {item.label}
+                      </a>
+                    )
+                  )}
                 </div>
               </div>
 
@@ -228,7 +266,7 @@ const Navbar = () => {
         {/* Mobile Dropdown */}
         {isOpen && (
           <div
-            className={`md:hidden fixed inset-0 z-[9999] flex flex-col pl-2 pr-5 pb-6 pt-3 mt-20 transition-colors 
+            className={`md:hidden fixed inset-0 z-[9999] flex flex-col pl-2 pr-5 pb-6 pt-3 mt-2 transition-colors 
       ${darkMode ? "bg-black text-white" : "bg-white text-black"}`}
           >
             <div className="flex justify-between items-center mb-6">
@@ -247,19 +285,58 @@ const Navbar = () => {
             )}
 
             <div className="flex flex-col space-y-4 px-5">
-              {navItems.map((item, index) => (
-                <Link
-                  key={index}
-                  to={item.path}
-                  onClick={() => {
-                    setActiveItem(item.label);
-                    setIsOpen(false);
-                  }}
-                  className="text-lg text-inherit hover:text-[var(--primary-color)] transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item, index) =>
+                item.subItems ? (
+                  <div key={index} className="mb-4">
+                    <button
+                      onClick={() =>
+                        setOpenDropdown(
+                          openDropdown === item.label ? null : item.label
+                        )
+                      }
+                      className="font-semibold flex justify-between items-center w-full"
+                    >
+                      {item.label}
+                      <span className="text-xl">
+                        {openDropdown === item.label ? (
+                          <FiChevronUp />
+                        ) : (
+                          <FiChevronDown />
+                        )}
+                      </span>
+                    </button>
+                    {openDropdown === item.label && (
+                      <div className="flex flex-col mt-2 pl-4 space-y-2">
+                        {item.subItems.map((subItem, subIndex) => (
+                          <Link
+                            key={subIndex}
+                            to={subItem.path}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setOpenDropdown(null);
+                            }}
+                            className="text-base text-inherit hover:text-[var(--primary-color)]"
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={index}
+                    to={item.path}
+                    onClick={() => {
+                      setActiveItem(item.label);
+                      setIsOpen(false);
+                    }}
+                    className="text-lg text-inherit hover:text-[var(--primary-color)] transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
 
               {user ? (
                 <div className="flex flex-col items-start gap-2 mt-4">

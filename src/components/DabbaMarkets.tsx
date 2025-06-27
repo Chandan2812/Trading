@@ -64,7 +64,7 @@ const DabbaMarkets: React.FC = () => {
   };
 
   return (
-    <div className=" bg-white dark:bg-black text-black dark:text-white py-12">
+    <div className=" bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-12">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold">
           <span className="text-[#71ced0] italic">Markets </span>We Offer
@@ -88,7 +88,7 @@ const DabbaMarkets: React.FC = () => {
             data-aos-delay={index * 250} // 👉 staggered delay (150ms apart)
             data-aos-duration="1000"
           >
-            <div className="bg-white dark:bg-black rounded-lg h-full p-6 flex flex-col items-center justify-center text-center min-h-[240px]">
+            <div className="bg-white dark:bg-[var(--bg-color1)] rounded-lg h-full p-6 flex flex-col items-center justify-center text-center min-h-[240px]">
               <img
                 src={market.image}
                 alt={market.title}
@@ -119,7 +119,7 @@ const DabbaMarkets: React.FC = () => {
                 className="w-full flex-shrink-0 scroll-snap-align-start px-4"
                 style={{ scrollSnapAlign: "start" }}
               >
-                <div className="bg-gradient-to-br from-[#111] to-[#1a1a1a] border border-[var(--primary-color)] rounded-lg p-6 h-full text-center">
+                <div className="bg-gray-100 dark:bg-[var(--bg-color1)] border border-[var(--primary-color)] rounded-lg p-6 h-full text-center">
                   <img
                     src={market.image}
                     alt={market.title}
