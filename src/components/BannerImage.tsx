@@ -11,7 +11,7 @@ const PageBanner = ({ title, image, subtitle }: PageBannerProps) => {
 
   return (
     <div
-      className="w-full h-52 md:h-72 flex items-center justify-center bg-cover bg-center relative"
+      className="px-5 w-full h-52 md:h-72 flex items-center justify-center bg-cover bg-center relative"
       style={{
         backgroundImage: `url(${bannerImage})`,
       }}

@@ -65,7 +65,7 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-10 py-12 md:py-0">
         {/* Left Content */}
         <div className="max-w-xl text-white space-y-8">
-          <h1 className="text-4xl font-bold leading-tight text-start ">
+          <h1 className="text-4xl font-bold leading-tight text-start mt-10">
             Most Trusted Trading Platform
           </h1>
           <h1 className="text-3xl font-semibold leading-tight text-start">
