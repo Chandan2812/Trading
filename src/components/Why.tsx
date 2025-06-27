@@ -50,7 +50,7 @@ const Whychoose = () => {
   return (
     <section
       ref={ref}
-      className="relative py-12 bg-white dark:bg-[#0a0a0d] text-black dark:text-white transition-colors duration-500"
+      className="relative py-12 bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white transition-colors duration-500"
     >
       <div className="max-w-7xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-20">

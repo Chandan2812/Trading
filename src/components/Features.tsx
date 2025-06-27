@@ -137,7 +137,7 @@ export default function Feature() {
         </section>
 
         {/* Section 2: Scroll Animated Cards (Desktop) & Static Cards (Mobile) */}
-        <section className="py-20 px-4 bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+        <section className="py-20 px-4 bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white transition-colors duration-300">
           <div className="max-w-7xl mx-auto">
             {/* Desktop (animated cards) */}
             <div className="hidden md:flex gap-8 flex-wrap justify-center">
@@ -170,7 +170,7 @@ export default function Feature() {
                 <div
                   key={i}
                   ref={(el) => (cardRefs.current[i] = el)}
-                  className="w-8 h-8 bg-gray-100 dark:bg-neutral-900 border border-[var(--primary-color)] rounded-full flex items-center justify-center transition-all duration-300 text-black dark:text-white overflow-hidden"
+                  className="w-8 h-8 bg-gray-100 dark:bg-[var(--bg-color1)] border border-[var(--primary-color)] rounded-full flex items-center justify-center transition-all duration-300 text-black dark:text-white overflow-hidden"
                 >
                   <div
                     ref={(el) => (iconRefs.current[i] = el)}
@@ -237,7 +237,7 @@ export default function Feature() {
         <MergedDashboardTable />
         <WhyChooseCFT />
         <FeaturesSplit />
-        <section className="bg-white dark:bg-[#0a0a0d] text-black dark:text-white py-12 px-6 relative overflow-hidden transition-colors duration-500">
+        <section className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-12 px-6 relative overflow-hidden transition-colors duration-500">
           <div className="max-w-5xl mx-auto text-center space-y-20 relative z-10">
             {/* Upgrade Ready */}
             <motion.div
