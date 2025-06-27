@@ -42,8 +42,8 @@ function Stocks() {
       </div>
 
       <PageBanner
-        title="CFD Instrument"
-        subtitle="Explore the world of Contracts for Difference (CFDs) with CFT (Close Friends Traders). CFDs allow you to speculate on price movements without owning the underlying asset."
+        title="Stocks"
+        subtitle="Invest in leading global companies through CFT. Trade stocks on various global exchanges and benefit from market trends."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
