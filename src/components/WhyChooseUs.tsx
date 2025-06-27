@@ -93,10 +93,10 @@ const WhyChoose: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold leading-tight mb-4">
             Enjoy Maximum Profits with{" "}
-            <span className="text-[var(--primary-color)]">ZERO BROKERAGE</span>
+            <span className="text-[var(--primary-color)]">ZERO COMMISSION</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-800 dark:text-gray-200 mt-5">
-            Trade anytime, anywhere on any device with absolute ZERO BROKERAGE
+            Trade anytime, anywhere on any device with absolute ZERO COMMISSION
             costs.
           </p>
 

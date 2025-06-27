@@ -8,8 +8,8 @@ const comparisonData = [
     others: "1 - 3 days, full KYC",
   },
   {
-    feature: "Brokerage",
-    cft: "0% brokerage",
+    feature: "Commission",
+    cft: "0% commission",
     others: "High fees + hidden costs",
   },
   { feature: "Leverage", cft: "500x margin", others: "5x–10x max" },

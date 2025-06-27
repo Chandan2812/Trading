@@ -2,7 +2,6 @@ import {
   FaFacebookF,
   FaInstagram,
   FaTelegram,
-  FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
@@ -65,10 +64,7 @@ const Footer = () => {
           <div className="flex items-center space-x-2 mb-4">
             <img src={logo} alt="Logo" className="w-40" draggable="false" />
           </div>
-          <p className="text-md leading-relaxed text-white">
-            Behind the word mountains, far from the countries Vokalia and
-            Consonantia, there live the blind texts they live
-          </p>
+
           <div className="flex space-x-4 mt-4">
             {[
               {
@@ -76,13 +72,10 @@ const Footer = () => {
                 icon: <FaFacebookF size={20} />,
               },
               {
-                href: "https://www.instagram.com/closefriendstraders",
+                href: "https://www.instagram.com/closefriendstraders.official/?igsh=YndxMTF1d3B2eHlu#",
                 icon: <FaInstagram size={20} />,
               },
-              {
-                href: "https://x.com/cft_traders",
-                icon: <FaTwitter size={20} />,
-              },
+
               {
                 href: "https://www.youtube.com/@closefriendstraders",
                 icon: <FaYoutube size={20} />,

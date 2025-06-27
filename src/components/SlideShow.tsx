@@ -13,7 +13,7 @@ const slides = [
 
 const features = [
   {
-    title: "Zero Brokerage",
+    title: "Zero Commission",
     desc: "Trade freely with 0% commission on all orders.",
   },
   {

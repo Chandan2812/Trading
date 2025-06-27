@@ -29,8 +29,8 @@ const features = [
   },
   {
     icon: zero,
-    title: "0% Brokerage",
-    desc: "Trade with zero brokerage and keep every rupee you earn which equals more profits!",
+    title: "0% Commission",
+    desc: "Trade with zero commission and keep every rupee you earn which equals more profits!",
   },
 
   {

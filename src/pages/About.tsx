@@ -13,7 +13,7 @@ const points = [
     desc: "Begin without making significant commitments. Start trading for as low as ₹100 and increase as you see fit.",
   },
   {
-    title: "No Brokerage",
+    title: "Zero Commission",
     desc: "Don't spend your earnings. There are no charges, fees, or brokerage surprises when you trade with us.",
   },
   {
@@ -21,7 +21,7 @@ const points = [
     desc: "Use the least amount of capital to increase your market exposure. Make large trades without breaking the bank.",
   },
   {
-    title: "No Tax",
+    title: "Zero Tax",
     desc: "Bid farewell to profit and withdrawal tax breaks. You are entitled to keep what you earn.",
   },
   {
