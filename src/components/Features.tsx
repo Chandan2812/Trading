@@ -269,7 +269,7 @@ export default function Feature() {
               viewport={{ once: true, amount: 0.4 }}
               variants={fadeInUp}
             >
-              <div className="inline-block px-6 py-2 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] text-sm uppercase tracking-widest">
+              <div className="inline-block   text-[var(--primary-color)] text-2xl uppercase tracking-widest">
                 Upgrade Now
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold">

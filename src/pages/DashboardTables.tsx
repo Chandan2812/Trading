@@ -10,7 +10,7 @@ export const MergedDashboardTable = () => (
 
       <div className="overflow-x-auto border border-[#01001f] dark:border-[var(--primary-color)] rounded-xl">
         <table className="min-w-[640px] w-full text-sm">
-          <thead className="bg-[#01001f] dark:bg-[var(--primary-color)] text-white">
+          <thead className="bg-[#01001f] dark:bg-[#191942]  text-white">
             <tr>
               {["Category", "Metric", "Value"].map((h) => (
                 <th key={h} className="p-4 font-semibold text-left">
@@ -82,7 +82,7 @@ export const MergedDashboardTable = () => (
             </tr>
 
             {/* Group 5: Goal */}
-            <tr className="bg-gray-100 dark:bg-[#191942]">
+            <tr className="bg-gray-50 dark:bg-[#0f0f2d]">
               <td className="p-4 font-medium">Goal</td>
               <td colSpan={2} className="p-4 text-left">
                 Better lead quality and lower message costs for improved trading
