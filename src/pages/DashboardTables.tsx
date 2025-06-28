@@ -21,11 +21,17 @@ export const MergedDashboardTable = () => (
           </thead>
 
           <tbody className="divide-y divide-[#01001f] dark:divide-[var(--primary-color)]">
-            {/* Group 1: CFT Dashboard */}
+            {/* Group 1: Close Friends Traders Dashboard */}
             <tr className="bg-gray-50 dark:bg-[#0f0f2d]">
-              <td className="p-4 font-medium">CFT Dashboard</td>
+              <td className="p-4 font-medium" rowSpan={2}>
+                Close Friends Traders CEO Dashboard
+              </td>
               <td className="p-4">Accounts Linked</td>
               <td className="p-4">32 Ad Accounts</td>
+            </tr>
+            <tr className="bg-gray-50 dark:bg-[#0f0f2d]">
+              <td className="p-4">Period</td>
+              <td className="p-4">This Month</td>
             </tr>
 
             {/* Group 2: Trading & Revenue */}
@@ -76,15 +82,15 @@ export const MergedDashboardTable = () => (
 
             {/* Group 4: Current Focus */}
             <tr className="bg-gray-100 dark:bg-[#191942]">
-              <td className="p-4 font-medium">Current Focus</td>
+              <td className="p-4 font-medium" rowSpan={2}>
+                Current Focus
+              </td>
               <td className="p-4">Objective</td>
               <td className="p-4">Messaging Efficiency</td>
             </tr>
-
-            {/* Group 5: Goal */}
-            <tr className="bg-gray-50 dark:bg-[#0f0f2d]">
+            <tr className="bg-gray-100 dark:bg-[#191942]">
               <td className="p-4 font-medium">Goal</td>
-              <td colSpan={2} className="p-4 text-left">
+              <td className="p-4">
                 Better lead quality and lower message costs for improved trading
                 conversions
               </td>
@@ -92,6 +98,13 @@ export const MergedDashboardTable = () => (
           </tbody>
         </table>
       </div>
+
+      <h1 className="mt-10 text-2xl font-semibold">
+        Top Stock Picks / Hot Trades
+      </h1>
+      <p className="mt-5 text-md ">
+        Auto-curated daily based on market performance and volume surges.
+      </p>
     </div>
   </section>
 );

@@ -55,7 +55,10 @@ function Commodity() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              Why <span className="text-[var(--primary-color)]">CFT</span>{" "}
+              Why{" "}
+              <span className="text-[var(--primary-color)]">
+                Close Friends Traders
+              </span>{" "}
             </h2>
 
             <ul className="space-y-6">
@@ -85,7 +88,7 @@ function Commodity() {
             <p className="text-xl md:text-2xl text-gray-800 dark:text-white font-medium mb-2">
               Join the{" "}
               <span className="text-[var(--primary-color)] font-semibold">
-                CFT
+                Close Friends Traders
               </span>{" "}
               community to avail the benefits!
             </p>

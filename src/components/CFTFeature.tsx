@@ -15,7 +15,7 @@ const flipCard = {
 
 export default function FeaturesSplit() {
   return (
-    <section className="relative bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-12  overflow-hidden transition-colors duration-500">
+    <section className="relative bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-10  overflow-hidden transition-colors duration-500">
       {/* Section Heading */}
       <motion.div
         className="w-11/12 md:w-5/6 mx-auto text-center mb-20 relative z-10"

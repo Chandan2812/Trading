@@ -47,7 +47,7 @@ function FutureOptions() {
 
       <PageBanner
         title="Futures & Options"
-        subtitle="Trade futures and options confidently with CFT! Manage risk and maximize returns by trading in the derivatives market effortlessly."
+        subtitle="Trade futures and options confidently with Close Friends Traders! Manage risk and maximize returns by trading in the derivatives market effortlessly."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -60,7 +60,10 @@ function FutureOptions() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How <span className="text-[var(--primary-color)]">CFT</span>{" "}
+              How{" "}
+              <span className="text-[var(--primary-color)]">
+                Close Friends Traders
+              </span>{" "}
               Offers Value
             </h2>
 
@@ -91,7 +94,7 @@ function FutureOptions() {
             <p className="text-xl md:text-2xl text-gray-800 dark:text-white font-medium mb-2">
               Join the{" "}
               <span className="text-[var(--primary-color)] font-semibold">
-                CFT
+                Close Friends Traders
               </span>{" "}
               community to avail the benefits!
             </p>

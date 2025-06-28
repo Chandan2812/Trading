@@ -125,7 +125,7 @@ export default function SwipeGallery() {
               {/* Slide Heading */}
               <h2 className="hidden md:block text-3xl font-semibold tracking-widest uppercase text-white/90 drop-shadow-md">
                 Faster trades. Smarter insights. Laser-sharp accuracy. Welcome
-                to Close Friends Trading.
+                to Close Friends Traders.
               </h2>
 
               {/* Feature Cards */}

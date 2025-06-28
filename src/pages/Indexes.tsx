@@ -49,7 +49,10 @@ function Indexes() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How <span className="text-[var(--primary-color)]">CFT</span>{" "}
+              How{" "}
+              <span className="text-[var(--primary-color)]">
+                Close Friends Traders
+              </span>{" "}
               Offers Value
             </h2>
 
@@ -80,7 +83,7 @@ function Indexes() {
             <p className="text-xl md:text-2xl text-gray-800 dark:text-white font-medium mb-2">
               Join the{" "}
               <span className="text-[var(--primary-color)] font-semibold">
-                CFT
+                Close Friends Traders
               </span>{" "}
               community to avail the benefits!
             </p>
