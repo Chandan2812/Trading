@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SwipeGallery from "./SlideShow";
+
 import Footer from "./Footer";
 
 import Navbar from "./Nav";
@@ -240,8 +241,26 @@ export default function Feature() {
         <MergedDashboardTable />
         <WhyChooseCFT />
         <FeaturesSplit />
-        <section className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-12 px-6 relative overflow-hidden transition-colors duration-500">
-          <div className="max-w-5xl mx-auto text-center space-y-20 relative z-10">
+
+        <section className="py-12 bg-white dark:bg-[var(--bg-color1)] transition-colors duration-300">
+          <div className="w-11/12 max-w-5xl mx-auto text-center px-4">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              How it Works
+            </h1>
+            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              <span className="font-semibold text-[var(--primary-color)]">
+                Close Friends Traders
+              </span>{" "}
+              connects your trading, CRM, and ad data into one unified
+              dashboard. It processes everything in real time, giving you
+              instant insights, alerts, and control — all without the
+              complexity.
+            </p>
+          </div>
+        </section>
+
+        <section className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-12 relative overflow-hidden transition-colors duration-500">
+          <div className="w-11/12 md:w-5/6 mx-auto text-center space-y-20 relative z-10">
             {/* Upgrade Ready */}
             <motion.div
               className="space-y-6"

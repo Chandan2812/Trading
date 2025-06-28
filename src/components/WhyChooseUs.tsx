@@ -43,7 +43,7 @@ const WhyChoose: React.FC = () => {
             data-aos-duration="1000"
             data-aos-delay="100"
           >
-            Why Trade With CFT
+            Why Trade With Close Friends Traders
           </h2>
           <p
             className="text-lg text-gray-600 dark:text-gray-300"
@@ -83,8 +83,8 @@ const WhyChoose: React.FC = () => {
             <span className="text-[var(--primary-color)]">ZERO COMMISSION</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-800 dark:text-gray-200 mt-5">
-            rade freely, keep it all with 0% commission eating into your
-            earnings. costs.
+            Trade freely, keep it all with 0% commission eating into your
+            earnings.
           </p>
 
           <a

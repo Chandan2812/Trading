@@ -1,14 +1,18 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import slide1 from "../assets/Slider 1 BG.jpg";
+import slide2 from "../assets/Slider 2 BG.jpg";
+import slide3 from "../assets/Slider 3 BG.png";
+import slide4 from "../assets/Slider 4 BG.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const slides = [
-  { bg: "#6d597a" },
-  { bg: "#355070" },
-  { bg: "#b56576" },
-  { bg: "#9a8c98" },
+  { img: slide1 },
+  { img: slide2 },
+  { img: slide3 },
+  { img: slide4 },
 ];
 
 const features = [
@@ -101,11 +105,6 @@ export default function SwipeGallery() {
       ref={containerRef}
       className="relative w-full min-h-screen overflow-hidden"
     >
-      {/* Slide Counter */}
-      <div className="absolute top-32 right-12 z-50 text-white text-5xl font-bold border-b-4 border-white">
-        0<span ref={countRef}>1</span>
-      </div>
-
       {/* Slides */}
       {slides.map((slide, i) => {
         const feature1 = features[i * 2];
@@ -115,12 +114,13 @@ export default function SwipeGallery() {
           <div
             key={i}
             ref={(el) => (slideRefs.current[i] = el)}
-            className="absolute inset-0 w-full h-full flex items-center justify-center"
+            className="absolute inset-0 w-full h-full flex items-center justify-center bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundColor: slide.bg,
+              backgroundImage: `url(${slide.img})`,
               zIndex: 10 + i,
             }}
           >
+            <div className="absolute inset-0 bg-black/60 z-0" />
             <div className="max-w-6xl px-6 w-full flex flex-col items-center text-white text-center space-y-10">
               {/* Slide Heading */}
               <h2 className="hidden md:block text-3xl font-semibold tracking-widest uppercase text-white/90 drop-shadow-md">

@@ -10,7 +10,7 @@ import { FaCheckCircle } from "react-icons/fa";
 const points = [
   {
     title: "Begin trading for just ₹1000",
-    desc: "Begin without making significant commitments. Start trading for as low as ₹100 and increase as you see fit.",
+    desc: "Begin without making significant commitments. Start trading for as low as ₹1000 and increase as you see fit.",
   },
   {
     title: "No Commission",
@@ -290,7 +290,7 @@ const AboutUsSection = () => {
             className="w-full lg:w-1/3 md:flex justify-center hidden"
             data-aos="fade-left"
           >
-            <div className="bg-[var(--primary-color)] text-white rounded-full w-[250px] h-[250px] flex items-center justify-center text-center p-6 shadow-2xl">
+            <div className="border border-[var(--primary-color)] text-white rounded-full w-[250px] h-[250px] flex items-center justify-center text-center p-6 shadow-2xl">
               <div>
                 <p className="text-5xl font-bold">5M+</p>
                 <p className="text-sm font-semibold mt-2">Traders Joined</p>

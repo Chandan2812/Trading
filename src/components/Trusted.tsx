@@ -21,7 +21,7 @@ export default function WhyChooseUs() {
     },
     {
       title: "Effortless Trading",
-      desc: "New to trading or a seasoned pro? You’ll feel at home.",
+      desc: "New to trading or a seasoned pro?\n You’ll feel at home.",
       icon: <BarChart2 className="w-6 h-6 text-primary" />,
     },
     {
@@ -92,7 +92,7 @@ export default function WhyChooseUs() {
                     {feature.title}
                   </h3>
                   <p
-                    className="text-gray-600 dark:text-gray-400 text-sm"
+                    className="text-gray-600 dark:text-gray-400 text-sm whitespace-pre-wrap"
                     data-aos="zoom-in"
                     data-aos-delay={delay + 700}
                   >
