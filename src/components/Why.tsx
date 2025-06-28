@@ -52,9 +52,9 @@ const Whychoose = () => {
       ref={ref}
       className="relative py-12 bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white transition-colors duration-500"
     >
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      <div className="w-11/12 md:w-5/6 mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-20">
-          Why Choose{" "}
+          Real Reasons Traders Are Switching to{" "}
           <span className="text-[var(--primary-color)] italic">
             Close Friends Traders
           </span>
@@ -64,7 +64,7 @@ const Whychoose = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="bg-gradient-to-b from-gray-100 to-white dark:from-[#1f1f27] dark:to-[#0e0e12] border border-gray-300 dark:border-gray-700 shadow-xl rounded-2xl p-6 text-center w-[260px] sm:w-[280px] transition-all"
+              className="bg-gray-100 dark:bg-[var(--bg-color1)] h-[170px] border border-gray-300 dark:border-gray-700 rounded-2xl p-6 text-center transition-all shadow-[0_20px_40px_-10px_rgba(0,0,0,0.4)] dark:shadow-[0_10px_30px_-5px_rgba(255,255,255,0.05)] relative"
               style={{
                 transformStyle: "preserve-3d",
                 rotateX: "15deg",

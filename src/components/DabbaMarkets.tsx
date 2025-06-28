@@ -65,7 +65,7 @@ const DabbaMarkets: React.FC = () => {
 
   return (
     <div className=" bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-12">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="w-11/12 md:w-5/6 mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold">
           <span className="text-[#71ced0] italic">Markets </span>We Offer
         </h2>
@@ -75,7 +75,7 @@ const DabbaMarkets: React.FC = () => {
       </div>
 
       {/* Desktop Grid */}
-      <div className="mt-12 hidden sm:grid grid-cols-2 lg:grid-cols-6 gap-8 max-w-7xl mx-auto">
+      <div className="mt-12 hidden sm:grid grid-cols-2 lg:grid-cols-6 gap-8 w-11/12 md:w-5/6 mx-auto ">
         {markets.map((market, index) => (
           <div
             key={index}

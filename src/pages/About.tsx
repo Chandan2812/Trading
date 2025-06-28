@@ -9,11 +9,11 @@ import { FaCheckCircle } from "react-icons/fa";
 
 const points = [
   {
-    title: "Begin trading for just ₹100",
+    title: "Begin trading for just ₹1000",
     desc: "Begin without making significant commitments. Start trading for as low as ₹100 and increase as you see fit.",
   },
   {
-    title: "Zero Commission",
+    title: "No Commission",
     desc: "Don't spend your earnings. There are no charges, fees, or brokerage surprises when you trade with us.",
   },
   {
@@ -21,7 +21,7 @@ const points = [
     desc: "Use the least amount of capital to increase your market exposure. Make large trades without breaking the bank.",
   },
   {
-    title: "Zero Tax",
+    title: "No Tax",
     desc: "Bid farewell to profit and withdrawal tax breaks. You are entitled to keep what you earn.",
   },
   {
@@ -37,11 +37,11 @@ const points = [
 const sections = [
   {
     title: "Our Mission",
-    text: "To provide Indian traders with an easily accessible, dependable, and goal-oriented platform. CFT provides the groundwork for success on your terms, whether you're learning the ropes, becoming pro, or accumulating long-term riches. Our goal is to cut through the clutter and make trading easier, not easier. We're creating a community where growth is individualized, performance is important, and trust is valued.",
+    text: "To provide Indian traders with an easily accessible, dependable, and goal-oriented platform. Close Friends Traders provides the groundwork for success on your terms, whether you're learning the ropes, becoming pro, or accumulating long-term riches. Our goal is to cut through the clutter and make trading easier, not easier. We're creating a community where growth is individualized, performance is important, and trust is valued.",
   },
   {
     title: "Our Journey",
-    text: "Well, we want to be 100% transparent with you! CFT was born out of frustration…yes, it is! We were fed up with unstated fees, sluggish withdrawals, and trading methods that were ineffective for actual users. So, we built Close Friends Traders with the sole purpose of facilitating quick and hassle-free trading for all users. Just strong tools, real-time data, and a close-knit community of traders that appreciate control and clarity! CFT was created by traders, for traders. And we have only just begun.",
+    text: "Well, we want to be 100% transparent with you! Close Friends Traders was born out of frustration…yes, it is! We were fed up with unstated fees, sluggish withdrawals, and trading methods that were ineffective for actual users. So, we built Close Friends Traders with the sole purpose of facilitating quick and hassle-free trading for all users. Just strong tools, real-time data, and a close-knit community of traders that appreciate control and clarity! Close Friends Traders was created by traders, for traders. And we have only just begun.",
   },
 ];
 
@@ -82,7 +82,7 @@ const AboutUsSection = () => {
         <Navbar />
       </div>
 
-      <section className="flex flex-col lg:flex-row items-center justify-between mx-auto gap-8 py-16 max-w-7xl">
+      <section className="flex flex-col lg:flex-row items-center justify-between mx-auto gap-8 py-16 w-11/12 md:w-5/6">
         {/* Left: Text Content with AOS animations */}
         <div className="w-full lg:w-1/2">
           <h2
@@ -97,7 +97,7 @@ const AboutUsSection = () => {
           </h2>
 
           <p
-            className="text-gray-700 dark:text-gray-300 text-lg mb-4"
+            className="text-gray-700 dark:text-white text-lg mb-4"
             data-aos="fade-right"
             data-aos-delay="400"
           >
@@ -105,26 +105,17 @@ const AboutUsSection = () => {
           </p>
 
           <p
-            className="text-gray-600 dark:text-gray-400 mb-4 md:max-w-xl"
+            className="text-gray-700 dark:text-gray-200 mb-4 md:max-w-xl"
             data-aos="fade-right"
             data-aos-delay="600"
           >
             We at <strong>Close Friends Traders</strong> think trading must be
             straightforward and simple! Our goal is to provide every trader with
             the technology, transparency, and resources they need to succeed in
-            the markets free from unneeded fees, delays, or distractions.
-          </p>
-
-          <p
-            className="text-gray-600 dark:text-gray-400 md:max-w-xl"
-            data-aos="fade-right"
-            data-aos-delay="800"
-          >
-            CFT lets you start your trading journey with just{" "}
-            <strong>₹100</strong>. We aim to get you into the market as soon as
-            possible, provide you with real-time information to keep you
-            informed, and support your growth with features designed to meet{" "}
-            <em>your</em> needs rather than just ours.
+            the markets free from unneeded fees, delays, or distractions. aim to
+            get you into the market as soon as possible, provide you with
+            real-time information to keep you informed, and support your growth
+            with features designed to meet your needs rather than just ours.
           </p>
         </div>
 
@@ -143,25 +134,24 @@ const AboutUsSection = () => {
         </div>
       </section>
 
-      <section className="bg-gray-50 dark:bg-[var(--bg-color1)] py-20 text-black dark:text-white transition-colors duration-300">
-        <div className="max-w-7xl mx-auto">
+      <section className="bg-gray-50 dark:bg-[var(--bg-color1)] py-12 text-black dark:text-white transition-colors duration-300">
+        <div className="w-11/12 md:w-5/6 mx-auto">
           <h2
             className="text-3xl sm:text-4xl font-bold text-center mb-12"
             data-aos="fade-up"
           >
-            What Makes{" "}
-            <span className="text-[var(--primary-color)]">Us Different?</span>
+            Our Core Features That Power Every Trade
           </h2>
 
           <p
-            className="text-center max-w-2xl mx-auto mb-16 text-gray-700 dark:text-gray-300"
+            className="text-center  mx-auto mb-16 text-gray-700 dark:text-gray-300"
             data-aos="fade-up"
             data-aos-delay="100"
           >
             Close Friends Traders is made for speed, clarity, and total control,
             in contrast to conventional stock brokers or trading apps. Sharp
-            tools, instant onboarding, and a platform that works for you—not
-            against you. No fine print. No confusion.
+            tools, immediate onboarding, and a platform that works for you
+            rather than against you are what you'll discover here!
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -183,7 +173,7 @@ const AboutUsSection = () => {
       </section>
 
       <section className="bg-gray-100 dark:bg-[var(--bg-color1)] py-12 text-black dark:text-white transition-colors duration-300">
-        <div className="max-w-7xl mx-auto relative">
+        <div className="w-11/12 md:w-5/6 mx-auto relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-[var(--primary-color)] z-0 hidden sm:block"></div>
 
           <div className="space-y-20 relative z-10">
@@ -195,11 +185,6 @@ const AboutUsSection = () => {
                 }`}
                 data-aos={index % 2 === 0 ? "flip-left" : "flip-right"}
               >
-                {/* Dot connector */}
-                <div className="hidden sm:flex flex-col items-center w-1/12 relative z-10">
-                  <div className="w-4 h-4 bg-[var(--primary-color)] rounded-full border-4 border-white dark:border-black shadow-md" />
-                </div>
-
                 {/* Card content */}
                 <div className="bg-white dark:bg-[var(--bg-color1)]  p-6 rounded-xl shadow-2xl sm:w-11/12 backdrop-blur-2xl">
                   <h3 className="text-2xl font-bold mb-3 text-[var(--primary-color)]">
@@ -216,21 +201,13 @@ const AboutUsSection = () => {
       </section>
 
       <section className="bg-white dark:bg-[var(--bg-color1)] py-12  transition-colors duration-300">
-        <div className="max-w-7xl mx-auto text-center mb-14">
+        <div className="w-11/12 md:w-5/6 mx-auto text-center mb-14">
           <h2 className="text-4xl font-bold mb-4" data-aos="fade-up">
             What We <span className="text-[var(--primary-color)]">Offer?</span>
           </h2>
-          <p
-            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            Experience a whole new dimension of trading tailored for modern
-            Indian traders.
-          </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 w-11/12 md:w-5/6 mx-auto">
           {offers.map((item, idx) => (
             <div
               key={idx}
@@ -257,7 +234,7 @@ const AboutUsSection = () => {
                   {item.bullets.map((point, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400"
+                      className="flex  items-start gap-2 text-sm text-gray-600 dark:text-gray-400"
                     >
                       <FaCheckCircle className="text-green-500 mt-[2px]" />
                       {point}
@@ -271,26 +248,23 @@ const AboutUsSection = () => {
       </section>
 
       <section className="bg-white dark:bg-[var(--bg-color1)] py-12">
-        <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10">
+        <div className="w-11/12 md:w-5/6 mx-auto flex flex-col-reverse lg:flex-row items-center gap-10">
           {/* Left Content */}
           <div className="w-full lg:w-2/3" data-aos="fade-right">
             <h2 className="text-3xl sm:text-4xl font-semibold leading-tight mb-6">
               Join the{" "}
-              <span className="text-[var(--primary-color)]">CFT Movement</span>
+              <span className="text-[var(--primary-color)]">
+                Close Friends Traders Movement
+              </span>
             </h2>
 
             <p className="text-gray-700 dark:text-gray-300 text-md mb-4">
-              We’re not just another trading platform. We are a platform
+              We are not just another trading business. We are a platform
               designed to meet the needs of Indian users who want more
-              authority, clarity, and control. You can begin your trading career
-              with just <strong>₹100</strong>. Or try out our{" "}
-              <strong>demo account</strong> for risk-free practice.
-            </p>
-
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              In any case, from Day 1, you are in control. 5 million+ users have
-              switched! They have witnessed genuine development, better trades,
-              and quicker rewards. You can, too.
+              authority, clarity, and control. In any case, from Day 1, you are
+              in control. 5 million+ users have switched! They have witnessed
+              genuine development, better trades, and quicker rewards. You can,
+              too.
             </p>
 
             <div className=" gap-6 mt-6">
@@ -305,7 +279,7 @@ const AboutUsSection = () => {
                   markets and improved education. Make wiser trades.
                 </p>
                 <p className="italic font-bold mt-5">
-                  Trade smarter. Trade bolder. Trade CFT.
+                  Trade smarter. Trade bolder. Choose Close Friends Traders
                 </p>
               </div>
             </div>

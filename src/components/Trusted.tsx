@@ -3,6 +3,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "../index.css";
+import { BarChart2, Clock3, CreditCard } from "lucide-react";
 
 export default function WhyChooseUs() {
   useEffect(() => {
@@ -15,18 +16,18 @@ export default function WhyChooseUs() {
   const features = [
     {
       title: "Secure Transactions",
-      desc: "Protect your investments with our trusted and secure payment options.",
-      icon: "💳",
+      desc: "Safeguard your investments with our trusted and secure payment options.",
+      icon: <CreditCard className="w-6 h-6 text-primary" />,
     },
     {
-      title: "User-Friendly Trading",
-      desc: "Trade assets with ease on our platform, suitable for all skill levels.",
-      icon: "📈",
+      title: "Effortless Trading",
+      desc: "New to trading or a seasoned pro? You’ll feel at home.",
+      icon: <BarChart2 className="w-6 h-6 text-primary" />,
     },
     {
       title: "Real-Time Market Data",
-      desc: "Make informed decisions with live market trends, analytics, and updates.",
-      icon: "⏱️",
+      desc: "The insight you need. The second you need it.",
+      icon: <Clock3 className="w-6 h-6 text-primary" />,
     },
   ];
 
@@ -49,12 +50,9 @@ export default function WhyChooseUs() {
 
   return (
     <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white py-16 relative transition-colors duration-500">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="w-11/12 md:w-5/6 mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-          World&apos;s Most Preferred{" "}
-          <span className="text-[var(--primary-color)] font-semibold italic">
-            Meta Trading Experience
-          </span>
+          Redefining Trading for Everyone
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-12">
           Built on trust. Powered by innovation. Chosen by serious traders.

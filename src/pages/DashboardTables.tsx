@@ -1,9 +1,9 @@
 export const MergedDashboardTable = () => (
   <section className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-16 px-4 transition-colors duration-500">
-    <div className="max-w-7xl mx-auto">
+    <div className="w-11/12 md:w-5/6 mx-auto">
       <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
         <span className="text-[#01001f] dark:text-[var(--primary-color)]">
-          CFT
+          Close Friends Traders
         </span>{" "}
         Dashboard Summary
       </h2>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import videoBg from "../assets/WhatsApp Video 2025-06-11 at 20.07.38_9ca513e6.mp4";
-import { Typewriter } from "react-simple-typewriter";
 import axios from "axios";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
@@ -62,55 +61,47 @@ const HeroSection: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-0" />
 
       {/* Main Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center gap-10 py-12 md:py-0">
+      <div className="relative z-10  w-11/12 md:w-5/6 mx-auto  flex flex-col md:flex-row justify-between items-center gap-10 py-12 md:py-0">
         {/* Left Content */}
         <div className="max-w-xl text-white space-y-8">
           <h1 className="text-4xl font-bold leading-tight text-start mt-10">
-            Most Trusted Trading Platform
+            India’s #1 Trusted Trading Hub
           </h1>
-          <h1 className="text-3xl font-semibold leading-tight text-start">
+          <h1 className="text-2xl font-semibold leading-tight text-start">
             <span className="block mb-2">
               500× Leverage{" "}
               <span className="text-[var(--primary-color)]">|</span> Zero Tax{" "}
               <span className="text-[var(--primary-color)]">| </span>
-              No Brokerage Just Pure Trading
-            </span>
-            <span className="block text-[var(--primary-color)]">
-              <Typewriter
-                words={["NSE (F&O)", "MCX (F&O)", "Comex Future"]}
-                loop={0}
-                cursor
-                typeSpeed={60}
-                deleteSpeed={40}
-                delaySpeed={1500}
-              />
+              No Commission
             </span>
           </h1>
-
-          <button className="bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:bg-white shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit">
-            Start Trading
-          </button>
+          <a href="/signup">
+            <button className="mt-5 bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:bg-white shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit">
+              Start Trading Now
+            </button>
+          </a>
 
           {/* Features Row */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 text-sm sm:text-base font-medium pt-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 text-sm sm:text-base font-medium">
             <div className="flex items-center gap-4">
               <span className="text-center sm:text-left leading-snug">
-                Competitive Spreads <br className="hidden sm:block" />& Low
-                Commissions
+                Trusted by <br className="hidden sm:block" />
+                50,000+ Local Traders
               </span>
               <div className="hidden sm:block h-10 w-[1.5px] bg-[var(--primary-color)]" />
             </div>
             <div className="flex items-center gap-4">
               <span className="text-center sm:text-left leading-snug">
-                Trade on MT5 <br className="hidden sm:block" />
-                with Real-Time Execution
+                Instant Execution.
+                <br className="hidden sm:block" />
+                Zero Delays
               </span>
               <div className="hidden sm:block h-10 w-[1.5px] bg-[var(--primary-color)] opacity-60" />
             </div>
             <div className="flex items-center gap-4">
               <span className="text-center sm:text-left leading-snug">
-                Fast Withdrawal <br className="hidden sm:block" />
-                Processing
+                Lightning <br className="hidden sm:block" />
+                Fast Payouts
               </span>
             </div>
           </div>

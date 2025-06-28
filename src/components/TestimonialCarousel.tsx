@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const testimonials = [
   {
     content:
-      "Close Friends Traders transformed my trading over the past year: consistent profits, always-on payouts, zero hiccups.” ",
+      "Close Friends Traders transformed my trading over the past year: consistent profits, always-on payouts, zero hiccups. ",
     date: "April 14, 2024",
     name: "Rohan Mehta",
   },
@@ -58,7 +58,7 @@ export default function TestimonialCarousel() {
 
   return (
     <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white transition-colors duration-500">
-      <div className="max-w-5xl mx-auto py-12 px-4 text-center relative overflow-hidden">
+      <div className="w-11/12 md:w-5/6 mx-auto py-12 text-center relative overflow-hidden">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-8">
           Hear from Our Traders
         </h2>

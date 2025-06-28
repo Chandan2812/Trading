@@ -10,7 +10,7 @@ const comparisonData = [
   {
     feature: "Commission",
     cft: "0% commission",
-    others: "High fees + hidden costs",
+    others: "High fees + Hidden costs",
   },
   { feature: "Leverage", cft: "500x margin", others: "5x–10x max" },
   { feature: "Withdrawals", cft: "Instant", others: "1–3 business days" },
@@ -31,27 +31,27 @@ const ComparisonSection = () => {
   };
 
   return (
-    <section className="py-16 px-4 bg-white dark:bg-[#01001f] text-black dark:text-white transition-colors duration-300">
-      <div className="max-w-7xl mx-auto text-center mb-10">
+    <section className="py-12 px-4 bg-white dark:bg-[#01001f] text-black dark:text-white transition-colors duration-300">
+      <div className="w-11/12 md:w-5/6 mx-auto text-center mb-10">
         <h2 className="text-3xl sm:text-4xl font-semibold leading-snug">
-          Your Money Deserves Better{" "}
-          <span className="text-[var(--primary-color)]">|</span> Discover the{" "}
-          <span className="text-[var(--primary-color)] italic font-bold">
-            CFT Advantage
-          </span>
+          The Proof that Sets{" "}
+          <span className="text-[var(--primary-color)]">
+            Close Friends Traders
+          </span>{" "}
+          Apart
         </h2>
       </div>
 
       {/* Desktop Table */}
       <div className="hidden md:grid grid-cols-3 max-w-5xl mx-auto text-sm rounded-xl overflow-hidden shadow-xl border border-[var(--primary-color)]">
         {/* Header */}
-        <div className="bg-[#01001f] text-white font-semibold text-center py-4 border-r border-[var(--primary-color)]">
+        <div className="bg-gray-800 dark:bg-[#111132] text-white font-semibold text-center py-4 border-r border-gray-700">
           Features
         </div>
-        <div className="bg-[var(--primary-color)] text-white font-semibold text-center py-4 border-r border-[var(--primary-color)]">
+        <div className="bg-gray-700 dark:bg-[#1a1a42] text-white font-semibold text-center py-4 border-r border-gray-700">
           Close Friends Traders
         </div>
-        <div className="bg-[#020426] text-white font-semibold text-center py-4">
+        <div className="bg-gray-900 dark:bg-[#0d0d26] text-white font-semibold text-center py-4">
           Others
         </div>
 
@@ -62,12 +62,12 @@ const ComparisonSection = () => {
           return (
             <React.Fragment key={index}>
               <div
-                className={`text-center py-4 px-2 border-t border-[var(--primary-color)] ${baseBg} hover:bg-[#01001f] transition`}
+                className={`text-center py-4 px-2 border-t border-[var(--primary-color)] ${baseBg}  transition`}
               >
                 {row.feature}
               </div>
               <div
-                className={`text-center py-4 px-2 border-t border-[var(--primary-color)] ${baseBg} text-[var(--primary-color)] font-medium hover:bg-[#01001f] transition`}
+                className={`text-center py-4 px-2 border-t border-[var(--primary-color)] ${baseBg} text-[var(--primary-color)] font-medium  transition`}
               >
                 {row.cft}
               </div>
@@ -94,7 +94,7 @@ const ComparisonSection = () => {
                 </div>
 
                 <div className="rounded-lg overflow-hidden border border-[var(--primary-color)]">
-                  <div className="flex items-center justify-between bg-[var(--primary-color)] text-white px-4 py-3">
+                  <div className="flex items-center justify-between bg-gray-700 text-white px-4 py-3 dark:bg-[#1a1a42]">
                     <span className="font-medium">Close Friends Traders</span>
                     <span className="text-sm font-semibold">{row.cft}</span>
                   </div>

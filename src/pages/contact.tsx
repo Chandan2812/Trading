@@ -27,14 +27,16 @@ function Contact() {
 
       {/* Hero Section */}
       <section className="relative py-20">
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
+        <div className="relative z-10 w-11/12 md:w-5/6 mx-auto flex flex-col lg:flex-row items-center gap-12 px-6">
           {/* Left Content */}
           <div
             className="flex-1"
             data-aos="fade-right"
             data-aos-duration="1000"
           >
-            <h2 className="text-4xl font-bold mb-6">Reach Out to Us</h2>
+            <h2 className="text-4xl font-bold mb-6">
+              Got Questions? We’ve Got You 24x7
+            </h2>
             <p className="italic mb-5 text-gray-700 dark:text-gray-400">
               No matter what, we're always here.
             </p>
@@ -88,8 +90,8 @@ function Contact() {
       </section>
 
       {/* Support Features */}
-      <section className="bg-gray-100 dark:bg-[--bg-color1] py-20 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto text-center px-6">
+      <section className="bg-gray-100 dark:bg-[--bg-color1] py-12 transition-colors duration-300">
+        <div className="w-11/12 md:w-5/6 mx-auto text-center px-6">
           <h3 className="text-3xl font-bold mb-14" data-aos="zoom-in">
             Always-On Support You Can Trust
           </h3>
@@ -116,7 +118,7 @@ function Contact() {
 
       {/* CTA */}
       <section
-        className="py-20 px-6 text-center bg-white dark:bg-[var(--bg-color1)] transition-colors duration-300"
+        className="py-12 px-6 text-center bg-white dark:bg-[var(--bg-color1)] transition-colors duration-300"
         data-aos="fade-up"
       >
         <h3 className="text-3xl font-bold mb-6">Let’s Connect Today</h3>
@@ -175,17 +177,17 @@ const supportFeatures = [
   },
   {
     title: "Instant Market Support",
-    desc: "Keep abreast on market sentiment and expert-backed insights. Our experts can help you navigate important news, trends, and tactics.",
+    desc: "Stay updated on market sentiment and expert-backed insights. Our experts can help you with trends and tactics.",
     icon: <Headphones className="w-6 h-6" />,
   },
   {
     title: "Direct Human Assistance",
-    desc: "For both trading and non-trading inquiries, get in touch with actual agents—not chatbots. Our staff is prepared to assist both novices and experts.",
+    desc: "Have any trading or non-trading inquiries? Our staff is prepared to assist both novices and experts.",
     icon: <ShieldCheck className="w-6 h-6" />,
   },
   {
     title: "Technical Issue Resolution",
-    desc: "Our tech support is always available to help with anything from platform setup to order difficulties. Seamless technology is the foundation of smooth trading, and we've got you covered.",
+    desc: "Our tech support is available 24x7. Seamless technology is the foundation of smooth trading, and we've got you covered.",
     icon: <AlertTriangle className="w-6 h-6" />,
   },
 ];

@@ -225,16 +225,16 @@ const Footer = () => {
       <div className="w-11/12 mt-10 mx-auto">
         <h1 className="text-2xl mb-5">Disclaimer</h1>
         <p>
-          The content provided by CFT does not include financial advice,
-          guidance or recommendations to take, or not to take, any trades,
-          investments or decisions in relation to any matter. The content
-          provided is impersonal and not adapted to any specific client, trader,
-          or business. Therefore CFT recommends that you seek professional,
-          financial advice before making any decisions. Results are not
-          guaranteed and may vary from person to person. There are inherent
-          risks involved with trading, including the loss of your investment.
-          Past performance in the market is not indicative of future results.
-          Any investment is solely at your own risk, you assume full
+          The content provided by Close Friends Traders does not include
+          financial advice, guidance or recommendations to take, or not to take,
+          any trades, investments or decisions in relation to any matter. The
+          content provided is impersonal and not adapted to any specific client,
+          trader, or business. Therefore Close Friends Traders recommends that
+          you seek professional, financial advice before making any decisions.
+          Results are not guaranteed and may vary from person to person. There
+          are inherent risks involved with trading, including the loss of your
+          investment. Past performance in the market is not indicative of future
+          results. Any investment is solely at your own risk, you assume full
           responsibility.{" "}
           <a href="/disclaimer" className="text-blue-500">
             Full Disclaimer

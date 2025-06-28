@@ -14,11 +14,11 @@ function Disclaimer() {
             Any and all liability for risks resulting from investment
             transactions or asset dispositions carried out by users based on
             information or market analysis is expressly excluded by{" "}
-            <strong>Close Friends Traders (CFT)</strong>. All information
-            provided is for illustrative purposes only and should not be
-            interpreted as financial advice or a recommendation for action.
-            Please consult a licensed financial advisor before making any
-            investment decisions.
+            <strong>Close Friends Traders (Close Friends Traders)</strong>. All
+            information provided is for illustrative purposes only and should
+            not be interpreted as financial advice or a recommendation for
+            action. Please consult a licensed financial advisor before making
+            any investment decisions.
           </p>
 
           <p>
@@ -48,10 +48,11 @@ function Disclaimer() {
 
           <h2 className="text-xl font-semibold mt-8">Stock Market Risks</h2>
           <p>
-            All opinions, analysis, or data shared by CFT are general in nature
-            and should not be taken as investment advice. We are not liable for
-            any financial losses resulting from reliance on this information.
-            You are fully responsible for your trading decisions.
+            All opinions, analysis, or data shared by Close Friends Traders are
+            general in nature and should not be taken as investment advice. We
+            are not liable for any financial losses resulting from reliance on
+            this information. You are fully responsible for your trading
+            decisions.
           </p>
 
           <h2 className="text-xl font-semibold mt-8">Futures Trading Risks</h2>
@@ -79,9 +80,9 @@ function Disclaimer() {
           </p>
 
           <p>
-            CFT makes no guarantees of profitability. Trading with leverage
-            increases both the potential for gain and the risk of significant
-            loss.
+            Close Friends Traders makes no guarantees of profitability. Trading
+            with leverage increases both the potential for gain and the risk of
+            significant loss.
           </p>
 
           <h2 className="text-xl font-semibold mt-8">Simulated Performance</h2>
@@ -95,10 +96,10 @@ function Disclaimer() {
 
           <h2 className="text-xl font-semibold mt-8">No Investment Advice</h2>
           <p>
-            All content on the CFT website is for informational and educational
-            purposes only. It does not constitute personalized investment
-            advice. We are not liable for trading decisions made based on our
-            content.
+            All content on the Close Friends Traders website is for
+            informational and educational purposes only. It does not constitute
+            personalized investment advice. We are not liable for trading
+            decisions made based on our content.
           </p>
 
           <h2 className="text-xl font-semibold mt-8">

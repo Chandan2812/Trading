@@ -14,30 +14,27 @@ export default function HowItWorks() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white px-5 py-16 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+    <div className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white px-5 py-10 transition-colors duration-300">
+      <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
         {/* Left: Image */}
-        <div className="md:w-1/2 justify-center hidden md:flex">
+        <div className="md:w-1/3 justify-center hidden md:flex">
           <img
             src={girlImage}
-            alt="Girl with phone"
+            alt="Close Friends Traders"
             className="max-w-xs md:max-w-sm"
             draggable="false"
           />
         </div>
 
         {/* Right: Content */}
-        <div className="md:w-1/2">
+        <div className="md:w-2/3">
           <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-            How It{" "}
+            How{" "}
             <span className="text-[var(--primary-color)] italic font-bold">
-              Works?
+              Close Friends Traders{" "}
             </span>
+            Works in 3 Simple Steps?
           </h2>
-          <p className="text-gray-700 dark:text-gray-300 mb-8">
-            A small river named Duden flows by their place and supplies it with
-            the necessary regelialia. It is a paradise.
-          </p>
 
           {/* Steps */}
           <div className="space-y-6">
@@ -48,11 +45,11 @@ export default function HowItWorks() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-[var(--primary-color)]">
-                  Step 1: Join in Seconds
+                  Step 1: Join in under 5 Sec
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
                   Sign up with just the essentials, no paperwork hassle. Get
-                  started in less than a minute.
+                  started instantly.
                 </p>
               </div>
             </div>
@@ -67,7 +64,7 @@ export default function HowItWorks() {
                   Step 2: Fund Your Wallet
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Add funds securely through trusted payment methods and fuel
+                  Add funds securely through trusted payment methods and start
                   your trading journey.
                 </p>
               </div>
@@ -83,11 +80,18 @@ export default function HowItWorks() {
                   Step 3: Trade with Your Inner Circle
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Start trading instantly with real-time tools, smart analytics,
-                  and a platform designed for trusted circles. Because trading
-                  is better with close friends.
+                  Start trading instantly with real-time tools and more. Because
+                  trading is better with close friends.
                 </p>
               </div>
+            </div>
+
+            <div className="flex items-start gap-4" data-aos="fade-right">
+              <a href="/signup">
+                <button className="bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit">
+                  Start Trading Now
+                </button>
+              </a>
             </div>
           </div>
         </div>

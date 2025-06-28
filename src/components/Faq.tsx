@@ -73,11 +73,6 @@ const faqs: Faq[] = [
       "Indeed, Close Friends Traders is made for both novice and seasoned traders. With round-the-clock assistance and a demo account for practice, the site is user-friendly.",
   },
   {
-    question: "What is the starting minimum deposit?",
-    answer:
-      "All it takes to begin trading on Close Friends Traders is ₹100. It is quick, easy, and suitable for all price ranges.",
-  },
-  {
     question: "Can I trade using a mobile device?",
     answer:
       "Indeed, Close Friends Traders is completely mobile-friendly. You can easily trade at any time and from any location.",
@@ -102,8 +97,8 @@ const ToggleFAQ = () => {
   };
 
   return (
-    <section className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white py-12 px-5 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-5">
+    <section className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white py-12 transition-colors duration-500">
+      <div className="w-11/12 md:w-5/6 mx-auto ">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-center">
           Frequently Asked Questions
         </h2>

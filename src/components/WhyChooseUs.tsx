@@ -1,25 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  ShieldCheck,
-  Timer,
-  BadgeCheck,
-  Headset,
-  Lock,
-  CreditCard,
-  Banknote,
-} from "lucide-react";
+import { LockKeyhole, LayoutDashboard, ShieldCheck } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const features = [
-  { text: "No KYC Required", icon: ShieldCheck },
-  { text: "Sign Up In 05 Sec", icon: Timer },
-  { text: "100% Trusted & Verified", icon: BadgeCheck },
-  { text: "Support Available 24/7", icon: Headset },
-  { text: "Data Privacy", icon: Lock },
-  { text: "Easy Payment Methods", icon: CreditCard },
-  { text: "Instant Deposit & Withdrawal", icon: Banknote },
+  { text: "	All Markets. One Dashboard.", icon: LayoutDashboard },
+  { text: "Secure Trades. Transparent Fees.", icon: LockKeyhole },
+  { text: "100% Trusted & Safe", icon: ShieldCheck },
 ];
 
 const slideVariants = {
@@ -45,8 +33,8 @@ const WhyChoose: React.FC = () => {
   const CurrentIcon = features[index].icon;
 
   return (
-    <section className="py-16 px-5 bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white transition-colors duration-500">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-12">
+    <section className="py-16 bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white transition-colors duration-500">
+      <div className="w-11/12 md:w-5/6 mx-auto flex flex-col md:flex-row items-start gap-12">
         {/* Left Side Title */}
         <div className="w-full md:w-1/2">
           <h2
@@ -63,8 +51,7 @@ const WhyChoose: React.FC = () => {
             data-aos-duration="1000"
             data-aos-delay="300"
           >
-            Simple and Fast Trading with Real-Time Market Insights for a Smooth
-            Experience
+            Built for Every Market. Trusted by Every Trader.
           </p>
         </div>
 
@@ -89,22 +76,22 @@ const WhyChoose: React.FC = () => {
         </div>
       </div>
 
-      <section className="max-w-5xl rounded-xl mx-auto bg-white dark:bg-[#13183a]  text-black dark:text-white mt-10  py-5 px-6 text-center">
+      <section className="w-11/12 md:w-5/6 rounded-xl mx-auto bg-white dark:bg-[#13183a]  text-black dark:text-white mt-10  py-5 px-6 text-center">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold leading-tight mb-4">
-            Enjoy Maximum Profits with{" "}
+            Your Profits. Your Pocket.{" "}
             <span className="text-[var(--primary-color)]">ZERO COMMISSION</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-800 dark:text-gray-200 mt-5">
-            Trade anytime, anywhere on any device with absolute ZERO COMMISSION
-            costs.
+            rade freely, keep it all with 0% commission eating into your
+            earnings. costs.
           </p>
 
           <a
-            href="tel:+919876543210"
-            className="mt-6 inline-block bg-[var(--primary-color)] text-white font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+            href="/signup"
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
           >
-            📞 Call Now: +91 83682 84948
+            Launch Your Trade Now
           </a>
         </div>
       </section>

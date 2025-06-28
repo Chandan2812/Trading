@@ -27,9 +27,9 @@ const StatsSection = () => {
       ref={ref}
       className="py-10 bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="w-11/12 md:w-5/6 mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
-          Elevate Your Trading with{" "}
+          Upgrade Your Trading Experience with{" "}
           <span className="text-[var(--primary-color)] italic">
             Close Friends Traders
           </span>

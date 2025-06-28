@@ -14,44 +14,44 @@ import traders from "../assets/whyTrade/HappyTraders.png";
 const features = [
   {
     icon: register,
-    title: "Registration Under 5 Sec",
-    desc: "Sign up instantly and start trading without any waiting time.",
+    title: "Register in Under 5 Sec",
+    desc: "Beginner-friendly registration straight under 5 seconds.",
   },
   {
     icon: support,
     title: "24×7 Customer Support",
-    desc: "Get expert help any time of day, whenever the market moves, we're here.",
+    desc: "Markets don’t sleep. Neither do we. Expert help, 24x7.",
   },
   {
     icon: fivex,
     title: "500x Margin",
-    desc: "Unlock massive trading power with up to 500x intraday leverage.",
+    desc: "Entry-Level Capital. Pro-Level Power.",
   },
   {
     icon: zero,
     title: "0% Commission",
-    desc: "Trade with zero commission and keep every rupee you earn which equals more profits!",
+    desc: "Keep everything you earn. No cuts, we promise.",
   },
 
   {
     icon: withdrawal,
-    title: "Instant Withdrawals",
-    desc: "Withdraw your money instantly without delays or complicated steps.",
+    title: "Quick Withdrawals",
+    desc: "Seamless withdrawals. Because your time matters.",
   },
   {
     icon: security,
     title: "No Hidden Charges",
-    desc: "What you see is exactly what you pay. No surprise deductions.",
+    desc: "What you see is what you get. Every rupee accounted for.",
   },
   {
     icon: zeroTax,
     title: "	0% Tax on Profits",
-    desc: "Pay no tax on your trading profits. What you earn is what you keep.",
+    desc: "0% Tax on Profits. 100% Returns to You.",
   },
   {
     icon: traders,
     title: "5M+ Happy Traders",
-    desc: "Join a trusted community of over 5 million satisfied traders worldwide.",
+    desc: "Home to a global network of 5 million+ traders.",
   },
 ];
 
@@ -75,17 +75,14 @@ const WhyTrade: React.FC = () => {
 
   return (
     <section className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-12 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto text-center mb-12">
+      <div className="w-11/12 md:w-5/6 mx-auto text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-semibold">
-          Why Traders Choose{" "}
-          <span className="text-[var(--primary-color)] font-bold italic">
-            Close Friends Traders?
-          </span>
+          Why 50,000+ Traders Trust Us?
         </h2>
       </div>
 
       {/* Desktop Grid */}
-      <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+      <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-6 w-11/12 md:w-5/6 mx-auto">
         {features.map((feature, index) => (
           <motion.div
             key={index}
