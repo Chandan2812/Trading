@@ -1,6 +1,6 @@
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
+import PageBanner from "../../components/BannerImage";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Nav";
 
 function PrivacyPolicy() {
   return (

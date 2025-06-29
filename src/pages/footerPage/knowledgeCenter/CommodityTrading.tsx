@@ -1,36 +1,46 @@
 import {
-  FaChartLine,
-  FaGlobe,
-  FaPercentage,
-  FaShieldAlt,
-  FaClock,
-} from "react-icons/fa";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/New-Project-8.webp";
+  Boxes, // For Wide Commodity Range
+  TrendingUp, // For Competitive Commodity Prices
+  LineChart, // For 500x Margin Facility
+  BadgeCheck, // For Zero Brokerage
+  Radar, // For Real-time Market Insights
+  LockKeyhole, // For Secure Commodity Transactions
+  CalendarClock, // For Flexible Trading Hours
+} from "lucide-react";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Nav";
+import cfdImage from "../../../assets/New-Project-5.webp";
 
-function CFDInstrument() {
+function CommodityTrading() {
   const features = [
     {
-      icon: <FaChartLine className="text-[var(--primary-color)] text-3xl" />,
-      text: "Advanced trading platforms",
+      icon: <Boxes className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Wide Commodity Range",
     },
     {
-      icon: <FaGlobe className="text-[var(--primary-color)] text-3xl" />,
-      text: "Diverse CFD selection",
+      icon: <TrendingUp className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Competitive Commodity Prices",
     },
     {
-      icon: <FaPercentage className="text-[var(--primary-color)] text-3xl" />,
-      text: "Competitive spreads",
+      icon: <LineChart className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "500x Margin Facility",
     },
     {
-      icon: <FaShieldAlt className="text-[var(--primary-color)] text-3xl" />,
-      text: "Risk management tools",
+      icon: <BadgeCheck className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Zero Brokerage",
     },
     {
-      icon: <FaClock className="text-[var(--primary-color)] text-3xl" />,
-      text: "Real-time analytics",
+      icon: <Radar className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Real-time Market Insights",
+    },
+    {
+      icon: <LockKeyhole className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Secure Commodity Transactions",
+    },
+    {
+      icon: <CalendarClock className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Flexible Trading Hours",
     },
   ];
 
@@ -41,8 +51,8 @@ function CFDInstrument() {
       </div>
 
       <PageBanner
-        title="CFD Instrument"
-        subtitle="Explore the world of Contracts for Difference (CFDs) with Close Friends Traders (Close Friends Traders). CFDs allow you to speculate on price movements without owning the underlying asset."
+        title="Commodity Trading"
+        subtitle="Diversify your portfolio by engaging in Commodity Trading on Close Friends Traders. Trade in precious metals, energy resources, and agricultural products."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -112,4 +122,4 @@ function CFDInstrument() {
   );
 }
 
-export default CFDInstrument;
+export default CommodityTrading;

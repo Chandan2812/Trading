@@ -1,36 +1,43 @@
 import {
-  FaChartLine,
-  FaPercentage,
-  FaShieldAlt,
-  FaClock,
-  FaDollarSign,
-} from "react-icons/fa";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/New-Project-10.webp";
+  Radar, // Real-time Market Data
+  MousePointerClick, // Quick Order Execution
+  BarChartBig, // Intraday Analytics
+  GraduationCap, // Educational Support
+  Scale,
+  Percent, // 500x Leverage
+} from "lucide-react";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Nav";
+import cfdImage from "../../../assets/New-Project-7.webp";
 
-function Commodity() {
+function IntradayTrading() {
   const features = [
     {
-      icon: <FaChartLine className="text-[var(--primary-color)] text-3xl" />,
-      text: "Wide commodity range",
+      icon: <Radar className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Real-time Market Data",
     },
     {
-      icon: <FaDollarSign className="text-[var(--primary-color)] text-3xl" />,
-      text: "Competitive prices",
+      icon: <Percent className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Zero Brokerage Costs",
     },
     {
-      icon: <FaPercentage className="text-[var(--primary-color)] text-3xl" />,
-      text: "Real-time market data",
+      icon: (
+        <MousePointerClick className="text-[var(--primary-color)] w-8 h-8" />
+      ),
+      text: "Quick Order Execution",
     },
     {
-      icon: <FaShieldAlt className="text-[var(--primary-color)] text-3xl" />,
-      text: "Secure transactions",
+      icon: <BarChartBig className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Intraday Analytics",
     },
     {
-      icon: <FaClock className="text-[var(--primary-color)] text-3xl" />,
-      text: "Flexible trading hours",
+      icon: <GraduationCap className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Educational Support",
+    },
+    {
+      icon: <Scale className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "500x Leverage",
     },
   ];
 
@@ -41,8 +48,8 @@ function Commodity() {
       </div>
 
       <PageBanner
-        title="Commodity"
-        subtitle="Trade precious metals, energy resources, and agricultural products to diversify your portfolio. We offer easy commodity trading."
+        title="Intraday Trading"
+        subtitle="Capture short-term market movements effortlessly with Close Friends Traders’s Intraday Trading! Take advantage of price fluctuations within a single trading day. Maximize opportunities and profits"
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -55,10 +62,11 @@ function Commodity() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              Why{" "}
+              How{" "}
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
+              Offers Value
             </h2>
 
             <ul className="space-y-6">
@@ -111,4 +119,4 @@ function Commodity() {
   );
 }
 
-export default Commodity;
+export default IntradayTrading;

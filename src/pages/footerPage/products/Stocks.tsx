@@ -1,30 +1,37 @@
-import { LineChart, Globe, HandCoins, ShieldCheck, Timer } from "lucide-react";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/Indexes.webp";
+import { LuGlobe, LuLayoutDashboard, LuHeadphones } from "react-icons/lu";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Nav";
+import cfdImage from "../../../assets/New-Project-9.webp";
+import { LucideBarChart2, LucideLineChart } from "lucide-react";
 
-function Indexes() {
+function Stocks() {
   const features = [
     {
-      icon: <LineChart className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Global index access",
+      icon: <LuGlobe className="text-[var(--primary-color)] text-3xl" />,
+      text: "Global market access",
     },
     {
-      icon: <Globe className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Diversification opportunities",
+      icon: (
+        <LucideBarChart2 className="text-[var(--primary-color)] text-3xl" />
+      ),
+      text: "Comprehensive stock selection",
     },
     {
-      icon: <HandCoins className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Low transaction costs",
+      icon: (
+        <LucideLineChart className="text-[var(--primary-color)] text-3xl" />
+      ),
+      text: "Real-time market insights",
     },
     {
-      icon: <ShieldCheck className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Advanced trading tools",
+      icon: (
+        <LuLayoutDashboard className="text-[var(--primary-color)] text-3xl" />
+      ),
+      text: "User-friendly interface",
     },
     {
-      icon: <Timer className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time index tracking",
+      icon: <LuHeadphones className="text-[var(--primary-color)] text-3xl" />,
+      text: "Expert support",
     },
   ];
 
@@ -35,8 +42,8 @@ function Indexes() {
       </div>
 
       <PageBanner
-        title="Indexes"
-        subtitle="Invest in the broader market movement with our Index trading. Trade major indices globally and take benefit from market trends."
+        title="Stocks"
+        subtitle="Invest in leading global companies through Close Friends Traders. Trade stocks on various global exchanges and benefit from market trends."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -106,4 +113,4 @@ function Indexes() {
   );
 }
 
-export default Indexes;
+export default Stocks;

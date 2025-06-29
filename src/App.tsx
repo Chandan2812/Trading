@@ -15,25 +15,28 @@ import WhatsAppButton from "./components/floatingBtn";
 import ZohoSalesIQ from "./components/ZohoSalesIQ";
 import OfferPopup from "./components/OfferPopup";
 import Feature from "./components/Features";
-import TermsConditions from "./pages/TermsConditions";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import CFDInstrument from "./pages/CFDInstrument";
-import Stocks from "./pages/Stocks";
-import Commodity from "./pages/Commodity";
-import Indexes from "./pages/Indexes";
+
+import Stocks from "./pages/footerPage/products/Stocks";
+
 import Disclaimer from "./pages/Disclaimer";
-import Trading from "./pages/Trading";
-import EquityTrading from "./pages/equityTrading";
-import FutureOptions from "./pages/FutureOptions";
-import CommodityTrading from "./pages/CommodityTrading";
-import MarginTrading from "./pages/MarginTrading";
-import IntradayTrading from "./pages/IntradayTrading";
+import Trading from "./pages/footerPage/knowledgeCenter/Trading";
+import EquityTrading from "./pages/footerPage/knowledgeCenter/equityTrading";
+import FutureOptions from "./pages/footerPage/knowledgeCenter/FutureOptions";
+
+import MarginTrading from "./pages/footerPage/knowledgeCenter/MarginTrading";
+import IntradayTrading from "./pages/footerPage/knowledgeCenter/IntradayTrading";
 import NSEFOInfo from "./pages/Markets/Nse";
 import Mcx from "./pages/Markets/Mcx";
 import Crypto from "./pages/Markets/Crypto";
 import USStocks from "./pages/Markets/UsStocks";
 import Forex from "./pages/Markets/Forex";
 import ComexInfo from "./pages/Markets/Comex";
+import CFDInstrument from "./pages/footerPage/products/CFDInstrument";
+import Commodity from "./pages/footerPage/products/Commodity";
+import Indexes from "./pages/footerPage/products/Indexes";
+import CommodityTrading from "./pages/footerPage/knowledgeCenter/CommodityTrading";
+import TermsConditions from "./pages/footerPage/TermsConditions";
+import PrivacyPolicy from "./pages/footerPage/PrivacyPolicy";
 
 function App() {
   return (

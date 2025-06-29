@@ -1,38 +1,37 @@
 import {
-  BarChart3, // More modern than LineChart
-  BadgeIndianRupee, // Financial symbol for brokerage & AMC
-  Scaling, // Better icon for "Leverage"
-  Banknote, // Instant settlement depiction
-  Clock, // Clean icon for 24/7 timing
-} from "lucide-react";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/New-Project-4.webp";
+  FaChartLine,
+  FaPercentage,
+  FaShieldAlt,
+  FaClock,
+  FaDollarSign,
+} from "react-icons/fa";
 
-function Trading() {
+import cfdImage from "../../../assets/New-Project-10.webp";
+import Navbar from "../../../components/Nav";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+
+function Commodity() {
   const features = [
     {
-      icon: <BarChart3 className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Zero Brokerage Fees",
+      icon: <FaChartLine className="text-[var(--primary-color)] text-3xl" />,
+      text: "Wide commodity range",
     },
     {
-      icon: (
-        <BadgeIndianRupee className="text-[var(--primary-color)] w-8 h-8" />
-      ),
-      text: "No Annual Maintenance Charges (AMC)",
+      icon: <FaDollarSign className="text-[var(--primary-color)] text-3xl" />,
+      text: "Competitive prices",
     },
     {
-      icon: <Scaling className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Enjoy up to 500x Leverage",
+      icon: <FaPercentage className="text-[var(--primary-color)] text-3xl" />,
+      text: "Real-time market data",
     },
     {
-      icon: <Banknote className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Instant Account Settlement",
+      icon: <FaShieldAlt className="text-[var(--primary-color)] text-3xl" />,
+      text: "Secure transactions",
     },
     {
-      icon: <Clock className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "24/7 Deposit and Withdrawal Support",
+      icon: <FaClock className="text-[var(--primary-color)] text-3xl" />,
+      text: "Flexible trading hours",
     },
   ];
 
@@ -43,8 +42,8 @@ function Trading() {
       </div>
 
       <PageBanner
-        title="Trading"
-        subtitle="Close Friends Traders offers a comprehensive platform for all your trading needs. From equities to commodities, explore the diverse range of financial instruments."
+        title="Commodity"
+        subtitle="Trade precious metals, energy resources, and agricultural products to diversify your portfolio. We offer easy commodity trading."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -57,11 +56,10 @@ function Trading() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
+              Why{" "}
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
-              Offers Value
             </h2>
 
             <ul className="space-y-6">
@@ -114,4 +112,4 @@ function Trading() {
   );
 }
 
-export default Trading;
+export default Commodity;

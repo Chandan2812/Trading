@@ -1,43 +1,41 @@
 import {
-  Radar, // Real-time Market Data
-  MousePointerClick, // Quick Order Execution
-  BarChartBig, // Intraday Analytics
-  GraduationCap, // Educational Support
-  Scale,
-  Percent, // 500x Leverage
+  Layers3, // For Extensive Derivatives Selection
+  ShieldHalf, // For Risk Mitigation Strategies
+  BarChart2, // For Real-time Options Analytics
+  Headset, // For Expert Derivatives Support
+  TrendingUp, // For 500x Leverage Opportunities
+  Ban, // For Negative Balance Protection
 } from "lucide-react";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/New-Project-7.webp";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Nav";
+import cfdImage from "../../../assets/002-1.webp";
 
-function IntradayTrading() {
+function FutureOptions() {
   const features = [
     {
-      icon: <Radar className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Market Data",
+      icon: <Layers3 className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Extensive Derivatives Selection",
     },
     {
-      icon: <Percent className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Zero Brokerage Costs",
+      icon: <ShieldHalf className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Risk Mitigation Strategies",
     },
     {
-      icon: (
-        <MousePointerClick className="text-[var(--primary-color)] w-8 h-8" />
-      ),
-      text: "Quick Order Execution",
+      icon: <BarChart2 className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Real-time Options Analytics",
     },
     {
-      icon: <BarChartBig className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Intraday Analytics",
+      icon: <Headset className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Expert Derivatives Support",
     },
     {
-      icon: <GraduationCap className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Educational Support",
+      icon: <TrendingUp className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "500x Leverage Opportunities",
     },
     {
-      icon: <Scale className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "500x Leverage",
+      icon: <Ban className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Negative Balance Protection",
     },
   ];
 
@@ -48,8 +46,8 @@ function IntradayTrading() {
       </div>
 
       <PageBanner
-        title="Intraday Trading"
-        subtitle="Capture short-term market movements effortlessly with Close Friends Traders’s Intraday Trading! Take advantage of price fluctuations within a single trading day. Maximize opportunities and profits"
+        title="Futures & Options"
+        subtitle="Trade futures and options confidently with Close Friends Traders! Manage risk and maximize returns by trading in the derivatives market effortlessly."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -119,4 +117,4 @@ function IntradayTrading() {
   );
 }
 
-export default IntradayTrading;
+export default FutureOptions;

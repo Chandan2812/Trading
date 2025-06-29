@@ -1,37 +1,43 @@
-import { LuGlobe, LuLayoutDashboard, LuHeadphones } from "react-icons/lu";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/New-Project-9.webp";
-import { LucideBarChart2, LucideLineChart } from "lucide-react";
+import {
+  Scale, // For High Leverage Ratios
+  SlidersHorizontal, // For Flexible Margin Requirements
+  LifeBuoy, // For Risk Management Tools
+  Gauge, // For Real-time Margin Monitoring
+  BookOpenCheck, // For Educational Resources
+  ShieldX, // For Negative Balance Protection
+} from "lucide-react";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Nav";
+import cfdImage from "../../../assets/New-Project-6.webp";
 
-function Stocks() {
+function MarginTrading() {
   const features = [
     {
-      icon: <LuGlobe className="text-[var(--primary-color)] text-3xl" />,
-      text: "Global market access",
+      icon: <Scale className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "High Leverage Ratios",
     },
     {
       icon: (
-        <LucideBarChart2 className="text-[var(--primary-color)] text-3xl" />
+        <SlidersHorizontal className="text-[var(--primary-color)] w-8 h-8" />
       ),
-      text: "Comprehensive stock selection",
+      text: "Flexible Margin Requirements",
     },
     {
-      icon: (
-        <LucideLineChart className="text-[var(--primary-color)] text-3xl" />
-      ),
-      text: "Real-time market insights",
+      icon: <LifeBuoy className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Risk Management Tools",
     },
     {
-      icon: (
-        <LuLayoutDashboard className="text-[var(--primary-color)] text-3xl" />
-      ),
-      text: "User-friendly interface",
+      icon: <Gauge className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Real-time Margin Monitoring",
     },
     {
-      icon: <LuHeadphones className="text-[var(--primary-color)] text-3xl" />,
-      text: "Expert support",
+      icon: <BookOpenCheck className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Educational Resources",
+    },
+    {
+      icon: <ShieldX className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Negative Balance Protection",
     },
   ];
 
@@ -42,8 +48,8 @@ function Stocks() {
       </div>
 
       <PageBanner
-        title="Stocks"
-        subtitle="Invest in leading global companies through Close Friends Traders. Trade stocks on various global exchanges and benefit from market trends."
+        title="Margin Trading"
+        subtitle="Maximize your market exposure with Close Friends Traders’s Margin Trading! Borrow up to 500x funds to increase your trading capacity"
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -113,4 +119,4 @@ function Stocks() {
   );
 }
 
-export default Stocks;
+export default MarginTrading;

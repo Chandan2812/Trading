@@ -1,41 +1,36 @@
 import {
-  Layers3, // For Extensive Derivatives Selection
-  ShieldHalf, // For Risk Mitigation Strategies
-  BarChart2, // For Real-time Options Analytics
-  Headset, // For Expert Derivatives Support
-  TrendingUp, // For 500x Leverage Opportunities
-  Ban, // For Negative Balance Protection
-} from "lucide-react";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/002-1.webp";
+  FaChartLine,
+  FaGlobe,
+  FaPercentage,
+  FaShieldAlt,
+  FaClock,
+} from "react-icons/fa";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Nav";
+import cfdImage from "../../../assets/New-Project-8.webp";
 
-function FutureOptions() {
+function CFDInstrument() {
   const features = [
     {
-      icon: <Layers3 className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Extensive Derivatives Selection",
+      icon: <FaChartLine className="text-[var(--primary-color)] text-3xl" />,
+      text: "Advanced trading platforms",
     },
     {
-      icon: <ShieldHalf className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Risk Mitigation Strategies",
+      icon: <FaGlobe className="text-[var(--primary-color)] text-3xl" />,
+      text: "Diverse CFD selection",
     },
     {
-      icon: <BarChart2 className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Options Analytics",
+      icon: <FaPercentage className="text-[var(--primary-color)] text-3xl" />,
+      text: "Competitive spreads",
     },
     {
-      icon: <Headset className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Expert Derivatives Support",
+      icon: <FaShieldAlt className="text-[var(--primary-color)] text-3xl" />,
+      text: "Risk management tools",
     },
     {
-      icon: <TrendingUp className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "500x Leverage Opportunities",
-    },
-    {
-      icon: <Ban className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Negative Balance Protection",
+      icon: <FaClock className="text-[var(--primary-color)] text-3xl" />,
+      text: "Real-time analytics",
     },
   ];
 
@@ -46,8 +41,8 @@ function FutureOptions() {
       </div>
 
       <PageBanner
-        title="Futures & Options"
-        subtitle="Trade futures and options confidently with Close Friends Traders! Manage risk and maximize returns by trading in the derivatives market effortlessly."
+        title="CFD Instrument"
+        subtitle="Explore the world of Contracts for Difference (CFDs) with Close Friends Traders (Close Friends Traders). CFDs allow you to speculate on price movements without owning the underlying asset."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -117,4 +112,4 @@ function FutureOptions() {
   );
 }
 
-export default FutureOptions;
+export default CFDInstrument;

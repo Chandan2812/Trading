@@ -1,46 +1,38 @@
 import {
-  Boxes, // For Wide Commodity Range
-  TrendingUp, // For Competitive Commodity Prices
-  LineChart, // For 500x Margin Facility
-  BadgeCheck, // For Zero Brokerage
-  Radar, // For Real-time Market Insights
-  LockKeyhole, // For Secure Commodity Transactions
-  CalendarClock, // For Flexible Trading Hours
+  BarChart3, // More modern than LineChart
+  BadgeIndianRupee, // Financial symbol for brokerage & AMC
+  Scaling, // Better icon for "Leverage"
+  Banknote, // Instant settlement depiction
+  Clock, // Clean icon for 24/7 timing
 } from "lucide-react";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/New-Project-5.webp";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Nav";
+import cfdImage from "../../../assets/New-Project-4.webp";
 
-function CommodityTrading() {
+function Trading() {
   const features = [
     {
-      icon: <Boxes className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Wide Commodity Range",
+      icon: <BarChart3 className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Zero Brokerage Fees",
     },
     {
-      icon: <TrendingUp className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Competitive Commodity Prices",
+      icon: (
+        <BadgeIndianRupee className="text-[var(--primary-color)] w-8 h-8" />
+      ),
+      text: "No Annual Maintenance Charges (AMC)",
     },
     {
-      icon: <LineChart className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "500x Margin Facility",
+      icon: <Scaling className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Enjoy up to 500x Leverage",
     },
     {
-      icon: <BadgeCheck className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Zero Brokerage",
+      icon: <Banknote className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Instant Account Settlement",
     },
     {
-      icon: <Radar className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Market Insights",
-    },
-    {
-      icon: <LockKeyhole className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Secure Commodity Transactions",
-    },
-    {
-      icon: <CalendarClock className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Flexible Trading Hours",
+      icon: <Clock className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "24/7 Deposit and Withdrawal Support",
     },
   ];
 
@@ -51,8 +43,8 @@ function CommodityTrading() {
       </div>
 
       <PageBanner
-        title="Commodity Trading"
-        subtitle="Diversify your portfolio by engaging in Commodity Trading on Close Friends Traders. Trade in precious metals, energy resources, and agricultural products."
+        title="Trading"
+        subtitle="Close Friends Traders offers a comprehensive platform for all your trading needs. From equities to commodities, explore the diverse range of financial instruments."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -122,4 +114,4 @@ function CommodityTrading() {
   );
 }
 
-export default CommodityTrading;
+export default Trading;

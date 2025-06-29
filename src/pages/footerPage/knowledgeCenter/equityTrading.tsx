@@ -1,43 +1,38 @@
 import {
-  Scale, // For High Leverage Ratios
-  SlidersHorizontal, // For Flexible Margin Requirements
-  LifeBuoy, // For Risk Management Tools
-  Gauge, // For Real-time Margin Monitoring
-  BookOpenCheck, // For Educational Resources
-  ShieldX, // For Negative Balance Protection
+  LayoutGrid, // For Diverse Stock Selection
+  Activity, // For Real-time Market Insights
+  MonitorSmartphone, // For User-friendly Interface
+  ShieldCheck, // For Risk Management Tools
+  Globe2, // For Global Market Research
 } from "lucide-react";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/New-Project-6.webp";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Nav";
+import cfdImage from "../../../assets/03-1.webp";
 
-function MarginTrading() {
+function EquityTrading() {
   const features = [
     {
-      icon: <Scale className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "High Leverage Ratios",
+      icon: <LayoutGrid className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Diverse Stock Selection",
+    },
+    {
+      icon: <Activity className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Real-time Market Insights",
     },
     {
       icon: (
-        <SlidersHorizontal className="text-[var(--primary-color)] w-8 h-8" />
+        <MonitorSmartphone className="text-[var(--primary-color)] w-8 h-8" />
       ),
-      text: "Flexible Margin Requirements",
+      text: "User-friendly Interface",
     },
     {
-      icon: <LifeBuoy className="text-[var(--primary-color)] w-8 h-8" />,
+      icon: <ShieldCheck className="text-[var(--primary-color)] w-8 h-8" />,
       text: "Risk Management Tools",
     },
     {
-      icon: <Gauge className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Margin Monitoring",
-    },
-    {
-      icon: <BookOpenCheck className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Educational Resources",
-    },
-    {
-      icon: <ShieldX className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Negative Balance Protection",
+      icon: <Globe2 className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Global Market Research",
     },
   ];
 
@@ -48,8 +43,8 @@ function MarginTrading() {
       </div>
 
       <PageBanner
-        title="Margin Trading"
-        subtitle="Maximize your market exposure with Close Friends Traders’s Margin Trading! Borrow up to 500x funds to increase your trading capacity"
+        title="Equity Trading"
+        subtitle="Build wealth with ease through stock investing! With Close Friends Traders’s Equity Trading platform, you can buy and sell shares in top global companies."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -119,4 +114,4 @@ function MarginTrading() {
   );
 }
 
-export default MarginTrading;
+export default EquityTrading;

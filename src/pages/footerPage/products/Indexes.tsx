@@ -1,38 +1,30 @@
-import {
-  LayoutGrid, // For Diverse Stock Selection
-  Activity, // For Real-time Market Insights
-  MonitorSmartphone, // For User-friendly Interface
-  ShieldCheck, // For Risk Management Tools
-  Globe2, // For Global Market Research
-} from "lucide-react";
-import PageBanner from "../components/BannerImage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Nav";
-import cfdImage from "../assets/03-1.webp";
+import { LineChart, Globe, HandCoins, ShieldCheck, Timer } from "lucide-react";
+import PageBanner from "../../../components/BannerImage";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Nav";
+import cfdImage from "../../../assets/Indexes.webp";
 
-function EquityTrading() {
+function Indexes() {
   const features = [
     {
-      icon: <LayoutGrid className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Diverse Stock Selection",
+      icon: <LineChart className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Global index access",
     },
     {
-      icon: <Activity className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Market Insights",
+      icon: <Globe className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Diversification opportunities",
     },
     {
-      icon: (
-        <MonitorSmartphone className="text-[var(--primary-color)] w-8 h-8" />
-      ),
-      text: "User-friendly Interface",
+      icon: <HandCoins className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Low transaction costs",
     },
     {
       icon: <ShieldCheck className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Risk Management Tools",
+      text: "Advanced trading tools",
     },
     {
-      icon: <Globe2 className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Global Market Research",
+      icon: <Timer className="text-[var(--primary-color)] w-8 h-8" />,
+      text: "Real-time index tracking",
     },
   ];
 
@@ -43,8 +35,8 @@ function EquityTrading() {
       </div>
 
       <PageBanner
-        title="Equity Trading"
-        subtitle="Build wealth with ease through stock investing! With Close Friends Traders’s Equity Trading platform, you can buy and sell shares in top global companies."
+        title="Indexes"
+        subtitle="Invest in the broader market movement with our Index trading. Trade major indices globally and take benefit from market trends."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -114,4 +106,4 @@ function EquityTrading() {
   );
 }
 
-export default EquityTrading;
+export default Indexes;
