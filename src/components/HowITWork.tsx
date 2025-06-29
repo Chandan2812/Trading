@@ -4,8 +4,11 @@ import girlImage from "../assets/1.png"; // Update path if needed
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { usePopup } from "../components/PopupContext";
 
 export default function HowItWorks() {
+  const { openPopup } = usePopup();
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -87,11 +90,12 @@ export default function HowItWorks() {
             </div>
 
             <div className="flex items-start gap-4" data-aos="fade-right">
-              <a href="/signup">
-                <button className=" mt-5 bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit">
-                  Start Trading Now
-                </button>
-              </a>
+              <button
+                onClick={openPopup}
+                className=" mt-5 bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit"
+              >
+                Start Trading Now
+              </button>
             </div>
           </div>
         </div>

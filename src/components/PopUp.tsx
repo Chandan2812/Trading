@@ -1,34 +1,35 @@
 import { useEffect, useState } from "react";
 import "../index.css";
+import { usePopup } from "../components/PopupContext"; // adjust path as needed
+
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Popup = () => {
-  const [showPopup, setShowPopup] = useState(false);
+  const { showPopup, openPopup, closePopup } = usePopup();
 
-  // Form state
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [marketSegment, setMarketSegment] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false); // <-- Add this
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    const hasShownPopup = sessionStorage.getItem("bonusPopupShown");
+    const hasShown = sessionStorage.getItem("bonusPopupShown");
 
-    if (!hasShownPopup) {
+    if (!hasShown) {
       const timer = setTimeout(() => {
-        setShowPopup(true);
         sessionStorage.setItem("bonusPopupShown", "true");
+        openPopup();
       }, 7000);
 
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [openPopup]);
 
   const handleClose = () => {
-    setShowPopup(false);
+    closePopup();
     setSubmitted(false);
     setFullName("");
     setPhone("");
@@ -57,11 +58,11 @@ const Popup = () => {
       const data = await res.json();
 
       if (res.ok) {
-        setSubmitted(true); // <-- Mark as submitted
+        setSubmitted(true);
       } else {
         setError(data.error || "Something went wrong.");
       }
-    } catch (err) {
+    } catch {
       setError("Failed to submit. Please try again.");
     } finally {
       setLoading(false);

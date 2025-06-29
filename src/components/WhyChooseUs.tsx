@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { LockKeyhole, LayoutDashboard, ShieldCheck } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { usePopup } from "../components/PopupContext";
 
 const features = [
   { text: "	All Markets. One Dashboard.", icon: LayoutDashboard },
@@ -18,6 +19,7 @@ const slideVariants = {
 
 const WhyChoose: React.FC = () => {
   const [index, setIndex] = useState(0);
+  const { openPopup } = usePopup();
 
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });
@@ -87,12 +89,12 @@ const WhyChoose: React.FC = () => {
             earnings.
           </p>
 
-          <a
-            href="/signup"
+          <button
+            onClick={openPopup}
             className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
           >
             Launch Your Trade Now
-          </a>
+          </button>
         </div>
       </section>
     </section>

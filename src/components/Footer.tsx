@@ -58,7 +58,7 @@ const Footer = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-5 gap-10">
+      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-6 gap-5">
         {/* Logo & Description */}
         <div>
           <div className="flex items-center space-x-2 mb-4">
@@ -180,7 +180,45 @@ const Footer = () => {
             })}
           </ul>
         </div>
-
+        {/* Support Contacts */}
+        <div>
+          <h3 className="text-lg font-bold mb-4">Support Contacts</h3>
+          <ul className="space-y-4 text-sm text-white">
+            <li>
+              <strong>Pay-in:</strong> <br />
+              <a
+                href="https://wa.link/v6tmxe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--primary-color)] hover:underline"
+              >
+                +1 (236) 305-9090
+              </a>
+            </li>
+            <li>
+              <strong>Withdrawal:</strong> <br />
+              <a
+                href="https://wa.link/tre4j4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--primary-color)] hover:underline"
+              >
+                +1 (236) 305-9092
+              </a>
+            </li>
+            <li>
+              <strong>Tech / Support:</strong> <br />
+              <a
+                href="https://wa.link/ehhw8j"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--primary-color)] hover:underline"
+              >
+                +91 72309 41008
+              </a>
+            </li>
+          </ul>
+        </div>
         {/* Newsletter */}
         <div>
           <h3 className="text-lg font-bold mb-4">Talk to Expert 24/7</h3>

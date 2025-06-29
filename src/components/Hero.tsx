@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import videoBg from "../assets/WhatsApp Video 2025-06-11 at 20.07.38_9ca513e6.mp4";
 import axios from "axios";
+import { usePopup } from "../components/PopupContext";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 type Offer = {
@@ -18,6 +19,7 @@ type Offer = {
 const HeroSection: React.FC = () => {
   const [offers, setOffers] = useState<Offer[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { openPopup } = usePopup();
 
   useEffect(() => {
     const fetchOffer = async () => {
@@ -75,11 +77,13 @@ const HeroSection: React.FC = () => {
               No Commission
             </span>
           </h1>
-          <a href="/signup">
-            <button className="mt-5 bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:bg-white shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit">
-              Start Trading Now
-            </button>
-          </a>
+
+          <button
+            onClick={openPopup}
+            className="mt-5 bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:bg-white shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit"
+          >
+            Start Trading Now
+          </button>
 
           {/* Features Row */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 text-sm sm:text-base font-medium">
