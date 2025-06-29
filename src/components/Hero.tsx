@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import videoBg from "../assets/WhatsApp Video 2025-06-11 at 20.07.38_9ca513e6.mp4";
+import videoBg from "../assets/Home.jpg";
 import axios from "axios";
 import { usePopup } from "../components/PopupContext";
 const baseURL = import.meta.env.VITE_API_BASE_URL;

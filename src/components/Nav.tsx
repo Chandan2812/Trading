@@ -1,14 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  FiChevronDown,
-  FiChevronUp,
-  FiMenu,
-  FiMoon,
-  FiSun,
-} from "react-icons/fi";
+import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
 import logo from "../assets/logo-01.svg";
-// import TradingViewTicker from "./TradingViewTicker";
 
 declare global {
   interface Window {
@@ -20,14 +13,19 @@ declare global {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
-  const [user, setUser] = useState<any>(null);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme")
       ? localStorage.getItem("theme") === "dark"
       : true;
   });
+
+  const [showLoginDropdown, setShowLoginDropdown] = useState(false);
+  const [showUserSubMenu, setShowUserSubMenu] = useState(false);
+  const [showBrokerSubMenu, setShowBrokerSubMenu] = useState(false);
+
+  const [mobileLoginExpanded, setMobileLoginExpanded] = useState(false);
+  const [mobileUserExpanded, setMobileUserExpanded] = useState(false);
+  const [mobileBrokerExpanded, setMobileBrokerExpanded] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -38,59 +36,14 @@ const Navbar = () => {
       localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
-  const userdata = JSON.parse(localStorage.getItem("user") || "null");
 
   const navItems = [
     { label: "Home", path: "/" },
-
     { label: "Insights", path: "/blogs" },
     { label: "About Us", path: "/about" },
     { label: "Contact Us", path: "/Contact" },
     { label: "Features", path: "/features" },
-    {
-      label: "Knowledge Center",
-      subItems: [
-        { label: "Trading", path: "/knowledge/trading" },
-        {
-          label: "Equity Trading",
-          path: "/knowledge/equity-trading",
-        },
-        { label: "Future & Options", path: "/knowledge/future-options" },
-        { label: "Commodity Trading", path: "/knowledge/commodity-trading" },
-        {
-          label: "Margin Trading",
-          path: "/knowledge/margin-trading",
-        },
-        {
-          label: "Intraday-trading",
-          path: "/knowledge/intraday-trading",
-        },
-      ],
-    },
   ];
-
-  if (userdata && userdata.email.toLowerCase() === "admin@gmail.com") {
-    navItems.push({ label: "Admin", path: "/AdminPage" });
-  }
-
-  useEffect(() => {
-    try {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
-    } catch (error) {
-      console.error("Failed to parse user from localStorage:", error);
-      setUser(null);
-    }
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    setUser(null);
-    window.location.href = "/";
-  };
 
   useEffect(() => {
     const googleTranslateElementInit = () => {
@@ -98,7 +51,7 @@ const Navbar = () => {
         {
           pageLanguage: "en",
           autoDisplay: false,
-          includedLanguages: "en,hi,gu,mr,ta,te,bn,ml,pa,kn,as,or", // English + Indian languages
+          includedLanguages: "en,hi,gu,mr,ta,te,bn,ml,pa,kn,as,or",
         },
         "google_translate_element"
       );
@@ -120,17 +73,12 @@ const Navbar = () => {
 
   return (
     <>
-      {/* <div className="w-full fixed top-0 z-[60]">
-        <TradingViewTicker />
-      </div> */}
-
       <nav
-        className={`w-full fixed top-0 z-50 border-b transition-colors 
-    ${
-      darkMode
-        ? "bg-black text-white border-gray-800"
-        : "bg-white text-black border-gray-200"
-    }`}
+        className={`w-full fixed top-0 z-50 border-b transition-colors ${
+          darkMode
+            ? "bg-black text-white border-gray-800"
+            : "bg-white text-black border-gray-200"
+        }`}
       >
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
@@ -139,7 +87,7 @@ const Navbar = () => {
               <a href="/">
                 <img
                   src={logo}
-                  alt="Mondus Logo"
+                  alt="Logo"
                   className="w-1/3"
                   draggable="false"
                 />
@@ -147,15 +95,11 @@ const Navbar = () => {
               <div className="flex gap-4">
                 <button
                   onClick={() => setDarkMode(!darkMode)}
-                  className="text-xl text-inherit"
-                  title="Toggle Theme"
+                  className="text-xl"
                 >
                   {darkMode ? <FiSun /> : <FiMoon />}
                 </button>
-                <button
-                  onClick={() => setIsOpen(!isOpen)}
-                  className="text-inherit text-2xl"
-                >
+                <button onClick={() => setIsOpen(!isOpen)} className="text-2xl">
                   <FiMenu />
                 </button>
               </div>
@@ -172,101 +116,112 @@ const Navbar = () => {
                   <a href="/">
                     <img
                       src={logo}
-                      alt="CFT"
+                      alt="Logo"
                       className="h-16"
                       draggable="false"
                     />
                   </a>
                 </div>
                 <div className="flex items-center gap-8">
-                  {navItems.map((item, index) =>
-                    item.subItems ? (
-                      <div
-                        key={index}
-                        className="relative group flex items-center pb-2 text-sm transition-colors hover:text-[var(--primary-color)] cursor-pointer"
-                      >
-                        <span>{item.label}</span>
-                        <div className="absolute top-full left-0 hidden group-hover:block bg-white dark:bg-black border dark:border-gray-800  rounded shadow-lg z-50 min-w-[200px]">
-                          {item.subItems.map((subItem, subIndex) => (
-                            <a
-                              key={subIndex}
-                              href={subItem.path}
-                              className="block px-4 py-2 text-sm hover:bg-[var(--primary-color)] hover:text-black dark:hover:text-white transition"
-                            >
-                              {subItem.label}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <a
-                        key={index}
-                        href={item.path}
-                        onClick={() => setActiveItem(item.label)}
-                        className={`relative pb-2 text-sm transition-colors hover:text-[var(--primary-color)] 
-        ${activeItem === item.label ? "font-light text-md" : ""}`}
-                      >
-                        {item.label}
-                      </a>
-                    )
-                  )}
+                  {navItems.map((item, index) => (
+                    <a
+                      key={index}
+                      href={item.path}
+                      onClick={() => setActiveItem(item.label)}
+                      className={`pb-2 text-sm transition-colors hover:text-[var(--primary-color)] ${
+                        activeItem === item.label ? "font-light text-md" : ""
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
                 </div>
               </div>
 
-              <div className="flex items-center space-x-6">
-                <div className="flex items-center space-x-6">
-                  <button
-                    onClick={() => setDarkMode(!darkMode)}
-                    className="text-xl text-inherit transition-colors"
-                    title="Toggle Theme"
-                  >
-                    {darkMode ? <FiSun /> : <FiMoon />}
-                  </button>
-                  <div
-                    className={`w-px h-6 ${
-                      darkMode ? "bg-gray-600" : "bg-gray-400"
-                    }`}
-                  ></div>
-                </div>
+              <div className="flex items-center space-x-6 relative">
+                <button
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="text-xl"
+                >
+                  {darkMode ? <FiSun /> : <FiMoon />}
+                </button>
+                <div
+                  className={`w-px h-6 ${
+                    darkMode ? "bg-gray-600" : "bg-gray-400"
+                  }`}
+                ></div>
 
-                {user ? (
-                  <div className="flex items-center space-x-4">
-                    <span className="text-md text-[var(--primary-color)]">
-                      Hi,&nbsp;{user.fullName.split(" ")[0]}
-                    </span>
-                    <button
-                      onClick={handleLogout}
-                      className="text-sm bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full"
-                    >
-                      Logout
-                    </button>
-                  </div>
-                ) : (
-                  <div className="flex items-center space-x-4">
-                    <a
-                      href="/login"
-                      className={`text-sm border py-2 px-4 rounded-full transition shadow-[0_0_10px_var(--primary-color)] 
-                  ${
-                    darkMode
-                      ? "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-white hover:text-black"
-                      : "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-black hover:text-white"
-                  }`}
-                    >
-                      Login
-                    </a>
-                    <a
-                      href="/signup"
-                      className={`text-sm px-4 py-2 rounded-full border transition shadow-[0_0_15px_var(--primary-color)] 
-                  ${
-                    darkMode
-                      ? "bg-[var(--primary-color)] text-black border-[var(--primary-color)] hover:bg-white"
-                      : "bg-[var(--primary-color)] text-white border-[var(--primary-color)] hover:bg-black"
-                  }`}
-                    >
-                      Sign Up
-                    </a>
-                  </div>
-                )}
+                {/* Desktop Login Dropdown */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => setShowLoginDropdown(true)}
+                  onMouseLeave={() => {
+                    setShowLoginDropdown(false);
+                    setShowUserSubMenu(false);
+                    setShowBrokerSubMenu(false);
+                  }}
+                >
+                  <button
+                    className={`text-sm border py-2 px-4 rounded-full shadow-[0_0_10px_var(--primary-color)] transition ${
+                      darkMode
+                        ? "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-white hover:text-black"
+                        : "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-black hover:text-white"
+                    }`}
+                  >
+                    Login
+                  </button>
+
+                  {showLoginDropdown && (
+                    <div className="absolute py-5 right-0 w-44 bg-white dark:bg-black shadow-lg rounded-md text-left z-50">
+                      <div
+                        className="px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer relative"
+                        onMouseEnter={() => setShowUserSubMenu(true)}
+                        onMouseLeave={() => setShowUserSubMenu(false)}
+                      >
+                        User Login
+                        {showUserSubMenu && (
+                          <div className="absolute py-2 right-full top-0 ml-1 w-40 bg-white dark:bg-black shadow-md rounded">
+                            <a
+                              href="https://Trade-dost.com"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            >
+                              Version 1
+                            </a>
+                            <a
+                              href="https://tradedostfx.com/client"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            >
+                              Version 2
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                      <div
+                        className="px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer relative"
+                        onMouseEnter={() => setShowBrokerSubMenu(true)}
+                        onMouseLeave={() => setShowBrokerSubMenu(false)}
+                      >
+                        Broker Login
+                        {showBrokerSubMenu && (
+                          <div className="absolute right-full top-0 ml-1 w-40 bg-white dark:bg-black shadow-md rounded">
+                            <a
+                              href="https://Trade-dost.com"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            >
+                              Version 1
+                            </a>
+                            <a
+                              href="https://tradedostfx.com/master"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            >
+                              Version 2
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -275,113 +230,81 @@ const Navbar = () => {
         {/* Mobile Dropdown */}
         {isOpen && (
           <div
-            className={`md:hidden fixed inset-0 z-[9999] flex flex-col pl-2 pr-5 pb-6 pt-3 mt-2 transition-colors 
-      ${darkMode ? "bg-black text-white" : "bg-white text-black"}`}
+            className={`md:hidden fixed inset-0 z-[9999] flex flex-col pl-2 pr-5 pb-6 pt-3 mt-2 ${
+              darkMode ? "bg-black text-white" : "bg-white text-black"
+            }`}
           >
             <div className="flex justify-between items-center mb-6">
-              <img src={logo} alt="trading Logo" className="w-36" />
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-2xl text-inherit"
-              >
+              <img src={logo} alt="Logo" className="w-36" />
+              <button onClick={() => setIsOpen(false)} className="text-2xl">
                 ✕
               </button>
             </div>
-            {user && (
-              <span className="text-lg text-[var(--primary-color)] p-5 ">
-                Hi, {user.fullName}
-              </span>
-            )}
 
             <div className="flex flex-col space-y-4 px-5">
-              {navItems.map((item, index) =>
-                item.subItems ? (
-                  <div key={index} className="mb-4">
+              {navItems.map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.path}
+                  onClick={() => {
+                    setActiveItem(item.label);
+                    setIsOpen(false);
+                  }}
+                  className="text-lg hover:text-[var(--primary-color)]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              {/* Mobile Login Dropdown */}
+              <div className="mt-4">
+                <button
+                  onClick={() => setMobileLoginExpanded(!mobileLoginExpanded)}
+                  className="w-full text-left border py-2 px-4 rounded-md"
+                >
+                  Login ▾
+                </button>
+
+                {mobileLoginExpanded && (
+                  <div className="pl-4 space-y-2">
+                    <button
+                      onClick={() => setMobileUserExpanded(!mobileUserExpanded)}
+                      className="block text-left w-full"
+                    >
+                      User Login ▸
+                    </button>
+                    {mobileUserExpanded && (
+                      <div className="pl-4 space-y-1">
+                        <Link to="/user-login/v1" className="block">
+                          Version 1
+                        </Link>
+                        <Link to="/user-login/v2" className="block">
+                          Version 2
+                        </Link>
+                      </div>
+                    )}
+
                     <button
                       onClick={() =>
-                        setOpenDropdown(
-                          openDropdown === item.label ? null : item.label
-                        )
+                        setMobileBrokerExpanded(!mobileBrokerExpanded)
                       }
-                      className="font-semibold flex justify-between items-center w-full"
+                      className="block text-left w-full"
                     >
-                      {item.label}
-                      <span className="text-xl">
-                        {openDropdown === item.label ? (
-                          <FiChevronUp />
-                        ) : (
-                          <FiChevronDown />
-                        )}
-                      </span>
+                      Broker Login ▸
                     </button>
-                    {openDropdown === item.label && (
-                      <div className="flex flex-col mt-2 pl-4 space-y-2">
-                        {item.subItems.map((subItem, subIndex) => (
-                          <Link
-                            key={subIndex}
-                            to={subItem.path}
-                            onClick={() => {
-                              setIsOpen(false);
-                              setOpenDropdown(null);
-                            }}
-                            className="text-base text-inherit hover:text-[var(--primary-color)]"
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
+                    {mobileBrokerExpanded && (
+                      <div className="pl-4 space-y-1">
+                        <Link to="/broker-login/v1" className="block">
+                          Version 1
+                        </Link>
+                        <Link to="/broker-login/v2" className="block">
+                          Version 2
+                        </Link>
                       </div>
                     )}
                   </div>
-                ) : (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    onClick={() => {
-                      setActiveItem(item.label);
-                      setIsOpen(false);
-                    }}
-                    className="text-lg text-inherit hover:text-[var(--primary-color)] transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                )
-              )}
-
-              {user ? (
-                <div className="flex flex-col items-start gap-2 mt-4">
-                  <button
-                    onClick={handleLogout}
-                    className="w-fit px-5 text-base bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition"
-                  >
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <div className="flex space-x-4">
-                  <a
-                    href="/login"
-                    className={`w-1/2 text-base text-center border py-2 rounded-md transition 
-                ${
-                  darkMode
-                    ? "text-inherit border-[var(--primary-color)] hover:text-[var(--primary-color)]"
-                    : "text-inherit border-[var(--primary-color)] hover:text-[var(--primary-color)]"
-                }`}
-                  >
-                    Login
-                  </a>
-                  <a
-                    href="/signup"
-                    className={`w-1/2 text-base text-center py-2 rounded-md transition 
-                ${
-                  darkMode
-                    ? "bg-[var(--primary-color)] text-white hover:opacity-90"
-                    : "bg-[var(--primary-color)] text-white hover:opacity-90"
-                }`}
-                  >
-                    Sign Up
-                  </a>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -390,7 +313,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[99] right-[100px] top-[23px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[270px] lg:top-[24px] lg:-translate-x-1/2"
+          className="fixed z-[99] right-[100px] top-[23px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[170px] lg:top-[24px] lg:-translate-x-1/2"
         />
       )}
     </>

@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import Navbar from "./Nav";
 
 import { motion } from "framer-motion";
-import bgImage from "../assets/bg-earth-desktop.webp";
+import bgImage from "../assets/Features Home Bg.jpg";
 import WhyChooseCFT from "./Why";
 import FeaturesSplit from "./CFTFeature";
 import { MergedDashboardTable } from "../pages/DashboardTables";
@@ -98,46 +98,50 @@ export default function Feature() {
       <div className="w-full">
         {/* Section 1: Intro */}
         <section
-          className="h-screen bg-cover bg-center text-white flex flex-col items-center justify-center space-y-4 px-4"
+          className="relative h-screen bg-cover bg-center text-white flex flex-col items-center justify-center space-y-4 px-4"
           style={{
             backgroundImage: `url(${bgImage})`,
           }}
         >
-          {lines.map((line, lineIndex) => (
-            <div
-              key={lineIndex}
-              className={`flex flex-wrap justify-center ${line.style}`}
-            >
-              {line.text.split("").map((char, i) => (
-                <motion.span
-                  key={i}
-                  custom={i}
-                  initial="hidden"
-                  animate="visible"
-                  variants={charVariants}
-                  className="inline-block"
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
-            </div>
-          ))}
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
 
-          {/* Button */}
-          <a href="/signup">
-            {" "}
-            <motion.button
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: lines.join("").length * 0.04 + 0.3,
-                duration: 0.5,
-              }}
-              className="bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit"
-            >
-              Start Trading Now
-            </motion.button>
-          </a>
+          {/* Content */}
+          <div className="relative z-10 flex flex-col items-center space-y-4">
+            {lines.map((line, lineIndex) => (
+              <div
+                key={lineIndex}
+                className={`flex flex-wrap justify-center ${line.style}`}
+              >
+                {line.text.split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    custom={i}
+                    initial="hidden"
+                    animate="visible"
+                    variants={charVariants}
+                    className="inline-block"
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </div>
+            ))}
+
+            <a href="/signup">
+              <motion.button
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: lines.join("").length * 0.04 + 0.3,
+                  duration: 0.5,
+                }}
+                className="bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit"
+              >
+                Start Trading Now
+              </motion.button>
+            </a>
+          </div>
         </section>
 
         {/* Section 2: Scroll Animated Cards (Desktop) & Static Cards (Mobile) */}

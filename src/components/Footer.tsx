@@ -7,7 +7,7 @@ import {
 import { IoMdSend } from "react-icons/io";
 import logo from "../assets/logo-01.svg";
 import { useState } from "react";
-import footerbg from "../assets/earth.jpg";
+import footerbg from "../assets/cft-footer.jpg";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const Footer = () => {
@@ -58,7 +58,7 @@ const Footer = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-6 gap-5">
+      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">
         {/* Logo & Description */}
         <div>
           <div className="flex items-center space-x-2 mb-4">
