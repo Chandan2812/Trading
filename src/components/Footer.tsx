@@ -185,34 +185,34 @@ const Footer = () => {
           <h3 className="text-lg font-bold mb-4">Support Contacts</h3>
           <ul className="space-y-4 text-sm text-white">
             <li>
-              <strong>Pay-in:</strong> <br />
+              <strong>Pay-in:</strong>
               <a
                 href="https://wa.link/v6tmxe"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[var(--primary-color)] hover:underline"
+                className=" hover:underline"
               >
                 +1 (236) 305-9090
               </a>
             </li>
             <li>
-              <strong>Withdrawal:</strong> <br />
+              <strong>Withdrawal:</strong>
               <a
                 href="https://wa.link/tre4j4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[var(--primary-color)] hover:underline"
+                className="hover:underline"
               >
                 +1 (236) 305-9092
               </a>
             </li>
             <li>
-              <strong>Tech / Support:</strong> <br />
+              <strong>Tech / Support:</strong>
               <a
                 href="https://wa.link/ehhw8j"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[var(--primary-color)] hover:underline"
+                className=" hover:underline"
               >
                 +91 72309 41008
               </a>

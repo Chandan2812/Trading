@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import videoBg from "../assets/Home.jpg";
+import home from "../assets/Home.jpg";
 import axios from "axios";
 import { usePopup } from "../components/PopupContext";
+
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 type Offer = {
@@ -48,19 +49,13 @@ const HeroSection: React.FC = () => {
   return (
     <section className="relative min-h-[80vh] md:h-screen flex items-center overflow-hidden">
       {/* Background Video */}
-      <video
+      <img
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src={videoBg} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+        src={home}
+      />
 
       {/* Dark Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-0" />
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-80 z-0" />
 
       {/* Main Content */}
       <div className="relative z-10  w-11/12 md:w-5/6 mx-auto  flex flex-col md:flex-row justify-between items-center gap-10 py-12 md:py-0">
