@@ -1,17 +1,17 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SwipeGallery from "./SlideShow";
+import SwipeGallery from "../components/featurePageComponent/SlideShow";
 
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 
-import Navbar from "./Nav";
+import Navbar from "../components/Nav";
 
 import { motion } from "framer-motion";
 import bgImage from "../assets/Features Home Bg.jpg";
-import WhyChooseCFT from "./Why";
-import FeaturesSplit from "./CFTFeature";
-import { MergedDashboardTable } from "../pages/DashboardTables";
+import WhyChooseCFT from "../components/featurePageComponent/Why";
+import FeaturesSplit from "../components/featurePageComponent/CFTFeature";
+import { MergedDashboardTable } from "../components/featurePageComponent/DashboardTables";
 
 const charVariants = {
   hidden: { opacity: 0, y: -50 },

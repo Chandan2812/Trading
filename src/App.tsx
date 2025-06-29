@@ -14,7 +14,7 @@ import Blog2Details from "./pages/Blog2Details";
 import WhatsAppButton from "./components/floatingBtn";
 import ZohoSalesIQ from "./components/ZohoSalesIQ";
 import OfferPopup from "./components/OfferPopup";
-import Feature from "./components/Features";
+import Feature from "./pages/Features";
 
 import Stocks from "./pages/footerPage/products/Stocks";
 
