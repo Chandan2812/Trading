@@ -75,7 +75,7 @@ const DabbaMarkets: React.FC = () => {
       </div>
 
       {/* Desktop Grid */}
-      <div className="mt-12 hidden sm:grid grid-cols-2 lg:grid-cols-6 gap-8 w-11/12 md:w-5/6 mx-auto ">
+      <div className="mt-12 hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-8 w-11/12 md:w-5/6 mx-auto ">
         {markets.map((market, index) => (
           <div
             key={index}
@@ -97,6 +97,15 @@ const DabbaMarkets: React.FC = () => {
               />
               <h3 className="text-lg font-bold mb-2">{market.title}</h3>
               <p className="text-sm text-gray-400">{market.description}</p>
+              <a
+                href={`/markets/${market.title
+                  .toLowerCase()
+                  .replace(/[^a-z0-9]+/g, "-")
+                  .replace(/^-+|-+$/g, "")}`}
+                className="text-sm mt-5 px-4 py-1 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-black transition"
+              >
+                Explore
+              </a>
             </div>
           </div>
         ))}
@@ -128,6 +137,15 @@ const DabbaMarkets: React.FC = () => {
                   />
                   <h3 className="text-lg font-bold mb-2">{market.title}</h3>
                   <p className="text-sm text-gray-400">{market.description}</p>
+                  <a
+                    href={`/markets/${market.title
+                      .toLowerCase()
+                      .replace(/[^a-z0-9]+/g, "-")
+                      .replace(/^-+|-+$/g, "")}`}
+                    className="text-sm px-4 py-1 rounded-full border border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-black transition"
+                  >
+                    Explore
+                  </a>
                 </div>
               </div>
             ))}

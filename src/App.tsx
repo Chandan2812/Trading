@@ -28,6 +28,12 @@ import FutureOptions from "./pages/FutureOptions";
 import CommodityTrading from "./pages/CommodityTrading";
 import MarginTrading from "./pages/MarginTrading";
 import IntradayTrading from "./pages/IntradayTrading";
+import NSEFOInfo from "./pages/Markets/Nse";
+import Mcx from "./pages/Markets/Mcx";
+import Crypto from "./pages/Markets/Crypto";
+import USStocks from "./pages/Markets/UsStocks";
+import Forex from "./pages/Markets/Forex";
+import ComexInfo from "./pages/Markets/Comex";
 
 function App() {
   return (
@@ -55,6 +61,12 @@ function App() {
           <Route path="/knowledge/trading" element={<Trading />} />
           <Route path="/knowledge/equity-trading" element={<EquityTrading />} />
           <Route path="/knowledge/future-options" element={<FutureOptions />} />
+          <Route path="/markets/nse-f-o" element={<NSEFOInfo />} />
+          <Route path="/markets/mcx" element={<Mcx />} />
+          <Route path="/markets/crypto" element={<Crypto />} />
+          <Route path="/markets/us-stocks-indices" element={<USStocks />} />
+          <Route path="/markets/forex" element={<Forex />} />
+          <Route path="/markets/comex" element={<ComexInfo />} />
           <Route
             path="/knowledge/commodity-trading"
             element={<CommodityTrading />}
