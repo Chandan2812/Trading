@@ -41,8 +41,8 @@ const features = [
     desc: "See which stocks and assets are trending daily.",
   },
   {
-    title: "Lead Funnel Tracking",
-    desc: "Monitor users from first touch to loyal trader.",
+    title: "Trade & Learn Hub",
+    desc: "Access tutorials & insights within the dashboard.",
   },
   {
     title: "Fast Withdrawals & Support",
