@@ -29,8 +29,8 @@ const features = [
     desc: "Track trades, revenue, and performance in real time.",
   },
   {
-    title: "CRM & Ads Sync",
-    desc: "Auto-sync leads and ad data for better decisions.",
+    title: "One-Click Order Execution",
+    desc: "Place trades instantly with quick execution.",
   },
   {
     title: "Smart Risk Controls",
