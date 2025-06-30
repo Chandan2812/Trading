@@ -24,7 +24,7 @@ const USStocks = () => {
 
   return (
     <div className="bg-white dark:bg-[var(--bg-color1)]">
-      <div className="mb-20">
+      <div className="mb-28">
         <Navbar />
       </div>
       <section className={section}>

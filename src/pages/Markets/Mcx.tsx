@@ -12,7 +12,7 @@ const bulletStyle = "list-disc list-inside space-y-2";
 const Mcx = () => {
   return (
     <div className="bg-white dark:bg-[var(--bg-color1)]">
-      <div className="mb-20">
+      <div className="mb-28">
         <Navbar />
       </div>
       <section className={sectionStyle}>
