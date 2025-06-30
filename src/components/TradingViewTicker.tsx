@@ -41,6 +41,7 @@ const FinlogixWidget = () => {
             { symbolId: "20281", symbolName: "ICICI Bank Ltd" },
             { symbolId: "83", symbolName: "INDIA50" },
             { symbolId: "120145", symbolName: "8473TKS" },
+            { symbolId: "40005", symbolName: "HERO" },
           ],
           isAdaptive: true,
         });
