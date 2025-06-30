@@ -228,6 +228,15 @@ const Navbar = () => {
                     </div>
                   )}
                 </div>
+                <button
+                  className={`text-sm border py-2 px-4 rounded-full shadow-[0_0_10px_var(--primary-color)] transition ${
+                    darkMode
+                      ? "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-white hover:text-black"
+                      : "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-black hover:text-white"
+                  }`}
+                >
+                  Start Trading Now
+                </button>
               </div>
             </div>
           </div>
@@ -236,7 +245,7 @@ const Navbar = () => {
         {/* Mobile Dropdown */}
         {isOpen && (
           <div
-            className={`md:hidden fixed inset-0 z-[9999] flex flex-col pl-2 pr-5 pb-6 pt-3 mt-2 ${
+            className={`md:hidden fixed inset-0 z-[9999] flex flex-col pl-2 pr-5 pb-6 pt-3 mt-16 ${
               darkMode ? "bg-black text-white" : "bg-white text-black"
             }`}
           >
@@ -261,12 +270,15 @@ const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
+              <button className="w-fit text-left border border-[var(--primary-color)] text-[var(--primary-color)] py-2 px-4 rounded-md">
+                Start Your Trading
+              </button>
 
               {/* Mobile Login Dropdown */}
-              <div className="mt-4">
+              <div className="mt-4 ">
                 <button
                   onClick={() => setMobileLoginExpanded(!mobileLoginExpanded)}
-                  className="w-full text-left border py-2 px-4 rounded-md"
+                  className="w-fit text-left border py-2 px-4 rounded-md"
                 >
                   Login ▾
                 </button>
@@ -319,7 +331,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[99] right-[100px] top-[80px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[170px] lg:top-[80px] lg:-translate-x-1/2"
+          className="fixed z-[99] right-[100px] top-[80px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[290px] lg:top-[80px] lg:-translate-x-1/2"
         />
       )}
     </>
