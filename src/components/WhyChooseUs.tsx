@@ -93,7 +93,7 @@ const WhyChoose: React.FC = () => {
             onClick={openPopup}
             className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
           >
-            Launch Your Trade Now
+            Start Trading Now
           </button>
         </div>
       </section>

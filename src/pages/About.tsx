@@ -6,6 +6,7 @@ import worldGraph from "../assets/1.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Nav";
 import { FaCheckCircle } from "react-icons/fa";
+import { usePopup } from "../components/PopupContext";
 
 const points = [
   {
@@ -72,13 +73,14 @@ const offers = [
 ];
 
 const AboutUsSection = () => {
+  const { openPopup } = usePopup();
   useEffect(() => {
     AOS.init({ duration: 1000, once: false });
   }, []);
 
   return (
     <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white">
-      <div className="mb-12">
+      <div className="mb-20">
         <Navbar />
       </div>
 
@@ -95,7 +97,6 @@ const AboutUsSection = () => {
               Leading Trading Platform
             </span>
           </h2>
-
           <p
             className="text-gray-700 dark:text-white text-lg mb-4"
             data-aos="fade-right"
@@ -103,7 +104,6 @@ const AboutUsSection = () => {
           >
             Built by traders. Backed by innovation. Powered by trust.
           </p>
-
           <p
             className="text-gray-700 dark:text-gray-200 mb-4 md:max-w-xl"
             data-aos="fade-right"
@@ -117,6 +117,12 @@ const AboutUsSection = () => {
             real-time information to keep you informed, and support your growth
             with features designed to meet your needs rather than just ours.
           </p>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         {/* Right: Image with AOS animation */}
@@ -290,12 +296,23 @@ const AboutUsSection = () => {
             className="w-full lg:w-1/3 md:flex justify-center hidden"
             data-aos="fade-left"
           >
-            <div className="border border-[var(--primary-color)] text-white rounded-full w-[250px] h-[250px] flex items-center justify-center text-center p-6 shadow-2xl">
-              <div>
-                <p className="text-5xl font-bold">5M+</p>
-                <p className="text-sm font-semibold mt-2">Traders Joined</p>
-                <p className="text-xs mt-1 opacity-70">and counting...</p>
+            <div className="flex flex-col items-center gap-6">
+              {/* Circle Counter */}
+              <div className="border border-[var(--primary-color)] text-white rounded-full w-[250px] h-[250px] flex items-center justify-center text-center p-6 shadow-2xl">
+                <div>
+                  <p className="text-5xl font-bold">5M+</p>
+                  <p className="text-sm font-semibold mt-2">Traders Joined</p>
+                  <p className="text-xs mt-1 opacity-70">and counting...</p>
+                </div>
               </div>
+
+              {/* Call to Action Button */}
+              <button
+                onClick={openPopup}
+                className="bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+              >
+                Start Trading Now
+              </button>
             </div>
           </div>
         </div>

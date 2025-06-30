@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
 import logo from "../assets/logo-01.svg";
 import FinlogixWidget from "./TradingViewTicker";
+import { usePopup } from "../components/PopupContext";
 
 declare global {
   interface Window {
@@ -19,6 +20,7 @@ const Navbar = () => {
       ? localStorage.getItem("theme") === "dark"
       : true;
   });
+  const { openPopup } = usePopup();
 
   const [showLoginDropdown, setShowLoginDropdown] = useState(false);
   const [showUserSubMenu, setShowUserSubMenu] = useState(false);
@@ -229,6 +231,7 @@ const Navbar = () => {
                   )}
                 </div>
                 <button
+                  onClick={openPopup}
                   className={`text-sm border py-2 px-4 rounded-full shadow-[0_0_10px_var(--primary-color)] transition ${
                     darkMode
                       ? "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-white hover:text-black"
@@ -270,7 +273,10 @@ const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
-              <button className="w-fit text-left border border-[var(--primary-color)] text-[var(--primary-color)] py-2 px-4 rounded-md">
+              <button
+                onClick={openPopup}
+                className="w-fit text-left border border-[var(--primary-color)] text-[var(--primary-color)] py-2 px-4 rounded-md"
+              >
                 Start Your Trading
               </button>
 

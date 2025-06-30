@@ -7,7 +7,7 @@ import HeroSection from "../components/Hero";
 import HowItWorks from "../components/HowITWork";
 import Carousel from "../components/ImageCarousel";
 import Navbar from "../components/Nav";
-import Popup from "../components/PopUp";
+// import Popup from "../components/PopUp";
 // import RegulatoryDisclaimer from "../components/RegulatoryDisclaimer";
 import ScrollingIcons from "../components/ScrollingIcons";
 import StatsSection from "../components/Stats";
@@ -37,7 +37,7 @@ export const Landing = () => {
       <FAQ />
       <Footer />
       {/* <RegulatoryDisclaimer /> */}
-      <Popup />
+      {/* <Popup /> */}
     </div>
   );
 };

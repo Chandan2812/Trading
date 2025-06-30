@@ -12,6 +12,7 @@ import bgImage from "../assets/Features Home Bg.jpg";
 import WhyChooseCFT from "../components/featurePageComponent/Why";
 import FeaturesSplit from "../components/featurePageComponent/CFTFeature";
 import { MergedDashboardTable } from "../components/featurePageComponent/DashboardTables";
+import { usePopup } from "../components/PopupContext";
 
 const charVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -31,6 +32,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Feature() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { openPopup } = usePopup();
 
   // const colors = ["#ef4444", "#facc15", "#22c55e"];
   // const icons = ["🚀", "🔒", "⚙️"];
@@ -128,7 +130,7 @@ export default function Feature() {
               </div>
             ))}
 
-            <a href="/signup">
+            <button onClick={openPopup}>
               <motion.button
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -140,7 +142,7 @@ export default function Feature() {
               >
                 Start Trading Now
               </motion.button>
-            </a>
+            </button>
           </div>
         </section>
 
@@ -283,6 +285,12 @@ export default function Feature() {
                 Regular updates based on trader feedback, market shifts, and
                 real-world trading behavior.
               </p>
+              <button
+                onClick={openPopup}
+                className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+              >
+                Start Trading Now
+              </button>
             </motion.div>
 
             {/* Divider Glow Line */}
@@ -306,6 +314,12 @@ export default function Feature() {
                 </span>
                 Built for performance. Backed by data. Trusted by traders.
               </p>
+              <button
+                onClick={openPopup}
+                className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+              >
+                Start Trading Now
+              </button>
             </motion.div>
           </div>
 

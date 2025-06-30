@@ -5,6 +5,7 @@ import slide1 from "../../assets/Slider 1 BG.jpg";
 import slide2 from "../../assets/Slider 2 BG.jpg";
 import slide3 from "../../assets/Slider 3 BG.png";
 import slide4 from "../../assets/Slider 4 BG.jpg";
+import { usePopup } from "../../components/PopupContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,6 +55,7 @@ export default function SwipeGallery() {
   const containerRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const countRef = useRef<HTMLSpanElement>(null);
+  const { openPopup } = usePopup();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -143,6 +145,12 @@ export default function SwipeGallery() {
                         {f.desc}
                       </p>
                     </div>
+                    <button
+                      onClick={openPopup}
+                      className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+                    >
+                      Start Trading Now
+                    </button>
 
                     {/* Animated pulse border ring */}
                     <div className="absolute inset-0 rounded-3xl border border-white/10 group-hover:border-white/30 animate-pulse pointer-events-none"></div>

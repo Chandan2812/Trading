@@ -50,7 +50,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="relative text-white px-6 py-16 transition-colors duration-500"
+      className="relative text-white px-6 py-5 transition-colors duration-500"
       style={{
         backgroundImage: `url(${footerbg})`,
         backgroundSize: "cover",
@@ -280,16 +280,16 @@ const Footer = () => {
         </p>
       </div>
 
-      {/* <div className="w-full flex justify-center mt-10">
+      <div className="w-full flex justify-center">
         <a
           href="https://www.bigwigdigital.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="border border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-3 uppercase text-xs tracking-widest text-center transition-colors  hover:text-black dark:hover:text-white"
+          className=" text-[var(--primary-color)] px-4 py-3 uppercase text-xs tracking-widest text-center transition-colors  hover:text-black dark:hover:text-white"
         >
           Made & Marketed with ❤️ by Bigwig Digital
         </a>
-      </div> */}
+      </div>
     </footer>
   );
 };

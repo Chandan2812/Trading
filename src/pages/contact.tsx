@@ -13,15 +13,18 @@ import Footer from "../components/Footer";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { usePopup } from "../components/PopupContext";
 
 function Contact() {
+  const { openPopup } = usePopup();
+
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
 
   return (
     <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white transition-colors duration-300">
-      <div className="mb-16">
+      <div className="mb-24">
         <Navbar />
       </div>
 
@@ -51,6 +54,12 @@ function Contact() {
               problems, and everything else in between. Our professional staff
               is at your service 24x7!
             </p>
+            <button
+              onClick={openPopup}
+              className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+            >
+              Start Trading Now
+            </button>
           </div>
 
           {/* Right Side: Contact Info */}
