@@ -1,40 +1,54 @@
-// components/TradingViewTicker.tsx
 import { useEffect, useRef } from "react";
 
-const TradingViewTicker = () => {
+declare global {
+  interface Window {
+    Widget: any;
+  }
+}
+
+const FinlogixWidget = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    // Prevent loading the script multiple times
+    const existingScript = document.getElementById("finlogix-script");
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.id = "finlogix-script";
+      script.src = "https://widget.finlogix.com/Widget.js";
+      script.async = true;
+      script.onload = () => {
+        initWidget();
+      };
+      document.body.appendChild(script);
+    } else {
+      initWidget();
+    }
 
-    const script = document.createElement("script");
-    script.src =
-      "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
-    script.async = true;
-    script.innerHTML = JSON.stringify({
-      symbols: [
-        { proName: "FOREXCOM:SPXUSD" },
-        { proName: "FOREXCOM:NSXUSD" },
-        { proName: "FX_IDC:EURUSD" },
-        { proName: "BITSTAMP:BTCUSD" },
-        { proName: "BITSTAMP:ETHUSD" },
-      ],
-      showSymbolLogo: true,
-      isTransparent: false,
-      displayMode: "adaptive",
-      colorTheme: "dark",
-      locale: "en",
-    });
-
-    containerRef.current.innerHTML = ""; // Clear on re-render
-    containerRef.current.appendChild(script);
+    function initWidget() {
+      if (window.Widget && containerRef.current) {
+        window.Widget.init({
+          widgetId: "fab8747b-90e9-44de-9d00-a1284a8d56e0",
+          type: "StripBar",
+          language: "en",
+          showBrand: true,
+          isShowTradeButton: true,
+          isShowBeneathLink: true,
+          isShowDataFromACYInfo: true,
+          symbolPairs: [
+            { symbolId: "20317", symbolName: "Reliance Steel & Aluminum" },
+            { symbolId: "20273", symbolName: "HDFC Bank Limited" },
+            { symbolId: "20281", symbolName: "ICICI Bank Ltd" },
+            { symbolId: "83", symbolName: "INDIA50" },
+            { symbolId: "120145", symbolName: "8473TKS" },
+          ],
+          isAdaptive: true,
+        });
+      }
+    }
   }, []);
 
-  return (
-    <div className="tradingview-widget-container" ref={containerRef}>
-      <div className="tradingview-widget-container__widget" />
-    </div>
-  );
+  return <div className="finlogix-container" ref={containerRef}></div>;
 };
 
-export default TradingViewTicker;
+export default FinlogixWidget;

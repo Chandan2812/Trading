@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
 import logo from "../assets/logo-01.svg";
+import FinlogixWidget from "./TradingViewTicker";
 
 declare global {
   interface Window {
@@ -73,12 +74,17 @@ const Navbar = () => {
 
   return (
     <>
+      <div className="fixed top-0 w-full z-50">
+        <FinlogixWidget />
+      </div>
+
       <nav
-        className={`w-full fixed top-0 z-50 border-b transition-colors ${
+        className={`w-full fixed z-40 border-b transition-colors ${
           darkMode
             ? "bg-black text-white border-gray-800"
             : "bg-white text-black border-gray-200"
         }`}
+        style={{ top: "55px" }} // Adjust based on widget height
       >
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
@@ -313,7 +319,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[99] right-[100px] top-[23px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[170px] lg:top-[24px] lg:-translate-x-1/2"
+          className="fixed z-[99] right-[100px] top-[80px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[170px] lg:top-[80px] lg:-translate-x-1/2"
         />
       )}
     </>
