@@ -70,7 +70,7 @@ const Blog2 = () => {
   return (
     <div className="bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white">
       <Navbar />
-      <div className="py-16 px-4 sm:px-6 lg:px-8 mt-20">
+      <div className="py-16 px-4 sm:px-6 lg:px-8 mt-24">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold">
             Latest{" "}
@@ -168,7 +168,25 @@ const Blog2 = () => {
               )}
           </div>
         )}
+        {/* Talk to Support Section */}
+        <div className="mt-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <div className="bg-white dark:bg-[var(--bg-color1)] rounded-xl py-5 px-6 shadow-lg">
+            <h3 className="text-3xl font-bold mb-6">Let’s Connect Today</h3>
+            <p className="text-gray-700 dark:text-gray-400 max-w-2xl mx-auto mb-6">
+              Want a walkthrough? Need help? Or just curious? We’re just a click
+              or call away—reach out now and experience the difference of Close
+              Friends Traders.
+            </p>
+            <a
+              href="tel:+918368284948"
+              className="inline-block mt-4 px-8 py-3 bg-[var(--primary-color)] text-white dark:text-black font-semibold rounded-full hover:shadow-[0_0_15px_var(--primary-color)] transition duration-300"
+            >
+              Talk to Support
+            </a>
+          </div>
+        </div>
       </div>
+
       <Footer />
     </div>
   );
