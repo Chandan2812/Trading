@@ -10,8 +10,11 @@ import {
   FaUsers,
   FaTools,
 } from "react-icons/fa";
+import { usePopup } from "../../components/PopupContext";
 
 const NSEFOInfo = () => {
+  const { openPopup } = usePopup();
+
   const sectionStyle =
     "bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white py-10 w-11/12 md:w-5/6 mx-auto space-y-12";
   const headingStyle =
@@ -36,6 +39,14 @@ const NSEFOInfo = () => {
             market, where contracts derive their value from underlying assets
             like stocks, indices, or commodities.
           </p>
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={openPopup}
+              className="bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+            >
+              Start Trading Now
+            </button>
+          </div>
         </div>
 
         <div>
@@ -198,6 +209,12 @@ const NSEFOInfo = () => {
             These brokers also offer margin calculators, option chains, and
             strategy builders.
           </p>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         <div>

@@ -94,6 +94,49 @@ function Contact() {
                 content="Our operations run 24×7, so no matter when you trade, we’re right here with you."
               />
             </div>
+            {/* WhatsApp Contact Buttons */}
+            <div className="mt-10 text-white w-full max-w-4xl md:mx-auto flex justify-start">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center w-full">
+                {/* Pay-in */}
+                <div>
+                  <p className="font-semibold mb-2">Pay-in Number</p>
+                  <a
+                    href="https://wa.link/v6tmxe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-[var(--primary-color)] hover:bg-[#5bb7b8] px-4 py-2 rounded-full text-black font-semibold transition"
+                  >
+                    +1 (236) 305-9090‬
+                  </a>
+                </div>
+
+                {/* Withdrawal */}
+                <div>
+                  <p className="font-semibold mb-2">Withdrawal Number</p>
+                  <a
+                    href="https://wa.link/tre4j4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-[var(--primary-color)] hover:bg-[#5bb7b8] px-4 py-2 rounded-full text-black font-semibold transition"
+                  >
+                    +1 (236) 305-9092‬
+                  </a>
+                </div>
+
+                {/* Technical Support */}
+                <div>
+                  <p className="font-semibold mb-2">Customer Support</p>
+                  <a
+                    href="https://wa.link/ehhw8j"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-[var(--primary-color)] hover:bg-[#5bb7b8] px-4 py-2 rounded-full text-black font-semibold transition"
+                  >
+                    +917230941008‬
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

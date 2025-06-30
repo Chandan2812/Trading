@@ -61,7 +61,7 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10  w-11/12 md:w-5/6 mx-auto  flex flex-col md:flex-row justify-between items-center gap-10 py-12 md:py-0">
         {/* Left Content */}
         <div className="max-w-xl text-white space-y-8">
-          <h1 className="text-4xl font-bold leading-tight text-start mt-10">
+          <h1 className="text-4xl font-bold leading-tight text-start md:mt-10 mt-28">
             India’s #1 Trusted Trading Hub
           </h1>
           <h1 className="text-2xl font-semibold leading-tight text-start">
@@ -79,6 +79,49 @@ const HeroSection: React.FC = () => {
           >
             Start Trading Now
           </button>
+          {/* Contact Info in Flex Row */}
+          <div className="mt-10 text-white w-full max-w-4xl md:mx-auto flex justify-start">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              {/* Pay-in */}
+              <div>
+                <p className="font-semibold mb-2">Pay-in Number</p>
+                <a
+                  href="https://wa.link/v6tmxe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-[var(--primary-color)] hover:bg-[#5bb7b8] px-4 py-2 rounded-full text-black font-semibold transition"
+                >
+                  +1 (236) 305-9090‬
+                </a>
+              </div>
+
+              {/* Withdrawal */}
+              <div>
+                <p className="font-semibold mb-2">Withdrawal Number</p>
+                <a
+                  href="https://wa.link/tre4j4"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-[var(--primary-color)] hover:bg-[#5bb7b8] px-4 py-2 rounded-full text-black font-semibold transition"
+                >
+                  +1 (236) 305-9092‬
+                </a>
+              </div>
+
+              {/* Technical Support */}
+              <div>
+                <p className="font-semibold mb-2">Customer Support</p>
+                <a
+                  href="https://wa.link/ehhw8j"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-[var(--primary-color)] hover:bg-[#5bb7b8] px-4 py-2 rounded-full text-black font-semibold transition"
+                >
+                  +917230941008‬
+                </a>
+              </div>
+            </div>
+          </div>
 
           {/* Features Row */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10 text-sm sm:text-base font-medium">

@@ -1,5 +1,6 @@
 import Navbar from "../../components/Nav";
 import Footer from "../../components/Footer";
+import { usePopup } from "../../components/PopupContext";
 
 const sectionStyle =
   " text-black dark:text-white py-10 w-11/12 md:w-5/6 mx-auto space-y-10";
@@ -10,9 +11,11 @@ const subheadingStyle =
 const bulletStyle = "list-disc list-inside space-y-2";
 
 const Mcx = () => {
+  const { openPopup } = usePopup();
+
   return (
     <div className="bg-white dark:bg-[var(--bg-color1)]">
-      <div className="mb-28">
+      <div className="mb-32">
         <Navbar />
       </div>
       <section className={sectionStyle}>
@@ -31,6 +34,12 @@ const Mcx = () => {
             </li>
             <li>• Listed on NSE & BSE as a public company (Ticker: MCX)</li>
           </ul>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         <div>
@@ -194,6 +203,12 @@ const Mcx = () => {
             <br />• Trade on price movements in commodities
             <br />• Hedge against inflation or raw material price fluctuations
           </p>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
       </section>
       <Footer />

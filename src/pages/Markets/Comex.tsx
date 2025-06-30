@@ -7,8 +7,11 @@ import {
   FaMapMarkerAlt,
   FaCogs,
 } from "react-icons/fa";
+import { usePopup } from "../../components/PopupContext";
 
 const ComexInfo = () => {
+  const { openPopup } = usePopup();
+
   const sectionStyle =
     " text-black dark:text-white  py-10 w-11/12 md:w-5/6 mx-auto space-y-12";
   const headingStyle =
@@ -42,6 +45,12 @@ const ComexInfo = () => {
               Operated by CME Group
             </li>
           </ul>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         {/* Traded Commodities */}
@@ -183,6 +192,12 @@ const ComexInfo = () => {
             (Commodity Futures Trading Commission), ensuring robust oversight
             and transparency.
           </p>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         {/* Summary */}

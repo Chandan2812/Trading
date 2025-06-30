@@ -1,5 +1,6 @@
 import Navbar from "../../components/Nav";
 import Footer from "../../components/Footer";
+import { usePopup } from "../../components/PopupContext";
 
 const section =
   "bg-white dark:bg-[var(--bg-color1)] text-black dark:text-white w-11/12 md:w-5/6 mx-auto py-12 space-y-10";
@@ -13,6 +14,8 @@ const tableHeader = "bg-gray-100 dark:bg-gray-800 font-semibold";
 const tableCell = "p-2 border-t border-gray-300 dark:border-gray-700";
 
 const Crypto = () => {
+  const { openPopup } = usePopup();
+
   return (
     <div className="bg-white dark:bg-[var(--bg-color1)]">
       <div className="mb-28">
@@ -35,6 +38,12 @@ const Crypto = () => {
             <li>Peer-to-peer transactions</li>
             <li>Global and borderless</li>
           </ul>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         <div>
@@ -180,6 +189,12 @@ const Crypto = () => {
               Businesses: Accepting crypto as payment or fundraising via ICOs
             </li>
           </ul>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         <div>

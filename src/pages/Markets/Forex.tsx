@@ -12,8 +12,11 @@ import {
   FaTools,
   FaCheckCircle,
 } from "react-icons/fa";
+import { usePopup } from "../../components/PopupContext";
 
 const Forex = () => {
+  const { openPopup } = usePopup();
+
   const section =
     "text-black dark:text-white w-11/12 md:w-5/6 mx-auto py-10 space-y-12";
   const heading =
@@ -40,6 +43,12 @@ const Forex = () => {
             trillion (2024), it operates via major financial hubs like London,
             New York, Tokyo, and Sydney.
           </p>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         <div>
@@ -197,6 +206,12 @@ const Forex = () => {
             <li>TradingView</li>
             <li>Economic Calendars</li>
           </ul>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         <div>

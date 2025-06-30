@@ -10,8 +10,11 @@ import {
   FaExclamationCircle,
   FaBullseye,
 } from "react-icons/fa";
+import { usePopup } from "../../components/PopupContext";
 
 const USStocks = () => {
+  const { openPopup } = usePopup();
+
   const section =
     " text-black dark:text-white w-11/12 md:w-5/6 mx-auto py-10 space-y-12";
   const heading =
@@ -24,7 +27,7 @@ const USStocks = () => {
 
   return (
     <div className="bg-white dark:bg-[var(--bg-color1)]">
-      <div className="mb-28">
+      <div className="mb-32">
         <Navbar />
       </div>
       <section className={section}>
@@ -36,6 +39,12 @@ const USStocks = () => {
             U.S. stocks represent ownership in publicly traded companies based
             in the U.S. — listed on major exchanges and traded in U.S. dollars.
           </p>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
 
         <div>
@@ -237,6 +246,12 @@ const USStocks = () => {
             <li>Green Energy: Enphase, NextEra Energy</li>
             <li>Biotech: Moderna, Pfizer, CRISPR Therapeutics</li>
           </ul>
+          <button
+            onClick={openPopup}
+            className="mt-6 inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+          >
+            Start Trading Now
+          </button>
         </div>
       </section>
       <Footer />
