@@ -10,6 +10,7 @@ import withdrawal from "../assets/whyTrade/withdrawl.png";
 import support from "../assets/whyTrade/support.png";
 import security from "../assets/whyTrade/security.png";
 import traders from "../assets/whyTrade/HappyTraders.png";
+import { usePopup } from "../components/PopupContext";
 
 const features = [
   {
@@ -56,6 +57,8 @@ const features = [
 ];
 
 const WhyTrade: React.FC = () => {
+  const { openPopup } = usePopup();
+
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
     setTimeout(() => AOS.refresh(), 100);
@@ -207,6 +210,16 @@ const WhyTrade: React.FC = () => {
             </button>
           )}
         </div>
+      </div>
+      {/* ✅ CTA Button Below All Market Cards */}
+      <div className="mt-12 flex justify-center">
+        <button
+          onClick={openPopup}
+          data-aos="fade-up"
+          className="inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+        >
+          Start Trading Now
+        </button>
       </div>
     </section>
   );

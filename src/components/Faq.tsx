@@ -31,6 +31,7 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { SplitText } from "gsap/SplitText";
 import { TextPlugin } from "gsap/TextPlugin";
+import { usePopup } from "../components/PopupContext";
 
 gsap.registerPlugin(
   useGSAP,
@@ -91,6 +92,7 @@ const faqs: Faq[] = [
 
 const ToggleFAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { openPopup } = usePopup();
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -134,6 +136,7 @@ const ToggleFAQ = () => {
                       }`}
                     />
                   </button>
+
                   {openIndex === index && (
                     <div
                       id={`faq-answer-${index}`}
@@ -145,6 +148,16 @@ const ToggleFAQ = () => {
                 </div>
               </div>
             ))}
+
+            {/* ✅ Add the button below the FAQ list */}
+            <div className="flex justify-center pt-6">
+              <button
+                onClick={openPopup}
+                className="inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+              >
+                Start Trading Now
+              </button>
+            </div>
           </div>
         </div>
       </div>

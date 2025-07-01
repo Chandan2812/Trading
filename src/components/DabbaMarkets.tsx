@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { usePopup } from "../components/PopupContext";
 
 const markets = [
   {
@@ -44,6 +45,8 @@ const DabbaMarkets: React.FC = () => {
       once: false, // animate only once
     });
   }, []);
+  const { openPopup } = usePopup();
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
 
@@ -177,6 +180,16 @@ const DabbaMarkets: React.FC = () => {
             <FaArrowRight size={20} className="text-white" />
           </button>
         </div>
+      </div>
+      {/* ✅ CTA Button Below All Market Cards */}
+      <div className="mt-12 flex justify-center">
+        <button
+          onClick={openPopup}
+          data-aos="fade-up"
+          className="inline-block bg-[var(--primary-color)] text-black hover:shadow-[0_0_25px_var(--primary-color)] font-semibold px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-300"
+        >
+          Start Trading Now
+        </button>
       </div>
     </div>
   );
