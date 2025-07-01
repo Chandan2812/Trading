@@ -129,7 +129,7 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-bold mb-4">Products</h3>
           <ul className="space-y-3 text-sm text-white">
-            {["Stocks", "Commodity", "Indexes"].map((market, idx) => {
+            {["Stocks", "Commodity", "Indexes", "Forex"].map((market, idx) => {
               const formatted = market
                 .toLowerCase()
                 .replace(/[^a-z0-9\s]/gi, "") // remove special characters

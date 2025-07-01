@@ -30,6 +30,8 @@ import Mcx from "./pages/Markets/Mcx";
 import Crypto from "./pages/Markets/Crypto";
 import USStocks from "./pages/Markets/UsStocks";
 import Forex from "./pages/Markets/Forex";
+import Forex2 from "./pages/footerPage/products/Forex";
+import Comex from "./pages/footerPage/products/Comex";
 import ComexInfo from "./pages/Markets/Comex";
 import CFDInstrument from "./pages/footerPage/products/CFDInstrument";
 import Commodity from "./pages/footerPage/products/Commodity";
@@ -60,6 +62,8 @@ function App() {
           <Route path="/products/stocks" element={<Stocks />} />
           <Route path="/products/commodity" element={<Commodity />} />
           <Route path="/products/indexes" element={<Indexes />} />
+          <Route path="/products/Forex" element={<Forex2 />} />
+          <Route path="/products/Comex" element={<Comex />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/knowledge/trading" element={<Trading />} />
           <Route path="/knowledge/equity-trading" element={<EquityTrading />} />
