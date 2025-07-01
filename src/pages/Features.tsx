@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import bgImage from "../assets/Features Home Bg.jpg";
 import WhyChooseCFT from "../components/featurePageComponent/Why";
 import FeaturesSplit from "../components/featurePageComponent/CFTFeature";
-import { MergedDashboardTable } from "../components/featurePageComponent/DashboardTables";
+// import { MergedDashboardTable } from "../components/featurePageComponent/DashboardTables";
 import { usePopup } from "../components/PopupContext";
 
 const charVariants = {
@@ -244,7 +244,7 @@ export default function Feature() {
         </section>
 
         <SwipeGallery />
-        <MergedDashboardTable />
+        {/* <MergedDashboardTable /> */}
         <WhyChooseCFT />
         <FeaturesSplit />
 

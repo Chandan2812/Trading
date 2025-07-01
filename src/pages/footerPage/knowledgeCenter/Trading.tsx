@@ -8,7 +8,7 @@ import {
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
-import cfdImage from "../../../assets/New-Project-4.webp";
+import cfdImage from "../../../assets/Trading e.png";
 
 function Trading() {
   const features = [
