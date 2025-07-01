@@ -2,7 +2,7 @@ import { LineChart, Globe, HandCoins, ShieldCheck, Timer } from "lucide-react";
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
-import cfdImage from "../../../assets/Indexes.webp";
+import cfdImage from "../../../assets/index.png";
 
 function Indexes() {
   const features = [

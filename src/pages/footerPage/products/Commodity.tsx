@@ -6,7 +6,7 @@ import {
   FaDollarSign,
 } from "react-icons/fa";
 
-import cfdImage from "../../../assets/New-Project-10.webp";
+import cfdImage from "../../../assets/MCX.png";
 import Navbar from "../../../components/Nav";
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";

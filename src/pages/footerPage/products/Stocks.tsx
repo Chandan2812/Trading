@@ -2,7 +2,7 @@ import { LuGlobe, LuLayoutDashboard, LuHeadphones } from "react-icons/lu";
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
-import cfdImage from "../../../assets/New-Project-9.webp";
+import cfdImage from "../../../assets/stocks.png";
 import { LucideBarChart2, LucideLineChart } from "lucide-react";
 
 function Stocks() {
