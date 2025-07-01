@@ -1,7 +1,7 @@
 import image1 from "../assets/S1.jpg";
 import image2 from "../assets/S2.jpg";
 import image3 from "../assets/S3.jpg";
-import image4 from "../assets/S4.jpg";
+import image4 from "../assets/S4.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

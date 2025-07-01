@@ -10,7 +10,7 @@ import {
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
-import cfdImage from "../../../assets/New-Project-5.webp";
+import cfdImage from "../../../assets/MCX.png";
 
 function CommodityTrading() {
   const features = [
@@ -28,7 +28,7 @@ function CommodityTrading() {
     },
     {
       icon: <BadgeCheck className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Zero Brokerage",
+      text: "Zero Commission",
     },
     {
       icon: <Radar className="text-[var(--primary-color)] w-8 h-8" />,
