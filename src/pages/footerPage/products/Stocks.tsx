@@ -1,4 +1,4 @@
-import { LuGlobe, LuLayoutDashboard, LuHeadphones } from "react-icons/lu";
+import { LuLayoutDashboard, LuHeadphones } from "react-icons/lu";
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
@@ -8,30 +8,33 @@ import { LucideBarChart2, LucideLineChart } from "lucide-react";
 function Stocks() {
   const features = [
     {
-      icon: <LuGlobe className="text-[var(--primary-color)] text-3xl" />,
-      text: "Global market access",
-    },
-    {
       icon: (
         <LucideBarChart2 className="text-[var(--primary-color)] text-3xl" />
       ),
-      text: "Comprehensive stock selection",
+      title: "Trade 500+ NSE Stocks with Zero Commission",
+      description:
+        "Access India’s top-listed companies with no hidden charges.",
     },
     {
       icon: (
         <LucideLineChart className="text-[var(--primary-color)] text-3xl" />
       ),
-      text: "Real-time market insights",
+      title: "Real-Time Market Moves, Right When They Happen",
+      description: "Instant, actionable insights with live, accurate data.",
     },
     {
       icon: (
         <LuLayoutDashboard className="text-[var(--primary-color)] text-3xl" />
       ),
-      text: "User-friendly interface",
+      title: "Fast, Clean, and Built for All Devices",
+      description:
+        "Trade anytime, anywhere with a platform designed for speed.",
     },
     {
       icon: <LuHeadphones className="text-[var(--primary-color)] text-3xl" />,
-      text: "Expert support",
+      title: "Backed by Experts, Driven by You",
+      description:
+        "From first trade to daily moves, real human support is here for you.",
     },
   ];
 
@@ -43,7 +46,7 @@ function Stocks() {
 
       <PageBanner
         title="Stocks"
-        subtitle="Invest in leading global companies through Close Friends Traders. Trade stocks on various global exchanges and benefit from market trends."
+        subtitle="Own a Piece of the Market - Start Trading Stocks with Confidence"
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -56,11 +59,10 @@ function Stocks() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
+              Top Perks of Trading Stocks with <br />
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
-              Offers Value
             </h2>
 
             <ul className="space-y-6">
@@ -70,7 +72,12 @@ function Stocks() {
                   className="flex items-start gap-4 text-black dark:text-gray-300"
                 >
                   {feature.icon}
-                  <p className="text-base">{feature.text}</p>
+                  <div>
+                    <p className="text-base font-semibold">{feature.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {feature.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>

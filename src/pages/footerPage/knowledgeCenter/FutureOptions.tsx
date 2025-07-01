@@ -9,7 +9,7 @@ import {
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
-import cfdImage from "../../../assets/002-1.webp";
+import cfdImage from "../../../assets/option & fu.png";
 
 function FutureOptions() {
   const features = [
