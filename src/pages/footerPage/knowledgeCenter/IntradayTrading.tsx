@@ -9,35 +9,35 @@ import {
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
-import cfdImage from "../../../assets/New-Project-7.webp";
+import cfdImage from "../../../assets/Intraday Trading.png";
 
 function IntradayTrading() {
   const features = [
     {
       icon: <Radar className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Market Data",
+      text: "Over 60% of daily trades on Indian exchanges are intraday positions",
     },
     {
       icon: <Percent className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Zero Brokerage Costs",
+      text: "Intraday traders benefit from lower margin requirements and quick exposure",
     },
     {
       icon: (
         <MousePointerClick className="text-[var(--primary-color)] w-8 h-8" />
       ),
-      text: "Quick Order Execution",
+      text: "Nifty and Bank Nifty offer high liquidity, ideal for intraday strategies",
     },
     {
       icon: <BarChartBig className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Intraday Analytics",
+      text: "Zero brokerage on intraday trades with Close Friends Traders",
     },
     {
       icon: <GraduationCap className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Educational Support",
+      text: "500x leverage available on select intraday instruments",
     },
     {
       icon: <Scale className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "500x Leverage",
+      text: "Traders using real-time data and analytics see higher precision and faster exits",
     },
   ];
 
@@ -49,7 +49,7 @@ function IntradayTrading() {
 
       <PageBanner
         title="Intraday Trading"
-        subtitle="Capture short-term market movements effortlessly with Close Friends Traders’s Intraday Trading! Take advantage of price fluctuations within a single trading day. Maximize opportunities and profits"
+        subtitle="Capture intraday opportunities with speed and precision."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -62,11 +62,7 @@ function IntradayTrading() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
-              <span className="text-[var(--primary-color)]">
-                Close Friends Traders
-              </span>{" "}
-              Offers Value
+              Intraday Trading Insights
             </h2>
 
             <ul className="space-y-6">

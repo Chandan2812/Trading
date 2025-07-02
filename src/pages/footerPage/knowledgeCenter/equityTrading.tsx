@@ -2,7 +2,6 @@ import {
   LayoutGrid, // For Diverse Stock Selection
   Activity, // For Real-time Market Insights
   MonitorSmartphone, // For User-friendly Interface
-  ShieldCheck, // For Risk Management Tools
   Globe2, // For Global Market Research
 } from "lucide-react";
 import PageBanner from "../../../components/BannerImage";
@@ -14,25 +13,28 @@ function EquityTrading() {
   const features = [
     {
       icon: <LayoutGrid className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Diverse Stock Selection",
+      title: "Access 500+ Stocks",
+      description:
+        "Choose from a diverse selection of stocks across global markets.",
     },
     {
       icon: <Activity className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Market Insights",
+      title: "Real-Time Market Data Updated Every Second",
+      description:
+        "Gain confidence with live quotes, instant news, and expert analysis.",
     },
     {
       icon: (
         <MonitorSmartphone className="text-[var(--primary-color)] w-8 h-8" />
       ),
-      text: "User-friendly Interface",
-    },
-    {
-      icon: <ShieldCheck className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Risk Management Tools",
+      title: "User-Friendly Platform Trusted by 50,000+ Traders",
+      description: "Trade with ease, whether you’re a beginner or expert.",
     },
     {
       icon: <Globe2 className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Global Market Research",
+      title: "Global Research from 50+ Financial Experts",
+      description:
+        "Stay ahead with insights and trends provided by top analysts worldwide.",
     },
   ];
 
@@ -44,7 +46,7 @@ function EquityTrading() {
 
       <PageBanner
         title="Equity Trading"
-        subtitle="Build wealth with ease through stock investing! With Close Friends Traders’s Equity Trading platform, you can buy and sell shares in top global companies."
+        subtitle="Access top global stocks 24/7 and trade with unstoppable power!"
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -57,11 +59,10 @@ function EquityTrading() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
+              Top Perks of Equity Trading with <br />
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
-              Offers Value
             </h2>
 
             <ul className="space-y-6">
@@ -71,7 +72,12 @@ function EquityTrading() {
                   className="flex items-start gap-4 text-black dark:text-gray-300"
                 >
                   {feature.icon}
-                  <p className="text-base">{feature.text}</p>
+                  <div>
+                    <p className="text-base font-semibold">{feature.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {feature.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>

@@ -1,7 +1,6 @@
 import {
   FaChartLine,
   FaPercentage,
-  FaShieldAlt,
   FaClock,
   FaDollarSign,
 } from "react-icons/fa";
@@ -15,23 +14,26 @@ function Commodity() {
   const features = [
     {
       icon: <FaChartLine className="text-[var(--primary-color)] text-3xl" />,
-      text: "Wide commodity range",
+      title: "Extensive Access to 30+ Commodity Markets",
+      description:
+        "Tap into global commodity markets all from one seamless platform.",
     },
     {
       icon: <FaDollarSign className="text-[var(--primary-color)] text-3xl" />,
-      text: "Competitive prices",
+      title: "Tight Spreads & Transparent Pricing",
+      description:
+        "Get the most out of every trade with competitive rates & zero hidden costs.",
     },
     {
       icon: <FaPercentage className="text-[var(--primary-color)] text-3xl" />,
-      text: "Real-time market data",
-    },
-    {
-      icon: <FaShieldAlt className="text-[var(--primary-color)] text-3xl" />,
-      text: "Secure transactions",
+      title: "Real-Time Data & Advanced Charting",
+      description: "Trade confidently with real-time data and expert tools.",
     },
     {
       icon: <FaClock className="text-[var(--primary-color)] text-3xl" />,
-      text: "Flexible trading hours",
+      title: "Flexible, Around-the-Clock Trading",
+      description:
+        "Access key markets 24/7, giving you the freedom to trade anytime.",
     },
   ];
 
@@ -43,7 +45,7 @@ function Commodity() {
 
       <PageBanner
         title="Commodity"
-        subtitle="Trade precious metals, energy resources, and agricultural products to diversify your portfolio. We offer easy commodity trading."
+        subtitle="Tap into the world’s most valuable resources, trade commodities the smart way."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -56,7 +58,7 @@ function Commodity() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              Why{" "}
+              Top Perks of Trading Commodity with <br />
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
@@ -69,7 +71,12 @@ function Commodity() {
                   className="flex items-start gap-4 text-black dark:text-gray-300"
                 >
                   {feature.icon}
-                  <p className="text-base">{feature.text}</p>
+                  <div>
+                    <p className="text-base font-semibold">{feature.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {feature.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>

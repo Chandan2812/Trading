@@ -5,7 +5,6 @@ import {
   BadgeCheck, // For Zero Brokerage
   Radar, // For Real-time Market Insights
   LockKeyhole, // For Secure Commodity Transactions
-  CalendarClock, // For Flexible Trading Hours
 } from "lucide-react";
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
@@ -16,31 +15,27 @@ function CommodityTrading() {
   const features = [
     {
       icon: <Boxes className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Wide Commodity Range",
+      text: "55% of active traders report stronger returns within two years.",
     },
     {
       icon: <TrendingUp className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Competitive Commodity Prices",
+      text: "The global commodity market saw $100 billion+ in profits in 2023",
     },
     {
       icon: <LineChart className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "500x Margin Facility",
+      text: "Gold and crude oil have averaged 12–15% annual gains over the last five years.",
     },
     {
       icon: <BadgeCheck className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Zero Commission",
+      text: "30% of new traders begin with commodities to diversify faster.",
     },
     {
       icon: <Radar className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Market Insights",
+      text: "Top commodity traders often achieve 2–3× higher margins than equity-only peers.",
     },
     {
       icon: <LockKeyhole className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Secure Commodity Transactions",
-    },
-    {
-      icon: <CalendarClock className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Flexible Trading Hours",
+      text: "Access 5 major global markets 24/7 for nonstop trading opportunities.",
     },
   ];
 
@@ -52,7 +47,7 @@ function CommodityTrading() {
 
       <PageBanner
         title="Commodity Trading"
-        subtitle="Diversify your portfolio by engaging in Commodity Trading on Close Friends Traders. Trade in precious metals, energy resources, and agricultural products."
+        subtitle="Trade metals, energy, and agri-markets worldwide, all in one place."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -65,11 +60,7 @@ function CommodityTrading() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
-              <span className="text-[var(--primary-color)]">
-                Close Friends Traders
-              </span>{" "}
-              Offers Value
+              Commodity Trading Insights
             </h2>
 
             <ul className="space-y-6">

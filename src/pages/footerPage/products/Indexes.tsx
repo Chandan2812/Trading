@@ -1,4 +1,4 @@
-import { LineChart, Globe, HandCoins, ShieldCheck, Timer } from "lucide-react";
+import { LineChart, Globe, ShieldCheck, Timer } from "lucide-react";
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
@@ -7,24 +7,27 @@ import cfdImage from "../../../assets/index.png";
 function Indexes() {
   const features = [
     {
-      icon: <LineChart className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Global index access",
-    },
-    {
       icon: <Globe className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Diversification opportunities",
-    },
-    {
-      icon: <HandCoins className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Low transaction costs",
+      title: "Direct Access to 20+ Global Markets",
+      description:
+        "Invest in major indices from multiple countries on a single platform.",
     },
     {
       icon: <ShieldCheck className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Advanced trading tools",
+      title: "Diversify with Ease",
+      description:
+        "Spread risk and access broader markets without picking stocks.",
     },
     {
       icon: <Timer className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time index tracking",
+      title: "Real-Time Market Data",
+      description: "Stay ahead with live updates and fast execution.",
+    },
+    {
+      icon: <LineChart className="text-[var(--primary-color)] w-8 h-8" />,
+      title: "Effortless Portfolio Diversification",
+      description:
+        "Gain broad market exposure to manage risk and seize trends.",
     },
   ];
 
@@ -36,7 +39,7 @@ function Indexes() {
 
       <PageBanner
         title="Indexes"
-        subtitle="Invest in the broader market movement with our Index trading. Trade major indices globally and take benefit from market trends."
+        subtitle="Capture the pulse of the market by trading major indices with ease and confidence."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -49,11 +52,10 @@ function Indexes() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
+              Top Perks of Trading Stocks with <br />
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
-              Offers Value
             </h2>
 
             <ul className="space-y-6">
@@ -63,7 +65,12 @@ function Indexes() {
                   className="flex items-start gap-4 text-black dark:text-gray-300"
                 >
                   {feature.icon}
-                  <p className="text-base">{feature.text}</p>
+                  <div>
+                    <p className="text-base font-semibold">{feature.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {feature.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>

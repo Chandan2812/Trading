@@ -3,35 +3,36 @@ import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
 import cfdImage from "../../../assets/forex.png";
-import { LucideBarChart2, LucideLineChart } from "lucide-react";
+import { LucideBarChart2 } from "lucide-react";
 
 function Forex() {
   const features = [
     {
       icon: <LuGlobe className="text-[var(--primary-color)] text-3xl" />,
-      text: "Global market access",
+      title: "Access 24+ Global Currency Pairs",
+      description:
+        "Trade popular majors, minors, and exotic pairs all from a single platform.",
     },
     {
       icon: (
         <LucideBarChart2 className="text-[var(--primary-color)] text-3xl" />
       ),
-      text: "Comprehensive stock selection",
+      title: "Competitive Spreads & Low Costs",
+      description:
+        "Benefit from tight spreads and minimal fees to boost your returns.",
     },
     {
-      icon: (
-        <LucideLineChart className="text-[var(--primary-color)] text-3xl" />
-      ),
-      text: "Real-time market insights",
+      icon: <LuHeadphones className="text-[var(--primary-color)] text-3xl" />,
+      title: "Dedicated Expert Support",
+      description:
+        "Get professional assistance whenever you need it, we’re here to help.",
     },
     {
       icon: (
         <LuLayoutDashboard className="text-[var(--primary-color)] text-3xl" />
       ),
-      text: "User-friendly interface",
-    },
-    {
-      icon: <LuHeadphones className="text-[var(--primary-color)] text-3xl" />,
-      text: "Expert support",
+      title: "Leverage Up to 500x",
+      description: "Boost trading power while managing risk smartly.",
     },
   ];
 
@@ -43,7 +44,7 @@ function Forex() {
 
       <PageBanner
         title="Forex"
-        subtitle="Invest in leading global companies through Close Friends Traders. Trade stocks on various global exchanges and benefit from market trends."
+        subtitle="Trade currencies across the globe quickly with complete reliability."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -56,11 +57,10 @@ function Forex() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
+              Top Perks of Forex Trading with <br />
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
-              Offers Value
             </h2>
 
             <ul className="space-y-6">
@@ -70,7 +70,12 @@ function Forex() {
                   className="flex items-start gap-4 text-black dark:text-gray-300"
                 >
                   {feature.icon}
-                  <p className="text-base">{feature.text}</p>
+                  <div>
+                    <p className="text-base font-semibold">{feature.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {feature.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>

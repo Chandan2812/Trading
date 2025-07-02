@@ -3,7 +3,7 @@ import {
   BadgeIndianRupee, // Financial symbol for brokerage & AMC
   Scaling, // Better icon for "Leverage"
   Banknote, // Instant settlement depiction
-  Clock, // Clean icon for 24/7 timing
+  // Clean icon for 24/7 timing
 } from "lucide-react";
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
@@ -14,25 +14,27 @@ function Trading() {
   const features = [
     {
       icon: <BarChart3 className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Zero Brokerage Fees",
+      title: "Zero Commission",
+      description:
+        "Keep more of your profits with no commission on key instruments.",
     },
     {
       icon: (
         <BadgeIndianRupee className="text-[var(--primary-color)] w-8 h-8" />
       ),
-      text: "No Annual Maintenance Charges (AMC)",
+      title: "No Hidden or Annual Maintenance Charges",
+      description: "Transparent pricing with zero surprises.",
     },
     {
       icon: <Scaling className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Enjoy up to 500x Leverage",
+      title: "Leverage Up to 500x for Maximum Market Exposure",
+      description:
+        "Amplify your trading power while managing risk effectively.",
     },
     {
       icon: <Banknote className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Instant Account Settlement",
-    },
-    {
-      icon: <Clock className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "24/7 Deposit and Withdrawal Support",
+      title: "Instant Account Settlement and Fund Transfers",
+      description: "Experience lightning-fast processing for smooth trading.",
     },
   ];
 
@@ -44,7 +46,7 @@ function Trading() {
 
       <PageBanner
         title="Trading"
-        subtitle="Close Friends Traders offers a comprehensive platform for all your trading needs. From equities to commodities, explore the diverse range of financial instruments."
+        subtitle="Your all-in-one platform for seamless and flexible trading across markets."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -57,11 +59,10 @@ function Trading() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
+              Top Perks of Trading with <br />
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
-              Offers Value
             </h2>
 
             <ul className="space-y-6">
@@ -71,7 +72,12 @@ function Trading() {
                   className="flex items-start gap-4 text-black dark:text-gray-300"
                 >
                   {feature.icon}
-                  <p className="text-base">{feature.text}</p>
+                  <div>
+                    <p className="text-base font-semibold">{feature.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {feature.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>

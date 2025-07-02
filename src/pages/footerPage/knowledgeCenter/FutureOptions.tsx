@@ -1,10 +1,10 @@
 import {
   Layers3, // For Extensive Derivatives Selection
   ShieldHalf, // For Risk Mitigation Strategies
-  BarChart2, // For Real-time Options Analytics
+  // For Real-time Options Analytics
   Headset, // For Expert Derivatives Support
   TrendingUp, // For 500x Leverage Opportunities
-  Ban, // For Negative Balance Protection
+  // For Negative Balance Protection
 } from "lucide-react";
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
@@ -15,27 +15,27 @@ function FutureOptions() {
   const features = [
     {
       icon: <Layers3 className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Extensive Derivatives Selection",
+      title: "Trade 100+ Futures & Options Contracts",
+      description:
+        "Access a wide range of equity, index, and commodity derivatives.",
     },
     {
       icon: <ShieldHalf className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Risk Mitigation Strategies",
-    },
-    {
-      icon: <BarChart2 className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Options Analytics",
-    },
-    {
-      icon: <Headset className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Expert Derivatives Support",
+      title: "Built-In Risk Management Tools",
+      description:
+        "Use stop-loss, hedging, and strategy builders to protect your positions.",
     },
     {
       icon: <TrendingUp className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "500x Leverage Opportunities",
+      title: "Up to 500x Leverage on Select Contracts",
+      description:
+        "Amplify your exposure with smart leverage on select instruments.",
     },
     {
-      icon: <Ban className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Negative Balance Protection",
+      icon: <Headset className="text-[var(--primary-color)] w-8 h-8" />,
+      title: "Expert Derivatives Support",
+      description:
+        "Get personalized help from specialists who understand complex trades.",
     },
   ];
 
@@ -47,7 +47,7 @@ function FutureOptions() {
 
       <PageBanner
         title="Futures & Options"
-        subtitle="Trade futures and options confidently with Close Friends Traders! Manage risk and maximize returns by trading in the derivatives market effortlessly."
+        subtitle="Master the derivatives market with speed and confidence on Close Friends Traders."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -60,11 +60,10 @@ function FutureOptions() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
+              Top Perks of F&O Trading with <br />
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
-              Offers Value
             </h2>
 
             <ul className="space-y-6">
@@ -74,7 +73,12 @@ function FutureOptions() {
                   className="flex items-start gap-4 text-black dark:text-gray-300"
                 >
                   {feature.icon}
-                  <p className="text-base">{feature.text}</p>
+                  <div>
+                    <p className="text-base font-semibold">{feature.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {feature.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>

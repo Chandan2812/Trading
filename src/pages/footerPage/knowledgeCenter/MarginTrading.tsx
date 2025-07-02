@@ -9,35 +9,35 @@ import {
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
-import cfdImage from "../../../assets/New-Project-6.webp";
+import cfdImage from "../../../assets/Intraday Trading.png";
 
 function MarginTrading() {
   const features = [
     {
       icon: <Scale className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "High Leverage Ratios",
+      text: "Margin trading volumes in India crossed ₹80,000 crore by October 2024.",
     },
     {
       icon: (
         <SlidersHorizontal className="text-[var(--primary-color)] w-8 h-8" />
       ),
-      text: "Flexible Margin Requirements",
+      text: "Margin trading grew at 70% CAGR since FY 2022.",
     },
     {
       icon: <LifeBuoy className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Risk Management Tools",
+      text: "Retail margin funding surged 90% to ₹54,537 crore by January 2024.",
     },
     {
       icon: <Gauge className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Real-time Margin Monitoring",
+      text: "Traders can access up to 500x leverage on select instruments.",
     },
     {
       icon: <BookOpenCheck className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Educational Resources",
+      text: "Negative balance protection limits losses to deposited capital.",
     },
     {
       icon: <ShieldX className="text-[var(--primary-color)] w-8 h-8" />,
-      text: "Negative Balance Protection",
+      text: "Real-time margin tracking helps avoid forced liquidation.",
     },
   ];
 
@@ -49,7 +49,7 @@ function MarginTrading() {
 
       <PageBanner
         title="Margin Trading"
-        subtitle="Maximize your market exposure with Close Friends Traders’s Margin Trading! Borrow up to 500x funds to increase your trading capacity"
+        subtitle="Amplify your reach with up to 500x leverage. Bigger trades, smarter execution."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -62,11 +62,7 @@ function MarginTrading() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
-              <span className="text-[var(--primary-color)]">
-                Close Friends Traders
-              </span>{" "}
-              Offers Value
+              Margin Trading Insights
             </h2>
 
             <ul className="space-y-6">

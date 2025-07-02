@@ -9,29 +9,38 @@ function Comex() {
   const features = [
     {
       icon: <LuGlobe className="text-[var(--primary-color)] text-3xl" />,
-      text: "Global market access",
+      title: "Direct Access to Global Metal Markets",
+      description:
+        "Trade gold, silver, and other precious metals listed on COMEX in real time.",
     },
     {
       icon: (
         <LucideBarChart2 className="text-[var(--primary-color)] text-3xl" />
       ),
-      text: "Comprehensive stock selection",
+      title: "Transparent Pricing",
+      description: "Get the benefit of globally recognized benchmark rates.",
     },
     {
       icon: (
         <LucideLineChart className="text-[var(--primary-color)] text-3xl" />
       ),
-      text: "Real-time market insights",
+      title: "Hedge Against Inflation",
+      description:
+        "Metals like gold serve as a reliable store of value during market volatility.",
     },
     {
       icon: (
         <LuLayoutDashboard className="text-[var(--primary-color)] text-3xl" />
       ),
-      text: "User-friendly interface",
+      title: "High Liquidity & Tight Spreads",
+      description:
+        "Execute large-volume trades easily with minimal price difference.",
     },
     {
       icon: <LuHeadphones className="text-[var(--primary-color)] text-3xl" />,
-      text: "Expert support",
+      title: "Expert Support",
+      description:
+        "Get help from professionals who understand metal markets inside and out.",
     },
   ];
 
@@ -43,7 +52,7 @@ function Comex() {
 
       <PageBanner
         title="Comex"
-        subtitle="Invest in leading global companies through Close Friends Traders. Trade stocks on various global exchanges and benefit from market trends."
+        subtitle="Trade metals like gold and silver with speed, accuracy, and global pricing advantage."
       />
 
       <section className="bg-white dark:bg-[--bg-color1] py-16 transition-colors duration-300 px-4 md:px-8 lg:px-32 flex-grow">
@@ -56,11 +65,10 @@ function Comex() {
 
           <div>
             <h2 className="text-3xl font-bold mb-6 text-black dark:text-white">
-              How{" "}
+              Top Perks of Trading COMEX with <br />
               <span className="text-[var(--primary-color)]">
                 Close Friends Traders
               </span>{" "}
-              Offers Value
             </h2>
 
             <ul className="space-y-6">
@@ -70,7 +78,12 @@ function Comex() {
                   className="flex items-start gap-4 text-black dark:text-gray-300"
                 >
                   {feature.icon}
-                  <p className="text-base">{feature.text}</p>
+                  <div>
+                    <p className="text-base font-semibold">{feature.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                      {feature.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>
