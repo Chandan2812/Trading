@@ -7,7 +7,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Emailer from "./pages/Emailer";
 import NewsletterForm from "./pages/Newsletter";
-import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+// import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import AdminPage from "./admin/AdminPage";
 import Blog2 from "./pages/Blog2";
 import Blog2Details from "./pages/Blog2Details";
@@ -84,11 +84,11 @@ function App() {
             element={<IntradayTrading />}
           />
         </Routes>
-        <div className="hidden md:block">
+        <div>
           <WhatsAppButton />
         </div>
         {/* Bottom Buttons */}
-        <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
+        {/* <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
           <div className="flex w-full">
             <a
               href="https://wa.me/+918368284948"
@@ -105,7 +105,7 @@ function App() {
               <FaPhoneAlt />
             </a>
           </div>
-        </div>
+        </div> */}
         <ZohoSalesIQ />
         <OfferPopup />
       </>
