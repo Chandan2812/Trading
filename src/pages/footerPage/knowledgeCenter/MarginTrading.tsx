@@ -9,7 +9,7 @@ import {
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
-import cfdImage from "../../../assets/Intraday Trading.png";
+import cfdImage from "../../../assets/Margin Trading.png";
 
 function MarginTrading() {
   const features = [
