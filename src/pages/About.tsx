@@ -127,6 +127,7 @@ const AboutUsSection = () => {
             Start Trading Now
           </button>
         </div>
+
         {/* Right: Image with AOS animation */}
         <div
           className="w-full lg:w-1/2"
