@@ -80,6 +80,9 @@ const AboutUsSection = () => {
 
   return (
     <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white">
+      <title>hello about</title>
+      <meta name="description" content="All about BigWig Media" />
+
       <div className="mb-20">
         <Navbar />
       </div>
