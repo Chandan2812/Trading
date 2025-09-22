@@ -4,6 +4,7 @@ import Logo from "../assets/logo-01.svg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 export default function LoginPage() {
@@ -311,6 +312,7 @@ export default function LoginPage() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

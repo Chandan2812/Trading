@@ -4,6 +4,7 @@ import Logo from "../assets/logo-01.svg";
 import Button from "../components/Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Navbar from "../components/Nav";
+import Footer from "../components/Footer";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const countries = [
@@ -263,8 +264,8 @@ export default function SignUpPage() {
           <source src="/signup.mp4" type="video/mp4" />
         </video>
 
-        <div className="z-20 w-full max-w-xl p-8 rounded-xl bg-white/70 dark:bg-black/30 backdrop-blur border border-black/10 dark:border-white/10 text-black dark:text-white transition-colors">
-          <div className="flex flex-col items-center mb-6 mt-16">
+        <div className="z-20 w-full max-w-xl my-10 mt-28 p-8 rounded-xl bg-white/70 dark:bg-black/30 backdrop-blur border border-black/10 dark:border-white/10 text-black dark:text-white transition-colors">
+          <div className="flex flex-col items-center mb-6">
             <a href="/">
               <img
                 src={Logo}
@@ -444,6 +445,7 @@ export default function SignUpPage() {
           }
         `}</style>
       </div>
+      <Footer />
     </div>
   );
 }
