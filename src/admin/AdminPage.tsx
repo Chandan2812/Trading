@@ -128,8 +128,9 @@ export default function AdminPage() {
   ];
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-    if (user.email !== "admin@gmail.com") {
+    const adminToken = localStorage.getItem("adminToken");
+
+    if (!adminToken) {
       navigate("/login");
     }
   }, []);

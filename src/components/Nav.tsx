@@ -155,26 +155,28 @@ const Navbar = () => {
                 ></div>
 
                 {/* Desktop Login Dropdown */}
-                {/* <div
+                <div
                   className="relative"
-                  onMouseEnter={() => setShowLoginDropdown(true)}
-                  onMouseLeave={() => {
-                    setShowLoginDropdown(false);
-                    setShowUserSubMenu(false);
-                    setShowBrokerSubMenu(false);
-                  }}
+                  // onMouseEnter={() => setShowLoginDropdown(true)}
+                  // onMouseLeave={() => {
+                  //   setShowLoginDropdown(false);
+                  //   setShowUserSubMenu(false);
+                  //   setShowBrokerSubMenu(false);
+                  // }}
                 >
-                  <button
-                    className={`text-sm border py-2 px-4 rounded-full shadow-[0_0_10px_var(--primary-color)] transition ${
-                      darkMode
-                        ? "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-white hover:text-black"
-                        : "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-black hover:text-white"
-                    }`}
-                  >
-                    Login
-                  </button>
+                  <a href="/login">
+                    <button
+                      className={`text-sm border py-2 px-4 rounded-full shadow-[0_0_10px_var(--primary-color)] transition ${
+                        darkMode
+                          ? "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-white hover:text-black"
+                          : "border-[var(--primary-color)] text-[var(--primary-color)] hover:bg-black hover:text-white"
+                      }`}
+                    >
+                      Login
+                    </button>
+                  </a>
 
-                  {showLoginDropdown && (
+                  {/* {showLoginDropdown && (
                     <div className="absolute py-5 right-0 w-44 bg-white dark:bg-black shadow-lg rounded-md text-left z-50">
                       <div
                         className="px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer relative"
@@ -223,8 +225,8 @@ const Navbar = () => {
                         )}
                       </div>
                     </div>
-                  )}
-                </div> */}
+                  )} */}
+                </div>
                 <button
                   onClick={openPopup}
                   className={`text-sm border py-2 px-4 rounded-full shadow-[0_0_10px_var(--primary-color)] transition ${
@@ -243,7 +245,7 @@ const Navbar = () => {
         {/* Mobile Dropdown */}
         {isOpen && (
           <div
-            className={`md:hidden fixed inset-0 z-[9999] flex flex-col pl-2 pr-5 pb-6 pt-3 mt-16 ${
+            className={`md:hidden fixed inset-0 z-[9999] flex flex-col pl-2 pr-5 pb-6 pt-3 mt-0 ${
               darkMode ? "bg-black text-white" : "bg-white text-black"
             }`}
           >
@@ -276,15 +278,14 @@ const Navbar = () => {
               </button>
 
               {/* Mobile Login Dropdown */}
-              {/* <div className="mt-4 ">
-                <button
-                  onClick={() => setMobileLoginExpanded(!mobileLoginExpanded)}
-                  className="w-fit text-left border py-2 px-4 rounded-md"
-                >
-                  Login ▾
-                </button>
+              <div className="mt-4 ">
+                <a href="/login">
+                  <button className="w-fit text-left border py-2 px-4 rounded-md">
+                    Login
+                  </button>
+                </a>
 
-                {mobileLoginExpanded && (
+                {/* {mobileLoginExpanded && (
                   <div className="pl-4 space-y-2">
                     <button
                       onClick={() => setMobileUserExpanded(!mobileUserExpanded)}
@@ -328,8 +329,8 @@ const Navbar = () => {
                       </div>
                     )}
                   </div>
-                )}
-              </div> */}
+                )} */}
+              </div>
             </div>
           </div>
         )}
@@ -338,7 +339,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[99] right-[100px] top-[24px] translate-x-0 md:right-[120px] md:top-[24px] lg:right-[220px] lg:top-[23px] lg:-translate-x-1/2"
+          className="fixed z-[99] right-[100px] top-[24px] translate-x-0 md:right-[160px] md:top-[24px] lg:right-[300px] lg:top-[23px] lg:-translate-x-1/2"
         />
       )}
     </>

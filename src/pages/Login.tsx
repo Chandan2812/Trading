@@ -1,155 +1,316 @@
 import { useEffect, useState } from "react";
+import Button from "../components/Button";
+import Logo from "../assets/logo-01.svg";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeOff } from "lucide-react";
-import logo from "../assets/logo-01.svg";
-import sideImage from "../assets/cft-login-page-3.jpg";
-import { FiMoon, FiSun } from "react-icons/fi";
+import Nav from "../components/Nav";
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
-const Login = () => {
+export default function LoginPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [errorPopup, setErrorPopup] = useState(false);
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark"
-      ? true
-      : localStorage.getItem("theme") === "light"
-      ? false
-      : true; // Default to true if not set
-  });
+  const [error, setError] = useState("");
+  const [step, setStep] = useState<"login" | "reset-request" | "reset-verify">(
+    "login"
+  );
 
-  const navigate = useNavigate();
+  const [resetOtp, setResetOtp] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/dashboard");
     }
-  }, [darkMode]);
+  }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSignIn = async () => {
+    setError("");
+    setLoading(true);
+
+    if (!email || !password) {
+      setLoading(false);
+      return setError("Please fill in all fields.");
+    }
 
     if (email === "admin@gmail.com" && password === "admin@2025") {
-      localStorage.setItem("user", JSON.stringify({ email }));
-      navigate("/AdminPage"); // No reload
-    } else {
-      setErrorPopup(true);
+      localStorage.setItem("adminToken", "admin-token");
+      localStorage.setItem(
+        "admin",
+        JSON.stringify({ email: "admin@gmail.com", role: "admin" })
+      );
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      navigate("/adminPage");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const res = await fetch(`${baseURL}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+      console.log(data.user);
+
+      if (!res.ok) {
+        setLoading(false);
+        return setError(data.message || "Login failed.");
+      }
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const requestPasswordReset = async () => {
+    setError("");
+    setLoading(true);
+    try {
+      const res = await fetch(`${baseURL}/api/auth/request-reset`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) return setError(data.message || "Failed to send OTP");
+
+      alert("OTP sent to email and WhatsApp");
+      setStep("reset-verify");
+    } catch (err) {
+      setError("Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const verifyAndResetPassword = async () => {
+    setError("");
+    setLoading(true);
+    try {
+      const res = await fetch(`${baseURL}/api/auth/verify-reset-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, otp: resetOtp, newPassword }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) return setError(data.message || "Reset failed");
+
+      alert("Password reset successful. Please login.");
+      setStep("login");
+      setPassword("");
+      setNewPassword("");
+      setResetOtp("");
+    } catch (err) {
+      setError("Something went wrong.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen pb-8 w-full bg-white dark:bg-black transition-colors duration-300">
-      {/* Header */}
-      <div className="w-full py-5 px-8 shadow-md dark:shadow-gray-200 flex justify-between items-center mb-12">
-        <a href="/">
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-40 transition-all duration-300 hover:scale-105"
-          />
-        </a>
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="p-2 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20"
-          title="Toggle Theme"
+    <div>
+      <Nav />
+      <div className="relative min-h-screen flex items-center justify-center bg-white dark:bg-black transition-colors">
+        <video
+          autoPlay
+          loop
+          muted
+          className="absolute w-full h-full object-cover z-0"
         >
-          {darkMode ? (
-            <FiSun size={24} className="text-white" />
-          ) : (
-            <FiMoon size={24} className="text-gray-700" />
+          <source src="/signup.mp4" type="video/mp4" />
+        </video>
+
+        <div className="z-20 w-full max-w-md p-8 rounded-xl bg-white/70 dark:bg-black/30 backdrop-blur border border-black/10 dark:border-white/10 text-black dark:text-white transition-colors">
+          <div className="text-center mb-6">
+            <a href={"/"}>
+              <img
+                src={Logo}
+                alt="Billion Dollar FX"
+                width={200}
+                className="mx-auto mb-2"
+              />
+            </a>
+            <h2 className="text-2xl font-semibold">
+              {step === "login"
+                ? "Login"
+                : step === "reset-request"
+                  ? "Reset Password"
+                  : "Verify OTP"}
+            </h2>
+            <p className="text-sm mt-2 text-gray-600 dark:text-gray-400">
+              Don't have an account?{" "}
+              <a href="/signup">
+                {" "}
+                <span className="text-black dark:text-white font-semibold cursor-pointer">
+                  Sign Up
+                </span>
+              </a>
+            </p>
+          </div>
+
+          {/* --- LOGIN FORM --- */}
+          {step === "login" && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSignIn();
+              }}
+              className="space-y-4"
+            >
+              <div>
+                <label className="block mb-1">Email*</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-2 rounded bg-gray-100 dark:bg-[#0f172a] border border-gray-300 dark:border-gray-700 text-black dark:text-white"
+                  placeholder="abc@example.com"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block mb-1">Password*</label>
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full px-4 py-2 rounded bg-gray-100 dark:bg-[#0f172a] border border-gray-300 dark:border-gray-700 text-black dark:text-white"
+                    placeholder="**********"
+                    required
+                  />
+                  <span
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 cursor-pointer text-lg"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex justify-end items-center text-sm text-gray-600 dark:text-gray-400">
+                <span
+                  onClick={() => setStep("reset-request")}
+                  className="hover:underline text-black dark:text-white cursor-pointer"
+                >
+                  Forgot Password?
+                </span>
+              </div>
+
+              {error && (
+                <div className="text-red-600 dark:text-red-400 text-sm text-center">
+                  {error}
+                </div>
+              )}
+
+              <Button
+                onClick={handleSignIn}
+                disabled={loading}
+                text={loading ? "Signing..." : "Sign in"}
+                className="w-full"
+              />
+            </form>
           )}
-        </button>
-      </div>
 
-      {/* Login Box */}
-      <div className="flex w-full mx-auto max-w-4xl h-[500px] rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 backdrop-blur-sm shadow-2xl">
-        <div className="w-1/2 hidden md:block">
-          <img
-            src={sideImage}
-            alt="Login Visual"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-          <h1 className="text-3xl font-bold text-black dark:text-white mb-2">
-            Welcome Back
-          </h1>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-            Log in to your account
-          </p>
-
-          <form className="space-y-5" onSubmit={handleLogin}>
-            <div>
-              <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
-                Email
-              </label>
+          {/* --- RESET REQUEST --- */}
+          {step === "reset-request" && (
+            <div className="space-y-4">
+              <label className="block">Enter your email</label>
               <input
                 type="email"
-                className="w-full px-4 py-3 bg-white dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-xl border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                placeholder="abc@gmail.com"
+                className="w-full px-4 py-2 rounded bg-gray-100 dark:bg-[#0f172a] border border-gray-300 dark:border-gray-700 text-black dark:text-white"
+                placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </div>
+              {error && (
+                <div className="text-red-600 dark:text-red-400 text-sm">
+                  {error}
+                </div>
+              )}
 
-            <div>
-              <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">
-                Password
-              </label>
+              <Button
+                text={loading ? "Sending OTP..." : "Send OTP"}
+                onClick={requestPasswordReset}
+                className="w-full "
+              />
+
+              <p
+                className="text-sm text-gray-600 dark:text-gray-400 text-center cursor-pointer hover:underline"
+                onClick={() => setStep("login")}
+              >
+                Back to Login
+              </p>
+            </div>
+          )}
+
+          {/* --- RESET VERIFY --- */}
+          {step === "reset-verify" && (
+            <div className="space-y-4">
+              <label className="block">Enter OTP</label>
+              <input
+                type="text"
+                className="w-full px-4 py-2 rounded bg-gray-100 dark:bg-[#0f172a] border border-gray-300 dark:border-gray-700 text-black dark:text-white"
+                placeholder="OTP"
+                value={resetOtp}
+                onChange={(e) => setResetOtp(e.target.value)}
+              />
+
+              <label className="block">New Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full px-4 py-3 bg-white dark:bg-white/10 text-black dark:text-white placeholder-gray-500 dark:placeholder-gray-400 rounded-xl border border-gray-300 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-teal-500 pr-12"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-2 rounded bg-gray-100 dark:bg-[#0f172a] border border-gray-300 dark:border-gray-700 text-black dark:text-white pr-10"
+                  placeholder="New password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
                 />
                 <button
                   type="button"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  className="absolute top-3 right-3 text-gray-500 dark:text-gray-400 hover:text-teal-500"
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                  onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-xl font-medium transition duration-300"
-            >
-              Log In
-            </button>
-          </form>
+              {error && (
+                <div className="text-red-600 dark:text-red-400 text-sm">
+                  {error}
+                </div>
+              )}
+
+              <Button
+                text={loading ? "Resetting..." : "Reset Password"}
+                onClick={verifyAndResetPassword}
+                className="w-full "
+              />
+
+              <p
+                className="text-sm text-gray-600 dark:text-gray-400 text-center cursor-pointer hover:underline"
+                onClick={() => setStep("login")}
+              >
+                Back to Login
+              </p>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Error Popup */}
-      {errorPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-xl text-center max-w-sm w-full">
-            <h2 className="text-lg font-semibold text-red-600 dark:text-red-400 mb-4">
-              Invalid Credentials
-            </h2>
-            <p className="text-sm text-gray-700 dark:text-gray-300 mb-6">
-              Please check your email and password.
-            </p>
-            <button
-              onClick={() => setErrorPopup(false)}
-              className="px-6 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600 transition"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
-};
-
-export default Login;
+}
