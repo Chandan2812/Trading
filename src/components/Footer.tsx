@@ -2,6 +2,7 @@ import {
   FaFacebookF,
   FaInstagram,
   FaTelegram,
+  FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
@@ -68,11 +69,11 @@ const Footer = () => {
           <div className="flex space-x-4 mt-4">
             {[
               {
-                href: "https://www.facebook.com/closefriendstraders/",
+                href: "https://www.facebook.com/newscft/",
                 icon: <FaFacebookF size={20} />,
               },
               {
-                href: "https://www.instagram.com/closefriendstraders.official/?igsh=YndxMTF1d3B2eHlu#",
+                href: "https://www.instagram.com/newscft/#",
                 icon: <FaInstagram size={20} />,
               },
 
@@ -83,6 +84,10 @@ const Footer = () => {
               {
                 href: "https://t.me/DabbatradingClosefriendstraders",
                 icon: <FaTelegram size={20} />,
+              },
+              {
+                href: "https://x.com/NewsCFT",
+                icon: <FaTwitter size={20} />,
               },
             ].map(({ href, icon }, idx) => (
               <a
@@ -261,7 +266,7 @@ const Footer = () => {
       </div>
 
       <div className="w-11/12 mt-10 mx-auto">
-        <h1 className="text-2xl mb-5">Disclaimer</h1>
+        <h2 className="text-2xl mb-5">Disclaimer</h2>
         <p>
           The content provided by Close Friends Traders does not include
           financial advice, guidance or recommendations to take, or not to take,
@@ -280,7 +285,7 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className="w-full flex justify-center">
+      {/* <div className="w-full flex justify-center">
         <a
           href="https://www.bigwigdigital.in/"
           target="_blank"
@@ -289,7 +294,7 @@ const Footer = () => {
         >
           Made & Marketed with ❤️ by Bigwig Digital
         </a>
-      </div>
+      </div> */}
     </footer>
   );
 };

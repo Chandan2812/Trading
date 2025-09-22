@@ -67,3 +67,24 @@ input[type="number"] {
 .reveal[style*="autoAlpha: 1"] {
   visibility: visible;
 }
+
+.react-quill-editor {
+  height: 250px; /* or whatever you prefer */
+  display: flex;
+  flex-direction: column;
+}
+
+.react-quill-editor .ql-toolbar {
+  flex-shrink: 0;
+}
+
+.react-quill-editor .ql-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Make header dropdown scrollable */
+.ql-picker.ql-header .ql-picker-options {
+  max-height: 200px !important; /* adjust as needed */
+  overflow-y: auto !important;
+}

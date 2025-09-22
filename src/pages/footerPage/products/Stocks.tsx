@@ -4,6 +4,7 @@ import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
 import cfdImage from "../../../assets/stocks.png";
 import { LucideBarChart2, LucideLineChart } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 function Stocks() {
   const features = [
@@ -40,6 +41,18 @@ function Stocks() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>Stocks Trading Tools | Close Friends Traders</title>
+        <meta
+          name="description"
+          content="Trade NSE & BSE stocks with precision. Get daily stock market signals, technical setups, and expert guidance from Close Friends Traders to maximize your equity gains."
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.closefriendstraders.com/products/stocks"
+        />
+      </Helmet>
       <div className="mb-20">
         <Navbar />
       </div>

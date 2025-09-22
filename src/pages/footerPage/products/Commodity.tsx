@@ -9,6 +9,7 @@ import cfdImage from "../../../assets/MCX.png";
 import Navbar from "../../../components/Nav";
 import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
+import { Helmet } from "react-helmet-async";
 
 function Commodity() {
   const features = [
@@ -39,6 +40,18 @@ function Commodity() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>Commodity Trading Product | CFT Platform</title>
+        <meta
+          name="description"
+          content="Stay ahead in commodity trading with premium signals on gold, silver, crude, and more. Close Friends Traders helps you navigate MCX and global markets with confidence."
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.closefriendstraders.com/products/commodity"
+        />
+      </Helmet>
       <div className="mb-20">
         <Navbar />
       </div>

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
 import logo from "../assets/logo-01.svg";
-import FinlogixWidget from "./TradingViewTicker";
 import { usePopup } from "../components/PopupContext";
 
 declare global {
@@ -22,13 +21,13 @@ const Navbar = () => {
   });
   const { openPopup } = usePopup();
 
-  const [showLoginDropdown, setShowLoginDropdown] = useState(false);
-  const [showUserSubMenu, setShowUserSubMenu] = useState(false);
-  const [showBrokerSubMenu, setShowBrokerSubMenu] = useState(false);
+  // const [showLoginDropdown, setShowLoginDropdown] = useState(false);
+  // const [showUserSubMenu, setShowUserSubMenu] = useState(false);
+  // const [showBrokerSubMenu, setShowBrokerSubMenu] = useState(false);
 
-  const [mobileLoginExpanded, setMobileLoginExpanded] = useState(false);
-  const [mobileUserExpanded, setMobileUserExpanded] = useState(false);
-  const [mobileBrokerExpanded, setMobileBrokerExpanded] = useState(false);
+  // const [mobileLoginExpanded, setMobileLoginExpanded] = useState(false);
+  // const [mobileUserExpanded, setMobileUserExpanded] = useState(false);
+  // const [mobileBrokerExpanded, setMobileBrokerExpanded] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -76,17 +75,13 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed top-0 w-full z-50">
-        <FinlogixWidget />
-      </div>
-
       <nav
         className={`w-full fixed z-40 border-b transition-colors ${
           darkMode
             ? "bg-black text-white border-gray-800"
             : "bg-white text-black border-gray-200"
         }`}
-        style={{ top: "55px" }} // Adjust based on widget height
+        style={{ top: "0px" }} // Adjust based on widget height
       >
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
@@ -160,7 +155,7 @@ const Navbar = () => {
                 ></div>
 
                 {/* Desktop Login Dropdown */}
-                <div
+                {/* <div
                   className="relative"
                   onMouseEnter={() => setShowLoginDropdown(true)}
                   onMouseLeave={() => {
@@ -190,7 +185,7 @@ const Navbar = () => {
                         {showUserSubMenu && (
                           <div className="absolute py-2 right-full top-0 ml-1 w-40 bg-white dark:bg-black shadow-md rounded">
                             <a
-                              href="https://Trade-dost.com"
+                              href="https://V1-Cfttraders.com"
                               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
                             >
                               Version 1
@@ -229,7 +224,7 @@ const Navbar = () => {
                       </div>
                     </div>
                   )}
-                </div>
+                </div> */}
                 <button
                   onClick={openPopup}
                   className={`text-sm border py-2 px-4 rounded-full shadow-[0_0_10px_var(--primary-color)] transition ${
@@ -281,7 +276,7 @@ const Navbar = () => {
               </button>
 
               {/* Mobile Login Dropdown */}
-              <div className="mt-4 ">
+              {/* <div className="mt-4 ">
                 <button
                   onClick={() => setMobileLoginExpanded(!mobileLoginExpanded)}
                   className="w-fit text-left border py-2 px-4 rounded-md"
@@ -299,12 +294,15 @@ const Navbar = () => {
                     </button>
                     {mobileUserExpanded && (
                       <div className="pl-4 space-y-1">
-                        <Link to="/user-login/v1" className="block">
+                        <a href="https://V1-Cfttraders.com" className="block">
                           Version 1
-                        </Link>
-                        <Link to="/user-login/v2" className="block">
+                        </a>
+                        <a
+                          href="https://tradedostfx.com/client"
+                          className="block"
+                        >
                           Version 2
-                        </Link>
+                        </a>
                       </div>
                     )}
 
@@ -318,17 +316,20 @@ const Navbar = () => {
                     </button>
                     {mobileBrokerExpanded && (
                       <div className="pl-4 space-y-1">
-                        <Link to="/broker-login/v1" className="block">
+                        <a href="https://Trade-dost.com" className="block">
                           Version 1
-                        </Link>
-                        <Link to="/broker-login/v2" className="block">
+                        </a>
+                        <a
+                          href="https://tradedostfx.com/master"
+                          className="block"
+                        >
                           Version 2
-                        </Link>
+                        </a>
                       </div>
                     )}
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         )}
@@ -337,7 +338,7 @@ const Navbar = () => {
       {!isOpen && (
         <div
           id="google_translate_element"
-          className="fixed z-[99] right-[100px] top-[80px] translate-x-0 md:right-[80px] md:top-[67px] lg:right-[290px] lg:top-[80px] lg:-translate-x-1/2"
+          className="fixed z-[99] right-[100px] top-[24px] translate-x-0 md:right-[120px] md:top-[24px] lg:right-[220px] lg:top-[23px] lg:-translate-x-1/2"
         />
       )}
     </>

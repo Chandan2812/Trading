@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Nav";
 import { FaCheckCircle } from "react-icons/fa";
 import { usePopup } from "../components/PopupContext";
+import { Helmet } from "react-helmet-async";
 
 const points = [
   {
@@ -80,9 +81,18 @@ const AboutUsSection = () => {
 
   return (
     <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white">
-      <title>hello about</title>
-      <meta name="description" content="All about BigWig Media" />
+      <Helmet>
+        <title>About Close Friends Traders | Who We Are</title>
+        <meta
+          name="description"
+          content="Close Friends Traders is India’s trusted trading community, offering expert signals, real-time strategies, and mentorship. Learn our mission and meet the team behind your trading success."
+        />
 
+        <link
+          rel="canonical"
+          href="https://www.closefriendstraders.com/about"
+        />
+      </Helmet>
       <div className="mb-20">
         <Navbar />
       </div>
@@ -127,6 +137,7 @@ const AboutUsSection = () => {
             Start Trading Now
           </button>
         </div>
+
         {/* Right: Image with AOS animation */}
         <div
           className="w-full lg:w-1/2"

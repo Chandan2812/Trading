@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { Landing } from "./pages/Landing";
 import Contact from "./pages/contact";
 import AboutUsSection from "./pages/About";
@@ -39,6 +44,11 @@ import Indexes from "./pages/footerPage/products/Indexes";
 import CommodityTrading from "./pages/footerPage/knowledgeCenter/CommodityTrading";
 import TermsConditions from "./pages/footerPage/TermsConditions";
 import PrivacyPolicy from "./pages/footerPage/PrivacyPolicy";
+import NotFound from "./pages/NotFound";
+import Market from "./pages/Market";
+import Products from "./pages/Products";
+import Knowledge from "./pages/Knowledge";
+import RedirectToBlogs from "./components/RedirectToBlogs";
 
 function App() {
   return (
@@ -50,6 +60,71 @@ function App() {
           <Route path="/about" element={<AboutUsSection />} />
           <Route path="/blogs" element={<Blog2 />} />
           <Route path="/blogs/:slug" element={<Blog2Details />} />
+          <Route path="/:slug" element={<RedirectToBlogs />} />
+          <Route
+            path="/blogs/trade-smart-and-understand-the-best-dabba-app-in-india"
+            element={
+              <Navigate
+                to="/blogs/trade-smart-exploring-best-dabba-trading-app-and-its-benefits"
+                replace
+              />
+            }
+          />
+          <Route
+            path="/blogs/dabba-trading-platform-is-profit-or-risk"
+            element={
+              <Navigate
+                to="/blogs/best-dabba-trading-platform-2025-mt-45-trading-app"
+                replace
+              />
+            }
+          />
+          <Route
+            path="/blogs/dabba-trading-app-box-trading-platform"
+            element={
+              <Navigate
+                to="/blogs/trade-smart-exploring-best-dabba-trading-app-and-its-benefits"
+                replace
+              />
+            }
+          />
+          <Route
+            path="/blogs/dabba-trading-app-in-india-a-closer-look-at-the-best-platform"
+            element={
+              <Navigate
+                to="/blogs/trade-smart-exploring-best-dabba-trading-app-and-its-benefits"
+                replace
+              />
+            }
+          />
+          <Route
+            path="/blogs/trade-smart-and-understand-the-best-dabba-app-in-india"
+            element={
+              <Navigate
+                to="/blogs/trade-smart-exploring-best-dabba-trading-app-and-its-benefits"
+                replace
+              />
+            }
+          />
+          <Route
+            path="/category/dabba-trading/"
+            element={
+              <Navigate
+                to="/blogs/trade-smart-exploring-best-dabba-trading-app-and-its-benefits"
+                replace
+              />
+            }
+          />
+
+          <Route
+            path="/blogs/trading"
+            element={<Navigate to="/blogs" replace />}
+          />
+
+          <Route
+            path="/blogs/news-blogs"
+            element={<Navigate to="/blogs" replace />}
+          />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/emailer" element={<Emailer />} />
@@ -58,6 +133,7 @@ function App() {
           <Route path="/AdminPage" element={<AdminPage />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/products/cfd-instrument" element={<CFDInstrument />} />
           <Route path="/products/stocks" element={<Stocks />} />
           <Route path="/products/commodity" element={<Commodity />} />
@@ -65,15 +141,18 @@ function App() {
           <Route path="/products/Forex" element={<Forex2 />} />
           <Route path="/products/Comex" element={<Comex />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/knowledge" element={<Knowledge />} />
           <Route path="/knowledge/trading" element={<Trading />} />
           <Route path="/knowledge/equity-trading" element={<EquityTrading />} />
           <Route path="/knowledge/future-options" element={<FutureOptions />} />
+          <Route path="/markets" element={<Market />} />
           <Route path="/markets/nse-f-o" element={<NSEFOInfo />} />
           <Route path="/markets/mcx" element={<Mcx />} />
           <Route path="/markets/crypto" element={<Crypto />} />
           <Route path="/markets/us-stocks-indices" element={<USStocks />} />
           <Route path="/markets/forex" element={<Forex />} />
           <Route path="/markets/comex" element={<ComexInfo />} />
+          <Route path="*" element={<NotFound />} />
           <Route
             path="/knowledge/commodity-trading"
             element={<CommodityTrading />}

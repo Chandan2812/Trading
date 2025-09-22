@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /adminpage
+Sitemap: https://www.closefriendstraders.com/sitemap.xml

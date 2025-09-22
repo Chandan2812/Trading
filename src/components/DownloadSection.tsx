@@ -49,12 +49,23 @@ export default function DownloadSection() {
             Close Friends Traders — Designed for Traders Who Mean Business.
           </i>
 
-          <button
-            onClick={openPopup}
-            className="mt-5 bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:shadow-[0_0_25px_var(--primary-color)] transition duration-300 w-fit"
-          >
-            Start Trading Now
-          </button>
+          {/* Buttons */}
+          <div className="mt-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <button
+              onClick={openPopup}
+              className="bg-[var(--primary-color)] text-black px-8 py-3 rounded-full font-semibold hover:shadow-[0_0_25px_var(--primary-color)] transition duration-300"
+            >
+              Start Trading Now
+            </button>
+
+            <a
+              href="/tradeDost24.apk"
+              download
+              className="bg-gray-800 text-white px-8 py-3 rounded-full font-semibold hover:shadow-[0_0_25px_var(--primary-color)] transition duration-300"
+            >
+              Download Android App
+            </a>
+          </div>
         </div>
       </div>
     </div>

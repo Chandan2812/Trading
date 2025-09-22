@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { usePopup } from "../components/PopupContext";
+import { Helmet } from "react-helmet-async";
 
 function Contact() {
   const { openPopup } = usePopup();
@@ -24,7 +25,19 @@ function Contact() {
 
   return (
     <div className="bg-white text-black dark:bg-[var(--bg-color1)] dark:text-white transition-colors duration-300">
-      <div className="mb-24">
+      <Helmet>
+        <title>Contact Close Friends Traders | Get in Touch</title>
+        <meta
+          name="description"
+          content="Get in touch with Close Friends Traders - whether you have questions, need support, or want to join our trading community. We’re here 24/7 to help you trade smarter."
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.closefriendstraders.com/Contact"
+        />
+      </Helmet>
+      <div className="mb-12">
         <Navbar />
       </div>
 

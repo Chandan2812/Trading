@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import PageBanner from "../../components/BannerImage";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Nav";
@@ -5,6 +6,17 @@ import Navbar from "../../components/Nav";
 function PrivacyPolicy() {
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <meta
+          name="description"
+          content="Your privacy is important to us. Learn how Close Friends Traders collects, uses, and protects your data to give you a secure trading experience."
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.closefriendstraders.com/privacy-policy"
+        />
+      </Helmet>
       <div className="mb-20">
         {" "}
         <Navbar />

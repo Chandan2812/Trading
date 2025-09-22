@@ -10,6 +10,7 @@ import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
 import cfdImage from "../../../assets/MCX.png";
+import { Helmet } from "react-helmet-async";
 
 function CommodityTrading() {
   const features = [
@@ -41,6 +42,18 @@ function CommodityTrading() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>Commodity Trading Insights | CFT Knowledge</title>
+        <meta
+          name="description"
+          content="Explore how to trade commodities like gold, crude oil, and silver. Learn strategies, margin rules, and risk tips from Close Friends Traders."
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.closefriendstraders.com/knowledge/commodity-trading"
+        />
+      </Helmet>
       <div className="mb-20">
         <Navbar />
       </div>

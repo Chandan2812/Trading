@@ -9,6 +9,7 @@ import PageBanner from "../../../components/BannerImage";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Nav";
 import cfdImage from "../../../assets/Trading e.png";
+import { Helmet } from "react-helmet-async";
 
 function Trading() {
   const features = [
@@ -40,6 +41,18 @@ function Trading() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>Trading Knowledge Hub | Close Friends Traders</title>
+        <meta
+          name="description"
+          content="Understand the fundamentals of trading with Close Friends Traders. Learn how markets work, types of trading, key terms, and practical tips to begin your journey."
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.closefriendstraders.com/knowledge/trading"
+        />
+      </Helmet>
       <div className="mb-20">
         <Navbar />
       </div>

@@ -13,6 +13,7 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 import { usePopup } from "../../components/PopupContext";
+import { Helmet } from "react-helmet-async";
 
 const Forex = () => {
   const { openPopup } = usePopup();
@@ -29,9 +30,22 @@ const Forex = () => {
 
   return (
     <div className="bg-white dark:bg-[var(--bg-color1)]">
-      <div className="mb-28">
+      <Helmet>
+        <title>Forex Trading Market | Close Friends Traders</title>
+        <meta
+          name="description"
+          content="Dominate the forex market with Close Friends Traders. Access daily signals on major pairs, smart risk-reward setups, and strategies built for both beginners and pros."
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.closefriendstraders.com/markets/forex"
+        />
+      </Helmet>
+      <div className="mb-14">
         <Navbar />
       </div>
+
       <section className={section}>
         <div>
           <h1 className="flex items-center gap-2 text-3xl font-bold mb-4">
