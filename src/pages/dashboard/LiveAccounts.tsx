@@ -36,7 +36,7 @@ export default function LiveAccounts() {
   const [showModal, setShowModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [showAddBalanceModal, setShowAddBalanceModal] = useState(false);
-  const [balanceMode, setBalanceMode] = useState<"deposit" | "withdraw">(
+  const [balanceMode, _setBalanceMode] = useState<"deposit" | "withdraw">(
     "deposit"
   );
 

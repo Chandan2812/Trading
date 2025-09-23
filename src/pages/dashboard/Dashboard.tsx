@@ -27,9 +27,9 @@ export default function DepositsPage() {
   const [showModal, setShowModal] = useState(false);
   const [accountNo, setAccountNo] = useState("");
   const [balance, setBalance] = useState<string>("0.00");
-  const [DWBalance, setDWBalance] = useState<string>("0.00");
+  const [_DWBalance, setDWBalance] = useState<string>("0.00");
   const [showDepositModal, setShowDepositModal] = useState(false);
-  const [showKycPopup, setShowKycPopup] = useState(false);
+  const [_showKycPopup, setShowKycPopup] = useState(false);
   const [userData, setUserData] = useState<User | null>(null);
 
   useEffect(() => {
