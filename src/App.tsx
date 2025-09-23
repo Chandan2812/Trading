@@ -52,6 +52,8 @@ import RedirectToBlogs from "./components/RedirectToBlogs";
 import DashboardLayout from "./pages/dashboard/DashboardLayout";
 import LiveAccounts from "./pages/dashboard/LiveAccounts";
 import Dashboard from "./pages/dashboard/Dashboard";
+import MoneyPlantTrader from "./pages/dashboard/WebTrader";
+import TradingPlatform from "./pages/dashboard/Platform";
 
 function App() {
   return (
@@ -168,6 +170,8 @@ function App() {
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} /> {/* default dashboard */}
             <Route path="live-accounts" element={<LiveAccounts />} />
+            <Route path="web-trader" element={<MoneyPlantTrader />} />
+            <Route path="ourplatform" element={<TradingPlatform />} />
           </Route>
         </Routes>
         <div>
