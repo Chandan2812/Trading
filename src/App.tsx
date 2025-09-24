@@ -65,6 +65,7 @@ import AdminTransactionPage from "./pages/admin/AllTransactions";
 import BankUpdateApprovals from "./pages/admin/BankRequests";
 import AdminWithdrawals from "./pages/admin/PayoutRequests";
 import OffersPage from "./pages/admin/AdminOfferPage";
+import ForexGlossary from "./pages/dashboard/Forex-glossary";
 
 function App() {
   return (
@@ -185,6 +186,7 @@ function App() {
             <Route path="ourplatform" element={<TradingPlatform />} />
             <Route path="deposits" element={<Deposit />} />
             <Route path="withdrawals" element={<Withdrawal />} />
+            <Route path="forex-glossary" element={<ForexGlossary />} />
           </Route>
           <Route path="/admin" element={<AdminDashboardLayout />}>
             <Route index element={<AdminDashboard />} />
