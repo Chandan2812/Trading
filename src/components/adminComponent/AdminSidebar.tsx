@@ -140,6 +140,12 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
             pathname={pathname}
             count={payoutCount}
           />
+          <NavLink
+            to="/admin/offers"
+            label="Offers"
+            icon={Wallet}
+            pathname={pathname}
+          />
         </Section>
 
         <Section title="Account">

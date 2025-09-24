@@ -64,6 +64,7 @@ import IBRequestsPage from "./pages/admin/IbPage";
 import AdminTransactionPage from "./pages/admin/AllTransactions";
 import BankUpdateApprovals from "./pages/admin/BankRequests";
 import AdminWithdrawals from "./pages/admin/PayoutRequests";
+import OffersPage from "./pages/admin/AdminOfferPage";
 
 function App() {
   return (
@@ -193,6 +194,7 @@ function App() {
             <Route path="all-transactions" element={<AdminTransactionPage />} />
             <Route path="bank-approval" element={<BankUpdateApprovals />} />
             <Route path="payout-requests" element={<AdminWithdrawals />} />
+            <Route path="offers" element={<OffersPage />} />
           </Route>
         </Routes>
         <div>
