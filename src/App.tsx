@@ -61,6 +61,7 @@ import AdminTicketsPage from "./pages/admin/SupportTicket";
 import Deposit from "./pages/dashboard/Deposit";
 import Withdrawal from "./pages/dashboard/Withdrawal";
 import IBRequestsPage from "./pages/admin/IbPage";
+import TransactionPage from "./pages/dashboard/Transactions";
 
 function App() {
   return (
@@ -181,6 +182,7 @@ function App() {
             <Route path="ourplatform" element={<TradingPlatform />} />
             <Route path="deposits" element={<Deposit />} />
             <Route path="withdrawals" element={<Withdrawal />} />
+            <Route path="transactions" element={<TransactionPage />} />
           </Route>
           <Route path="/admin" element={<AdminDashboardLayout />}>
             <Route index element={<AdminDashboard />} />
