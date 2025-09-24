@@ -60,6 +60,7 @@ import UsersPage from "./pages/admin/Users";
 import AdminTicketsPage from "./pages/admin/SupportTicket";
 import Deposit from "./pages/dashboard/Deposit";
 import Withdrawal from "./pages/dashboard/Withdrawal";
+import IBRequestsPage from "./pages/admin/IbPage";
 
 function App() {
   return (
@@ -185,6 +186,7 @@ function App() {
             <Route index element={<AdminDashboard />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="tickets" element={<AdminTicketsPage />} />
+            <Route path="ib" element={<IBRequestsPage />} />
           </Route>
         </Routes>
         <div>

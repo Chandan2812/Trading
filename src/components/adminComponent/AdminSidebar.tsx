@@ -114,7 +114,7 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
             pathname={pathname}
           />
           <NavLink
-            to="/admin/IB"
+            to="/admin/ib"
             label="IB"
             icon={UserSquare2}
             pathname={pathname}

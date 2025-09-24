@@ -1,5 +1,3 @@
-"use client";
-
 import Fuse from "fuse.js";
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";

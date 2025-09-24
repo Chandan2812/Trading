@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState, useCallback, useRef } from "react";
 import axios from "axios";
 import { Trash2 } from "lucide-react";
