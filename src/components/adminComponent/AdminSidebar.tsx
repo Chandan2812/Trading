@@ -11,7 +11,6 @@ import {
   MessageSquare,
   UserSquare2,
   CreditCard,
-  Briefcase,
   Landmark,
   Wallet,
 } from "lucide-react";
@@ -101,46 +100,41 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
             pathname={pathname}
           />
           <NavLink
-            to="/users"
+            to="/admin/users"
             label="Users"
             icon={Users}
             pathname={pathname}
             count={kycCount}
           />
+
           <NavLink
-            to="/brokers"
-            label="Brokers"
-            icon={Briefcase}
-            pathname={pathname}
-          />
-          <NavLink
-            to="/tickets"
+            to="/admin/tickets"
             label="Support Ticket"
             icon={MessageSquare}
             pathname={pathname}
           />
           <NavLink
-            to="/IB"
+            to="/admin/IB"
             label="IB"
             icon={UserSquare2}
             pathname={pathname}
             count={ibCount}
           />
           <NavLink
-            to="/all-transactions"
+            to="/admin/all-transactions"
             label="Transactions"
             icon={CreditCard}
             pathname={pathname}
           />
           <NavLink
-            to="/bankapproval"
+            to="/admin/bankapproval"
             label="Bank Approval"
             icon={Landmark}
             pathname={pathname}
             count={bankApprovalCount}
           />
           <NavLink
-            to="/payout-requests"
+            to="/admin/payout-requests"
             label="Payout Requests"
             icon={Wallet}
             pathname={pathname}

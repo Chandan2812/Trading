@@ -56,6 +56,8 @@ import MoneyPlantTrader from "./pages/dashboard/WebTrader";
 import TradingPlatform from "./pages/dashboard/Platform";
 import AdminDashboardLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import UsersPage from "./pages/admin/Users";
+import AdminTicketsPage from "./pages/admin/SupportTicket";
 
 function App() {
   return (
@@ -177,7 +179,8 @@ function App() {
           </Route>
           <Route path="/admin" element={<AdminDashboardLayout />}>
             <Route index element={<AdminDashboard />} />
-            {/* default dashboard */}
+            <Route path="users" element={<UsersPage />} />
+            <Route path="tickets" element={<AdminTicketsPage />} />
           </Route>
         </Routes>
         <div>
