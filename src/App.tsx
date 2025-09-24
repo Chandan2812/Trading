@@ -70,6 +70,8 @@ import TransactionPage from "./pages/dashboard/Transactions";
 import CurrencyRates from "./pages/dashboard/live-accounts";
 import TradingViewWidget from "./pages/dashboard/TopNews";
 import TechnicalIndicatorPage from "./pages/dashboard/Indicator";
+import BlogPage from "./pages/admin/AdminBlogs";
+import EmailSubscribers from "./pages/admin/EmailSubscriber";
 
 function App() {
   return (
@@ -205,6 +207,8 @@ function App() {
             <Route path="bank-approval" element={<BankUpdateApprovals />} />
             <Route path="payout-requests" element={<AdminWithdrawals />} />
             <Route path="offers" element={<OffersPage />} />
+            <Route path="blogs" element={<BlogPage />} />
+            <Route path="subscribers" element={<EmailSubscribers />} />
           </Route>
         </Routes>
         <div>

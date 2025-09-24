@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Users } from "lucide-react";
+import { Notebook, Users, UserSquare2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
@@ -8,6 +8,7 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
   const [totalUsers, setTotalUsers] = useState<number | null>(null);
   const [totalBrokers, setTotalBrokers] = useState<number | null>(null);
+  const [totalBlogs, setTotalBlogs] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,10 +24,14 @@ export default function AdminDashboard() {
       setTotalUsers(res.data.length || 0);
     });
 
+    axios.get(`${baseURL}/api/ib`).then((res) => {
+      setTotalBrokers(res.data.length || 0);
+    });
+
     axios
-      .get(`${baseURL}/api/ib`)
+      .get(`${baseURL}/api/blogs/viewblog`)
       .then((res) => {
-        setTotalBrokers(res.data.length || 0);
+        setTotalBlogs(res.data.length || 0);
       })
 
       .catch((err) => {
@@ -57,7 +62,12 @@ export default function AdminDashboard() {
         <DashboardCard
           title="Total Brokers"
           value={loading ? null : totalBrokers}
-          icon={<Users size={28} />}
+          icon={<UserSquare2 size={28} />}
+        />
+        <DashboardCard
+          title="Total Blogs"
+          value={loading ? null : totalBlogs}
+          icon={<Notebook size={28} />}
         />
         {/* You can add more DashboardCard components here later */}
       </div>
@@ -79,7 +89,7 @@ function DashboardCard({
     <div className="bg-gradient-to-br from-[#0d1b2a] to-[#1b263b] hover:shadow-[0_4px_30px_rgba(0,0,0,0.3)] transition-all border border-[#334155] rounded-xl p-6 shadow-md group">
       <div className="flex items-center justify-between mb-4">
         <p className="text-sm text-gray-400">{title}</p>
-        <div className="bg-[var(--primary)] text-black rounded-full p-2 shadow-inner">
+        <div className="bg-[var(--primary)] text-white rounded-full p-2 shadow-inner">
           {icon}
         </div>
       </div>

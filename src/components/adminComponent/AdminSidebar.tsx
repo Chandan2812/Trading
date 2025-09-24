@@ -13,6 +13,9 @@ import {
   CreditCard,
   Landmark,
   Wallet,
+  Notebook,
+  Percent,
+  Mail,
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -143,7 +146,19 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
           <NavLink
             to="/admin/offers"
             label="Offers"
-            icon={Wallet}
+            icon={Percent}
+            pathname={pathname}
+          />
+          <NavLink
+            to="/admin/blogs"
+            label="Blogs"
+            icon={Notebook}
+            pathname={pathname}
+          />
+          <NavLink
+            to="/admin/subscribers"
+            label="Email Subscribers"
+            icon={Mail}
             pathname={pathname}
           />
         </Section>

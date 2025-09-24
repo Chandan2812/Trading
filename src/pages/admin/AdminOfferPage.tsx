@@ -260,13 +260,13 @@ export default function OffersPage() {
                     <td className="px-4 py-3 flex gap-2">
                       <button
                         onClick={() => handleEdit(offer)}
-                        className="text-blue-500"
+                        className="text-blue-500 mt-3"
                       >
                         <Edit2 />
                       </button>
                       <button
                         onClick={() => handleDelete(offer._id)}
-                        className="text-red-500"
+                        className="text-red-500 mt-3"
                       >
                         <Trash2 />
                       </button>
