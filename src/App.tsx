@@ -61,7 +61,9 @@ import AdminTicketsPage from "./pages/admin/SupportTicket";
 import Deposit from "./pages/dashboard/Deposit";
 import Withdrawal from "./pages/dashboard/Withdrawal";
 import IBRequestsPage from "./pages/admin/IbPage";
-import TransactionPage from "./pages/dashboard/Transactions";
+import AdminTransactionPage from "./pages/admin/AllTransactions";
+import BankUpdateApprovals from "./pages/admin/BankRequests";
+import AdminWithdrawals from "./pages/admin/PayoutRequests";
 
 function App() {
   return (
@@ -182,13 +184,15 @@ function App() {
             <Route path="ourplatform" element={<TradingPlatform />} />
             <Route path="deposits" element={<Deposit />} />
             <Route path="withdrawals" element={<Withdrawal />} />
-            <Route path="transactions" element={<TransactionPage />} />
           </Route>
           <Route path="/admin" element={<AdminDashboardLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="tickets" element={<AdminTicketsPage />} />
             <Route path="ib" element={<IBRequestsPage />} />
+            <Route path="all-transactions" element={<AdminTransactionPage />} />
+            <Route path="bank-approval" element={<BankUpdateApprovals />} />
+            <Route path="payout-requests" element={<AdminWithdrawals />} />
           </Route>
         </Routes>
         <div>

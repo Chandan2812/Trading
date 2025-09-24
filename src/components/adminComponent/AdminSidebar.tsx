@@ -94,7 +94,7 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
       <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
         <Section title="Navigation">
           <NavLink
-            to="/adminDashboard"
+            to="/admin"
             label="Dashboard"
             icon={LayoutDashboard}
             pathname={pathname}
@@ -127,7 +127,7 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
             pathname={pathname}
           />
           <NavLink
-            to="/admin/bankapproval"
+            to="/admin/bank-approval"
             label="Bank Approval"
             icon={Landmark}
             pathname={pathname}
