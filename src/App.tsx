@@ -68,6 +68,8 @@ import OffersPage from "./pages/admin/AdminOfferPage";
 import ForexGlossary from "./pages/dashboard/Forex-glossary";
 import TransactionPage from "./pages/dashboard/Transactions";
 import CurrencyRates from "./pages/dashboard/live-accounts";
+import TradingViewWidget from "./pages/dashboard/TopNews";
+import TechnicalIndicatorPage from "./pages/dashboard/Indicator";
 
 function App() {
   return (
@@ -191,6 +193,8 @@ function App() {
             <Route path="transactions" element={<TransactionPage />} />
             <Route path="forex-glossary" element={<ForexGlossary />} />
             <Route path="live-markets-rates" element={<CurrencyRates />} />
+            <Route path="top-news" element={<TradingViewWidget />} />
+            <Route path="indicators" element={<TechnicalIndicatorPage />} />
           </Route>
           <Route path="/admin" element={<AdminDashboardLayout />}>
             <Route index element={<AdminDashboard />} />
