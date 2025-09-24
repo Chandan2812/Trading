@@ -58,6 +58,8 @@ import AdminDashboardLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import UsersPage from "./pages/admin/Users";
 import AdminTicketsPage from "./pages/admin/SupportTicket";
+import Deposit from "./pages/dashboard/Deposit";
+import Withdrawal from "./pages/dashboard/Withdrawal";
 
 function App() {
   return (
@@ -176,6 +178,8 @@ function App() {
             <Route path="live-accounts" element={<LiveAccounts />} />
             <Route path="web-trader" element={<MoneyPlantTrader />} />
             <Route path="ourplatform" element={<TradingPlatform />} />
+            <Route path="deposits" element={<Deposit />} />
+            <Route path="withdrawals" element={<Withdrawal />} />
           </Route>
           <Route path="/admin" element={<AdminDashboardLayout />}>
             <Route index element={<AdminDashboard />} />
