@@ -54,6 +54,8 @@ import LiveAccounts from "./pages/dashboard/LiveAccounts";
 import Dashboard from "./pages/dashboard/Dashboard";
 import MoneyPlantTrader from "./pages/dashboard/WebTrader";
 import TradingPlatform from "./pages/dashboard/Platform";
+import AdminDashboardLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 function App() {
   return (
@@ -172,6 +174,10 @@ function App() {
             <Route path="live-accounts" element={<LiveAccounts />} />
             <Route path="web-trader" element={<MoneyPlantTrader />} />
             <Route path="ourplatform" element={<TradingPlatform />} />
+          </Route>
+          <Route path="/admin" element={<AdminDashboardLayout />}>
+            <Route index element={<AdminDashboard />} />
+            {/* default dashboard */}
           </Route>
         </Routes>
         <div>

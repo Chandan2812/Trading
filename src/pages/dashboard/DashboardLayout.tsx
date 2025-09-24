@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Outlet } from "react-router-dom"; // ✅ import Outlet
-import Topbar from "../../components/dashboardComponent.tsx/Topbar";
-import Sidebar from "../../components/dashboardComponent.tsx/Sidebar";
+import Topbar from "../../components/dashboardComponent/Topbar";
+import Sidebar from "../../components/dashboardComponent/Sidebar";
 
 export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);

@@ -46,7 +46,7 @@ export default function LoginPage() {
       );
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      navigate("/adminPage");
+      navigate("/admin");
       setLoading(false);
       return;
     }
