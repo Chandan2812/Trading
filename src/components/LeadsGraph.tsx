@@ -29,14 +29,14 @@ const LeadsGraph = () => {
   }, []);
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+    <div className="bg-gray-800 p-6 rounded-lg shadow-md mt-10">
       <h3 className="text-lg font-semibold text-white mb-4">
         Leads Over Time (Daily)
       </h3>
 
       {/* Scrollable Wrapper */}
-      <div className="overflow-x-auto">
-        <div className="min-w-[1000px]">
+      <div className="overflow-x-auto no-scrollbar">
+        <div className="max-w-[800px]">
           <LineChart
             data={graphData}
             width={Math.max(graphData.length * 50, 1000)} // each date gets 50px width

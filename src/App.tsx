@@ -72,6 +72,7 @@ import TradingViewWidget from "./pages/dashboard/TopNews";
 import TechnicalIndicatorPage from "./pages/dashboard/Indicator";
 import BlogPage from "./pages/admin/AdminBlogs";
 import EmailSubscribers from "./pages/admin/EmailSubscriber";
+import AdminLeads from "./pages/admin/AdminLeads";
 
 function App() {
   return (
@@ -206,6 +207,7 @@ function App() {
             <Route path="all-transactions" element={<AdminTransactionPage />} />
             <Route path="bank-approval" element={<BankUpdateApprovals />} />
             <Route path="payout-requests" element={<AdminWithdrawals />} />
+            <Route path="leads" element={<AdminLeads />} />
             <Route path="offers" element={<OffersPage />} />
             <Route path="blogs" element={<BlogPage />} />
             <Route path="subscribers" element={<EmailSubscribers />} />

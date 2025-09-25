@@ -144,6 +144,12 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
             count={payoutCount}
           />
           <NavLink
+            to="/admin/leads"
+            label="Leads"
+            icon={Users}
+            pathname={pathname}
+          />
+          <NavLink
             to="/admin/offers"
             label="Offers"
             icon={Percent}

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Notebook, Users, UserSquare2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LeadsGraph from "../../components/LeadsGraph";
+
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 export default function AdminDashboard() {
@@ -9,6 +11,8 @@ export default function AdminDashboard() {
   const [totalUsers, setTotalUsers] = useState<number | null>(null);
   const [totalBrokers, setTotalBrokers] = useState<number | null>(null);
   const [totalBlogs, setTotalBlogs] = useState<number | null>(null);
+  const [totalLeads, setTotalLeads] = useState<number | null>(null);
+  const [totalSubscribers, setTotalSubscribers] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,12 +32,19 @@ export default function AdminDashboard() {
       setTotalBrokers(res.data.length || 0);
     });
 
-    axios
-      .get(`${baseURL}/api/blogs/viewblog`)
-      .then((res) => {
-        setTotalBlogs(res.data.length || 0);
-      })
+    axios.get(`${baseURL}/api/blogs/viewblog`).then((res) => {
+      setTotalBlogs(res.data.length || 0);
+    });
 
+    axios.get(`${baseURL}/api/popup-lead`).then((res) => {
+      setTotalLeads(res.data.length || 0);
+    });
+
+    axios
+      .get(`${baseURL}/subscribers`)
+      .then((res) => {
+        setTotalSubscribers(res.data.length || 0);
+      })
       .catch((err) => {
         console.error("Failed to fetch total users:", err);
         setTotalUsers(0);
@@ -42,7 +53,7 @@ export default function AdminDashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen text-white ">
+    <div className="min-h-screen text-white">
       {/* Heading */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-white">Dashboard</h1>
@@ -69,8 +80,20 @@ export default function AdminDashboard() {
           value={loading ? null : totalBlogs}
           icon={<Notebook size={28} />}
         />
-        {/* You can add more DashboardCard components here later */}
+        <DashboardCard
+          title="Total Leads"
+          value={loading ? null : totalLeads}
+          icon={<Users size={28} />}
+        />
+        <DashboardCard
+          title="Total Subscribers"
+          value={loading ? null : totalSubscribers}
+          icon={<Users size={28} />}
+        />
       </div>
+
+      {/* ✅ Leads Graph Below */}
+      <LeadsGraph />
     </div>
   );
 }
