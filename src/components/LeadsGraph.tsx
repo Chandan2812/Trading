@@ -36,7 +36,7 @@ const LeadsGraph = () => {
 
       {/* Scrollable Wrapper */}
       <div className="overflow-x-auto no-scrollbar">
-        <div className="max-w-[800px]">
+        <div className="max-w-[200px] md:max-w-[800px]">
           <LineChart
             data={graphData}
             width={Math.max(graphData.length * 50, 1000)} // each date gets 50px width

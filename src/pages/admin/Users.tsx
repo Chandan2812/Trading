@@ -144,45 +144,42 @@ export default function UsersPage() {
 
   return (
     <div className="min-h-screen text-white">
-      <div className="mb-6 flex justify-between items-center">
+      <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold">Users</h1>
           <p className="text-gray-400 mt-1 text-sm">List of registered users</p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 w-full sm:w-auto">
           <input
             type="text"
-            placeholder="Search by name or email "
+            placeholder="Search by name or email"
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
               setCurrentPage(1);
             }}
-            className="bg-[#1f2937] text-white border border-gray-600 rounded px-3 py-1 w-64"
+            className="bg-[#1f2937] text-white border border-gray-600 rounded px-3 py-1 w-full sm:w-64"
           />
-          {/* ✅ Filter dropdown */}
           <select
             value={filter}
             onChange={(e) => {
               setFilter(e.target.value as "all" | "pending" | "approved");
-              setCurrentPage(1); // reset to first page
+              setCurrentPage(1);
             }}
-            className="bg-[#1f2937] text-white border border-gray-600 rounded px-3 py-1"
+            className="bg-[#1f2937] text-white border border-gray-600 rounded px-3 py-1 w-full sm:w-auto"
           >
             <option value="all">All</option>
             <option value="pending">Pending</option>
             <option value="approved">Approved</option>
           </select>
-
-          {/* ✅ Users per page dropdown */}
           <select
             value={usersPerPage}
             onChange={(e) => {
               setUsersPerPage(Number(e.target.value));
               setCurrentPage(1);
             }}
-            className="bg-[#1f2937] text-white border border-gray-600 rounded px-3 py-1"
+            className="bg-[#1f2937] text-white border border-gray-600 rounded px-3 py-1 w-full sm:w-auto"
           >
             <option value={5}>5</option>
             <option value={10}>10</option>
@@ -194,57 +191,101 @@ export default function UsersPage() {
       {loading ? (
         <p className="text-gray-400">Loading users...</p>
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-[#1f2937]">
-          <table className="w-full text-sm text-left">
-            <thead className="bg-[#1f2937] text-gray-300 uppercase text-xs">
-              <tr>
-                <th className="px-4 py-3">Full Name</th>
-                <th className="px-4 py-3">Email</th>
-                <th className="px-4 py-3">Phone</th>
-                <th className="px-4 py-3">Nationality</th>
-                <th className="px-4 py-3">KYC</th>
-                <th className="px-4 py-3">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentUsers.length === 0 ? (
+        <div>
+          {/* Table for large screens */}
+          <div className="hidden lg:block overflow-x-auto rounded-lg border border-[#1f2937]">
+            <table className="w-full text-sm text-left">
+              <thead className="bg-[#1f2937] text-gray-300 uppercase text-xs">
                 <tr>
-                  <td colSpan={6} className="text-center py-6 text-gray-400">
-                    No users found.
-                  </td>
+                  <th className="px-4 py-3">Full Name</th>
+                  <th className="px-4 py-3">Email</th>
+                  <th className="px-4 py-3">Phone</th>
+                  <th className="px-4 py-3">Nationality</th>
+                  <th className="px-4 py-3">KYC</th>
+                  <th className="px-4 py-3">Action</th>
                 </tr>
-              ) : (
-                currentUsers.map((user) => (
-                  <tr
-                    key={user._id}
-                    className="border-b border-gray-700 hover:bg-[#111827]"
-                  >
-                    <td className="px-4 py-3">{user.fullName}</td>
-                    <td className="px-4 py-3">{user.email}</td>
-                    <td className="px-4 py-3">{user.phone}</td>
-                    <td className="px-4 py-3">{user.nationality || "N/A"}</td>
-                    <td className="px-4 py-3">
-                      {user.isKycVerified ? (
-                        <span className="text-green-400 font-medium">
-                          Verified
-                        </span>
-                      ) : (
-                        <span className="text-yellow-400 font-medium">
-                          Pending
-                        </span>
-                      )}
-                    </td>
-                    <td className="px-4 py-3">
-                      <Button
-                        onClick={() => setSelectedUser(user)}
-                        text="View"
-                      />
+              </thead>
+              <tbody>
+                {currentUsers.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="text-center py-6 text-gray-400">
+                      No users found.
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                ) : (
+                  currentUsers.map((user) => (
+                    <tr
+                      key={user._id}
+                      className="border-b border-gray-700 hover:bg-[#111827]"
+                    >
+                      <td className="px-4 py-3">{user.fullName}</td>
+                      <td className="px-4 py-3">{user.email}</td>
+                      <td className="px-4 py-3">{user.phone}</td>
+                      <td className="px-4 py-3">{user.nationality || "N/A"}</td>
+                      <td className="px-4 py-3">
+                        {user.isKycVerified ? (
+                          <span className="text-green-400 font-medium">
+                            Verified
+                          </span>
+                        ) : (
+                          <span className="text-yellow-400 font-medium">
+                            Pending
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3">
+                        <Button
+                          onClick={() => setSelectedUser(user)}
+                          text="View"
+                        />
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Box/Card view for small screens */}
+          <div className="lg:hidden space-y-4">
+            {currentUsers.length === 0 ? (
+              <p className="text-center text-gray-400 py-6">No users found.</p>
+            ) : (
+              currentUsers.map((user) => (
+                <div
+                  key={user._id}
+                  className="bg-[#1f2937] border border-gray-700 rounded-lg p-4 shadow-md"
+                >
+                  <div className="flex justify-between items-center mb-2">
+                    <h3 className="font-bold text-white text-lg truncate">
+                      {user.fullName}
+                    </h3>
+                    <span
+                      className={`px-2 py-1 rounded text-xs font-medium ${
+                        user.isKycVerified
+                          ? "bg-green-600 text-white"
+                          : "bg-yellow-500 text-black"
+                      }`}
+                    >
+                      {user.isKycVerified ? "Verified" : "Pending"}
+                    </span>
+                  </div>
+                  <p className="text-gray-400 text-sm truncate">
+                    <b>Email:</b> {user.email}
+                  </p>
+                  <p className="text-gray-400 text-sm">
+                    <b>Phone:</b> {user.phone}
+                  </p>
+                  <p className="text-gray-400 text-sm">
+                    <b>Nationality:</b> {user.nationality || "N/A"}
+                  </p>
+                  <div className="mt-2 flex justify-end">
+                    <Button onClick={() => setSelectedUser(user)} text="View" />
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
         </div>
       )}
 

@@ -64,7 +64,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-6">
         <DashboardCard
           title="Total Users"
           value={loading ? null : totalUsers}
@@ -109,9 +109,9 @@ function DashboardCard({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="bg-gradient-to-br from-[#0d1b2a] to-[#1b263b] hover:shadow-[0_4px_30px_rgba(0,0,0,0.3)] transition-all border border-[#334155] rounded-xl p-6 shadow-md group">
-      <div className="flex items-center justify-between mb-4">
-        <p className="text-sm text-gray-400">{title}</p>
+    <div className="w-full bg-gradient-to-br from-[#0d1b2a] to-[#1b263b] hover:shadow-lg transition-all border border-[#334155] rounded-xl p-4 sm:p-6 shadow-md">
+      <div className="flex items-center justify-between mb-2">
+        <p className="text-sm text-gray-400 truncate">{title}</p>
         <div className="bg-[var(--primary)] text-white rounded-full p-2 shadow-inner">
           {icon}
         </div>
@@ -119,7 +119,9 @@ function DashboardCard({
       {value === null ? (
         <div className="w-24 h-6 bg-gray-700 animate-pulse rounded"></div>
       ) : (
-        <h2 className="text-3xl font-bold text-white">{value}</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white truncate">
+          {value}
+        </h2>
       )}
     </div>
   );
