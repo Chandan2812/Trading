@@ -414,7 +414,7 @@ export default function AdminTransactionPage() {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto md:w-full w-[330px]">
           {loading ? (
             <p className="text-center text-gray-400 py-4">Loading...</p>
           ) : (
@@ -427,7 +427,7 @@ export default function AdminTransactionPage() {
                   <th className="px-4 py-2">Amount</th>
 
                   <th className="px-4 py-2">Status</th>
-                  <th className="px-4 py-2">Date</th>
+                  <th className="px-4 py-2 pr-6">Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -440,7 +440,7 @@ export default function AdminTransactionPage() {
                       <td className="px-4 py-2">{item.amount}</td>
 
                       <td className="px-4 py-2">{item.status}</td>
-                      <td className="px-4 py-2">{item.date}</td>
+                      <td className="px-4 py-2 pr-6">{item.date}</td>
                     </tr>
                   ))
                 ) : (
