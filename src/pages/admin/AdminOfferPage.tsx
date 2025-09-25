@@ -177,32 +177,29 @@ export default function OffersPage() {
         <Button text="➕ Add Offer" onClick={handleAdd} />
       </div>
 
-      {/* Table */}
+      {/* Offers List - Table for md+, Cards for mobile */}
       {loading ? (
-        <p className="text-gray-400">Loading offers...</p>
+        <p className="text-gray-400 text-center py-4">Loading offers...</p>
+      ) : currentOffers.length === 0 ? (
+        <p className="text-gray-400 text-center py-6">No offers found.</p>
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-[#1f2937]">
-          <table className="w-full text-sm text-left">
-            <thead className="bg-[#1f2937] text-gray-300 uppercase text-xs">
-              <tr>
-                <th className="px-4 py-3">Title</th>
-                <th className="px-4 py-3">Start Date</th>
-                <th className="px-4 py-3">End Date</th>
-                <th className="px-4 py-3">Banner</th>
-                <th className="px-4 py-3">CTA</th>
-                <th className="px-4 py-3">Active</th>
-                <th className="px-4 py-3">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentOffers.length === 0 ? (
+        <>
+          {/* Table - visible on md+ */}
+          <div className="hidden md:block overflow-x-auto rounded-lg border border-[#1f2937]">
+            <table className="w-full text-sm text-left">
+              <thead className="bg-[#1f2937] text-gray-300 uppercase text-xs">
                 <tr>
-                  <td colSpan={7} className="text-center py-6 text-gray-400">
-                    No offers found.
-                  </td>
+                  <th className="px-4 py-3">Title</th>
+                  <th className="px-4 py-3">Start Date</th>
+                  <th className="px-4 py-3">End Date</th>
+                  <th className="px-4 py-3">Banner</th>
+                  <th className="px-4 py-3">CTA</th>
+                  <th className="px-4 py-3">Active</th>
+                  <th className="px-4 py-3">Action</th>
                 </tr>
-              ) : (
-                currentOffers.map((offer) => (
+              </thead>
+              <tbody>
+                {currentOffers.map((offer) => (
                   <tr
                     key={offer._id}
                     className="border-b border-gray-700 hover:bg-[#111827]"
@@ -272,11 +269,90 @@ export default function OffersPage() {
                       </button>
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Card/Box view - visible on mobile */}
+          <div className="flex flex-col gap-4 md:hidden">
+            {currentOffers.map((offer) => (
+              <div
+                key={offer._id}
+                className="bg-[#1f2937] rounded-lg p-4 flex flex-col gap-2 shadow-sm hover:shadow-md transition"
+              >
+                <div className="flex justify-between items-start">
+                  <h3 className="text-white font-semibold text-lg">
+                    {offer.title}
+                  </h3>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => handleEdit(offer)}
+                      className="text-blue-500"
+                    >
+                      <Edit2 />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(offer._id)}
+                      className="text-red-500"
+                    >
+                      <Trash2 />
+                    </button>
+                  </div>
+                </div>
+                <p className="text-gray-400 text-sm">
+                  Start:{" "}
+                  {offer.startDate
+                    ? new Date(offer.startDate).toLocaleDateString("en-IN", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })
+                    : "—"}
+                </p>
+                <p className="text-gray-400 text-sm">
+                  End:{" "}
+                  {offer.endDate
+                    ? new Date(offer.endDate).toLocaleDateString("en-IN", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })
+                    : "—"}
+                </p>
+                <p className="text-gray-400 text-sm">
+                  CTA: {offer.ctaLabel || "—"}{" "}
+                  {offer.ctaLink && (
+                    <a
+                      href={offer.ctaLink}
+                      target="_blank"
+                      className="text-blue-400 underline"
+                    >
+                      Link
+                    </a>
+                  )}
+                </p>
+                <p className="text-sm">
+                  Status:{" "}
+                  {offer.isActive ? (
+                    <span className="text-green-400">Active</span>
+                  ) : (
+                    <span className="text-red-400">Inactive</span>
+                  )}
+                </p>
+                {offer.bannerImage && (
+                  <Zoom>
+                    <img
+                      src={offer.bannerImage}
+                      alt="banner"
+                      className="h-24 w-full object-cover rounded mt-2"
+                    />
+                  </Zoom>
+                )}
+              </div>
+            ))}
+          </div>
+        </>
       )}
 
       {/* Pagination */}
