@@ -73,6 +73,7 @@ import TechnicalIndicatorPage from "./pages/dashboard/Indicator";
 import BlogPage from "./pages/admin/AdminBlogs";
 import EmailSubscribers from "./pages/admin/EmailSubscriber";
 import AdminLeads from "./pages/admin/AdminLeads";
+import IntroducingBroker from "./pages/dashboard/IntroducingBroker";
 
 function App() {
   return (
@@ -198,6 +199,7 @@ function App() {
             <Route path="live-markets-rates" element={<CurrencyRates />} />
             <Route path="top-news" element={<TradingViewWidget />} />
             <Route path="indicators" element={<TechnicalIndicatorPage />} />
+            <Route path="introducing-broker" element={<IntroducingBroker />} />
           </Route>
           <Route path="/admin" element={<AdminDashboardLayout />}>
             <Route index element={<AdminDashboard />} />
