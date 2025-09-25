@@ -241,7 +241,7 @@ function IBRequest({ user, refreshUser, setUser }: IBRequestProps) {
             {/* Actions */}
             <div className="flex justify-end gap-4">
               <button
-                className="px-4 py-2 bg-gray-600 rounded-full hover:bg-gray-700"
+                className="px-4  bg-gray-600 rounded-md hover:bg-gray-700"
                 onClick={() => setShowForm(false)}
               >
                 Cancel
