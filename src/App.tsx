@@ -74,6 +74,7 @@ import BlogPage from "./pages/admin/AdminBlogs";
 import EmailSubscribers from "./pages/admin/EmailSubscriber";
 import AdminLeads from "./pages/admin/AdminLeads";
 import IntroducingBroker from "./pages/dashboard/IntroducingBroker";
+import Support from "./pages/dashboard/SupportTicket";
 
 function App() {
   return (
@@ -200,6 +201,7 @@ function App() {
             <Route path="top-news" element={<TradingViewWidget />} />
             <Route path="indicators" element={<TechnicalIndicatorPage />} />
             <Route path="introducing-broker" element={<IntroducingBroker />} />
+            <Route path="support" element={<Support />} />
           </Route>
           <Route path="/admin" element={<AdminDashboardLayout />}>
             <Route index element={<AdminDashboard />} />
