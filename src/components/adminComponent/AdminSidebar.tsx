@@ -31,14 +31,16 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
   const [ibCount, setIbCount] = useState<number>(0);
   const [kycCount, setKycCount] = useState<number>(0);
 
+  // --- New: Sidebar width state
+  const [sidebarWidth, setSidebarWidth] = useState(256); // 64 * 4 = 256px
+  const [isResizing, setIsResizing] = useState(false);
+
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        // ✅ Fetch Payout Requests
         const payoutRes = await axios.get(`${baseURL}/api/payment/withdrawals`);
         setPayoutCount(payoutRes.data?.data?.length || 0);
 
-        // ✅ Fetch Bank Approvals (only pending ones)
         const bankRes = await axios.get(`${baseURL}/api/auth/users`);
         const pendingBankUpdates = bankRes.data.filter(
           (u: { pendingBankDetails?: Record<string, unknown> }) =>
@@ -46,14 +48,12 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
         );
         setBankApprovalCount(pendingBankUpdates.length || 0);
 
-        // ✅ Fetch IB Requests (only pending status)
         const ibRes = await axios.get(`${baseURL}/api/ib`);
         const pendingIbRequests = ibRes.data.filter(
           (u: { status: string }) => u.status === "pending"
         );
         setIbCount(pendingIbRequests.length || 0);
 
-        // ✅ KYC Pending
         const userRes = await axios.get(`${baseURL}/api/auth/users`);
         const pendingKyc = userRes.data.filter(
           (u: { isKycVerified: boolean }) => u.isKycVerified === false
@@ -67,6 +67,35 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
     fetchCounts();
   }, []);
 
+  // --- Handle drag resize
+  // --- Handle drag resize
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isResizing) return;
+      const newWidth = e.clientX;
+      if (newWidth > 200 && newWidth < 400) {
+        setSidebarWidth(newWidth);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+      document.body.style.userSelect = ""; // ✅ Re-enable text selection
+    };
+
+    if (isResizing) {
+      document.body.style.userSelect = "none"; // ✅ Disable text selection
+    }
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isResizing]);
+
   const handleSignOut = () => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("admin");
@@ -74,7 +103,10 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
   };
 
   return (
-    <aside className="h-full w-64 bg-[#0b121a] text-white flex flex-col border-r border-gray-700">
+    <aside
+      className="h-full bg-[#0b121a] text-white flex flex-col border-r border-gray-700 relative"
+      style={{ width: sidebarWidth }}
+    >
       {/* Header (Logo + Mobile Close Button) */}
       <div className="flex items-center justify-between px-4 py-4 border-b border-gray-800 md:hidden">
         <img src={logo} alt="Admin Logo" width={140} className="h-auto" />
@@ -109,7 +141,6 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
             pathname={pathname}
             count={kycCount}
           />
-
           <NavLink
             to="/admin/tickets"
             label="Support Ticket"
@@ -179,6 +210,12 @@ export default function AdminSidebar({ onClose }: { onClose?: () => void }) {
           </button>
         </Section>
       </div>
+
+      {/* Draggable Resizer */}
+      <div
+        onMouseDown={() => setIsResizing(true)}
+        className="absolute top-0 right-0 h-full w-1 bg-gray-700 hover:bg-gray-500 cursor-col-resize"
+      />
     </aside>
   );
 }
@@ -219,7 +256,7 @@ function NavLink({
 
   return (
     <div
-      onClick={() => (window.location.href = to)} // OR use `useNavigate` if preferred
+      onClick={() => (window.location.href = to)}
       className={clsx(
         "flex items-center justify-between px-4 py-2 rounded-md text-sm font-medium transition-all cursor-pointer",
         isActive

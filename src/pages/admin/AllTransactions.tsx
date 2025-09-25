@@ -309,7 +309,7 @@ export default function AdminTransactionPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="min-h-screen   bg-gradient-to-br from-[#0a0f1d] to-[#0f172a] px-6 pt-5  text-white ">
+      <div className="min-h-screen    px-6 pt-5  text-white ">
         <h1 className="text-2xl font-bold mb-6">Transaction History</h1>
 
         {/* Account Selector */}
