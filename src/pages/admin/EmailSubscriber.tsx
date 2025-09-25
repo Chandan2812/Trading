@@ -43,7 +43,9 @@ export default function EmailSubscribers() {
       <div className="mb-6 flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold">Email Subscribers</h1>
-          <p className="text-gray-400 mt-1 text-sm">Manage active offers</p>
+          <p className="text-gray-400 mt-1 text-sm">
+            Manage active subscribers
+          </p>
         </div>
       </div>
 
