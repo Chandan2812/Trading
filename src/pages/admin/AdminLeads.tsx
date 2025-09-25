@@ -136,7 +136,7 @@ export default function AdminLeads() {
             onClick={handleExport}
             className="flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded text-sm"
           >
-            <Download size={16} /> Export
+            <Download size={16} /> Export To Excel
           </button>
         </div>
       </div>
