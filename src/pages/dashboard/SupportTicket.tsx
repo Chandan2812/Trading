@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import Button from "../../components/Button";
+import Button2 from "../../components/Button2";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 interface Ticket {
@@ -201,7 +201,7 @@ export default function Support() {
             }
             className="w-full bg-[#0d1b2a] border border-gray-700 p-2 rounded mb-4 h-28"
           ></textarea>
-          <Button
+          <Button2
             onClick={handleCreateTicket}
             disabled={activeTicketsCount >= 2} // ✅ Disable if 2 or more active tickets
             text={

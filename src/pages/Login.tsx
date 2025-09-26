@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
 import Logo from "../assets/logo-01.svg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import Button2 from "../components/Button2";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 export default function LoginPage() {
@@ -219,7 +219,7 @@ export default function LoginPage() {
                 </div>
               )}
 
-              <Button
+              <Button2
                 onClick={handleSignIn}
                 disabled={loading}
                 text={loading ? "Signing..." : "Sign in"}
@@ -245,7 +245,7 @@ export default function LoginPage() {
                 </div>
               )}
 
-              <Button
+              <Button2
                 text={loading ? "Sending OTP..." : "Send OTP"}
                 onClick={requestPasswordReset}
                 className="w-full "
@@ -296,7 +296,7 @@ export default function LoginPage() {
                 </div>
               )}
 
-              <Button
+              <Button2
                 text={loading ? "Resetting..." : "Reset Password"}
                 onClick={verifyAndResetPassword}
                 className="w-full "

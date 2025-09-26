@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import emptyIcon from "../../assets/empty_state.png"; // Update if needed
-import Button from "../../components/Button";
 import RegisterModal from "../../components/CreateAccount"; // adjust path as needed
 import axios from "axios";
 import AddBalanceModal from "../../components/AddBalanceModal";
 // import KycAlertModal from "../../components/KycAlertModal";
 import video from "../../assets/video/BILLION$ FX WEBSITE ANIMATION.mp4";
+import Button2 from "../../components/Button2";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 interface Account {
@@ -148,7 +148,7 @@ export default function DepositsPage() {
               Live MT5 Accounts
             </h2>
             {accounts.length === 0 && (
-              <Button
+              <Button2
                 text="+ Create Account"
                 onClick={() => setShowModal(true)}
               />
@@ -217,7 +217,7 @@ export default function DepositsPage() {
             <div className="flex justify-center">
               <a href="/deposits">
                 {" "}
-                <Button text="Make a Deposit" />{" "}
+                <Button2 text="Make a Deposit" />{" "}
               </a>
             </div>
 

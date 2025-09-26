@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Wallet, X } from "lucide-react";
-import Button from "../../components/Button";
 import KycAlertModal from "../../components/KycAlertModal";
 import toast, { Toaster } from "react-hot-toast";
+import Button2 from "../../components/Button2";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 interface Account {
@@ -244,7 +244,7 @@ function Withdrawal() {
                   Withdraw funds securely from this account.
                 </p>
 
-                <Button
+                <Button2
                   text="Withdraw"
                   onClick={() => {
                     if (userData?.isKycVerified === false) {
@@ -406,7 +406,7 @@ function Withdrawal() {
                   />
                 </div>
 
-                <Button
+                <Button2
                   text={loading ? "Processing..." : "Confirm Withdrawal"}
                   disabled={loading}
                 />

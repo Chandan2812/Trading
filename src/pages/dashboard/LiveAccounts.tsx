@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import emptyIcon from "../../assets/empty_state.png";
-import Button from "../../components/Button";
 import RegisterModal from "../../components/CreateAccount";
 import UpdatePasswordModal from "../../components/UpdatePasswordModal";
 import { useNavigate } from "react-router-dom";
 import AddBalanceModal from "../../components/AddBalanceModal";
 import bannerImage from "../../assets/grgrgr 1.jpg";
+import Button2 from "../../components/Button2";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
@@ -142,7 +142,7 @@ export default function LiveAccounts() {
               <p className="text-gray-400 text-sm mb-2">
                 No live accounts yet.
               </p>
-              <Button
+              <Button2
                 text="+ Create Account"
                 onClick={() => setShowModal(true)}
               />
@@ -166,7 +166,7 @@ export default function LiveAccounts() {
                 </div>
               ))}
               {accounts.length === 0 && (
-                <Button
+                <Button2
                   text="+ Create Account"
                   onClick={() => setShowModal(true)}
                 />

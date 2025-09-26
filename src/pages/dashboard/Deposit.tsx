@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { CreditCard, X } from "lucide-react";
-import Button from "../../components/Button"; // ✅ import your Button
 import KycAlertModal from "../../components/KycAlertModal";
 import toast, { Toaster } from "react-hot-toast";
 import DepositVideo from "../../assets/video/BILLION$ FX WEBSITE DEPOSITS.mp4";
+import Button2 from "../../components/Button2";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 interface Account {
@@ -127,7 +127,7 @@ function Deposit() {
           </p>
 
           {/* ✅ Use Button instead of <button> */}
-          <Button
+          <Button2
             text="Deposit"
             onClick={() => {
               if (userData?.isKycVerified === false) {
@@ -206,7 +206,7 @@ function Deposit() {
                 </div>
 
                 {/* ✅ Use Button instead of <button> */}
-                <Button
+                <Button2
                   text={loading ? "Processing..." : "Confirm Deposit"}
                   className="w-fit disabled:opacity-50"
                   disabled={loading}
