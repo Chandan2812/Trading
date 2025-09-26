@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import emptyIcon from "../../assets/empty_state.png"; // Update if needed
 import Button from "../../components/Button";
